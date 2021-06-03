@@ -34,7 +34,7 @@ Route::view('inicio','admin.index');
 Route::view('libros','admin.libros');
 Route::view('ejemplares','admin.ejemplares');
 Route::view('prestamos','admin.prestamos');
-Route::view('devoluciones','admin.devoluciones');
+Route::view('devoluciones','admin.LibrosPrestados');
 Route::view('prestacion','admin.prestacion
 	');
 

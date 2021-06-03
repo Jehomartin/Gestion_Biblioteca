@@ -2,7 +2,7 @@
 @section('titulo','Listado Prestamos')
 @section('contenido')
 
-<div id="prestar">
+<div id="devolver">
   <!-- @{{saludo}} -->
   <div class="container">
     <div class="row">
@@ -47,7 +47,7 @@
           </thead>
 
           <tbody>
-            <tr v-for="(prestamo,index) in filtroPrestamos">
+            <tr v-for="(prestamo,index) in filtroPrestados">
               <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.folioprestamo}}</td>
               <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.isbn}}</td>
               <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.titulo}}</td>
@@ -79,23 +79,6 @@
 
             <!-- inicio cuerpo modal -->
             <div class="modal-body fondo1">
-              <span class="form-control" v-model='folioprestamo' v-if="!info">Folio de prestamo: @{{folioprestamo}}</span>              
-            <!--   <input type="text" name="" placeholder="escriba el folio del libro" class="form-control" v-model="isbn"v-if="!info"> -->
-              <select @change="getLibros" v-model="isbn" class="form-control" v-if="!info">
-                <option disabled value="">Elija la clave del libro</option>
-                <option v-for="l in libros" v-bind:value="l.isbn">@{{l.isbn}}</option>
-              </select>
-              <select @change="getLibros" v-model="titulo" class="form-control" v-if="!info">
-                <option disabled value="">Elija el titulo</option>
-                <option v-for="l in libros" v-bind:value="l.titulo">@{{l.titulo}}</option>
-              </select>
-              <input type="date" name="" placeholder="Fecha_Prestamo" class="form-control" v-model="fechaprestamo" v-if="!info">
-              <input type="date" name="" placeholder="Fecha_devolución" class="form-control" v-model="fechadevolucion" v-if="!info">
-              <input type="text" name="" placeholder="Matricula" class="form-control" v-model="matricula" v-if="!info">
-              <input type="text" name="" placeholder="Liberado" class="form-control" v-model="liberado" v-if="!info">
-              <input type="number" name="" placeholder="Cantidad" class="form-control" v-model="cantidad" v-if="!info">
-              <input type="number" name="" placeholder="Consec" class="form-control" v-model="consec" v-if="!info">
-
               <font color="black" face="arial black">
                 <span v-if="info" class="form-control">Folio de prestamo: @{{folioprestamo}} </span>
                 <span v-if="info" class="form-control">Folio del libro: @{{isbn}} </span>
@@ -112,19 +95,8 @@
 
             <!-- footer modal -->
             <div class="modal-footer fondo1">
-              <div class="input-group" v-if="!info" >
-                <h6>Folio: @{{folioprestamo}}</h6>
-                <h6>Folio_Libro: @{{isbn}}</h6>
-                <h6>Titulo_Libro: @{{titulo}}</h6>
-                <h6>Fecha_Prestamo: @{{fechaprestamo}}</h6>
-                <h6>Fecha_Devolucion: @{{fechadevolucion}}</h6>
-                <h6>Matricula: @{{matricula}}</h6>
-                <h6>Liberado: @{{liberado}}</h6>
-                <h6>Cantidad: @{{cantidad}}</h6>
-                <h6>Consec: @{{consec}}</h6>
-              </div>
               <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="cancelarEdit()">Cancelar</button>
-              <button type="submit" class="btn btn-primary" v-on:click="agregarPrestamo()" v-if="!info">Guardar</button>
+             <!--  <button type="submit" class="btn btn-primary" v-on:click="agregarPrestamo()" v-if="!info">Guardar</button> -->
               <button type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()" v-if="info">Aceptar</button>
             </div>
             <!-- fin footer modal -->
@@ -139,7 +111,7 @@
 @endsection
 
 @push('scripts')
-  <script src="js/admin/prestamos.js"></script>
+  <script src="js/admin/devoluciones.js"></script>
   <script src="js/vue.js"></script>
   <script src="js/vue-resource.js"></script>
   <script src="js/moment-with-locales.min.js"></script>

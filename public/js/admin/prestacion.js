@@ -101,8 +101,6 @@ function init()
 				this.liberado='';
 				this.cantidad='';
 				// this.consec='';
-				// this.cantidades=[1,1,1,1,1,1,1,1,1,1];
-
 			},
 		}
 	})

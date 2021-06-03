@@ -42,7 +42,7 @@ function init()
 			auxPrestamo:'',
 			buscar:'',
 
-			cantidades:[1,1,1,1,1,1,1,1,1,1],
+			// cantidades:[1,1,1,1,1,1,1,1,1,1],
 		},
 
 		methods:{
@@ -80,37 +80,37 @@ function init()
 				});
 			},
 
-			foliarPrestamo:function(){
-				this.folioprestamo='PRS-'+moment().format('YYDDMMhmmss');
-			},
+			// foliarPrestamo:function(){
+			// 	this.folioprestamo='PRS-'+moment().format('YYDDMMhmmss');
+			// },
 
 			showModal:function(){
 			$('#addprestamo').modal('show');
 			},
 
-			agregarPrestamo:function() {
-				//Construyendo un objeto de tipo Json para enviar a la Api
-				var prestamo={folioprestamo:this.folioprestamo,isbn:this.isbn,titulo:this.titulo,fechaprestamo:this.fechaprestamo,
-					fechadevolucion:this.fechadevolucion,matricula:this.matricula,
-					liberado:this.liberado, cantidad:this.cantidad, consec:this.consec};
-				//limpiar campos
-				this.foliarPrestamo();
-				this.isbn='';
-				this.titulo='';
-				this.fechaprestamo='';
-				this.fecchadevolucion='';
-				this.matricula='';
-				this.liberado='';
-				this.cantidad='';
-				this.consec='';
-				//para poder entrar al método store necesitamos de un post y se evia el json
-				this.$http.post(urlPrestamo,prestamo).then
-                    (function(response) {
-                    	this.getPrestamo();
-                    	$('#addprestamo').modal('hide');
-                    });
-                toastr.success("Prestamo realizado con exito");    
-			},
+			// agregarPrestamo:function() {
+			// 	//Construyendo un objeto de tipo Json para enviar a la Api
+			// 	var prestamo={folioprestamo:this.folioprestamo,isbn:this.isbn,titulo:this.titulo,fechaprestamo:this.fechaprestamo,
+			// 		fechadevolucion:this.fechadevolucion,matricula:this.matricula,
+			// 		liberado:this.liberado, cantidad:this.cantidad, consec:this.consec};
+			// 	//limpiar campos
+			// 	this.foliarPrestamo();
+			// 	this.isbn='';
+			// 	this.titulo='';
+			// 	this.fechaprestamo='';
+			// 	this.fecchadevolucion='';
+			// 	this.matricula='';
+			// 	this.liberado='';
+			// 	this.cantidad='';
+			// 	this.consec='';
+			// 	//para poder entrar al método store necesitamos de un post y se evia el json
+			// 	this.$http.post(urlPrestamo,prestamo).then
+   //                  (function(response) {
+   //                  	this.getPrestamo();
+   //                  	$('#addprestamo').modal('hide');
+   //                  });
+   //              toastr.success("Prestamo realizado con exito");    
+			// },
 		
 			// eliminarPrestamo:function(id){
 			// 	var resp = confirm("Esta seguro de eliminar el prestamo: " + id)
@@ -183,7 +183,7 @@ function init()
 			},
 
 		},
-
+		
 		computed:{
 			filtroPrestamos:function(){
 				return this.prestamos.filter((prestamo)=>{

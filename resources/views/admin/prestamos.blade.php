@@ -13,7 +13,7 @@
   <br>
   <div class="container">
     <font color="black" face="arial black"><h5>FOLIO : @{{folioprestamo}}</h5></font>
-    <!-- <font color="black" face="arial black"><h5 v-model="fechaprestamo">FECHA PRESTAMO : @{{fechaprestamo}}</h5></font> -->
+    <font color="black" face="arial black"><h5 v-model="fechaprestamo">FECHA PRESTAMO : @{{fechaprestamo}}</h5></font>
 
     <div class="row">
       <div class="col-xs-6">
