@@ -1,0 +1,41 @@
+.contenedor{
+	padding: 0;
+	margin: 0;
+}
+.contenedor .titulo{
+	font-style: ;
+	size: 30px;
+	text-align: center;
+}
+@media screen and (min-width: 480px and max-width: 700px){
+	.contenedor .titulo{
+		
+		text-align: left;
+		font-style: ;
+		size: 5px;
+		color: orange;
+		
+	}
+}
+
+@media screen and (min-width: 700px and max-width: 950px){
+	.contenedor .titulo{
+		
+		text-align: center;
+		font-style: ;
+		size: 15px;
+		color: blue;
+		
+	}
+}
+
+@media screen and (min-width: 950px){
+	.contenedor .titulo{
+		
+		text-align: right;
+		font-style: ;
+		size: 25px;
+		color: red;
+		
+	}
+}

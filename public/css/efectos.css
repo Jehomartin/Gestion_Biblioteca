@@ -1,0 +1,56 @@
+body div figure
+{
+ border: 1px;
+ width: 350px;
+ height: 350px;
+ text-align: center;
+ margin: 0 auto;
+ margin-top:45 px;
+ position: relative;
+}
+body div figure h3
+{
+	position: absolute;
+	color: blue;
+	left: 50%
+	top: 60%;
+	padding: 
+	border: 2px blue solid;
+	background: coral;
+	opacity: 0.5;
+	font-weight: bold;
+	font-size: 30px;
+	
+}
+
+body div figure:hover h3
+{
+	transform: translate(50%,50%) scale(1);
+}
+
+body div figure img
+{
+	margin: 0 auto;
+	height: 300px;
+	width: 300px;
+}
+
+body div figure:hover img
+{
+	border-radius: 40%;
+	border: red solid;
+}
+
+.form{
+	width: 1000px;
+	height: 700px;
+	margin-top: 300px;
+}
+
+.edit1{
+	float: left;
+}
+
+.edit2{
+	float: right;
+}

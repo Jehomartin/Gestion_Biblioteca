@@ -1,0 +1,101 @@
+body {
+  font-family: 'Lora';
+  background-image: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url("../img/fondos/fondo1.jpeg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+.login-box{
+    width: 420px;
+    height: 520px;
+    background: rgba(11, 21, 31, 1);
+    color: #fff;
+    font-family: arial black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+.avatar{
+    width: 220px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(35% - 50px);
+}
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+    top: 40px;
+}
+.login-box p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.login-box input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.login-box input[type="text"], input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: gold;
+    font-size: 16px;
+}
+.login-box input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: yellow;
+    color: #000;
+    font-size: 18px;
+    border-radius: 20px;
+    font-family: arial black;
+}
+.login-box input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: red;
+    color: #fff;
+}
+
+.login-box input[type="button"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: green;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+    font-family: arial black;
+}
+.login-box input[type="button"]:hover
+{
+    cursor: pointer;
+    background: coral;
+    color: #000;
+}
+
+.login-box a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+}
+.login-box a:hover
+{
+    color: #39dc79;
+}
+
+

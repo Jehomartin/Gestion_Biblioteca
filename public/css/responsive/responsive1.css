@@ -1,0 +1,48 @@
+.titulo{
+	padding: 0;
+	color: black;
+	size: 30px;
+	font-family: algerian;
+}
+
+.estado{
+	padding: 0;
+	width: 500px;
+	height: 500px;
+	margin: 0;
+}
+
+@media screen and(min-width: 400px and max-width: 650px){
+	.titulo{
+	padding: 0;
+	color: blue;
+	size: 10px;
+	font-family: arial;
+	}
+	.estado{
+	width: 100px;
+	height: 100px;
+	border-radius: 80%;
+	border-color: red solid;
+}
+
+	/*.carrusel{
+		width: 136px;
+	    margin: auto;
+	    perspective: 300px;
+	    position: relative;
+	    margin-top: 130px;
+	    height: 150px;
+	}
+
+	.carrusel .imagenes_efecto{
+		width: 80%;
+	    position: absolute;
+	    animation: rotar 30s infinite linear;
+	    transform-style: preserve-3d;
+	}*/
+}
+
+@media screen and (min-width: 650px and max-width: 900px){
+
+}
