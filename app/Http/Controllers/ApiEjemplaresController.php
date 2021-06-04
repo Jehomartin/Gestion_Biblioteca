@@ -27,6 +27,16 @@ class ApiEjemplaresController extends Controller
     public function store(Request $request)
     {
         //
+        $ejemplar = new Ejemplares;
+
+        $ejemplar->clasificacion = $request->get('clasificacion');
+        $ejemplar->folio = $request->get('folio');
+        $ejemplar->esbase = $request->get('esbase');
+        $ejemplar->prestado = $request->get('prestado');
+        $ejemplar->consec = $request->get('consec');
+        $ejemplar->fecha_alta = $request->get('fecha_alta');
+
+        $ejemplar->save();
     }
 
     /**
