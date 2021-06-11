@@ -22,12 +22,12 @@
 
         <!-- inicio cuerpo modal -->
         <div class="modal-body div1">
-          <input type="text" name="" placeholder="clasificacion del libro" class="form-control" v-model='clasificacion'>
-          <input type="text" name="" placeholder="" class="form-control" v-model="folio">
-          <input type="text" name="" placeholder="" class="form-control" v-model="esbase">
-          <input type="text" name="" placeholder="" class="form-control" v-model="prestado">
-          <input type="text" name="" placeholder="" class="form-control" v-model="consec">
-          <input type="date" name="" placeholder="" class="form-control" v-model="fecha_alta">
+          <input type="text" name="" placeholder="clasificacion del ejemplar" class="form-control" v-model='clasificacion'>
+          <input type="text" name="" placeholder="folio del libro" class="form-control" v-model="folio">
+          <input type="text" name="" placeholder="identificador de base" class="form-control" v-model="esbase">
+          <input type="text" name="" placeholder="identificador de prestamo" class="form-control" v-model="prestado">
+          <input type="text" name="" placeholder="Consec" class="form-control" v-model="consec">
+          <input type="date" name="" placeholder="Fecha de Alta" class="form-control" v-model="fecha_alta">
         </div><!-- fin cuerpo modal -->
 
         <!-- footer modal -->
