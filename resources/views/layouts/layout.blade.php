@@ -133,7 +133,7 @@
 
         <li><font size="6" color="red" face="Baskerville Old Face">Apartados</font></li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="{{url('inicio') }}"><font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-home"></span> -Inicio</font></a></li>
+        <li><a href="{{url('inicio') }}"><font color="gold" size="4" face="times new roman"><span class="glyphicon glyphicon-home"></span> -Inicio</font></a></li>
 
         <li><a href="{{url('libros') }}"><font color="gold" size="4" face="times new roman"><span class="glyphicon glyphicon-book"></span> -Libros </font></a></li>
 
