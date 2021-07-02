@@ -26,8 +26,11 @@ class Ejemplares extends Model
         'folio',
         'esbase',
         'prestado',
+        'comentario',
         'consec',
-        'fecha_alta'
+        'fecha_alta',
+        'solodewee',
+        'deweecompleto'
     ];
 
     public function libro(){

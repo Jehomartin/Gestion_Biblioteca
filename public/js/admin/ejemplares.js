@@ -26,8 +26,11 @@ new Vue({
 		clasificacion:'',
 		esbase:'',
 		prestado:'',
+		comentario:'',
 		consec:'',
         fecha_alta:'',
+        solodewee:'',
+        deweecompleto:'',
         editejem:false,
         auxEjemplar:'',
         buscar:''
@@ -64,16 +67,19 @@ new Vue({
 
 		agregarEjemplar:function(){
 			//creación del objeto json para enviar al metodo post
-			var ejemplar = { clasificacion:this.clasificacion, folio:this.folio, esbase:this.esbase,
-				prestado:this.prestado, consec:this.consec, fecha_alta:this.fecha_alta
-			};
+			var ejemplar={clasificacion:this.clasificacion,folio:this.folio,esbase:this.esbase,
+				prestado:this.prestado,comentario:this.comentario,consec:this.consec,
+				fecha_alta:this.fecha_alta,solodewee:this.solodewee,deweecompleto:this.deweecompleto};
 			// se realiza la limpieza de los campos
-			this.clasificacion='';
-			this.folio='';
-			this.esbase='';
-			this.prestado='';
-			this.consec='';
-			this.fecha_alta='';
+			this.clasificacion = '';
+			this.folio = '';
+			this.esbase = '';
+			this.prestado = '';
+			this.comentario = '';
+			this.consec = '';
+			this.fecha_alta = '';
+			this.solodewee = '';
+			this.deweecompleto = '';
 			// se realiza el envío del objeto json con un post
 			this.$http.post(urlEjemplar, ejemplar).then(function(response){
 				this.getEjemplar();
@@ -81,6 +87,61 @@ new Vue({
 			});
 
 			toastr.success("Ejemplar agregado con exito!!");
+		},
+
+		editEjemplar:function(id){
+			this.editejem=true;
+			$('#addejemplar').modal('show');
+			this.$http.get(urlEjemplar + '/' + id).then(function(response){
+				this.clasificacion = response.data.clasificacion;
+				this.folio = response.data.folio;
+				this.esbase = response.data.esbase;
+				this.prestado = response.data.prestado;
+				this.comentario = response.data.comentario;
+				this.consec = response.data.consec;
+				this.fecha_alta = response.data.fecha_alta;
+				this.solodewee = response.data.solodewee;
+				this.deweecompleto = response.data.deweecompleto;
+				this.auxEjemplar = response.data.clasificacion;
+			});
+
+			toastr.info("Visualizando información del Ejemplar");
+		},
+
+		updateEjem:function(id){
+			var ejemplar={clasificacion:this.clasificacion,folio:this.folio,esbase:this.esbase,
+				prestado:this.prestado,comentario:this.comentario,consec:this.consec,
+				fecha_alta:this.fecha_alta,solodewee:this.solodewee,deweecompleto:this.deweecompleto};
+
+			this.$http.put(urlEjemplar + '/' + this.clasificacion, ejemplar).then(function(response){
+				this.getEjemplar();
+				this.editejem=false;
+				this.clasificacion = '';
+				this.folio = '';
+				this.esbase = '';
+				this.prestado = '';
+				this.comentario = '';
+				this.consec = '';
+				this.fecha_alta = '';
+				this.solodewee = '';
+				this.deweecompleto = '';
+
+				$('#addejemplar').modal('hide');
+			});
+			toastr.success("Ejemplar Actualizado con exito!!");
+		},
+
+		eliminarEjemplar:function(id){
+			// toastr.warning("Esta a punto de eliminar el registro de un ejemplar");
+			var resp=confirm("Esta seguro de eliminar dicho ejemplar")
+			if (resp==true) {
+				this.$http.delete(urlEjemplar + '/' + id).then(function(json){
+					this.getEjemplar();
+				});
+				toastr.success("La eliminacion del ejemplar se realizó correctamente");
+			}else{
+				toastr.info("El ejemplar no fue eliminado");
+			}
 		},
 
 		cancelEditj:function(){

@@ -16,7 +16,7 @@
         <!-- se inicia el encabezado de la ventana modal -->
         <div class="modal-header div1">
           <button type="button" class="close" data-dismiss="modal" aria-label="close" v-on:click="cancelEditj()"><span aria-hidden="true">X</span></button>
-          <h4 class="modal-title">Nuevo Ejemplar</h4>
+          <h4 class="modal-title" v-if="!editejem">Nuevo Ejemplar</h4>
         </div>
         <!-- fin encabezado de ventana modal -->
 
@@ -26,8 +26,11 @@
           <input type="text" name="" placeholder="folio del libro" class="form-control" v-model="folio">
           <input type="text" name="" placeholder="identificador de base" class="form-control" v-model="esbase">
           <input type="text" name="" placeholder="identificador de prestamo" class="form-control" v-model="prestado">
+          <input type="text" placeholder="Comentario sobre el ejemplar" class="form-control" v-model="comentario">
           <input type="text" name="" placeholder="Consec" class="form-control" v-model="consec">
           <input type="date" name="" placeholder="Fecha de Alta" class="form-control" v-model="fecha_alta">
+          <input type="text" name="" placeholder="Solo Dewee" class="form-control" v-model="solodewee">
+          <input type="text" name="" placeholder="Dewee completo" class="form-control" v-model="deweecompleto">
         </div><!-- fin cuerpo modal -->
 
         <!-- footer modal -->
@@ -37,11 +40,14 @@
             <h6>Folio : @{{folio}} </h6>
             <h6>Es Base : @{{esbase}} </h6>
             <h6>Prestado : @{{prestado}} </h6>
+            <h6>Comentario : @{{comentario}} </h6>
             <h6>Consec : @{{consec}} </h6>
             <h6>Fecha Alta : @{{fecha_alta}} </h6>
+            <h6>Solo Dewee : @{{solodewee}} </h6>
+            <h6>Dewee completo : @{{deweecompleto}} </h6>
           </font>
           <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="cancelEditj()">Cancelar</button>
-          <button type="submit" class="btn btn-primary" v-on:click="agregarEjemplar()">Guardar</button>
+          <button type="submit" class="btn btn-primary" v-on:click="agregarEjemplar()" v-if="!editejem">Guardar</button>
         </div><!-- fin footer modal -->
       </div> <!--fin modal content-->
     </div><!--/modal dialog-->

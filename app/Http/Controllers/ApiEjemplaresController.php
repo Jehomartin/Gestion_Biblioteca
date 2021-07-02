@@ -33,8 +33,11 @@ class ApiEjemplaresController extends Controller
         $ejemplar->folio = $request->get('folio');
         $ejemplar->esbase = $request->get('esbase');
         $ejemplar->prestado = $request->get('prestado');
+        $ejemplar->comentario = $request->get('comentario');
         $ejemplar->consec = $request->get('consec');
         $ejemplar->fecha_alta = $request->get('fecha_alta');
+        $ejemplar->solodewee = $request->get('solodewee');
+        $ejemplar->deweecompleto = $request->get('deweecompleto');
 
         $ejemplar->save();
     }
@@ -48,6 +51,7 @@ class ApiEjemplaresController extends Controller
     public function show($id)
     {
         //
+        return Ejemplares::find($id);
     }
 
     /**
@@ -60,6 +64,19 @@ class ApiEjemplaresController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $ejemplar = Ejemplares::find($id);
+
+        $ejemplar->clasificacion = $request->get('clasificacion');
+        $ejemplar->folio = $request->get('folio');
+        $ejemplar->esbase = $request->get('esbase');
+        $ejemplar->prestado = $request->get('prestado');
+        $ejemplar->comentario = $request->get('comentario');
+        $ejemplar->consec = $request->get('consec');
+        $ejemplar->fecha_alta = $request->get('fecha_alta');
+        $ejemplar->solodewee = $request->get('solodewee');
+        $ejemplar->deweecompleto = $request->get('deweecompleto');
+
+        $ejemplar->update();
     }
 
     /**
@@ -71,5 +88,6 @@ class ApiEjemplaresController extends Controller
     public function destroy($id)
     {
         //
+        return Ejemplares::destroy($id);
     }
 }
