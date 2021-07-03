@@ -76,7 +76,7 @@
       <button class="btn btn-success glyphicon glyphicon-plus" v-on:click="showModal">
         Nuevo Libro
       </button>
-
+     
       <!-- <a href="{{url('prestacion')}}">
         <button class="btn btn-danger glyphicon glyphicon-send" style="float: right;">
           Prestar libro
@@ -86,8 +86,9 @@
       <font color="black" face="times new roman">
         <h1 class="text text-center">Libros Registrados</h1>
       </font>
-      <table class="table table-hover tabl-condensed table-bordered">
-        <thead class="div4">
+      <table class="table table-hover table-condensed">
+      <link rel="stylesheet" href="diseño-tabla/tabla.css">
+        <thead>
           <th width="8%">ISBN</th>
           <th>TITULO</th>
           <th>AUTOR</th>
@@ -104,7 +105,7 @@
             <td v-on:click="">@{{libro.autor.nombre}}</td>
             <td v-on:click="">@{{libro.editorial.editorial}}</td>
             <td v-on:click="">@{{libro.carrera.nombre}}</td>
-            <td v-on:click="">@{{libro.ejemplares}}</td>
+            <td style="text-align:center" v-on:click="">@{{libro.ejemplares}}</td>
             <td v-on:click="">@{{libro.cutter}}</td>
             <td>
               <center>
@@ -114,7 +115,8 @@
                 <span class="btn btn-danger glyphicon glyphicon-trash " 
                 v-on:click="eliminarLibro(libro.isbn)"></span>
 
-                <span class="btn btn-success glyphicon glyphicon-copy "></span>
+                <!-- <span class="btn btn-success glyphicon glyphicon-copy "></span> -->
+
               </center>
             </td> 
           </tr>
