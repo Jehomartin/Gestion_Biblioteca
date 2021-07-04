@@ -45,3 +45,8 @@ Route::get('sale','AccesoController@salir');
 //enrutamiento basico
 Route::view('/','login');
 Route::view('mensaje','mensaje');
+
+Route::get('getLibros/{id}',[
+	'as' => 'getLibros',
+	'uses' => 'ApiPrestamosController@getLibros',
+]);
