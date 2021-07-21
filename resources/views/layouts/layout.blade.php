@@ -33,6 +33,8 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/toastr.css">
 
+  <link rel="stylesheet" type="text/css" href="css/diseño tabla/tabla.css">
+
   <link rel="stylesheet" type="text/css" href="css/efectos.css">
   <!-- <link rel="stylesheet" type="text/css" href="css/index3.css"> -->
   <link rel="stylesheet" type="text/css" href="css/responsive/responsive1.css">
@@ -131,17 +133,17 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
 
-        <li><font size="6" color="red" face="Baskerville Old Face">Apartados</font></li>
+        <li><font size="6" color="white" face="Baskerville Old Face">Apartados</font></li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="{{url('inicio') }}"><font color="gold" size="4" face="times new roman"><span class="glyphicon glyphicon-home"></span> -Inicio</font></a></li>
+        <li><a href="{{url('inicio') }}"><font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-home"></span> -Inicio</font></a></li>
 
-        <li><a href="{{url('libros') }}"><font color="gold" size="4" face="times new roman"><span class="glyphicon glyphicon-book"></span> -Libros </font></a></li>
+        <li><a href="{{url('libros') }}"><font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-book"></span> -Libros </font></a></li>
 
-        <li><a href="{{url('prestamos') }}"><font color="gold" size="4" face="times new roman"><span class="glyphicon glyphicon-transfer"></span> -Proceso Prestamo</font></a></li>
+        <li><a href="{{url('prestamos') }}"><font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-transfer"></span> -Proceso Prestamo</font></a></li>
 
-        <li><a href="{{url('devoluciones') }}"><font color="gold" size="4" face="times new roman"><span class="glyphicon glyphicon-share"></span> -Libros Prestados</font></a></li>
+        <li><a href="{{url('devoluciones') }}"><font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-share"></span> -Libros Prestados</font></a></li>
 
-        <li><a href="{{url('ejemplares') }}"><font color="gold" size="4" face="times new roman"><span class="glyphicon glyphicon-copy"></span> -Ejemplares</font></a></li>
+        <li><a href="{{url('ejemplares') }}"><font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-copy"></span> -Ejemplares</font></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

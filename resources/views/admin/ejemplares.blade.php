@@ -27,8 +27,8 @@
 		<div class="col-sm-12">
 			<br>
 			<h2 class="text text-center">Listado de Ejemplares</h2>
-			<table class="table table-hover tabl-condensed table-bordered">
-				<thead class="bon">
+			<table class="table table-hover table-condensed">
+				<thead>
 					<th>Folio</th>
 					<th>Clasificación</th>
 					<th>Esbase</th>

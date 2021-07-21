@@ -2,7 +2,7 @@
 @section('titulo','Inicio')
 @section('contenido')
 <div class="container">
-	<font color="orange" face="times new roman" class="text text-center">
+	<font color="black" face="times new roman" class="text text-center">
 		<h1>Gestión bibliotecaria.</h1>
 		<h2>Bienvenido {{Session::get('usuario')}}</h2>
 		<hr>

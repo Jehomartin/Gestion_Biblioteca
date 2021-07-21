@@ -1,10 +1,11 @@
 var ruta = document.querySelector("[name=route]").value;
 var rute = 'http://localhost/Gestion_Biblioteca/public/';
-var urlLibros = rute + '/apiLibros';
-var urlEditorial = rute + '/apiEditoriales';
-var urlAutor = rute + '/apiAutores';
-var urlCarrera = rute + '/apiCarreras';
-var urlPais = rute + '/apiPais';
+var urlLibros = rute + 'apiLibros';
+var urlEditorial = rute + 'apiEditoriales';
+var urlAutor = rute + 'apiAutores';
+var urlCarrera = rute + 'apiCarreras';
+var urlPais = rute + 'apiPais';
+var urlEjemplar = rute + 'apiEjemplares';
 
 new Vue({
 	http:{
@@ -22,6 +23,7 @@ new Vue({
 		this.getCarrera();
 		this.getPais();
 		this.getBuscar();
+		this.getEjemplar();
 	},
 
 	data:{
@@ -30,6 +32,7 @@ new Vue({
 		autores:[],
 		carreras:[],
 		paises:[],
+		ejemplares:[],
 		id_editorial:'',
 		id_autor:'',
 		id_carrera:'',
@@ -46,7 +49,20 @@ new Vue({
         cutter:'',
         editando:false,
         auxLibro:'',
-        buscar:''
+        buscar:'',
+
+        //datos para agregar el ejemplar
+        folio:'',
+		clasificacion:'',
+		esbase:'',
+		prestado:'',
+		comentario:'',
+		consec:'',
+        fecha_alta:'',
+        solodewee:'',
+        deweecompleto:'',
+        editejem:false,
+        auxEjemplar:'',
 	},
 
 	methods:{
@@ -90,6 +106,14 @@ new Vue({
 			});
 		},
 
+		getEjemplar:function(){
+			this.$http.get(urlEjemplar).then(function(response){
+				this.ejemplares=response.data;
+			}).catch(function(response){
+				console.log(response);
+			});
+		},
+
 		getBuscar:function(){
 			this.$http.get(urlLibros).then(function(json){
 				this.libros=json.data;
@@ -98,8 +122,21 @@ new Vue({
 			});
 		},
 
+		// inicio del evento libros
+		// getLibrou(event){
+		// 	var id = event.target.value;
+		// 	this.$http.get(urlLibros + id).then(function(json){
+		// 		this.libros = json.data;
+		// 	});
+		// },
+		// fin del evento libros
+
 		showModal:function(){
 			$('#addlibro').modal('show');
+		},
+
+		showModals:function(){
+			$('#addejemplar').modal('show');
 		},
 
 		agregarLibro:function(){
@@ -218,6 +255,47 @@ new Vue({
 			this.ejemplares='';
 			this.clasificacion='';
 			this.cutter='';
+		},
+
+		selecEjemp:function(id){
+			
+		},
+
+		agregarEjemplar:function(){
+			
+			//creación del objeto json para enviar al metodo post
+			var ejemplar={clasificacion:this.clasificacion,folio:this.folio,esbase:this.esbase,
+				prestado:this.prestado,comentario:this.comentario,consec:this.consec,
+				fecha_alta:this.fecha_alta,solodewee:this.solodewee,deweecompleto:this.deweecompleto};
+			// se realiza la limpieza de los campos
+			this.clasificacion = '';
+			this.folio = '';
+			this.esbase = '';
+			this.prestado = '';
+			this.comentario = '';
+			this.consec = '';
+			this.fecha_alta = '';
+			this.solodewee = '';
+			this.deweecompleto = '';
+			// se realiza el envío del objeto json con un post
+			this.$http.post(urlEjemplar, ejemplar).then(function(response){
+				this.getEjemplar();
+				$('#addejemplar').modal('hide');
+			});
+
+			toastr.success("Ejemplar agregado con exito!!");
+		},
+
+		cancelEditj:function(){
+			this.clasificacion = '';
+			this.folio = '';
+			this.esbase = '';
+			this.prestado = '';
+			this.comentario = '';
+			this.consec = '';
+			this.fecha_alta = '';
+			this.solodewee = '';
+			this.deweecompleto = '';
 		},
 		
 	},

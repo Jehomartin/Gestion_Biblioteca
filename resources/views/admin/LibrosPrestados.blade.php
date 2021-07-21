@@ -33,8 +33,8 @@
         <h2 class="text text-center">Prestamos realizados</h2>
         <br>
 
-        <table class="table table-hover tabl-condensed table-bordered">
-          <thead class="fondo1">
+        <table class="table table-hover table-condensed">
+          <thead>
             <th>Folio</th>
             <th>Isbn</th>
             <th>Titulo</th>
