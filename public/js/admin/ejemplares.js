@@ -84,9 +84,16 @@ new Vue({
 			this.$http.post(urlEjemplar, ejemplar).then(function(response){
 				this.getEjemplar();
 				$('#addejemplar').modal('hide');
+
+				toastr.success("Ejemplar agregado con exito!!");
+
+			}).catch(function(response){
+
+				toastr.error("Ejemplar no agregado ocurrio un error");
+
 			});
 
-			toastr.success("Ejemplar agregado con exito!!");
+			
 		},
 
 		editEjemplar:function(id){
@@ -127,8 +134,15 @@ new Vue({
 				this.deweecompleto = '';
 
 				$('#addejemplar').modal('hide');
+
+				toastr.success("Ejemplar Actualizado con exito!!");
+				
+			}).catch(function(response){
+
+				toastr.error("Ejemplar no Actualizado ocurrio un error");
+
 			});
-			toastr.success("Ejemplar Actualizado con exito!!");
+			
 		},
 
 		eliminarEjemplar:function(id){

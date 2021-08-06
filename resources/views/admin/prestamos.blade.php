@@ -23,31 +23,34 @@
       </div>
     </div>
     <div class="row">
+      <p>Es importante llenar los campos índicados por el
+      <strong>ASTERÍSCO</strong><sub class="asterisco">*</sub>.</p>
+
       <div class="col-xs-7">
         <font color="green" face="Times New Roman"><h4>FOLIO : @{{folioprestamo}}</h4></font>
         <font color="green" face="Times New Roman"><h4>FECHA PRESTAMO : @{{fechaprestamo}}</h4></font>
         <hr>
 
         
-        <h4>Clave libro que desea prestar:</h4>
+        <h4>Clave libro que desea prestar<sub class="asterisco">*</sub>:</h4>
         <font color="orange"><input type="text" name="" placeholder="id del Libro" v-model="isbn" @change="getLibros" class="form-control"></font>
 
         <h4>Detalles del libro a prestar:</h4>
-        <h5>Titulo del libro:</h5>
+        <h5>Titulo del libro<sub class="asterisco">*</sub>:</h5>
         <select class="form-control" v-model="titulo">
           <option v-for="l in libros" v-bind:value="l.titulo">@{{l.titulo}}</option>
         </select>
-        <h5>Consec del libro:</h5>
+        <h5>Consec del libro<sub class="asterisco">*</sub>:</h5>
         <select class="form-control" v-model="consec">
           <option v-for="l in libros" v-bind:value="l.consec">@{{l.consec}}</option>
         </select>
-        <h5>Fecha de devolución:</h5>
+        <h5>Fecha de devolución<sub class="asterisco">*</sub>:</h5>
         <input type="date" name="" v-model="fechadevolucion" class="form-control" placeholder="fecha de devolucion">
-        <h5>Matricula de quien presta:</h5>
+        <h5>Matricula de quien presta<sub class="asterisco">*</sub>:</h5>
         <input type="text" name="" v-model="matricula" class="form-control" placeholder="matricula del alumno">
         <h5>Liberacion de libro:</h5>
         <input type="text" name="" v-model="liberado" class="form-control" placeholder="liberado">
-        <h5>Cantidad prestada:</h5>
+        <h5>Cantidad prestada<sub class="asterisco">*</sub>:</h5>
         <input type="text" name="" v-model="cantidad" class="form-control" placeholder="cantidad">
       </div>
       <div class="col-xs-4">

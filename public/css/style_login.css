@@ -19,12 +19,11 @@ body {
     padding: 70px 30px;
 }
 .avatar{
-    width: 220px;
-    height: 200px;
-    border-radius: 50%;
-    position: absolute;
-    top: -50px;
-    left: calc(35% - 50px);
+    width: 90px;
+    height: 70px;
+    border-radius: 40%;
+    top: 20px;
+    left: calc(25% - 30px);
 }
 h1{
     margin: 0;

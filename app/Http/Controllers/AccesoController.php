@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Usuarios;
+use Illuminate\Validation\ValidationException;
 
 use Redirect;
 use Session;
@@ -30,7 +31,9 @@ class AccesoController extends Controller
                 return Redirect::to('inicio');    
             }
         }else{
-            return Redirect::to('mensaje');
+            throw ValidationException::withMessages([
+                'usuario' && 'password' => __('auth.failed'),
+            ]);
         }
 
 	}

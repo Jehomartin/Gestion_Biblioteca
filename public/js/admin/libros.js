@@ -32,8 +32,9 @@ new Vue({
 		autores:[],
 		carreras:[],
 		paises:[],
-		ejemplares:[],
+		ejemplars:[],
 		id_editorial:'',
+		editorial:'',
 		id_autor:'',
 		id_carrera:'',
 		id_pais:'',
@@ -108,7 +109,7 @@ new Vue({
 
 		getEjemplar:function(){
 			this.$http.get(urlEjemplar).then(function(response){
-				this.ejemplares=response.data;
+				this.ejemplars=response.data;
 			}).catch(function(response){
 				console.log(response);
 			});
@@ -140,11 +141,20 @@ new Vue({
 		},
 
 		agregarLibro:function(){
+
+			// var editoria=[];
+			// editoria.push({
+			// 	editorial:this.editoriales[i].editorial
+			// });
+
+
 			//creación del objeto json para enviar a la api
-			var libro={isbn:this.isbn,folio:this.isbn,titulo:this.titulo,id_editorial:this.id_editorial,id_autor:this.id_autor,
-				id_carrera:this.id_carrera,edicion:this.edicion,anio_pub:this.anio_pub,id_pais:this.id_pais,
-				fecha_alta:this.fecha_alta,paginas:this.paginas,ejemplares:this.ejemplares,clasificacion:this.clasificacion,cutter:this.cutter
+			var libro={isbn:this.isbn,folio:this.isbn,titulo:this.titulo,id_editorial:this.id_editorial,
+				id_autor:this.id_autor,id_carrera:this.id_carrera,edicion:this.edicion,anio_pub:this.anio_pub,
+				id_pais:this.id_pais,fecha_alta:this.fecha_alta,paginas:this.paginas,ejemplares:this.ejemplares,
+				clasificacion:this.clasificacion,cutter:this.cutter
 			};
+
 			//limpieza de los campos
 			this.isbn='';
 			this.folio='';
@@ -162,13 +172,19 @@ new Vue({
 			this.cutter='';
 
 			//se realiza el post para enviar el json y entrar al metodo store de la api
-			this.$http.post(urlLibros,libro).then
-                 (function(response) {
+			this.$http.post(urlLibros,libro).then(function(response) {
                 this.getLibros();
                 $('#addlibro').modal('hide');
+
+                toastr.success("libro agregado con exito");
+
+            }).catch(function(response){
+
+            	toastr.error("Libro no agregado ocurrio un error o dejo algun campo importante vacío");
+
             });
 
-            toastr.success("libro agregado con exito");
+            
 		},
 
 		editLibro:function(id){
@@ -220,9 +236,16 @@ new Vue({
 				this.cutter='';
 
 				$('#addlibro').modal('hide');
+
+				toastr.success("Actualizacion de libro exitosa");
+
+			}).catch(function(response){
+
+				toastr.error("Actualizacion fallida, ocurrio un error");
+
 			});
 
-			toastr.success("Actualizacion de libro exitosa");
+			
 		},
 
 		eliminarLibro:function(id){
@@ -241,6 +264,7 @@ new Vue({
 		},
 
 		cancelarEdit:function(){
+			this.editando=false;
 			this.isbn='';
 			this.folio='';
 			this.titulo='';
@@ -281,12 +305,19 @@ new Vue({
 			this.$http.post(urlEjemplar, ejemplar).then(function(response){
 				this.getEjemplar();
 				$('#addejemplar').modal('hide');
+
+				toastr.success("Ejemplar agregado con exito!!");
+
+			}).catch(function(response){
+
+				toastr.error("Ejemplar no agregado ocurrio un error");
+
 			});
 
-			toastr.success("Ejemplar agregado con exito!!");
 		},
 
 		cancelEditj:function(){
+			this.editejem=false;
 			this.clasificacion = '';
 			this.folio = '';
 			this.esbase = '';

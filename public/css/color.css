@@ -130,3 +130,8 @@ box-shadow: inset -100px -174px 145px -28px rgba(0,0,0,0.58);
 .but{
 	margin-top: 280px;
 }
+
+.asterisco {
+    font-size: 20px;
+    color: #ff9e27;
+}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Libros;
+use App\Editoriales;
 
 class ApiLibrosController extends Controller
 {
@@ -44,7 +45,15 @@ class ApiLibrosController extends Controller
         $libro->clasificacion = $request->get('clasificacion');
         $libro->cutter =$request->get('cutter');
 
+        // $edil=[];
+        // $edit=$request->get('edit');
+
+        // $edil[]=[
+        //     'editorial'=>$edit[$i]['editorial'],
+        // ];
+
         $libro->save();
+        // Editoriales::insert($edil);
     }
 
     /**

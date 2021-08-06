@@ -1,44 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>@yield('titulo')</title>
-    <meta name="viewport" content="width=device-width"></meta>
-    <meta name="token" id="token" value="{{ csrf_token() }}">
-    <meta name="route" value="{{url('/')}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <title>@yield('titulo')</title>
+  <meta name="token" id="token" value="{{csrf_token()}}">
+  <link rel="icon" href="img/logos.png" type="image/x-icon" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
-      <link rel="shortcut icon" type="image/x-icon" href="img/logos.png">
-    <!-- Place favicon.ico in the root directory -->
+  <link rel="stylesheet" type="text/css" href="css/style_login.css">
+  
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/color.css">
-    <link rel="stylesheet" href="css/toastr.css">
-    <link rel="stylesheet" type="text/css" href="css/style_login.css">
-    <link rel="stylesheet" href="css/logeo.css">
-
-    
-    
-    <script type="text/javascript" src="js/vue-resource.js"></script>
-    
-    <!-- <script type="text/javascript" src="js/bootstrap-dropdown.js"></script> -->
-
-  </head>
-  <body>
-    
-   <!--este comando se utiliza para cargar todo tipo de archivo de html-->
+  <!-- <script type="text/javascript" src="assets/js/vue.js"></script>
+  <script type="text/javascript" src="assets/js/vue-resource.min.js"></script> -->
+<!--===============================================================================================-->  
+  <!-- <link rel="icon" type="image/png" href="login/images/icons/favicon.ico"/> -->
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="login/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="login/vendor/animate/animate.css">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="login/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="login/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="login/vendor/select2/select2.min.css">
+<!--===============================================================================================-->  
+  <link rel="stylesheet" type="text/css" href="login/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="login/css/util.css">
+  <link rel="stylesheet" type="text/css" href="login/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body style="background-color: #666666;">
+  
     @yield('contenido')
     
+<!--===============================================================================================-->
+  <script src="login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+  <script src="login/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+  <script src="login/vendor/bootstrap/js/popper.js"></script>
+  <script src="login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+  <script src="login/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+  <script src="login/vendor/daterangepicker/moment.min.js"></script>
+  <script src="login/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+  <script src="login/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+  <script src="login/js/main.js"></script>
 
-
-    <!--este comando se utiliza para cargar todo tipo de archivo de js-->
-    @stack('scripts')
-    <script src="js/toastr.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery.min.js"></script>
-  </body>
+</body>
 </html>

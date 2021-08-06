@@ -84,6 +84,10 @@ function init()
 					this.getPrestamo();
 					console.log(proba);
 					toastr.success("prestamo agregado");
+
+				}).catch(function(response){
+
+					toastr.error("Prestamo no realizado, algo salio mal");
 				});
 			},
 		},

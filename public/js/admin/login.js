@@ -22,7 +22,7 @@ new Vue({
 		saludo:'hola',
 		usuarios:[],
 		login:'',
-		pass:''
+		pass:'',
 	},
 
 	methods:{
