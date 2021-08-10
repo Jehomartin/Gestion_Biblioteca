@@ -133,7 +133,11 @@ new Vue({
 		// fin del evento libros
 
 		showModal:function(){
-			$('#addlibro').modal('show');
+			$("#modal_custom").find(".modal-header").css("background","#f39c12");
+			$("#modal_custom").find(".modal-header").css("color", "black");
+			$("#modal_custom").find(".modal-title")   
+			$('#modal_custom').modal('show');
+			// $('#addlibro').modal('show');
 		},
 
 		showModals:function(){
@@ -189,7 +193,7 @@ new Vue({
 
 		editLibro:function(id){
 			this.editando=true;
-			$('#addlibro').modal('show');
+			$('#modal_custom').modal('show');
 			this.$http.get(urlLibros + '/' + id).then(function(response){
 				this.isbn = response.data.isbn;
 				this.folio = response.data.isbn;
@@ -235,7 +239,7 @@ new Vue({
 				this.clasificacion='';
 				this.cutter='';
 
-				$('#addlibro').modal('hide');
+				$('#modal_custom').modal('hide');
 
 				toastr.success("Actualizacion de libro exitosa");
 

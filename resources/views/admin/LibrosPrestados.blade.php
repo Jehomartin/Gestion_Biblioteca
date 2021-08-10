@@ -8,6 +8,7 @@
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
+        <br>
         <!-- search form (Optional) -->
         <div class="input-group">
           <input type="text" name="searchText" class="form-control" placeholder="Buscar..." style="background-color: white" v-model="buscar">

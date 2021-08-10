@@ -8,14 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" type="text/css" href="css/style_login.css">
-  
+  <link rel="stylesheet" href="login/estilos.css">
+  <link rel="stylesheet" href="login/fonts.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
-  <!-- <script type="text/javascript" src="assets/js/vue.js"></script>
-  <script type="text/javascript" src="assets/js/vue-resource.min.js"></script> -->
+  
 <!--===============================================================================================-->  
-  <!-- <link rel="icon" type="image/png" href="login/images/icons/favicon.ico"/> -->
-<!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="login/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="icon" type="image/png" href="login/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
@@ -35,7 +34,7 @@
   <link rel="stylesheet" type="text/css" href="login/css/main.css">
 <!--===============================================================================================-->
 </head>
-<body style="background-color: #666666;">
+<body >
   
     @yield('contenido')
     

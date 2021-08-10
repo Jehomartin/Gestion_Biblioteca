@@ -8,6 +8,7 @@
     	<div class="row">
     		<div class="col-md-3"></div>
       		<div class="col-md-6">
+      			<br>
 	        	<!-- search form (Optional) -->
 	        	<div class="input-group">
 	            	<input type="text" name="searchText" class="form-control" placeholder="Buscar..." style="background-color: white" v-model="buscar">
@@ -54,16 +55,18 @@
 			</table>
 		</div>
 		<!-- inicio ventana modal -->
-  		<div class="modal fade" tabindex="-1" role="dialog" id="addejemplar">
-		    <!--inicio modal dialog-->
-		    <div class="modal-dialog" role="document">
-		      <!--inicio modal content-->
-		      	<div class="modal-content">
+  		 <div id="modal_custom" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="addlibro">
+		      <!--inicio modal dialog-->
+		      <div class="modal-dialog" role="document">
+		        <!--inicio modal content-->
+		        <div class="modal-content">
 			        <!-- se inicia el encabezado de la ventana modal -->
-			        <div class="modal-header div1">
-			          <button type="button" class="close" data-dismiss="modal" aria-label="close" v-on:click="cancelEditj()"><span aria-hidden="true">X</span></button>
-			          <h4 class="modal-title" v-if="editejem">Editando Ejemplar</h4>
-			        </div>
+			        <div class="modal-header">
+            			<h5 class="modal-title" id="exampleModalLiveLabel" v-if="editejem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Editando Ejemplar</font></font></h5>
+            			<button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelEditj()">
+              				<span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
+            			</button>
+          			</div>
 	        		<!-- fin encabezado de ventana modal -->
 
 			        <!-- inicio cuerpo modal -->
@@ -81,18 +84,10 @@
 
 			        <!-- footer modal -->
 			        <div class="modal-footer div1">
-			          <font face="arial black" color="red">
-			          	<h6>Clasificación : @{{clasificacion}} </h6>
-			            <h6>Folio : @{{folio}} </h6>
-			            <h6>Es Base : @{{esbase}} </h6>
-			            <h6>Prestado : @{{prestado}} </h6>
-			            <h6>Comentario : @{{comentario}} </h6>
-			            <h6>Consec : @{{consec}} </h6>
-			            <h6>Fecha Alta : @{{fecha_alta}} </h6>
-			            <h6>Solo Dewee : @{{solodewee}} </h6>
-			            <h6>Dewee completo : @{{deweecompleto}} </h6>
-			          </font>
-			          <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="cancelEditj()">Cancelar</button>
+			        	<div class="pull-right">
+			                <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelEditj()">Cancelar</button>
+			            </div>
+			          
 			          <button type="submit" class="btn btn-primary" v-on:click="updateEjem(auxEjemplar)" v-if="editejem">Actualizar</button>
 		       		</div><!-- fin footer modal -->
 		    	</div> <!--fin modal content-->

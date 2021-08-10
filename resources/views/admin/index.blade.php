@@ -12,36 +12,54 @@
 	</font>
 	<br>
 
-	<!-- <center><img src="img/fondos/fondo.jpeg" width="700" height="500"></center> -->
-	<center>
-		<div class="estado">
-			<div class="carrusel">
-				<div class="imagenes_efecto" >
-					<figure>
-						<h3>UTC</h3>
-						<img src="img/fondos/fondo.jpeg">
-					</figure>
-					<figure>
-						<h3>PASTELES DE BODA </h3>
-						<img src="img/art/b.jpg">
-					</figure>
-					<figure>
-						<h3>PASTELES DE XV AÑOS </h3>
-						<img src="img/art/3.jpg">
-					</figure>
-					<figure>
-						<h3>PASTELES PERSONALIZADOS</h3>
-						<img src="img/art/IMG-20190805-WA0042.jpg">
-					</figure>
-					<figure>
-						<h3>PASTELES DE BAUTIZO</h3>
-						<img src="img/art/IMG-20190805-WA0027.jpg">
-					</figure>
-				</div>
-			</div>
-		</div>
-	</center>
-
+		<!-- <div class="wrapper"> -->
+    <div class="slider" id="slider">      
+        <ul class="slides">       
+            <li class="slide" id="slide1">
+                <a href="#">
+                    <p class="texto-encima">Ingenieria en Gestiòn y desarrollo de software</p>
+                    <img src="img/carousel/img-utc1.jpg" alt="photo 1">      
+                </a>
+            </li>
+            <li class="slide" id="slide2">
+                <a href="#">
+                    <p class="texto-encima">Texto llamativo</p>
+                    <img src="img/carousel/img-utc2.jpg" alt="photo 2">      
+                </a>
+            </li>
+            <li class="slide" id="slide3">
+                <a href="#">
+                    <p class="texto-encima">Texto llamativo</p>
+                    <img src="img/carousel/img-utc3.jpeg" alt="photo 3">      
+                </a>
+            </li>
+            <li class="slide" id="slide4">
+                <a href="#">
+                    <p class="texto-encima">Texto llamativo</p>
+                    <img src="img/carousel/img-utc4.jpg" alt="photo 4">      
+                </a>
+            </li>     
+            <li class="slide" id="slide5">
+                <a href="#">
+                    <p class="texto-encima">Texto llamativo</p>
+                    <img src="img/carousel/img-utc5.jpg" alt="photo 5">      
+                </a>
+            </li>             
+            <li class="slide">
+                <a href="#">
+                    <p class="texto-encima">Texto llamativo</p>
+                    <img src="img/carousel/img-utc1.jpg" alt="photo 1">      
+                </a>
+            </li>     
+        </ul>
+        <ul class="slider-controler a">         
+            <li><a href="#slide1">&bullet;</a></li>
+            <li><a href="#slide2">&bullet;</a></li>
+            <li><a href="#slide3">&bullet;</a></li>
+            <li><a href="#slide4">&bullet;</a></li>
+            <li><a href="#slide5">&bullet;</a></li>
+        </ul>
+    </div>
 </div>
 @endsection
 

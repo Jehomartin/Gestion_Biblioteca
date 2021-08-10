@@ -62,7 +62,11 @@ new Vue({
 		},
 
 		showModal:function(){
-			$('#addejemplar').modal('show');
+			$("#modal_custom").find(".modal-header").css("background","#f39c12");
+			$("#modal_custom").find(".modal-header").css("color", "black");
+			$("#modal_custom").find(".modal-title")   
+			$('#modal_custom').modal('show');
+			// $('#addejemplar').modal('show');
 		},
 
 		agregarEjemplar:function(){
@@ -98,7 +102,7 @@ new Vue({
 
 		editEjemplar:function(id){
 			this.editejem=true;
-			$('#addejemplar').modal('show');
+			$('#modal_custom').modal('show');
 			this.$http.get(urlEjemplar + '/' + id).then(function(response){
 				this.clasificacion = response.data.clasificacion;
 				this.folio = response.data.folio;
@@ -133,7 +137,7 @@ new Vue({
 				this.solodewee = '';
 				this.deweecompleto = '';
 
-				$('#addejemplar').modal('hide');
+				$('#modal_custom').modal('hide');
 
 				toastr.success("Ejemplar Actualizado con exito!!");
 				

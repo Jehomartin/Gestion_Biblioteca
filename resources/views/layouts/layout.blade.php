@@ -1,196 +1,251 @@
 <!DOCTYPE html>
-
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width"></meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('titulo')</title>
   <meta name="token" id="token" value="{{ csrf_token() }}">
   <meta name="route" value="{{url('/')}}">
-
-  <!-- se coloca la imagen como icono -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/logos.png">
-  <!-- Place favicon.ico in the root directory -->
-
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="adminlte/css/font-awesome/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="adminlte/css/Ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="adminlte/css/AdminLTE.min.css">
   
-  <!-- se define el color para la plantilla -->
-  <link rel="stylesheet" href="adminlte/css/skins/skin-yellow.css">
-  <!-- fin de definición de color -->
+  <!-- icono de la pagina -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/logos.png">
+  <!-- fin icono -->
 
-  <link rel="stylesheet" type="text/css" href="css/logeo.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="css/color.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/toastr.css">
-  <link rel="stylesheet" type="text/css" href="css/carrusel.css">
-
-  <link rel="stylesheet" type="text/css" href="css/diseño tabla/tabla.css">
-
-  <link rel="stylesheet" type="text/css" href="css/efectos.css">
-  <!-- <link rel="stylesheet" type="text/css" href="css/index3.css"> -->
-  <link rel="stylesheet" type="text/css" href="css/responsive/responsive1.css">
-
-  <link rel="stylesheet" type="text/css" href="css/css1/css2.css">
+  <!-- css colocados a parte -->
+    <link rel="stylesheet" type="text/css" href="css/logeo.css">
+    <link rel="stylesheet" type="text/css" href="css/color.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/toastr.css">
+    <link rel="stylesheet" type="text/css" href="css/carrusel.css">
+    <link rel="stylesheet" type="text/css" href="css/efectos.css">
+    <link rel="stylesheet" type="text/css" href="css/css1/css2.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive/responsive1.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/diseño tabla/tabla.css"> -->
+  <!-- fin css -->
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="adminlte/plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="adminlte/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="adminlte/plugins/summernote/summernote-bs4.css">
 
   <script src="js/vue.js"></script>
   <script src="js/vue-resource.js"></script>
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- Google Font -->
-  <!-- <href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">-->
+  
 </head>
-
-<body class="hold-transition skin-yellow sidebar-mini" >
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <!-- Main Header -->
-  <header class="main-header">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-orange navbar-dark">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <font size="4">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </font>
+      </li>
+    </ul>
 
-    <!-- Logo -->
-    <a class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b class="let">UTC</b></span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><img src="img/logos.png" width="120" height="60" class="let"></span> 
-    </a>
-
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
-      <font size="5">
-        <a class="sidebar-toggle" data-toggle="push-menu" role="button">
-          <!-- <span class="sr-only">Toggle navigation</span> -->
-        </a>
-      </font>
-      <!-- Navbar Right Menu -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-
-          <!-- User Account Menu -->
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+         <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown">
-              
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="img/user.png" width="30" height="30">
               <!-- <span class="hidden-xs"><font color="black">{{Session::get('usuario')}}</font></span> -->
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
-              <li class="user-header">
+              <li class="user-header" style="background-color: gray">
               <!--   <img src="img/{{Session::get('photo')}}" class="img-circle" alt="User Image"> -->
-                <h1><span class="glyphicon glyphicon-user"></span></h1>
-                <p>
-                  {{Session::get('usuario')}} - {{Session::get('puesto')}}
-                </p>
+              <font color="white">
+                  <h1><span class="fas fa-user"></span></h1>
+                  <p>
+                    {{Session::get('usuario')}} - {{Session::get('puesto')}}
+                  </p>
+                </font>
               </li>
               
               <!-- Menu Footer-->
               <li class="user-footer" style="background-color: black">
                 <div class="pull-right">
-                  <a href="{{url('sale')}}" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                  <a href="{{url('sale')}}" class="btn btn-danger btn-flat">Cerrar Sesión</a>
                 </div>
               </li>
             </ul>
           </li>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
 
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" >
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <font color="white"><a class="brand-link">
+      <img src="adminlte/img/utc.png" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <font face="Arial black"><span class="brand-text font-weight-light">UTC</span></font>
+    </a></font>
 
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-
+    <!-- Sidebar -->
+    <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <br>
-      <div class="user-panel">
-        <div class="pull-left image">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="img/user.png" class="img-circle elevation-2">
+        </div>
+        <div class="info">
           <font size="2" color="yellow">
-            <center>
-              <span class="glyphicon glyphicon-user"></span>
-            </center>
             <p>{{Session::get('usuario')}}</p>
           </font>
-        </div>
+        </div>        
       </div>
-      <hr>
+
       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu" data-widget="tree">
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="{{url('inicio') }}" class="nav-link {{ Request::is('inicio') ? 'active' : '' }}">
+              <font color="white" size="4" face="times new roman">
+                <i class="nav-icon fas fa-home"></i>
+                <p>
+                  Inicio
+                </p>
+              </font>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{url('libros') }}" class="nav-link {{ Request::is('libros') ? 'active' : '' }}">
+              <font color="white" size="4" face="times new roman">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Libros
+                </p>
+              </font>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="{{url('prestamos') }}" class="nav-link {{ Request::is('prestamos') ? 'active' : '' }}">
+              <font color="white" size="4" face="times new roman">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>
+                  Proceso Prestamo
+                </p>
+              </font>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="{{url('devoluciones') }}" class="nav-link {{ Request::is('devoluciones') ? 'active' : '' }}">
+              <font color="white" size="4" face="times new roman">
+                <i class="nav-icon fas fa-share"></i>
+                <p>
+                  Libros prestados
+                </p>
+              </font>
+            </a>
+          </li>
 
-        <li><font size="6" color="white" face="Baskerville Old Face">Apartados</font></li>
-        <!-- Optionally, you can add icons to the links -->
-        <li><a href="{{url('inicio') }}"><font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-home"></span> -Inicio</font></a></li>
+          <li class="nav-item">
+            <a href="{{url('ejemplares') }}" class="nav-link {{ Request::is('ejemplares') ? 'active' : '' }}">
+              <font color="white" size="4" face="times new roman">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Ejemplares
+                </p>
+              </font>
+            </a>
+          </li>
 
-        <li><a href="{{url('libros') }}"><font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-book"></span> -Libros </font></a></li>
-
-        <li><a href="{{url('prestamos') }}"><font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-transfer"></span> -Proceso Prestamo</font></a></li>
-
-        <li><a href="{{url('devoluciones') }}"><font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-share"></span> -Libros Prestados</font></a></li>
-
-        <li><a href="{{url('ejemplares') }}"><font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-copy"></span> -Ejemplares</font></a></li>
-      </ul>
+        </ul>
+      </nav>
       <!-- /.sidebar-menu -->
-    </section>
+    </div>
     <!-- /.sidebar -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-
-    <!-- Main content -->
     <section class="content container-fluid" >
 
       @yield('contenido')
 
     </section>
-    <!-- /.content -->
+    
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- Main Footer -->
+ <!-- Main Footer -->
    <footer class="main-footer">
-      <strong>Copyright &copy; 2014-2019</strong>
-      All rights reserved.
+      <strong>Gestion Biblioteca <span class="glyphicon glyphicon-book"></span> UTC</strong>
+      Todos los derechos reservados.
     </footer>
 
-  <!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-blue">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED JS SCRIPTS -->
 @stack('scripts')
 
 <!-- jQuery 3 -->
 <script src="adminlte/js/jquery.min.js"></script>
 <script src="js/jquery-3.3.1.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="adminlte/js/bootstrap.min.js"></script>
+<!-- <script src="adminlte/js/bootstrap.min.js"></script> -->
 <!-- AdminLTE App -->
 <script src="adminlte/js/adminlte.min.js"></script>
 <script src="js/toastr.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
+
+<!-- jQuery -->
+<script src="adminlte/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<!-- <script src="adminlte/plugins/jquery-ui/jquery-ui.min.js"></script> -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<!-- <script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script> -->
+<!-- Bootstrap 4 -->
+<script src="adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="adminlte/plugins/chart.js/Chart.min.js"></script>
+<!-- daterangepicker -->
+<script src="adminlte/plugins/moment/moment.min.js"></script>
+<script src="adminlte/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="adminlte/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="adminlte/dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- <script src="adminlte/dist/js/pages/dashboard.js"></script> -->
+<!-- AdminLTE for demo purposes -->
+<script src="adminlte/dist/js/demo.js"></script>
 </body>
 </html>

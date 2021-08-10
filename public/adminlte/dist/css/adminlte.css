@@ -10862,7 +10862,7 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
     background-color: #ffffff;
   }
   .layout-md-navbar-fixed .wrapper .sidebar-dark-info .brand-link:not([class*="navbar"]) {
-    background-color: #343a40;
+    background-color: blue;
   }
   .layout-md-navbar-fixed .wrapper .sidebar-light-info .brand-link:not([class*="navbar"]) {
     background-color: #ffffff;
