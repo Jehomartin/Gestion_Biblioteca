@@ -83,7 +83,7 @@
       </table>
     </div>
     <!-- inicio ventana modal -->
-    <div id="modal_custom" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="addlibro">
+    <div id="modal_custom" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <!--inicio modal dialog-->
       <div class="modal-dialog" role="document">
         <!--inicio modal content-->
@@ -242,7 +242,7 @@
     <!-- declaracion de codigo para la ventana modal de ejemplares -->
 
     <!-- inicio ventana modal -->
-      <div id="modal_customs" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="addejemplar">
+      <div id="modal_customs" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <!--inicio modal dialog-->
         <div class="modal-dialog" role="document">
           <!--inicio modal content-->
@@ -364,6 +364,6 @@
   <script type="text/javascript" src="js/admin/libros.js"></script>
 
   <!-- <script type="text/javascript" src="js/admin/ejemplares.js"></script> -->
-  <script type="text/javascript" src="js/vue-resource.js"></script>
-  <script type="text/javascript" src="js/vue.js"></script>
+  <!-- <script type="text/javascript" src="js/vue-resource.js"></script>
+  <script type="text/javascript" src="js/vue.js"></script> -->
 @endpush

@@ -140,15 +140,40 @@
               </font>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{url('libros') }}" class="nav-link {{ Request::is('libros') ? 'active' : '' }}">
-              <font color="white" size="4" face="times new roman">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                  Libros
-                </p>
-              </font>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link {{ Request::is('libros') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                <font color="white" size="4" face="times new roman"> Apartado Libros </font>
+                <i class="fas fa-angle-left right"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('libros') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-book"></span> Libros </font>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <font color="white" size="4" face="times new roman">Nuevo Libro</font>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/forms/editors.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <font color="white" size="4" face="times new roman">Nuevo Ejemplares</font>
+                </a>
+              </li>
+              <!-- <li class="nav-item">
+                <a href="pages/forms/validation.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Validation</p>
+                </a>
+              </li> -->
+            </ul>
           </li>
           
           <li class="nav-item">
@@ -173,7 +198,7 @@
             </a>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="{{url('ejemplares') }}" class="nav-link {{ Request::is('ejemplares') ? 'active' : '' }}">
               <font color="white" size="4" face="times new roman">
                 <i class="nav-icon fas fa-copy"></i>
@@ -182,7 +207,7 @@
                 </p>
               </font>
             </a>
-          </li>
+          </li> -->
 
         </ul>
       </nav>
