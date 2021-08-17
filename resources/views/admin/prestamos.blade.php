@@ -1,73 +1,103 @@
 @extends('layouts.layout')
 @section('titulo','Procesando Prestamo')
 @section('contenido')
-
-<center>
-  <font color="orange" face="Times New Roman">
-    <h2>PROCESANDO PRESTAMO DE LIBRO</h2>
-  </font>
-</center>
-
 <div id="prestacion">
-<!--  <font color="white" size="10">@{{saludo}}</font> -->
-  <br>
   <div class="container">
     <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-5">
-        <p>Es importante llenar los campos índicados por el
-        <strong>ASTERÍSCO</strong><sub class="asterisco">*</sub>.</p>
+      <div class="col-lg-12">
+        <h2 class="text text-center">PROCESANDO PRESTAMO DE LIBRO</h2>
         <br>
-      </div>
-      <div class="col-md-4">
-        <a href="{{url('devoluciones')}}">
-          <button class="btn btn-danger glyphicon glyphicon-list" style="float: right;"> Verificar Prestamos</button>
+        <center>
+          <p>Es importante llenar los campos índicados por el
+          <strong>ASTERÍSCO</strong><sub class="asterisco">*</sub>.</p>
+        </center>
+        <a href="{{url('devoluciones')}}" style="float: right;">
+          <button class="btn btn-danger glyphicon glyphicon-list" style="float: right;">
+            Verificar Prestamos
+          </button>
         </a>
       </div>
     </div>
-    <br>
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-7">
-        <font color="green" face="Times New Roman"><h4>FOLIO : @{{folioprestamo}}</h4></font>
-        <font color="green" face="Times New Roman"><h4>FECHA PRESTAMO : @{{fechaprestamo}}</h4></font>
-        <hr>
-
+  </div>
+  <div class="container form-prestamo">
+    <div>
+      <div class="form-group">
+        <label for="folioprestamo" class="letras">
+          Folio del Prestamo: 
+        </label>
         <font color="green" face="Times New Roman">
-          <h4>Clave libro que desea prestar<sub class="asterisco">*</sub>:</h4>
-          <input type="text" name="" placeholder="id del Libro" v-model="isbn" @change="getLibros" class="form-control">
-
-          <h4>Detalles del libro a prestar:</h4>
-          <h5>Titulo del libro<sub class="asterisco">*</sub>:</h5>
+          <h5> @{{folioprestamo}}</h5>
+        </font>
+      </div>
+      <div class="form-group">
+        <label for="fechaprestamo" class="letras">
+          FECHA PRESTAMO : 
+        </label>
+        <font color="green" face="Times New Roman">
+          <h5>@{{fechaprestamo}}</h5>
+        </font>
+      </div>
+      <div class="form-group">
+          <label for="isbn" class="letras">
+            Clave libro que desea prestar<sub class="asterisco">*</sub>:
+          </label>
+          <input type="text" name="" v-model="isbn" @change="getLibros" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="titulo" class="letras">
+            Titulo del libro<sub class="asterisco">*</sub>:
+          </label>
           <select class="form-control" v-model="titulo">
             <option v-for="l in libros" v-bind:value="l.titulo">@{{l.titulo}}</option>
           </select>
-          <h5>Consec del libro<sub class="asterisco">*</sub>:</h5>
+      </div>
+      <div class="form-group">
+          <label for="consec" class="letras">
+            Consec del libro<sub class="asterisco">*</sub>:
+          </label>
           <select class="form-control" v-model="consec">
             <option v-for="l in libros" v-bind:value="l.consec">@{{l.consec}}</option>
           </select>
-          <h5>Fecha de devolución<sub class="asterisco">*</sub>:</h5>
+      </div>
+      <div class="form-group">
+          <label for="fechadevolucion" class="letras">
+            Fecha de devolución<sub class="asterisco">*</sub>:
+          </label>
           <input type="date" name="" v-model="fechadevolucion" class="form-control" placeholder="fecha de devolucion">
-          <h5>Matricula de quien presta<sub class="asterisco">*</sub>:</h5>
-          <input type="text" name="" v-model="matricula" class="form-control" placeholder="matricula del alumno">
-          <h5>Liberacion de libro:</h5>
-          <input type="text" name="" v-model="liberado" class="form-control" placeholder="liberado">
-          <h5>Cantidad prestada<sub class="asterisco">*</sub>:</h5>
-          <input type="text" name="" v-model="cantidad" class="form-control" placeholder="cantidad">
-        </font>
       </div>
-      <div class="col-md-2">
-        <center><button class="btn btn-primary form-control glyphicon glyphicon-save but" @click="prestar()">
+      <div class="form-group">
+          <label for="matricula" class="letras">
+            Matricula de quien presta<sub class="asterisco">*</sub>:
+          </label>
+          <input type="text" name="" v-model="matricula" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="liberado" class="letras">
+            Liberacion de libro:
+          </label>
+          <input type="text" name="" v-model="liberado" class="form-control">
+      </div>
+      <div class="form-group">
+          <label for="cantidad" class="letras">
+            Cantidad prestada<sub class="asterisco">*</sub>:
+          </label>
+          <input type="text" name="" v-model="cantidad" class="form-control">
+      </div>
+      <div class="clearfix"></div>
+      <center>
+        <button class="btn btn-dark form-control glyphicon glyphicon-save" @click="prestar()">
           GUARDAR
-        </button></center>
-      </div>
+        </button>
+      </center>
     </div>
   </div>
+  <br>
 </div>
 
 @endsection
 
 @push('scripts')
+  <link rel="stylesheet" type="text/css" href="css/form_prestamo/prestamos.css">
   <script src="js/admin/prestacion.js"></script>
     <!-- <script type="text/javascript" src="js/vue.js"></script> -->
   <script src="js/moment-with-locales.min.js"></script>

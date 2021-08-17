@@ -18,37 +18,37 @@
             <li class="slide" id="slide1">
                 <a href="#">
                     <p class="texto-encima">Ingenieria en Gestiòn y desarrollo de software</p>
-                    <img src="img/carousel/img-utc1.jpg" alt="photo 1">      
+                    <img src="login/img/biblio.jpg" alt="photo 1">      
                 </a>
             </li>
             <li class="slide" id="slide2">
                 <a href="#">
-                    <p class="texto-encima">Texto llamativo</p>
-                    <img src="img/carousel/img-utc2.jpg" alt="photo 2">      
+                    <p class="texto-encima"></p>
+                    <img src="login/img/fondo.jpeg" alt="photo 2">      
                 </a>
             </li>
             <li class="slide" id="slide3">
                 <a href="#">
-                    <p class="texto-encima">Texto llamativo</p>
-                    <img src="img/carousel/img-utc3.jpeg" alt="photo 3">      
+                    <p class="texto-encima"></p>
+                    <img src="login/img/libroos.jpg" alt="photo 3">      
                 </a>
             </li>
             <li class="slide" id="slide4">
                 <a href="#">
-                    <p class="texto-encima">Texto llamativo</p>
-                    <img src="img/carousel/img-utc4.jpg" alt="photo 4">      
+                    <p class="texto-encima"></p>
+                    <img src="img/2019.jpg" alt="photo 4">      
                 </a>
             </li>     
             <li class="slide" id="slide5">
                 <a href="#">
-                    <p class="texto-encima">Texto llamativo</p>
-                    <img src="img/carousel/img-utc5.jpg" alt="photo 5">      
+                    <p class="texto-encima"></p>
+                    <img src="" alt="photo 5">      
                 </a>
             </li>             
             <li class="slide">
                 <a href="#">
-                    <p class="texto-encima">Texto llamativo</p>
-                    <img src="img/carousel/img-utc1.jpg" alt="photo 1">      
+                    <p class="texto-encima"></p>
+                    <img src="" alt="photo 1">      
                 </a>
             </li>     
         </ul>

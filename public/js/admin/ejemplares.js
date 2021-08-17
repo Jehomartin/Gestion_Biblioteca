@@ -62,10 +62,10 @@ new Vue({
 		},
 
 		showModal:function(){
-			$("#modal_custom").find(".modal-header").css("background","#f39c12");
-			$("#modal_custom").find(".modal-header").css("color", "black");
-			$("#modal_custom").find(".modal-title")   
-			$('#modal_custom').modal('show');
+			$("#modal_custo").find(".modal-header").css("background","#f39c12");
+			$("#modal_custo").find(".modal-header").css("color", "black");
+			$("#modal_custo").find(".modal-title")   
+			$('#modal_custo').modal('show');
 			// $('#addejemplar').modal('show');
 		},
 
@@ -102,7 +102,7 @@ new Vue({
 
 		editEjemplar:function(id){
 			this.editejem=true;
-			$('#modal_custom').modal('show');
+			$('#modal_custo').modal('show');
 			this.$http.get(urlEjemplar + '/' + id).then(function(response){
 				this.clasificacion = response.data.clasificacion;
 				this.folio = response.data.folio;
@@ -137,7 +137,7 @@ new Vue({
 				this.solodewee = '';
 				this.deweecompleto = '';
 
-				$('#modal_custom').modal('hide');
+				$('#modal_custo').modal('hide');
 
 				toastr.success("Ejemplar Actualizado con exito!!");
 				

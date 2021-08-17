@@ -140,8 +140,20 @@ new Vue({
 			// $('#addlibro').modal('show');
 		},
 
+		showModalEditorial:function(){
+			$("#Editorial").find(".modal-header").css("background","#f39c12");
+			$("#Editorial").find(".modal-header").css("color", "black");
+			$("#Editorial").find(".modal-title")   
+			$('#Editorial').modal('show');
+			// $('#addEditorial').modal('show');
+		},
+
 		showModals:function(){
-			$('#addejemplar').modal('show');
+			$("#modal_customs").find(".modal-header").css("background","#f39c12");
+			$("#modal_customs").find(".modal-header").css("color", "black");
+			$("#modal_customs").find(".modal-title")   
+			$('#modal_customs').modal('show');
+			// $('#addejemplar').modal('show');
 		},
 
 		agregarLibro:function(){
@@ -178,7 +190,7 @@ new Vue({
 			//se realiza el post para enviar el json y entrar al metodo store de la api
 			this.$http.post(urlLibros,libro).then(function(response) {
                 this.getLibros();
-                $('#addlibro').modal('hide');
+                $('#modal_custom').modal('hide');
 
                 toastr.success("libro agregado con exito");
 
@@ -308,7 +320,7 @@ new Vue({
 			// se realiza el envío del objeto json con un post
 			this.$http.post(urlEjemplar, ejemplar).then(function(response){
 				this.getEjemplar();
-				$('#addejemplar').modal('hide');
+				$('#modal_customs').modal('hide');
 
 				toastr.success("Ejemplar agregado con exito!!");
 

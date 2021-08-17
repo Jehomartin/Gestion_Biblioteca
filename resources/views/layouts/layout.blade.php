@@ -9,20 +9,29 @@
   <meta name="route" value="{{url('/')}}">
   
   <!-- icono de la pagina -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/logos.png">
+    <link rel="shortcut icon" type="image/x-icon" href="img/utc.jpeg">
   <!-- fin icono -->
 
   <!-- css colocados a parte -->
-    <link rel="stylesheet" type="text/css" href="css/logeo.css">
-    <link rel="stylesheet" type="text/css" href="css/color.css">
-    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/personalizados/logeo.css">
+    <link rel="stylesheet" type="text/css" href="css/personalizados/color.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-3/bootstrap.min.css"> -->
     <link rel="stylesheet" type="text/css" href="css/toastr.css">
     <link rel="stylesheet" type="text/css" href="css/carrusel.css">
-    <link rel="stylesheet" type="text/css" href="css/efectos.css">
+    <link rel="stylesheet" type="text/css" href="css/personalizados/efectos.css">
     <link rel="stylesheet" type="text/css" href="css/css1/css2.css">
-    <link rel="stylesheet" type="text/css" href="css/responsive/responsive1.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/responsive/responsive1.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="css/diseño tabla/tabla.css"> -->
   <!-- fin css -->
+
+  <!-- links de tabla para cargar datos por partes-->
+    <!--datables CSS básico-->
+    <link rel="stylesheet" type="text/css" href="table/datatables/datatables.min.css"/>
+    <!--datables estilo bootstrap 4 CSS-->  
+    <!-- <link rel="stylesheet"  type="text/css" href="table/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="table/main.css">
+    <!-- <link rel="stylesheet" href="table/bootstrap/css/bootstrap.min.css"> -->
+  <!-- fin link tabla -->
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">
@@ -41,8 +50,8 @@
   <!-- summernote -->
   <link rel="stylesheet" href="adminlte/plugins/summernote/summernote-bs4.css">
 
-  <script src="js/vue.js"></script>
-  <script src="js/vue-resource.js"></script>
+  <script src="js/vue/vue.min.js"></script>
+  <script src="js/vue/vue-resource.min.js"></script>
   
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -98,8 +107,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <font color="white"><a class="brand-link">
-      <img src="adminlte/img/utc.png" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
+      <img src="img/utc.jpeg" class="brand-image img-circle elevation-3" style="opacity: .8">
       <font face="Arial black"><span class="brand-text font-weight-light">UTC</span></font>
     </a></font>
 
@@ -196,8 +204,12 @@
 
  <!-- Main Footer -->
    <footer class="main-footer">
-      <strong>Gestion Biblioteca <span class="glyphicon glyphicon-book"></span> UTC</strong>
+      <strong>Gestion Biblioteca <span class="fa fa-book"></span></strong>
       Todos los derechos reservados.
+      <div class="float-right d-none d-sm-inline-block">
+        <img src="adminlte/img/utc.png" width="20px" height="20px">
+        <b>Universidad Tecnológica del Centro</b>
+    </div>
     </footer>
 
   <!-- Control Sidebar -->
@@ -212,22 +224,21 @@
 
 <!-- jQuery 3 -->
 <script src="adminlte/js/jquery.min.js"></script>
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery/jquery-3.3.1.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <!-- <script src="adminlte/js/bootstrap.min.js"></script> -->
 <!-- AdminLTE App -->
 <script src="adminlte/js/adminlte.min.js"></script>
 <script src="js/toastr.js"></script>
 
+<!-- js para la tabla -->
+<script type="text/javascript" src="table/popper/popper.min.js"></script>
+<script type="text/javascript" src="table/datatables/datatables.min.js"></script>
+<script type="text/javascript" src="table/main.js"></script>
+<!-- fin js tabla -->
 
 <!-- jQuery -->
 <script src="adminlte/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<!-- <script src="adminlte/plugins/jquery-ui/jquery-ui.min.js"></script> -->
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<!-- <script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script> -->
 <!-- Bootstrap 4 -->
 <script src="adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
@@ -243,8 +254,6 @@
 <script src="adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="adminlte/dist/js/adminlte.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!-- <script src="adminlte/dist/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="adminlte/dist/js/demo.js"></script>
 </body>

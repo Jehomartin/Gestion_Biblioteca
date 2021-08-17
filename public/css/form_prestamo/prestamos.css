@@ -1,0 +1,77 @@
+.form-prestamo{
+	background-color: silver;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    margin: 30px auto 0;
+    padding: 40px;
+    color: #858b8e;
+}
+
+.form-prestamo h2{
+	padding-bottom: 20px;
+    margin: 10px 20px;
+    font-size: 24px;
+}
+
+.form-prestamo hr{
+	margin-top: 38px;
+    margin-bottom: 54px;
+    margin-left:3px;
+    border: 1px solid #cccccc;
+}
+
+.form-prestamo .form-group{
+	margin-bottom: 20px;
+    margin-left:20px;
+	width: 30%;
+    float:left;
+    text-align: left;
+}
+
+.form-prestamo .form-control{
+	padding: 12px 20px;
+    height: auto;
+    border-radius: 2px;
+}
+
+.form-prestamo .radio-inline{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.form-prestamo .gender{
+	width: 30%;
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.form-prestamo .btn{
+	width: 46%;
+    margin: 20px auto 0;
+    display: block;
+    outline: none;
+}
+
+@media screen and (max-width: 800px){
+    .form-prestamo .form-group{
+        width: 45%;
+    }
+
+    .form-prestamo{
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 560px){
+    .form-prestamo .form-group{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .form-prestamo h2{
+        text-align: center;
+    }
+}
