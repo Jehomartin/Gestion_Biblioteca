@@ -1,104 +1,87 @@
 @extends('layouts.layout')
 @section('titulo','Procesando Prestamo')
 @section('contenido')
+
+<font color="black" face="times new roman">
+  <h2 class="text text-center">PROCESANDO PRESTAMO DE LIBRO</h2>
+</font>
+
 <div id="prestacion">
+<!--  <font color="white" size="10">@{{saludo}}</font> -->
+  <br>
   <div class="container">
+    <font color="green" face="times new roman"><h5>FOLIO : @{{folioprestamo}}</h5></font>
+    <font color="green" face="times new roman"><h5>FECHA PRESTAMO : @{{fechaprestamo}}</h5></font>
+    <hr>
+
     <div class="row">
-      <div class="col-lg-12">
-        <h2 class="text text-center">PROCESANDO PRESTAMO DE LIBRO</h2>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibro()" placeholder="Ingrese el codigo del libro" style="color: #000">
+        
+          <span class="btn btn-dark fas fa-edit" @click="getLibro()">
+            
+          </span>
+        </div>
         <br>
-        <center>
-          <p>Es importante llenar los campos índicados por el
-          <strong>ASTERÍSCO</strong><sub class="asterisco">*</sub>.</p>
-        </center>
-        <a href="{{url('devoluciones')}}" style="float: right;">
-          <button class="btn btn-danger glyphicon glyphicon-list" style="float: right;">
-            Verificar Prestamos
-          </button>
+        <button class="btn btn-primary form-control glyphicon glyphicon-save" @click="prestar()">
+          GUARDAR PRESTAMO
+        </button>
+      </div>
+      <div class="col-lg-4">
+        <a href="{{url('devoluciones')}}">
+          <button class="btn btn-danger glyphicon glyphicon-list" style="float: right;"> Verificar Prestamos</button>
         </a>
       </div>
     </div>
-  </div>
-  <div class="container form-prestamo">
-    <div>
-      <div class="form-group">
-        <label for="folioprestamo" class="letras">
-          Folio del Prestamo: 
-        </label>
-        <font color="green" face="Times New Roman">
-          <h5> @{{folioprestamo}}</h5>
-        </font>
+    <hr>
+    <div class="row">
+      <div class="col-lg-11">
+        <table class="table table-bordered table-responsive">
+          <thead class="tab">
+            <th width="10%">ISBN</th>
+            <th width="20%">TITULO</th>
+            <th width="15%">FECHA DEVOLUCIÓN</th>
+            <th width="10%">MATRICULA</th>
+            <!-- <th width="10%">LIBERADO</th> -->
+            <!-- <th width="10%">CANTIDAD</th> -->
+            <th width="7%">CONSEC</th>
+            <th width="9%">ACCIONES</th>
+          </thead>
+          <tbody class="table table-bordered">
+            <tr v-for="(p,index) in prestamos" class="colors">
+              <td v-model="isbn"> @{{p.isbn}} </td>
+              <td v-model="titulo"> @{{p.titulo}} </td>
+              <td>
+                <input type="date" class="form-control" placeholder="fecha devolucion" v-model="fechadevolucion">
+              </td>
+              <td>
+                <input type="text" class="form-control" placeholder="matricula" v-model="matricula">
+              </td>
+              <!-- <td>
+                <input type="text" class="form-control" v-model="liberado">
+              </td>  -->        
+              <!-- <td>
+                <input type="number" class="form-control" min="1"
+                v-model="cantidad">
+              </td> -->
+              <td v-model="consec">@{{p.consec}}</td>
+              <td>
+                <span class="glyphicon glyphicon-trash btn btn-danger btn-xs" @click="cancelarPrestamo(index)"></span>
+              </td>
+            </tr>
+          </tbody>          
+        </table>
       </div>
-      <div class="form-group">
-        <label for="fechaprestamo" class="letras">
-          FECHA PRESTAMO : 
-        </label>
-        <font color="green" face="Times New Roman">
-          <h5>@{{fechaprestamo}}</h5>
-        </font>
-      </div>
-      <div class="form-group">
-          <label for="isbn" class="letras">
-            Clave libro que desea prestar<sub class="asterisco">*</sub>:
-          </label>
-          <input type="text" name="" v-model="isbn" @change="getLibros" class="form-control">
-      </div>
-      <div class="form-group">
-          <label for="titulo" class="letras">
-            Titulo del libro<sub class="asterisco">*</sub>:
-          </label>
-          <select class="form-control" v-model="titulo">
-            <option v-for="l in libros" v-bind:value="l.titulo">@{{l.titulo}}</option>
-          </select>
-      </div>
-      <div class="form-group">
-          <label for="consec" class="letras">
-            Consec del libro<sub class="asterisco">*</sub>:
-          </label>
-          <select class="form-control" v-model="consec">
-            <option v-for="l in libros" v-bind:value="l.consec">@{{l.consec}}</option>
-          </select>
-      </div>
-      <div class="form-group">
-          <label for="fechadevolucion" class="letras">
-            Fecha de devolución<sub class="asterisco">*</sub>:
-          </label>
-          <input type="date" name="" v-model="fechadevolucion" class="form-control" placeholder="fecha de devolucion">
-      </div>
-      <div class="form-group">
-          <label for="matricula" class="letras">
-            Matricula de quien presta<sub class="asterisco">*</sub>:
-          </label>
-          <input type="text" name="" v-model="matricula" class="form-control">
-      </div>
-      <div class="form-group">
-          <label for="liberado" class="letras">
-            Liberacion de libro:
-          </label>
-          <input type="text" name="" v-model="liberado" class="form-control">
-      </div>
-      <div class="form-group">
-          <label for="cantidad" class="letras">
-            Cantidad prestada<sub class="asterisco">*</sub>:
-          </label>
-          <input type="text" name="" v-model="cantidad" class="form-control">
-      </div>
-      <div class="clearfix"></div>
-      <center>
-        <button class="btn btn-dark form-control glyphicon glyphicon-save" @click="prestar()">
-          GUARDAR
-        </button>
-      </center>
+      
     </div>
   </div>
-  <br>
 </div>
 
 @endsection
 
 @push('scripts')
-  <link rel="stylesheet" type="text/css" href="css/form_prestamo/prestamos.css">
   <script src="js/admin/prestacion.js"></script>
-    <!-- <script type="text/javascript" src="js/vue.js"></script> -->
+  <script type="text/javascript" src="js/vue/vue.min.js"></script>
   <script src="js/moment-with-locales.min.js"></script>
 @endpush

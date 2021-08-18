@@ -43,7 +43,7 @@
       </a> -->
       <br>
       <font color="black" face="times new roman">
-        <h1 class="text text-center">Libros Registrados</h1>
+        <h2 class="text text-center">LIBROS REGISTRADOS</h2>
       </font>
       <table class="table table-sm table-striped table-bordered table-hover">
         <thead class="thead-dark">
