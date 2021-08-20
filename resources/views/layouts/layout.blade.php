@@ -158,7 +158,7 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <font color="white" size="4" face="times new roman">Nuevo Libro</font>
+                  <font color="white" size="4" face="times new roman">Registro Libro</font>
                 </a>
               </li>
               <li class="nav-item">
