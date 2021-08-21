@@ -17,20 +17,20 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="form-group">
-          <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibro()" placeholder="Ingrese el codigo del libro" style="color: #000">
+          <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el codigo del libro" style="color: #000">
         
-          <span class="btn btn-dark fas fa-edit" @click="getLibro()">
+          <span class="btn btn-dark fas fa-edit" @click="getLibros()">
             
           </span>
         </div>
         <br>
-        <button class="btn btn-primary form-control glyphicon glyphicon-save" @click="prestar()">
+        <button class="btn btn-primary form-control fas fa-save" @click="prestar()">
           GUARDAR PRESTAMO
         </button>
       </div>
       <div class="col-lg-4">
         <a href="{{url('devoluciones')}}">
-          <button class="btn btn-danger glyphicon glyphicon-list" style="float: right;"> Verificar Prestamos</button>
+          <button class="btn btn-danger fas fa-list-alt" style="float: right;"> Verificar Prestamos</button>
         </a>
       </div>
     </div>
@@ -38,7 +38,7 @@
     <div class="row">
       <div class="col-lg-11">
         <table class="table table-bordered table-responsive">
-          <thead class="tab">
+          <thead class="thead-dark">
             <th width="10%">ISBN</th>
             <th width="20%">TITULO</th>
             <th width="15%">FECHA DEVOLUCIÓN</th>
@@ -49,7 +49,7 @@
             <th width="9%">ACCIONES</th>
           </thead>
           <tbody class="table table-bordered">
-            <tr v-for="(p,index) in prestamos" class="colors">
+            <tr v-for="(p,index) in prestamos">
               <td v-model="isbn"> @{{p.isbn}} </td>
               <td v-model="titulo"> @{{p.titulo}} </td>
               <td>
@@ -67,7 +67,7 @@
               </td> -->
               <td v-model="consec">@{{p.consec}}</td>
               <td>
-                <span class="glyphicon glyphicon-trash btn btn-danger btn-xs" @click="cancelarPrestamo(index)"></span>
+                <span class="fas fa-trash-alt btn btn-danger btn-xs" @click="cancelarPrestamo(index)"></span>
               </td>
             </tr>
           </tbody>          
@@ -82,6 +82,6 @@
 
 @push('scripts')
   <script src="js/admin/prestacion.js"></script>
-  <script type="text/javascript" src="js/vue/vue.min.js"></script>
+  <!-- <script type="text/javascript" src="js/vue/vue.min.js"></script> -->
   <script src="js/moment-with-locales.min.js"></script>
 @endpush

@@ -1,109 +1,110 @@
 var route = document.querySelector("[name=route]").value;
 var ruta = 'http://localhost/Gestion_Biblioteca/public/';
+var ruts = 'http://localhost/Gestion_Biblioteca/public/';
 var urlPresta = ruta + '/apiPrestamos';
-var urlLibro = ruta + '/apiLibros';
-
+var urlLibro = ruts + '/apiLibros';
 
 function init()
 {
+
 	new Vue({
-		
+
 		http:{
 			headers:{
-				'X-CSRF-TOKEN' : document.querySelector('#token').getAttribute('value')
+				'X-CSRF-TOKEN':document.querySelector('#token').getAttribute('value')
 			}
 		},
 
 		el:'#prestacion',
 
 		created:function(){
-			this.foliarPrestamo();
+			this.foliarprestamo();
 		},
 
 		data:{
-			saludos:'eyyyyyy',
-			libros:[],
+			saludo:'hola mundo',
 			prestamos:[],
+			libros:[],
+			isbn:'',
+			titulo:'',
+			consec:'',
 			codigo:'',
 			folioprestamo:'',
+			fechadevolucion:'',
+			matricula:'',
 			cantidad:'',
-			consec:'',
 
 			fechaprestamo:moment().format('YYYY-MM-DD'),
-			// cantidades:[1,1,1,1,1]
 		},
 
 		methods:{
-			// inicio getLibro
-			getLibro:function(){
-				this.$http.get(urlLibro + '/' + this.codigo).then(function(json){
-					var prestamo = {
-						'isbn':json.data.isbn,
-						'titulo':json.data.titulo,
-						'consec':json.data.consec,
-						
+			//inicio del getLibro
+			getLibros:function(){
+				this.$http.get(urlLibro + '/' + this.codigo)
+				.then(function(response){
+					var unprestado={
+						'isbn':response.data.isbn,
+						'titulo':response.data.titulo,
+						'consec':response.data.consec
 					}
-					if (prestamo.isbn){
-						this.prestamos.push(prestamo);
+
+					if (unprestado.isbn) {
+						this.prestamos.push(unprestado);
 						this.codigo='';
 						this.$refs.buscar.focus();
 					}
-				})
-			}, //fin getLibro
+				});
+			},
+			//fin getLibro
 
 			cancelarPrestamo:function(id){
 				this.prestamos.splice(id,1);
 			},
 
-			foliarPrestamo:function(){
-				this.folioprestamo = 'PRS-' + moment().format('YYMMDDhmmss');
+			foliarprestamo:function(){
+				this.folioprestamo='PRS-' + moment().format('YYMMDDhmmss');
 			},
 
 			prestar:function(){
-				
-				var prestar2=[];
-				for (var i = 0; i < this.prestamos[i].length; i++) {
-					prestar2.push({
+				var presta=[];
+				for (var i = 0; i < this.prestamos.length; i++) {
+					presta.push({
 						isbn:this.prestamos[i].isbn,
 						titulo:this.prestamos[i].titulo,
 						consec:this.prestamos[i].consec
 					})
 				}
 
-
-				var unPrestamo = {
+				var unPrestamo={
 					folioprestamo:this.folioprestamo,
 					fechaprestamo:this.fechaprestamo,
 					fechadevolucion:this.fechadevolucion,
 					matricula:this.matricula,
-					cantidad:'1',
-					prestar1:prestar2
+					cantidad:1,
+					prestar1:presta
 				};
 
-				console.log(unPrestamo);
+				// console.log(unPrestamo);
 
-				this.$http.post(urlPresta,unPrestamo)
-				.then(function(json){
-					console.log(json.data);
-				}).catch(function(j){
-					console.log(j.data);
+				this.$http.post(urlPresta,unPrestamo).then(function(response){
+					// console.log(response.data);
+					toastr.success("Prestamo realizado con exito");
+					this.foliarPrestamo();
+					this.prestamos=[];
+					// this.isbn='';
+					// this.titulo='';
+					this.fechaprestamo='';
+					this.fechadevolucion='';
+					this.matricula='';
+					this.liberado='';
+					this.cantidad='';
+					// this.consec='';
+				}).catch(function(x){
+					// console.log(x.data);
+					toastr.error("Prestamo no realizado");
 				});
-
-				toastr.success("Prestamo realizado con exito");
-				this.foliarPrestamo();
-				this.prestamos=[];
-				// this.isbn='';
-				// this.titulo='';
-				this.fechaprestamo='';
-				this.fecchadevolucion='';
-				this.matricula='';
-				this.liberado='';
-				this.cantidad='';
-				// this.consec='';
-				// this.cantidades=[1,1,1,1,1,1,1,1,1,1];
-
 			},
-		}
-	})
+		},
+	});
 }
-window.onload=init
+window.onload=init;
