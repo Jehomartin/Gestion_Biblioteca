@@ -139,7 +139,7 @@
                   <option v-for="a in autores" v-bind:value="a.id_autor">@{{a.nombre}}</option>
                 </select>
                 <span class="input-group-btn">
-                    <button id="agregarEditorial" class="btn btn-success" type="button" onclick=""> 
+                    <button id="agregarAutor" class="btn btn-success" type="button" v-on:onclick="showModalAutor"> 
                       Agregar  <span class="fas fa-plus-circle"></span>
                     </button>
                 </span>
@@ -352,11 +352,19 @@
           </div>
           </div>
           <!-- fin footer modal -->
+
         </div> <!-- fin modal content -->
       </div>  <!--/modal dialog -->
-    </div> <!-- fin ventana modal -->
+
+      
+    </div> <!-- fin ventana modal Editoriales-->
+
+     
+
   </div>
 </div>
+
+
 
 @endsection
 

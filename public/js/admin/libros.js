@@ -148,6 +148,30 @@ new Vue({
 			// $('#addEditorial').modal('show');
 		},
 
+		showModalAutor:function(){
+			$("#Autor").find(".modal-header").css("background","#f39c12");
+			$("#Autor").find(".modal-header").css("color", "black");
+			$("#Autor").find(".modal-title")   
+			$('#Autor').modal('show');
+			
+		},
+
+		showModalCarrera:function(){
+			$("#Carrera").find(".modal-header").css("background","#f39c12");
+			$("#Carrera").find(".modal-header").css("color", "black");
+			$("#Carrera").find(".modal-title")   
+			$('#Carrera').modal('show');
+			
+		},
+
+		showModalPais:function(){
+			$("#Pais").find(".modal-header").css("background","#f39c12");
+			$("#Pais").find(".modal-header").css("color", "black");
+			$("#Pais").find(".modal-title")   
+			$('#Pais').modal('show');
+			
+		},
+
 		showModals:function(){
 			$("#modal_customs").find(".modal-header").css("background","#f39c12");
 			$("#modal_customs").find(".modal-header").css("color", "black");

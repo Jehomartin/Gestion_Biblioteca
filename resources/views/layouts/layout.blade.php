@@ -156,7 +156,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('registro') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <font color="white" size="4" face="times new roman">Registro Libro</font>
                 </a>
