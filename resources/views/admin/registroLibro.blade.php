@@ -168,7 +168,8 @@
           </div>
         </div>
     </div> <!-- fin Modal Editorial -->
-</div>
+
+</div> <!-- fin div principal -->
 
 @endsection
 
