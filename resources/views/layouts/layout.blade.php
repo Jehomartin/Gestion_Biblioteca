@@ -151,22 +151,22 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{url('libros') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-book"></i>
                   <font color="white" size="4" face="times new roman"><span class="glyphicon glyphicon-book"></span> Libros </font>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{url('registro') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-pencil-alt"></i>
                   <font color="white" size="4" face="times new roman">Registro Libro</font>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="pages/forms/editors.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <font color="white" size="4" face="times new roman">Nuevo Ejemplares</font>
                 </a>
-              </li>
+              </li> -->
               <!-- <li class="nav-item">
                 <a href="pages/forms/validation.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

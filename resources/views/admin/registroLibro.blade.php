@@ -135,7 +135,7 @@
 
     <!-- CODIICACIÓN DEL MODAL EDITORIALES -->
  <!-- inicio ventana modal -->
- <div id="Editorial" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="">
+ <div id="Editoriales" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="">
       <!--inicio modal dialog-->
       <div class="modal-dialog" role="document">
         <!--inicio modal content-->

@@ -27,6 +27,10 @@ class ApiEditorialesController extends Controller
     public function store(Request $request)
     {
         //
+        // $editorial = new Editoriales;
+        // $editorial->editorial = $request->get('editorial');
+
+        // $editorial->save();
     }
 
     /**
@@ -38,6 +42,7 @@ class ApiEditorialesController extends Controller
     public function show($id)
     {
         //
+        // return Editoriales::find($id);
     }
 
     /**
@@ -61,5 +66,6 @@ class ApiEditorialesController extends Controller
     public function destroy($id)
     {
         //
+        // return Editoriales::destroy($id);
     }
 }
