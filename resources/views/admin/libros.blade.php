@@ -28,19 +28,6 @@
   <div class="row">
     <div class="col-md-12">
     <div class="table-responsive-md">
-      <button class="btn btn-success" v-on:click="showModal">
-      <span class="fas fa-plus-circle"></span>
-        Nuevo Libro
-      </button>
-
-      <!-- <button class="btn btn-warning glyphicon glyphicon-plus" v-on:click="showModals">
-        Agregar Ejemplar
-      </button> -->
-      <!-- <a href="{{url('prestacion')}}">
-        <button class="btn btn-danger glyphicon glyphicon-send" style="float: right;">
-          Prestar libro
-        </button>
-      </a> -->
       <br>
       <font color="black" face="times new roman">
         <h1 class="text text-center">Libros Registrados</h1>
@@ -74,7 +61,7 @@
                 <span class="btn btn-danger fas fa-trash-alt" 
                 v-on:click="eliminarLibro(libro.isbn)"></span>
 
-                <span class="btn btn-success fas fa-share-square" v-on:click="showModals"></span>
+                <span class="btn btn-success fas fa-share-square" v-on:click="showEjemplar"></span>
                 
               </center>
             </td> 
@@ -89,7 +76,7 @@
         <!--inicio modal content-->
         <div class="modal-content">
           <!-- se inicia el encabezado de la ventana modal -->
-          <div class="modal-header">
+          <div class="modal-header" style="background-color: #f39c12">
             <h5 class="modal-title" id="exampleModalLiveLabel" v-if="!editando"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registrando Libro</font></font></h5>
             <h5 class="modal-title" id="exampleModalLiveLabel" v-if="editando"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Editando Libro</font></font></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
@@ -118,17 +105,9 @@
               <select class="form-control" id="selectEditorial" v-model="id_editorial" @change="getEditorial">
              
                 <option disabled value="">Elija la editorial del libro</option>
-                <option value="">Agregar Nuevo</option>
                 <!-- <option value="1">Agregar nueva editorial</option> -->
                 <option v-for="e in editoriales" v-bind:value="e.id_editorial">@{{e.editorial}}</option>
               </select>
-              
-              
-              <span class="input-group-btn">
-                <button id="agregarEditorial" class="btn btn-success" type="button" v-on:click="showModalEditorial"> 
-                  Agregar  <span class="fas fa-plus-circle"></span>
-                </button>
-              </span>
             </div>
             </div>
             <div class="form-group">
@@ -138,11 +117,6 @@
                   <option disabled value="">Elija el Autor del libro</option>
                   <option v-for="a in autores" v-bind:value="a.id_autor">@{{a.nombre}}</option>
                 </select>
-                <span class="input-group-btn">
-                    <button id="agregarAutor" class="btn btn-success" type="button" v-on:onclick="showModalAutor"> 
-                      Agregar  <span class="fas fa-plus-circle"></span>
-                    </button>
-                </span>
             </div>
             </div>
 
@@ -153,11 +127,6 @@
                   <option disabled value="">Elija la carrera del libro</option>
                   <option v-for="c in carreras" v-bind:value="c.id_carrera">@{{c.nombre}}</option>
                 </select>
-                <span class="input-group-btn">
-                  <button id="agregarEditorial" class="btn btn-success" type="button" onclick=""> 
-                    Agregar  <span class="fas fa-plus-circle"></span>
-                  </button>
-                </span>
             </div>
             </div>
            
@@ -178,11 +147,6 @@
                   <option disabled value="">Elija el pais del libro</option>
                   <option v-for="p in paises" v-bind:value="p.id_pais">@{{p.pais}}</option>
                 </select>
-                <span class="input-group-btn">
-                  <button id="agregarEditorial" class="btn btn-success" type="button" onclick=""> 
-                  Agregar  <span class="fas fa-plus-circle"></span>
-                  </button>
-                </span>
             </div>
             </div>
 
@@ -242,7 +206,7 @@
     <!-- declaracion de codigo para la ventana modal de ejemplares -->
 
     <!-- inicio ventana modal -->
-      <div id="modal_customs" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div id="modal_ejemplar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <!--inicio modal dialog-->
         <div class="modal-dialog" role="document">
           <!--inicio modal content-->
@@ -305,62 +269,6 @@
           </div> <!--fin modal content-->
         </div><!--/modal dialog-->
       </div><!--fin ventana modal-->
-
-
-
-    <!-- CODIICACIÓN DEL MODAL EDITORIALES -->
- <!-- inicio ventana modal -->
- <div id="Editorial" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="">
-      <!--inicio modal dialog-->
-      <div class="modal-dialog" role="document">
-        <!--inicio modal content-->
-        <div class="modal-content">
-          <!-- se inicia el encabezado de la ventana modal -->
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLiveLabel" v-if="!editando"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">REGISTRANDO EDITORIAL</font></font></h5>
-            <h5 class="modal-title" id="exampleModalLiveLabel" v-if="editando"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Editando Editorial</font></font></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
-              <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
-            </button>
-            <!-- <span aria-hidden="true">&times;</span> -->
-          </div>
-
-          <!-- fin cuerpo modal -->
-          <div class="modal-body div1">
-          <div class="form-group">
-                    <label for="Editoriales">Editorial del libro</label>
-                    <input type="text" name="" placeholder="Editorial del libro" class="form-control" v-model="editorial">
-              </div>
-          </div>
-          <!-- footer modal -->
-          <div class="modal-footer div1">
-            <div class="pull-right">
-                <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
-                <span class="far fa-window-close"></span>
-                Cancelar</button>
-            </div>
-
-            <div class="pull-right">
-                <button style="margin-left: 10px" type="submit" class="btn btn-primary" v-on:click="" v-if="!editando">
-                <span class="fas fa-save"></span>
-                Guardar</button>
-            </div>
-            
-            <button type="submit" class="btn btn-primary" v-on:click="" v-if="editando">
-           
-            Actualizar</button>
-          </div>
-          </div>
-          <!-- fin footer modal -->
-
-        </div> <!-- fin modal content -->
-      </div>  <!--/modal dialog -->
-
-      
-    </div> <!-- fin ventana modal Editoriales-->
-
-     
-
   </div>
 </div>
 

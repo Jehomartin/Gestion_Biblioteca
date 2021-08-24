@@ -140,91 +140,12 @@ new Vue({
 			// $('#addlibro').modal('show');
 		},
 
-		showModalEditorial:function(){
-			$("#Editorial").find(".modal-header").css("background","#f39c12");
-			$("#Editorial").find(".modal-header").css("color", "black");
-			$("#Editorial").find(".modal-title")   
-			$('#Editorial').modal('show');
-			// $('#addEditorial').modal('show');
-		},
-
-		showModalAutor:function(){
-			$("#Autor").find(".modal-header").css("background","#f39c12");
-			$("#Autor").find(".modal-header").css("color", "black");
-			$("#Autor").find(".modal-title")   
-			$('#Autor').modal('show');
-			
-		},
-
-		showModalCarrera:function(){
-			$("#Carrera").find(".modal-header").css("background","#f39c12");
-			$("#Carrera").find(".modal-header").css("color", "black");
-			$("#Carrera").find(".modal-title")   
-			$('#Carrera').modal('show');
-			
-		},
-
-		showModalPais:function(){
-			$("#Pais").find(".modal-header").css("background","#f39c12");
-			$("#Pais").find(".modal-header").css("color", "black");
-			$("#Pais").find(".modal-title")   
-			$('#Pais').modal('show');
-			
-		},
-
-		showModals:function(){
-			$("#modal_customs").find(".modal-header").css("background","#f39c12");
-			$("#modal_customs").find(".modal-header").css("color", "black");
-			$("#modal_customs").find(".modal-title")   
-			$('#modal_customs').modal('show');
+		showEjemplar:function(){
+			$("#modal_ejemplar").find(".modal-header").css("background","#f39c12");
+			$("#modal_ejemplar").find(".modal-header").css("color", "black");
+			$("#modal_ejemplar").find(".modal-title")   
+			$('#modal_ejemplar').modal('show');
 			// $('#addejemplar').modal('show');
-		},
-
-		agregarLibro:function(){
-
-			// var editoria=[];
-			// editoria.push({
-			// 	editorial:this.editoriales[i].editorial
-			// });
-
-
-			//creación del objeto json para enviar a la api
-			var libro={isbn:this.isbn,folio:this.isbn,titulo:this.titulo,id_editorial:this.id_editorial,
-				id_autor:this.id_autor,id_carrera:this.id_carrera,edicion:this.edicion,anio_pub:this.anio_pub,
-				id_pais:this.id_pais,fecha_alta:this.fecha_alta,paginas:this.paginas,ejemplares:this.ejemplares,
-				clasificacion:this.clasificacion,cutter:this.cutter
-			};
-
-			//limpieza de los campos
-			this.isbn='';
-			this.folio='';
-			this.titulo='';
-			this.id_editorial='';
-			this.id_autor='';
-			this.id_carrera='';
-			this.edicion='';
-			this.anio_pub='';
-			this.id_pais='';
-			this.fecha_alta='';
-			this.paginas='';
-			this.ejemplares='';
-			this.clasificacion='';
-			this.cutter='';
-
-			//se realiza el post para enviar el json y entrar al metodo store de la api
-			this.$http.post(urlLibros,libro).then(function(response) {
-                this.getLibros();
-                $('#modal_custom').modal('hide');
-
-                toastr.success("libro agregado con exito");
-
-            }).catch(function(response){
-
-            	toastr.error("Libro no agregado ocurrio un error o dejo algun campo importante vacío");
-
-            });
-
-            
 		},
 
 		editLibro:function(id){
@@ -321,9 +242,9 @@ new Vue({
 			this.cutter='';
 		},
 
-		selecEjemp:function(id){
+		// selecEjemp:function(id){
 			
-		},
+		// },
 
 		agregarEjemplar:function(){
 			
@@ -344,7 +265,7 @@ new Vue({
 			// se realiza el envío del objeto json con un post
 			this.$http.post(urlEjemplar, ejemplar).then(function(response){
 				this.getEjemplar();
-				$('#modal_customs').modal('hide');
+				$('#modal_ejemplar').modal('hide');
 
 				toastr.success("Ejemplar agregado con exito!!");
 

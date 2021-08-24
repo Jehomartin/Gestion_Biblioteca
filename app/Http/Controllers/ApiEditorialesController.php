@@ -27,10 +27,11 @@ class ApiEditorialesController extends Controller
     public function store(Request $request)
     {
         //
-        // $editorial = new Editoriales;
-        // $editorial->editorial = $request->get('editorial');
+        $editorial = new Editoriales;
+        $editorial->id_editorial = $request->get('id_editorial');
+        $editorial->editorial = $request->get('editorial');
 
-        // $editorial->save();
+        $editorial->save();
     }
 
     /**
