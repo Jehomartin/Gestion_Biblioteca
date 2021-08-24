@@ -1,8 +1,8 @@
 var route = document.querySelector("[name=route]").value;
 var ruta = 'http://localhost/Gestion_Biblioteca/public/';
-var ruts = 'http://localhost/Gestion_Biblioteca/public/';
+// var ruts = 'http://localhost/Gestion_Biblioteca/public/';
 var urlPresta = ruta + '/apiPrestamos';
-var urlLibro = ruts + '/apiLibros';
+var urlLibro = ruta + '/apiLibros';
 
 function init()
 {
