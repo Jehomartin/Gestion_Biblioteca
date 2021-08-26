@@ -17,7 +17,6 @@ class Editoriales extends Model
 
     //se indica si es incrementable o de tiempo
     public $timestamps = false;
-    public $incrementing = false;
 
     //se llama al resto de los atributos
     protected $Fillable = [

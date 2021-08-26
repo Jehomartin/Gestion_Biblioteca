@@ -29,15 +29,7 @@ new Vue({
 
 	data:{
 		libros:[],
-		editoriales:[],
-		autores:[],
-		carreras:[],
-		paises:[],
-		id_editorial:'',
-		editorial:'',
-		id_autor:'',
-		id_carrera:'',
-		id_pais:'',
+
 		folio:'',
 		edicion:'',
 		anio_pub:'',
@@ -48,22 +40,23 @@ new Vue({
 		titulo:'',
         ejemplares:'',
         cutter:'',
-        editando:false,
-        auxLibro:'',
-        buscar:'',
 
-        //datos para agregar el ejemplar
-        folio:'',
-		clasificacion:'',
-		esbase:'',
-		prestado:'',
-		comentario:'',
-		consec:'',
-        fecha_alta:'',
-        solodewee:'',
-        deweecompleto:'',
-        editejem:false,
-        auxEjemplar:'',
+        // datas para editorial
+        editoriales:[],
+        id_editorial:'',
+		editorial:'',
+        // dastas para autor
+		autores:[],
+        id_autor:'',
+		nombre:'',
+        // datas para carreras
+		carreras:[],
+		id_carrera:'',
+		carrera:'',
+        // datas para pais
+        paises:[],
+        id_pais:'',
+        pais:'',
 	},
 
 	methods:{
@@ -190,6 +183,51 @@ new Vue({
 				this.editorial='';
 			}).catch(function(response){
 				toastr.error("Editorial no agregado");
+			});
+		},
+
+		guardarAutor:function(){
+			var Aut={
+				id_autor:this.id_autor,
+				nombre:this.nombre
+			};
+
+			this.$http.post(urlAutor,Aut).then(function(response){
+				this.getAutor();
+				$('#Autor').modal('hide');
+				toastr.success("Autor agregado");
+			}).catch(function(response){
+				toastr.error("Autor no registrado");
+			});
+		},
+
+		guardarCarrera:function(){
+			var carer={
+				id_carrera:this.id_carrera,
+				carrera:this.carrera
+			};
+
+			this.$http.post(urlCarrera,carer).then(function(response){
+				this.getCarrera();
+				$('#Carrera').modal('hide');
+				toastr.success("Carrera Registrada");
+			}).catch(function(response){
+				toastr.error("Carrera no Registrada");
+			});
+		},
+
+		guardarPais:function(){
+			var pai={
+				id_pais:this.id_pais,
+				pais:this.pais
+			};
+
+			this.$http.post(urlPais,pai).then(function(json){
+				this.getPais();
+				$('#Pais').modal('hide');
+				toastr.success("Pais Registrado");
+			}).catch(function(json){
+				toastr.error("Pais no Registrado");
 			});
 		},
 	},

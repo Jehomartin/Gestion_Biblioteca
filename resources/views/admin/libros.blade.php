@@ -49,7 +49,7 @@
             <td v-on:click="">@{{libro.titulo}}</td>
             <td v-on:click="">@{{libro.autor.nombre}}</td>
             <td v-on:click="">@{{libro.editorial.editorial}}</td>
-            <td v-on:click="">@{{libro.carrera.nombre}}</td>
+            <td v-on:click="">@{{libro.carrera.carrera}}</td>
             <td v-on:click="">@{{libro.ejemplares}}</td>
             <!-- <td v-on:click="">@{{libro.cutter}}</td> -->
             <td>
@@ -125,7 +125,7 @@
             <div class="input-group">
                 <select class="form-control" v-model="id_carrera" @change="getCarrera">
                   <option disabled value="">Elija la carrera del libro</option>
-                  <option v-for="c in carreras" v-bind:value="c.id_carrera">@{{c.nombre}}</option>
+                  <option v-for="c in carreras" v-bind:value="c.id_carrera">@{{c.carrera}}</option>
                 </select>
             </div>
             </div>

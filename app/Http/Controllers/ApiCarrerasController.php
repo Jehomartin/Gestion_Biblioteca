@@ -27,6 +27,12 @@ class ApiCarrerasController extends Controller
     public function store(Request $request)
     {
         //
+        $carrera = new Carreras;
+
+        $carrera->id_carrera = $request->get('id_carrera');
+        $carrera->carrera = $request->get('carrera');
+
+        $carrera->save();
     }
 
     /**

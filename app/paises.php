@@ -13,7 +13,6 @@ class paises extends Model
     protected $primaryKey = "id_pais";
 
     //incrementable o de tiempo;
-    public $incrementing = false;
     public $timestamps = false;
 
     //llamado resto datos

@@ -27,6 +27,12 @@ class ApiPaisesController extends Controller
     public function store(Request $request)
     {
         //
+        $pai = new paises;
+
+        $pai->id_pais = $request->get('id_pais');
+        $pai->pais = $request->get('pais');
+
+        $pai->save();
     }
 
     /**

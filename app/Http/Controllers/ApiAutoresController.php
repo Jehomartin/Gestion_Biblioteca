@@ -27,6 +27,12 @@ class ApiAutoresController extends Controller
     public function store(Request $request)
     {
         //
+        $autor = new Autores;
+
+        $autor->id_autor = $request->get('id_autor');
+        $autor->nombre = $request->get('nombre');
+
+        $autor->save();
     }
 
     /**
