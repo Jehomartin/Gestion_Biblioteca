@@ -57,6 +57,7 @@ new Vue({
 		// data para carreras
 		carreras:[],
 		id_carrera:'',
+		nombre:'',
 
 		// data para paises
 		paises:[],
@@ -136,10 +137,10 @@ new Vue({
 		},
 
 		showModalCarrera:function(){
-			$("#Carrera").find(".modal-header").css("background","#f39c12");
-			$("#Carrera").find(".modal-header").css("color", "black");
-			$("#Carrera").find(".modal-title")   
-			$('#Carrera').modal('show');
+			$("#Carrera_Modal").find(".modal-header").css("background","#f39c12");
+			$("#Carrera_Modal").find(".modal-header").css("color", "black");
+			$("#Carrera_Modal").find(".modal-title")   
+			$('#Carrera_Modal').modal('show');
 			
 		},
 
@@ -251,6 +252,26 @@ new Vue({
 		cancelarPais:function(){
 			this.editando=false;
 			this.pais='';
+		},
+
+		guardarCarrera:function(){
+			var carre ={
+				id_carrera:this.id_carrera,
+				nombre:this.nombre
+			};
+			this.$http.post(urlCarrera,carre).then(function(response){
+				this.getCarrera();
+				$('#Carrera_Modal').modal('hide');
+				toastr.success('Carrera Agregado');
+				this.nombre='';
+			}).catch(function(response){
+				toastr.error('Carrera no Agregado');
+			});
+		},
+
+		cancelarCarrera:function(){
+			this.editando=false;
+			this.nombre='';
 		},
 	},
 })

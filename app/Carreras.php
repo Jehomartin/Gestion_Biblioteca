@@ -13,7 +13,6 @@ class Carreras extends Model
     protected $primaryKey = "id_carrera";
 
     //incrementable o de tiempo;
-    public $incrementing = true;
     public $timestamps = false;
 
     //llamado resto datos
