@@ -28,16 +28,8 @@ new Vue({
 	},
 
 	data:{
+		// data para libros
 		libros:[],
-		editoriales:[],
-		autores:[],
-		carreras:[],
-		paises:[],
-		id_editorial:'',
-		editorial:'',
-		id_autor:'',
-		id_carrera:'',
-		id_pais:'',
 		folio:'',
 		edicion:'',
 		anio_pub:'',
@@ -49,8 +41,28 @@ new Vue({
         ejemplares:'',
         cutter:'',
         editando:false,
-        auxLibro:'',
-        buscar:'',
+
+	
+
+		// datas para editorial
+		editoriales:[],
+		id_editorial:'',
+		editorial:'',
+
+		// data para autores
+		autores:[],
+		id_autor:'',
+		nombre:'',
+
+		// data para carreras
+		carreras:[],
+		id_carrera:'',
+
+		// data para paises
+		paises:[],
+		id_pais:'',
+		pais:'',
+		
 
         //datos para agregar el ejemplar
         folio:'',
@@ -116,10 +128,10 @@ new Vue({
 		},
 
 		showModalAutor:function(){
-			$("#Autor").find(".modal-header").css("background","#f39c12");
-			$("#Autor").find(".modal-header").css("color", "black");
-			$("#Autor").find(".modal-title")   
-			$('#Autor').modal('show');
+			$("#Autor_Modal").find(".modal-header").css("background","#f39c12");
+			$("#Autor_Modal").find(".modal-header").css("color", "black");
+			$("#Autor_Modal").find(".modal-title")   
+			$('#Autor_Modal').modal('show');
 			
 		},
 
@@ -132,10 +144,10 @@ new Vue({
 		},
 
 		showModalPais:function(){
-			$("#Pais").find(".modal-header").css("background","#f39c12");
-			$("#Pais").find(".modal-header").css("color", "black");
-			$("#Pais").find(".modal-title")   
-			$('#Pais').modal('show');
+			$("#Pais_Modal").find(".modal-header").css("background","#f39c12");
+			$("#Pais_Modal").find(".modal-header").css("color", "black");
+			$("#Pais_Modal").find(".modal-title")   
+			$('#Pais_Modal').modal('show');
 		},
 
 		agregarLibro:function(){
@@ -191,6 +203,54 @@ new Vue({
 			}).catch(function(response){
 				toastr.error("Editorial no agregado");
 			});
+		},
+
+		cancelarEdito:function(){
+			this.editando=false;
+			this.nombre='';
+		},
+
+
+		guardarAutor:function(){
+			var aut={
+				id_autor:this.id_autor,
+				nombre:this.nombre
+			};
+
+			this.$http.post(urlAutor,aut).then(function(response){
+				this.getAutor();
+				$('#Autor_Modal').modal('hide');
+				toastr.success('Autor Agregado');
+				this.nombre='';
+			}).catch(function(response){
+				toastr.error('Autor no Agregado');
+			});
+		},
+
+		cancelarAutor:function(){
+			this.editando=false;
+			this.nombre='';
+		},
+
+		guardarPais:function(){
+			var pai={
+				id_pais:this.id_pais,
+				pais:this.pais
+			};
+
+			this.$http.post(urlPais,pai).then(function(response){
+				this.getPais();
+				$('#Pais_Modal').modal('hide');
+				toastr.success('Pais Agregado');
+				this.pais='';
+			}).catch(function(response){
+				toastr.error('Pais no Agregado');
+			});
+		},
+
+		cancelarPais:function(){
+			this.editando=false;
+			this.pais='';
 		},
 	},
 })

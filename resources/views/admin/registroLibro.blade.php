@@ -155,7 +155,7 @@
               </div>
               <div class="modal-footer div1">
                 <div class="pull-right">
-                    <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
+                    <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdito()">
                     <span class="far fa-window-close"></span>
                     Cancelar</button>
                 </div>
@@ -168,6 +168,78 @@
           </div>
         </div>
     </div> <!-- fin Modal Editorial -->
+
+     <!-- inicio Modal Autor -->
+     <div id="Autor_Modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="">
+        <!--inicio modal dialog-->
+          <div class="modal-dialog" role="document">
+            <!--inicio modal content-->
+            <div class="modal-content">
+              <!-- se inicia el encabezado de la ventana modal -->
+              <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLiveLabel"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">REGISTRANDO AUTOR</font></font></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
+                      <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
+                    </button>
+                <!-- <span aria-hidden="true">&times;</span> -->
+              </div>
+              <div class="modal-body div1">
+                    <div class="form-group">
+                        <label for="Autores">Autor del libro</label>
+                        <input type="text" name="" placeholder="Autor del libro" class="form-control" v-model="nombre">
+                    </div>
+              </div>
+              <div class="modal-footer div1">
+                <div class="pull-right">
+                    <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarAutor()">
+                    <span class="far fa-window-close"></span>
+                    Cancelar</button>
+                </div>
+                <div class="pull-right">
+                    <button style="margin-left: 10px" type="submit" class="btn btn-primary" v-on:click="guardarAutor()">
+                    <span class="fas fa-save"></span>
+                    Guardar</button>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div> <!-- fin Modal Autor -->
+
+    <!-- inicio Modal País -->
+    <div id="Pais_Modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="">
+        <!--inicio modal dialog-->
+          <div class="modal-dialog" role="document">
+            <!--inicio modal content-->
+            <div class="modal-content">
+              <!-- se inicia el encabezado de la ventana modal -->
+              <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLiveLabel"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">REGISTRANDO PAÍS</font></font></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
+                      <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
+                    </button>
+                <!-- <span aria-hidden="true">&times;</span> -->
+              </div>
+              <div class="modal-body div1">
+                    <div class="form-group">
+                        <label for="Paises">País del libro</label>
+                        <input type="text" name="" placeholder="País del libro" class="form-control" v-model="pais">
+                    </div>
+              </div>
+              <div class="modal-footer div1">
+                <div class="pull-right">
+                    <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarPais()">
+                    <span class="far fa-window-close"></span>
+                    Cancelar</button>
+                </div>
+                <div class="pull-right">
+                    <button style="margin-left: 10px" type="submit" class="btn btn-primary" v-on:click="guardarPais()">
+                    <span class="fas fa-save"></span>
+                    Guardar</button>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div> <!-- fin Modal País -->
 
 </div> <!-- fin div principal -->
 
