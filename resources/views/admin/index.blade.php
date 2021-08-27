@@ -3,11 +3,19 @@
 @section('contenido')
 <div class="container">
 	<font color="black" face="times new roman" class="text text-center">
+<<<<<<< HEAD
+		<h1>GESTIÓN BIBLIOTECA</h1>
+		<h2>BIENVENIDO {{Session::get('usuario')}}</h2>
+		<hr>
+		<h3>
+			SISTEMA CONTROL DE PRÉSTAMOS
+=======
 		<h1>GESTION BIBLIOTECA</h1>
 		<h2>BIENVENIDO {{Session::get('usuario')}}</h2>
 		<hr>
 		<h3>
 			CONTROL DE PRESTAMOS
+>>>>>>> branch_prestamos_rediseño
 		</h3>
 	</font>
 	<br>
@@ -42,7 +50,7 @@
             <li class="slide" id="slide5">
                 <a href="#">
                     <p class="texto-encima"></p>
-                    <img src="" alt="photo 5">      
+                    <img src="img/presentacion.jpeg" alt="photo 5">      
                 </a>
             </li>             
             <li class="slide">
