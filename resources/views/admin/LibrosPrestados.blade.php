@@ -29,8 +29,9 @@
       
       <div class="col-sm-12">
         <br>
-      
-        <h2 class="text text-center">Prestamos realizados</h2>
+        <font color="black" face="times new roman">
+          <h2 class="text text-center">PRESTAMOS REALIZADOS</h2>
+        </font>
         <br>
 
         <table class="table table-sm table-striped table-bordered table-hover">
