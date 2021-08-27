@@ -27,6 +27,7 @@ Route::apiResource('apiPais','ApiPaisesController');
 Route::apiResource('apiAutores','ApiAutoresController');
 Route::apiResource('apiEditoriales','ApiEditorialesController');
 Route::apiResource('apiCarreras','ApiCarrerasController');
+Route::apiResource('apiDetalles','ApiDetallePrestamosController');
 
 //enrutamiento admin
 Route::view('inicio','admin.index');

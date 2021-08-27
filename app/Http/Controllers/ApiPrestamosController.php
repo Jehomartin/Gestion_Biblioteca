@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Prestamos;
+use App\DetallePrestamos;
 use DB;
 use App\Libros;
 // use App\Alumnos;
@@ -33,14 +34,10 @@ class ApiPrestamosController extends Controller
         $prestamo = new Prestamos;
 
         $prestamo->folioprestamo = $request->get('folioprestamo');
-        // $prestamo->isbn = $request->get('isbn');
-        // $prestamo->titulo = $request->get('titulo');
         $prestamo->fechaprestamo = $request->get('fechaprestamo');
         $prestamo->fechadevolucion = $request->get('fechadevolucion');
         $prestamo->matricula = $request->get('matricula');
         $prestamo->liberado = $request->get('liberado');
-        $prestamo->cantidad = $request->get('cantidad');
-        // $prestamo->consec = $request->get('consec');
 
         $prestar=[];
 
@@ -48,14 +45,18 @@ class ApiPrestamosController extends Controller
 
         for ($i=0; $i < count($prestar1); $i++) { 
             $prestar[]=[
+                'folioprestamo'=>$request->get('folioprestamo'),
                 'isbn'=>$prestar1[$i]['isbn'],
                 'titulo'=>$prestar1[$i]['titulo'],
-                'consec'=>$prestar1[$i]['consec']
+                'consec'=>$prestar1[$i]['consec'],
+                'cantidad'=>$prestar1[$i]['cantidad'],
             ];
         }
 
+
+
         $prestamo->save();
-        Prestamos::insert($prestar);
+        DetallePrestamos::insert($prestar);
         
     }
 

@@ -50,8 +50,8 @@
           </thead>
           <tbody class="table table-bordered">
             <tr v-for="(p,index) in prestamos">
-              <td v-model="isbn"> @{{p.isbn}} </td>
-              <td v-model="titulo"> @{{p.titulo}} </td>
+              <td> @{{p.isbn}} </td>
+              <td> @{{p.titulo}} </td>
               <td>
                 <input type="date" class="form-control" placeholder="fecha devolucion" v-model="fechadevolucion">
               </td>
@@ -65,7 +65,7 @@
                 <input type="number" class="form-control" min="1"
                 v-model="cantidad">
               </td> -->
-              <td v-model="consec">@{{p.consec}}</td>
+              <td>@{{p.consec}}</td>
               <td>
                 <span class="fas fa-trash-alt btn btn-danger btn-xs" @click="cancelarPrestamo(index)"></span>
               </td>

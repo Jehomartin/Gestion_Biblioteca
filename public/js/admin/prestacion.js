@@ -3,6 +3,7 @@ var ruta = 'http://localhost/Gestion_Biblioteca/public/';
 // var ruts = 'http://localhost/Gestion_Biblioteca/public/';
 var urlPresta = ruta + '/apiPrestamos';
 var urlLibro = ruta + '/apiLibros';
+// var urlEjemplar = ruta + '/apiEjemplares';
 
 function init()
 {
@@ -25,14 +26,15 @@ function init()
 			saludo:'hola mundo',
 			prestamos:[],
 			libros:[],
-			isbn:'',
-			titulo:'',
-			consec:'',
+			// ejemplares:[],
+			// isbn:'',
+			// titulo:'',
+			// consec:'',
 			codigo:'',
 			folioprestamo:'',
 			fechadevolucion:'',
 			matricula:'',
-			cantidad:'',
+			// cantidad:'',
 
 			fechaprestamo:moment().format('YYYY-MM-DD'),
 		},
@@ -45,7 +47,8 @@ function init()
 					var unprestado={
 						'isbn':response.data.isbn,
 						'titulo':response.data.titulo,
-						'consec':response.data.consec
+						'consec':response.data.consec,
+						'cantidad':1,
 					}
 
 					if (unprestado.isbn) {
@@ -71,38 +74,33 @@ function init()
 					presta.push({
 						isbn:this.prestamos[i].isbn,
 						titulo:this.prestamos[i].titulo,
-						consec:this.prestamos[i].consec
+						consec:this.prestamos[i].consec,
+						cantidad:1,
 					})
 				}
+				console.log(presta);
 
 				var unPrestamo={
 					folioprestamo:this.folioprestamo,
 					fechaprestamo:this.fechaprestamo,
 					fechadevolucion:this.fechadevolucion,
 					matricula:this.matricula,
-					cantidad:1,
 					prestar1:presta
 				};
 
-				// console.log(unPrestamo);
+				console.log(unPrestamo);
 
 				this.$http.post(urlPresta,unPrestamo).then(function(response){
-					// console.log(response.data);
 					toastr.success("Prestamo realizado con exito");
-					this.foliarPrestamo();
+					this.foliarprestamo();
 					this.prestamos=[];
-					// this.isbn='';
-					// this.titulo='';
-					this.fechaprestamo='';
 					this.fechadevolucion='';
 					this.matricula='';
-					this.liberado='';
-					this.cantidad='';
-					// this.consec='';
-				}).catch(function(x){
-					// console.log(x.data);
+				}).catch(function(response){
+					// console.log(response.data);
 					toastr.error("Prestamo no realizado");
 				});
+
 			},
 		},
 	});
