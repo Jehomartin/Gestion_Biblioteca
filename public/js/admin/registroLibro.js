@@ -159,12 +159,9 @@ new Vue({
 			//se realiza el post para enviar el json y entrar al metodo store de la api
 			this.$http.post(urlLibros,libro).then(function(response) {
                 this.getLibros();
-                $('#modal_custom').modal('hide');
-
                 toastr.success("libro agregado con exito");
 
             }).catch(function(response){
-
             	toastr.error("Libro no agregado ocurrio un error o dejo algun campo importante vacío");
 
             });
