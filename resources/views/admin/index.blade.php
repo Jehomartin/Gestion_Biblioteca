@@ -42,7 +42,7 @@
             <li class="slide" id="slide5">
                 <a href="#">
                     <p class="texto-encima"></p>
-                    <img src="" alt="photo 5">      
+                    <img src="img/UTC.png" alt="photo 5">      
                 </a>
             </li>             
             <li class="slide">
