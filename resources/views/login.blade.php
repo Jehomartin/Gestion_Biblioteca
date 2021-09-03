@@ -5,12 +5,12 @@
 <div class="contenedor">
 
   <header>
-    <h1 class="title">BIBLIOTECA UTC</h1>
+    <h1 class="text text-center">BIBLIOTECA UTC</h1>
   </header>
 
   <div class="login">
     <article class="fondo">
-      <img src="img/logo.jpg">
+      <img src="img/utc.jpeg">
       <h3>Inicio de Sesión</h3>
       <form class=" validate-form" action="{{url('entrar')}}" method="POST">
 
@@ -32,14 +32,14 @@
         <div class="wrap-input100 validate-input" data-validate = "Usuario requerido para iniciar sesion">
           <input class="input100" type="text" name="usuario" style="font-family: arial black">
           <span class="focus-input100"></span>
-          <span class="label-input100">Nombre Usuario</span>
+          <span class="label-input100" style="color: #fff">Nombre Usuario</span>
         </div>
           
           
         <div class="wrap-input100 validate-input" data-validate="Contraseña requerida para iniciar sesion">
           <input class="input100" type="password" name="pass" style="color: #fff" style="font-family: arial black">
           <span class="focus-input100"></span>
-          <span class="label-input100">Contraseña</span>
+          <span class="label-input100" style="color: #fff">Contraseña</span>
         </div>
         
         <div class="container-login100-form-btn">
@@ -47,15 +47,8 @@
             Entrar
           </button>
         </div>
-        <br>
       </form>
     </article>
   </div>
-
 </div>
-
 @endsection
-
-@push('scripts')
-
-@endpush

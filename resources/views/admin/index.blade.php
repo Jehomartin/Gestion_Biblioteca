@@ -2,23 +2,23 @@
 @section('titulo','Inicio')
 @section('contenido')
 <div class="container">
-	<font color="black" face="times new roman" class="text text-center">
-		<h1>GESTIÓN BIBLIOTECA</h1>
-		<h2>BIENVENIDO {{Session::get('usuario')}}</h2>
-		<hr>
-		<h3>
-			SISTEMA CONTROL DE PRÉSTAMOS
-		</h3>
-	</font>
-	<br>
+    <font color="black" face="times new roman" class="text text-center">
+        <h1>GESTIÓN BIBLIOTECA</h1>
+        <h2>BIENVENIDO {{Session::get('usuario')}}</h2>
+        <hr>
+        <h3>
+            SISTEMA CONTROL DE PRÉSTAMOS
+        </h3>
+    </font>
+    <br>
 
-		<!-- <div class="wrapper"> -->
+        <!-- <div class="wrapper"> -->
     <div class="slider" id="slider">      
         <ul class="slides">       
             <li class="slide" id="slide1">
                 <a href="#">
-                    <p class="texto-encima">Ingenieria en Gestiòn y desarrollo de software</p>
-                    <img src="login/img/biblio.jpg" alt="photo 1">      
+                    <p class="texto-encima">Ingenieria en Gestión y desarrollo de software</p>
+                    <img src="login/img/UTC.png" alt="photo 1">      
                 </a>
             </li>
             <li class="slide" id="slide2">
@@ -42,15 +42,9 @@
             <li class="slide" id="slide5">
                 <a href="#">
                     <p class="texto-encima"></p>
-                    <img src="img/UTC.png" alt="photo 5">      
+                    <img src="login/img/biblio.jpg" alt="photo 5">      
                 </a>
-            </li>             
-            <li class="slide">
-                <a href="#">
-                    <p class="texto-encima"></p>
-                    <img src="" alt="photo 1">      
-                </a>
-            </li>     
+            </li>                 
         </ul>
         <ul class="slider-controler a">         
             <li><a href="#slide1">&bullet;</a></li>
