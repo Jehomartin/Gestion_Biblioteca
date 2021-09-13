@@ -6,18 +6,20 @@
   <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="text text-center">REGISTRO DE LIBROS</h2>
+                <font color="black" face="times new roman">
+                    <h2 class="text text-center">REGISTRO DE LIBROS</h2>
+                </font>
                 <br>    
                 <br>
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="isbn">Isbn del libro</label>
-                            <input type="text" name="" placeholder="ISBN del libro" class="form-control" v-model="isbn">
+                            <input type="text" name="" placeholder="ISBN del libro" class="form-control" v-model="isbn" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="titulo">Titulo del libro</label>
-                            <input type="text" name="" placeholder="Titulo del libro" class="form-control" v-model="titulo">
+                            <input type="text" name="" placeholder="Titulo del libro" class="form-control" v-model="titulo" style="border-color:#000">
                         </div>
                     </div>
 
@@ -25,7 +27,7 @@
                         <div class="form-group col-md-6">
                             <label for="editorial">Elija la editorial</label>
                             <div class="input-group">
-                                <select class="form-control" id="selectEditorial" v-model="id_editorial" @change="getEditorial">
+                                <select class="form-control" id="selectEditorial" v-model="id_editorial" @change="getEditorial" style="border-color:#000">
                                 
                                     <option disabled value="">Elija la editorial del libro</option>
                                     <option value="">Agregar Nuevo</option>
@@ -44,7 +46,7 @@
                         <div class="form-group col-md-6">
                             <label for="autor">Elija el autor</label>
                             <div class="input-group">
-                                <select class="form-control" id="selectAutor" v-model="id_autor" @change="getAutor">
+                                <select class="form-control" id="selectAutor" v-model="id_autor" @change="getAutor" style="border-color:#000">
                                 <option disabled value="">Elija el Autor del libro</option>
                                 <option v-for="a in autores" v-bind:value="a.id_autor">@{{a.nombre}}</option>
                                 </select>
@@ -60,7 +62,7 @@
                     <div class="form-group">
                         <label for="carrera">Elija la carrera</label>
                         <div class="input-group">
-                            <select class="form-control" v-model="id_carrera" @change="getCarrera">
+                            <select class="form-control" v-model="id_carrera" @change="getCarrera" style="border-color:#000">
                             <option disabled value="">Elija la carrera del libro</option>
                             <option v-for="c in carreras" v-bind:value="c.id_carrera">@{{c.carrera}}</option>
                             </select>
@@ -76,7 +78,7 @@
                         <div class="form-group col-md-6">
                             <label for="pais">Elija el pais</label>
                             <div class="input-group">
-                                <select class="form-control" v-model="id_pais" @change="getPais">
+                                <select class="form-control" v-model="id_pais" @change="getPais" style="border-color:#000">
                                 <option disabled value="">Elija el pais del libro</option>
                                 <option v-for="p in paises" v-bind:value="p.id_pais">@{{p.pais}}</option>
                                 </select>
@@ -89,37 +91,37 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="edicion">Edicion</label>
-                            <input type="number" name="" placeholder="Edicion" class="form-control" min="1" v-model="edicion">
+                            <input type="number" name="" placeholder="Edicion" class="form-control" min="1" v-model="edicion" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-2">
                             <label for="anioPub">Año de publicación</label>
-                            <input type="text" name="" placeholder="Año publicacion" class="form-control" v-model="anio_pub">
+                            <input type="text" name="" placeholder="Año publicacion" class="form-control" v-model="anio_pub" style="border-color:#000">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="fechaAlta">Fecha alta</label>
-                            <input type="date" name="" placeholder="Fecha alta" class="form-control" v-model="fecha_alta">
+                            <input type="date" name="" placeholder="Fecha alta" class="form-control" v-model="fecha_alta" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="noPagina">Numero páginas</label>
-                            <input type="number" name="" placeholder="Paginas" class="form-control" min="1" v-model="paginas">
+                            <input type="number" name="" placeholder="Paginas" class="form-control" min="1" v-model="paginas" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="ejemplares">Ejemplares del libro</label>
-                            <input type="text" name="" placeholder="Ejemplares del libro" class="form-control" v-model="ejemplares">
+                            <input type="text" name="" placeholder="Ejemplares del libro" class="form-control" v-model="ejemplares" style="border-color:#000">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="clasificacion">Clasificación</label>
-                            <input type="text" name="" placeholder="Clasificacion" class="form-control" v-model="clasificacion">
+                            <input type="text" name="" placeholder="Clasificacion" class="form-control" v-model="clasificacion" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="cutter">Cutter del libro</label>
-                            <input type="text" name="" placeholder="Cutter del libro" class="form-control" v-model="cutter">
+                            <input type="text" name="" placeholder="Cutter del libro" class="form-control" v-model="cutter" style="border-color:#000">
                         </div>
                     </div>
 
@@ -129,6 +131,7 @@
                         Guardar</button>
                     </div>  
                 </form>
+                <br>
             </div>
         </div>
     </div>

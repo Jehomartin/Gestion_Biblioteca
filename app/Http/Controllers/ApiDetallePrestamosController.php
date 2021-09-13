@@ -38,6 +38,8 @@ class ApiDetallePrestamosController extends Controller
     public function show($id)
     {
         //
+        $detalle = DetallePrestamos::find($id);
+        return $detalle;
     }
 
     /**

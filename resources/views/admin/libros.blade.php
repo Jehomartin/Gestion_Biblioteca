@@ -12,7 +12,7 @@
             <br>
             <!-- search form (Optional) -->
             <div class="input-group">
-                <input type="text" name="searchText" class="form-control" placeholder="Buscar..." style="background-color: white" v-model="buscar">
+                <input type="text" name="searchText" class="form-control" placeholder="Buscar..." style="border-color: black" v-model="buscar">
                 <span class="input-group-btn">
                     <button type="submit" name="search" id="search-btn" class="btn btn-flat" style="background-color: orange"><i class="fa fa-search"></i>
                     </button>

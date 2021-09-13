@@ -152,13 +152,13 @@
               <li class="nav-item">
                 <a href="{{url('libros') }}" class="nav-link {{ Request::is('libros') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-book"></i>
-                  <font color="#337ab7" size="4" face="times new roman"><span class="glyphicon glyphicon-book"></span> Libros </font>
+                  <font color="orange" size="4" face="times new roman"><span class="glyphicon glyphicon-book"></span> Libros </font>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{url('registro') }}" class="nav-link {{ Request::is('registro') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-pencil-alt"></i>
-                  <font color="#337ab7" size="4" face="times new roman">Registro Libro</font>
+                  <font color="orange" size="4" face="times new roman">Registro Libro</font>
                 </a>
               </li>
             </ul>

@@ -10,17 +10,25 @@
 <!--  <font color="white" size="10">@{{saludo}}</font> -->
   <br>
   <div class="container">
-    <font color="green" face="times new roman"><h5>FOLIO : @{{folioprestamo}}</h5></font>
-    <font color="green" face="times new roman"><h5>FECHA PRESTAMO : @{{fechaprestamo}}</h5></font>
-    <hr>
+    <div class="row">
+      <div class="col-lg-6">
+        <font color="green" face="times new roman"><h5>FOLIO : @{{folioprestamo}}</h5></font>
+        <font color="green" face="times new roman"><h5>FECHA PRESTAMO : @{{fechaprestamo}}</h5></font>
+      </div>
+      <div class="col-lg-6">
+        <font color="green" face="times new roman"><h5>Matricula del Alumno: </h5></font>
+        <input type="text" class="form-control" placeholder="matricula" v-model="matricula" style="border-color: #000">
+      </div>
+    </div>
+    <hr style="border-color: #000">
 
     <div class="row">
       <div class="col-lg-6">
-        <div class="form-group">
-          <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el codigo del libro" style="color: #000">
+        <div class="input-group">
+          <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el codigo del libro" style="border-color: black">
         
-          <span class="btn btn-dark fas fa-edit" @click="getLibros()">
-            
+          <span class="input-group-btn">
+            <button class="btn btn-dark fas fa-plus-square" @click="getLibros()"></button>
           </span>
         </div>
         <br>
@@ -42,10 +50,7 @@
             <th width="10%">ISBN</th>
             <th width="20%">TITULO</th>
             <th width="15%">FECHA DEVOLUCIÓN</th>
-            <th width="10%">MATRICULA</th>
-            <!-- <th width="10%">LIBERADO</th> -->
             <!-- <th width="10%">CANTIDAD</th> -->
-            <th width="7%">CONSEC</th>
             <th width="9%">ACCIONES</th>
           </thead>
           <tbody class="table table-bordered">
@@ -53,19 +58,11 @@
               <td> @{{p.isbn}} </td>
               <td> @{{p.titulo}} </td>
               <td>
-                <input type="date" class="form-control" placeholder="fecha devolucion" v-model="fechadevolucion">
-              </td>
-              <td>
-                <input type="text" class="form-control" placeholder="matricula" v-model="matricula">
-              </td>
-              <!-- <td>
-                <input type="text" class="form-control" v-model="liberado">
-              </td>  -->        
-              <!-- <td>
+                <input type="date" class="form-control" placeholder="fecha devolucion" v-model="fechadevolucion" style="border-color: #000">
+              <!-- </td>
                 <input type="number" class="form-control" min="1"
                 v-model="cantidad">
               </td> -->
-              <td>@{{p.consec}}</td>
               <td>
                 <span class="fas fa-trash-alt btn btn-danger btn-xs" @click="cancelarPrestamo(index)"></span>
               </td>

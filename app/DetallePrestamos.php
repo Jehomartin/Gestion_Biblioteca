@@ -29,4 +29,8 @@ class DetallePrestamos extends Model
     public function libros(){
         return $this->belongsTo(Libros::class,'isbn','isbn');
     }
+
+    public function detalles(){
+        return $this->belongsTo(Prestamos::class,'folioprestamo','folioprestamo');
+    }
 }

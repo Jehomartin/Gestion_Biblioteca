@@ -1,6 +1,5 @@
 var route = document.querySelector("[name=route]").value;
 var ruta = 'http://localhost/Gestion_Biblioteca/public/';
-// var ruts = 'http://localhost/Gestion_Biblioteca/public/';
 var urlPresta = ruta + '/apiPrestamos';
 var urlLibro = ruta + '/apiLibros';
 // var urlEjemplar = ruta + '/apiEjemplares';
@@ -78,7 +77,6 @@ function init()
 						cantidad:1,
 					})
 				}
-				console.log(presta);
 
 				var unPrestamo={
 					folioprestamo:this.folioprestamo,
@@ -88,8 +86,6 @@ function init()
 					prestar1:presta
 				};
 
-				console.log(unPrestamo);
-
 				this.$http.post(urlPresta,unPrestamo).then(function(response){
 					toastr.success("Prestamo realizado con exito");
 					this.foliarprestamo();
@@ -97,7 +93,6 @@ function init()
 					this.fechadevolucion='';
 					this.matricula='';
 				}).catch(function(response){
-					// console.log(response.data);
 					toastr.error("Prestamo no realizado");
 				});
 

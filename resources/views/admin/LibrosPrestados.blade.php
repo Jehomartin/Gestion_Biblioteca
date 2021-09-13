@@ -11,7 +11,7 @@
         <br>
         <!-- search form (Optional) -->
         <div class="input-group">
-          <input type="text" name="searchText" class="form-control" placeholder="Buscar..." style="background-color: white" v-model="buscar">
+          <input type="text" name="searchText" class="form-control find" placeholder="Buscar..." v-model="buscar" style="border-color: black">
           <span class="input-group-btn">
             <button type="submit" name="search" id="search-btn" class="btn btn-flat" style="background-color: orange"><i class="fa fa-search"></i>
             </button>
@@ -36,27 +36,23 @@
 
         <table class="table table-sm table-striped table-bordered table-hover">
           <thead class="thead-dark">
+            <th>CLAVE</th>
             <th>FOLIO</th>
             <th>ISBN</th>
             <th>TITULO</th>
-            <th>FECHA PRESTAMO</th>
-            <th>FECHA DEVOLUCION</th>
-            <th>MATRICULA</th>
-            <th>LIBERADO</th>
+            <th>DEVUELTO</th>
             <th>CANTIDAD</th>
             <!-- <th>Consec</th> -->
           </thead>
 
           <tbody>
-            <tr v-for="(prestamo,index) in filtroPrestamos">
-              <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.folioprestamo}}</td>
-              <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.isbn}}</td>
-              <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.titulo}}</td>
-              <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.fechaprestamo}}</td>
-              <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.fechadevolucion}}</td>
-              <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.matricula}}</td>
-              <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.liberado}}</td>
-              <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.cantidad}}</td>
+            <tr v-for="(detalle,index) in filtroDetalles">
+              <td v-on:click="infoPrestamo(detalle.foliodetalle)">@{{detalle.foliodetalle}}</td>
+              <td v-on:click="infoPrestamo(detalle.foliodetalle)">@{{detalle.folioprestamo}}</td>
+              <td v-on:click="infoPrestamo(detalle.foliodetalle)">@{{detalle.isbn}}</td>
+              <td v-on:click="infoPrestamo(detalle.foliodetalle)">@{{detalle.titulo}}</td>
+              <td v-on:click="infoPrestamo(detalle.foliodetalle)">@{{detalle.devuelto}}</td>
+              <td v-on:click="infoPrestamo(detalle.foliodetalle)">@{{detalle.cantidad}}</td>
               <!-- <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.consec}}</td> -->
             </tr>
           </tbody>
@@ -65,7 +61,7 @@
       </div>
 
       <!-- inicio ventana modal -->
-      <div id="modal_custom" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="addprestamo">
+      <div id="modal_custom" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <!--inicio modal dialog-->
         <!--inicio modal dialog-->
         <div class="modal-dialog" role="document">
@@ -74,7 +70,7 @@
             <!-- se inicia el encabezado de la ventana modal -->
             <div class="modal-header" style="background-color: #f39c12">
               <!-- <h5 class="modal-title" id="exampleModalLiveLabel" v-if="!editando"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registro Nuevo Devolucion</font></font></h5> -->
-              <h5 class="modal-title" id="exampleModalLiveLabel" v-if="editando"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Informacion del prestamo</font></font></h5>
+              <h5 class="modal-title" id="exampleModalLiveLabel" v-if="editando"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">INFORMACION DEL LIBRO PRESTADO</font></font></h5>
               
               <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
                 <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
@@ -85,13 +81,11 @@
             <!-- inicio cuerpo modal -->
             <div class="modal-body div1">
               <font color="black" face="arial black">
+                <span v-if="editando" class="form-control">Clave del detalle: @{{foliodetalle}} </span>
                 <span v-if="editando" class="form-control">Folio de prestamo: @{{folioprestamo}} </span>
                 <span v-if="editando" class="form-control">Folio del libro: @{{isbn}} </span>
                 <span v-if="editando" class="form-control">Titulo del libro: @{{titulo}} </span>
-                <span v-if="editando" class="form-control">Fecha del prestamo: @{{fechaprestamo}} </span>
-                <span v-if="editando" class="form-control">Fecha de devolución establecida: @{{fechadevolucion}} </span>
-                <span v-if="editando" class="form-control">Matricula del alumno que presto: @{{matricula}} </span>
-                <span v-if="editando" class="form-control">Indicador de que se ha realizado el prestamo: @{{liberado}} </span>
+                <span v-if="editando" class="form-control">Indicador de devolucion: @{{devuelto}} </span>
                 <span v-if="editando" class="form-control">Cantidad de libros prestados: @{{cantidad}} </span>
                 <span v-if="editando" class="form-control">Consec: @{{consec}} </span>
               </font>
@@ -120,7 +114,5 @@
 
 @push('scripts')
   <script src="js/admin/devoluciones.js"></script>
-  <!-- <script src="js/vue.js"></script>
-  <script src="js/vue-resource.js"></script> -->
   <script src="js/moment-with-locales.min.js"></script>
 @endpush

@@ -535,7 +535,7 @@ input.input100 {
   position: absolute;
   z-index: 100;
   max-width: 70%;
-  background-color: #fff;
+  background-color: #000;
   border: 1px solid #c80000;
   border-radius: 2px;
   padding: 4px 25px 4px 10px;
@@ -569,8 +569,8 @@ input.input100 {
   display: block;
   position: absolute;
   z-index: 110;
-  color: #c80000;
-  font-size: 16px;
+  color: #00ffe7;
+  font-size: 26px;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);

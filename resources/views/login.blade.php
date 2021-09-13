@@ -11,8 +11,10 @@
   <div class="login">
     <article class="fondo">
       <img src="img/utc.jpeg">
-      <h3>Inicio de Sesión</h3>
-      <form class=" validate-form" action="{{url('entrar')}}" method="POST">
+      <font color="white">
+        <h3>Inicio de Sesión</h3>
+      </font>
+      <form class="validate-form" action="{{url('entrar')}}" method="POST">
 
       @if($errors->any())
 
