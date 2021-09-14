@@ -19,7 +19,7 @@ class Editoriales extends Model
     public $timestamps = false;
 
     //se llama al resto de los atributos
-    protected $Fillable = [
+    public $Fillable = [
     	'id_editorial',
     	'editorial'
     ];

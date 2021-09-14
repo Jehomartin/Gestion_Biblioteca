@@ -173,7 +173,7 @@
     </div> <!-- fin Modal Editorial -->
 
     <!-- inicio Modal Autor -->
-     <div id="Autor" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="">
+     <div id="Autor" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <!--inicio modal dialog-->
           <div class="modal-dialog" role="document">
             <!--inicio modal content-->
