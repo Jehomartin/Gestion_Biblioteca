@@ -140,18 +140,19 @@
     </div>
 
     <!-- inicio Modal Editorial -->
-     <div id="Editorial" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="">
+     <div id="Editorial" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <!--inicio modal dialog-->
           <div class="modal-dialog" role="document">
             <!--inicio modal content-->
             <div class="modal-content">
               <!-- se inicia el encabezado de la ventana modal -->
               <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLiveLabel"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">REGISTRANDO EDITORIAL</font></font></h5>
+                    <h5 class="modal-title" id="exampleModalLiveLabel">
+                        <font style="vertical-align: inherit;">REGISTRANDO EDITORIAL</font>
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
-                      <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
+                      <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
                     </button>
-                <!-- <span aria-hidden="true">&times;</span> -->
               </div>
               <div class="modal-body div1">
                     <div class="form-group">
@@ -183,11 +184,12 @@
             <div class="modal-content">
               <!-- se inicia el encabezado de la ventana modal -->
               <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLiveLabel"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">REGISTRANDO AUTOR</font></font></h5>
+                    <h5 class="modal-title" id="exampleModalLiveLabel">
+                        <font style="vertical-align: inherit;">REGISTRANDO AUTOR</font>
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
-                      <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
+                      <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
                     </button>
-                <!-- <span aria-hidden="true">&times;</span> -->
               </div>
               <div class="modal-body div1">
                     <div class="form-group">
@@ -212,18 +214,19 @@
     </div> <!-- fin Modal Autor -->
 
     <!-- inicio Modal Carrera -->
-     <div id="Carrera" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="">
+     <div id="Carrera" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <!--inicio modal dialog-->
           <div class="modal-dialog" role="document">
             <!--inicio modal content-->
             <div class="modal-content">
               <!-- se inicia el encabezado de la ventana modal -->
               <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLiveLabel"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">REGISTRANDO CARRERA</font></font></h5>
+                    <h5 class="modal-title" id="exampleModalLiveLabel">
+                        <font style="vertical-align: inherit;">REGISTRANDO CARRERA</font>
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
-                      <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
+                      <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
                     </button>
-                <!-- <span aria-hidden="true">&times;</span> -->
               </div>
               <div class="modal-body div1">
                     <div class="form-group">
@@ -234,13 +237,15 @@
               <div class="modal-footer div1">
                 <div class="pull-right">
                     <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
-                    <span class="far fa-window-close"></span>
-                    Cancelar</button>
+                        <span class="far fa-window-close"></span>
+                        Cancelar
+                    </button>
                 </div>
                 <div class="pull-right">
                     <button style="margin-left: 10px" type="submit" class="btn btn-primary" v-on:click="guardarCarrera()">
-                    <span class="fas fa-save"></span>
-                    Guardar</button>
+                        <span class="fas fa-save"></span>
+                        Guardar
+                    </button>
                 </div>
               </div>
           </div>
@@ -248,16 +253,20 @@
     </div> <!-- fin Modal Carrera -->
 
     <!-- inicio Modal País -->
-     <div id="Pais" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="">
+     <div id="Pais" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <!--inicio modal dialog-->
           <div class="modal-dialog" role="document">
             <!--inicio modal content-->
             <div class="modal-content">
               <!-- se inicia el encabezado de la ventana modal -->
               <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLiveLabel"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">REGISTRANDO PAÍS</font></font></h5>
+                    <h5 class="modal-title" id="exampleModalLiveLabel">
+                        <font style="vertical-align: inherit;">REGISTRANDO PAÍS</font>
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
-                      <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
+                        <span aria-hidden="true">
+                            <font style="vertical-align: inherit;">x</font>
+                        </span>
                     </button>
                 <!-- <span aria-hidden="true">&times;</span> -->
               </div>
@@ -270,13 +279,15 @@
               <div class="modal-footer div1">
                 <div class="pull-right">
                     <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
-                    <span class="far fa-window-close"></span>
-                    Cancelar</button>
+                        <span class="far fa-window-close"></span>
+                        Cancelar
+                    </button>
                 </div>
                 <div class="pull-right">
                     <button style="margin-left: 10px" type="submit" class="btn btn-primary" v-on:click="guardarPais()">
-                    <span class="fas fa-save"></span>
-                    Guardar</button>
+                        <span class="fas fa-save"></span>
+                        Guardar
+                    </button>
                 </div>
               </div>
           </div>
@@ -291,6 +302,4 @@
 <link rel="stylesheet" type="text/css" href="css/form_prestamo/prestamos.css">
 <script type="text/javascript" src="js/admin/registroLibro.js"></script>
 <script src="js/moment-with-locales.min.js"></script>
-
-
 @endpush
