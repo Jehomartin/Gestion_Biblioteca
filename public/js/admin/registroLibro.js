@@ -1,11 +1,11 @@
 var ruta = document.querySelector("[name=route]").value;
 var rute = 'http://localhost/Gestion_Biblioteca/public/';
-var urlLibros = rute + 'apiLibros';
-var urlEditorial = rute + 'apiEditoriales';
-var urlAutor = rute + 'apiAutores';
-var urlCarrera = rute + 'apiCarreras';
-var urlPais = rute + 'apiPais';
-var urlEjemplar = rute + 'apiEjemplares';
+var urlLibros = rute + '/apiLibros';
+var urlEditorial = rute + '/apiEditoriales';
+var urlAutor = rute + '/apiAutores';
+var urlCarrera = rute + '/apiCarreras';
+var urlPais = rute + '/apiPais';
+var urlEjemplar = rute + '/apiEjemplares';
 
 new Vue({
 
@@ -107,26 +107,26 @@ methods:{
 	},
 
 	showModalAutor:function(){
-		$("#Autor_Modal").find(".modal-header").css("background","#f39c12");
-		$("#Autor_Modal").find(".modal-header").css("color", "black");
-		$("#Autor_Modal").find(".modal-title")   
-		$('#Autor_Modal').modal('show');
+		$("#Autor").find(".modal-header").css("background","#f39c12");
+		$("#Autor").find(".modal-header").css("color", "black");
+		$("#Autor").find(".modal-title")   
+		$('#Autor').modal('show');
 		
 	},
 
 	showModalCarrera:function(){
-		$("#Carrera_Modal").find(".modal-header").css("background","#f39c12");
-		$("#Carrera_Modal").find(".modal-header").css("color", "black");
-		$("#Carrera_Modal").find(".modal-title")   
-		$('#Carrera_Modal').modal('show');
+		$("#Carrera").find(".modal-header").css("background","#f39c12");
+		$("#Carrera").find(".modal-header").css("color", "black");
+		$("#Carrera").find(".modal-title")   
+		$('#Carrera').modal('show');
 		
 	},
 
 	showModalPais:function(){
-		$("#Pais_Modal").find(".modal-header").css("background","#f39c12");
-		$("#Pais_Modal").find(".modal-header").css("color", "black");
-		$("#Pais_Modal").find(".modal-title")   
-		$('#Pais_Modal').modal('show');
+		$("#Pais").find(".modal-header").css("background","#f39c12");
+		$("#Pais").find(".modal-header").css("color", "black");
+		$("#Pais").find(".modal-title")   
+		$('#Pais').modal('show');
 	},
 
 	agregarLibro:function(){
@@ -187,7 +187,7 @@ methods:{
 			id_autor:this.id_autor,
 			nombre:this.nombre
 		};
-		this.$http.post(urlAutor,Aut).then(function(response){
+		this.$http.post(urlAutor,aut).then(function(response){
 			this.getAutor();
 			$('#Autor').modal('hide');
 			toastr.success("Autor agregado");
@@ -212,11 +212,11 @@ methods:{
 	},
 
 	guardarPais:function(){
-		var pai={
+		var pays={
 			id_pais:this.id_pais,
 			pais:this.pais
 		};
-		this.$http.post(urlPais,pai).then(function(json){
+		this.$http.post(urlPais,pays).then(function(json){
 			this.getPais();
 			$('#Pais').modal('hide');
 			toastr.success("Pais Registrado");
