@@ -9,23 +9,26 @@
                 <font color="black" face="times new roman">
                     <h2 class="text text-center">REGISTRO DE LIBROS</h2>
                 </font>
-                <br>    
                 <br>
-                <form>
+                <p class="text text-center">
+                    Por favor llene los campos importantes marcados con el ASTERISCO <span class="asterisco">*</span>
+                </p>
+                <br>
+                <div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="isbn">Isbn del libro</label>
+                            <label for="isbn">Isbn del libro <span class="asterisco">*</span></label>
                             <input type="text" name="" placeholder="ISBN del libro" class="form-control" v-model="isbn" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="titulo">Titulo del libro</label>
+                            <label for="titulo">Titulo del libro <span class="asterisco">*</span></label>
                             <input type="text" name="" placeholder="Titulo del libro" class="form-control" v-model="titulo" style="border-color:#000">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="editorial">Elija la editorial</label>
+                            <label for="editorial">Elija la editorial <span class="asterisco">*</span></label>
                             <div class="input-group">
                                 <select class="form-control" id="selectEditorial" v-model="id_editorial" @change="getEditorial" style="border-color:#000">
                                 
@@ -44,7 +47,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="autor">Elija el autor</label>
+                            <label for="autor">Elija el autor <span class="asterisco">*</span></label>
                             <div class="input-group">
                                 <select class="form-control" id="selectAutor" v-model="id_autor" @change="getAutor" style="border-color:#000">
                                 <option disabled value="">Elija el Autor del libro</option>
@@ -60,7 +63,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="carrera">Elija la carrera</label>
+                        <label for="carrera">Elija la carrera <span class="asterisco">*</span></label>
                         <div class="input-group">
                             <select class="form-control" v-model="id_carrera" @change="getCarrera" style="border-color:#000">
                             <option disabled value="">Elija la carrera del libro</option>
@@ -76,7 +79,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="pais">Elija el pais</label>
+                            <label for="pais">Elija el pais <span class="asterisco">*</span></label>
                             <div class="input-group">
                                 <select class="form-control" v-model="id_pais" @change="getPais" style="border-color:#000">
                                 <option disabled value="">Elija el pais del libro</option>
@@ -90,26 +93,26 @@
                             </div>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="edicion">Edicion</label>
+                            <label for="edicion">Edicion <span class="asterisco">*</span></label>
                             <input type="number" name="" placeholder="Edicion" class="form-control" min="1" v-model="edicion" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-2">
-                            <label for="anioPub">Año de publicación</label>
+                            <label for="anioPub">Año de publicación <span class="asterisco">*</span></label>
                             <input type="text" name="" placeholder="Año publicacion" class="form-control" v-model="anio_pub" style="border-color:#000">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="fechaAlta">Fecha alta</label>
+                            <label for="fechaAlta">Fecha alta <span class="asterisco">*</span></label>
                             <input type="date" name="" placeholder="Fecha alta" class="form-control" v-model="fecha_alta" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="noPagina">Numero páginas</label>
+                            <label for="noPagina">Numero páginas <span class="asterisco">*</span></label>
                             <input type="number" name="" placeholder="Paginas" class="form-control" min="1" v-model="paginas" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="ejemplares">Ejemplares del libro</label>
+                            <label for="ejemplares">Ejemplares del libro <span class="asterisco">*</span></label>
                             <input type="text" name="" placeholder="Ejemplares del libro" class="form-control" v-model="ejemplares" style="border-color:#000">
                         </div>
                     </div>
@@ -130,7 +133,7 @@
                         <span class="fas fa-save"></span>
                         Guardar</button>
                     </div>  
-                </form>
+                </div>
                 <br>
             </div>
         </div>

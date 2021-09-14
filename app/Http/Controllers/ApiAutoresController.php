@@ -44,6 +44,8 @@ class ApiAutoresController extends Controller
     public function show($id)
     {
         //
+        $autor = Autores::find($id);
+        return $autor;
     }
 
     /**

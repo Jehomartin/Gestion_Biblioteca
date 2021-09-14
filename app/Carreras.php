@@ -16,7 +16,7 @@ class Carreras extends Model
     public $timestamps = false;
 
     //llamado resto datos
-    public $Fillable = [
+    protected $Fillable = [
     	'id_carrera',
         'carrera',
     ];

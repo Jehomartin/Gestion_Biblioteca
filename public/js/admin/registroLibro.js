@@ -29,16 +29,15 @@ new Vue({
 
 	data:{
 		libros:[],
-
+		isbn:'',
+		titulo:'',
 		folio:'',
 		edicion:'',
 		anio_pub:'',
-		clasificacion:'',
 		fecha_alta:'',
 		paginas:'',
-		isbn:'',
-		titulo:'',
         ejemplares:'',
+        clasificacion:'',
         cutter:'',
 
         // datas para editorial
@@ -226,6 +225,13 @@ new Vue({
 			}).catch(function(json){
 				toastr.error("Pais no Registrado");
 			});
+		},
+
+		cancelarEdit:function(){
+			this.editorial='';
+			this.nombre='';
+			this.carrera='';
+			this.pais='';
 		},
 	},
 })

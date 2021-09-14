@@ -16,7 +16,7 @@ class paises extends Model
     public $timestamps = false;
 
     //llamado resto datos
-    public $Fillable = [
+    protected $Fillable = [
     	'id_pais',
     	'pais'
     ];

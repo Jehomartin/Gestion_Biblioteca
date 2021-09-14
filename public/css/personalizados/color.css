@@ -133,6 +133,6 @@ box-shadow: inset -100px -174px 145px -28px rgba(0,0,0,0.58);
 }
 
 .asterisco {
-    font-size: 40px;
-    color: green;
+  font-size: 20px;
+  color: red;
 }

@@ -16,7 +16,7 @@ class Autores extends Model
     public $timestamps = false;
 
     //se llama al resto de los atributos
-    public $Fillable = [
+    protected $Fillable = [
     	'id_autor',
     	'nombre'
     ];
