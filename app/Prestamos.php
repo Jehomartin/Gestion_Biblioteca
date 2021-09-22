@@ -22,14 +22,10 @@ class Prestamos extends Model
     //llamado del resto de datos
     protected $Fillable = [
     	'folioprestamo',
-        'isbn',
-        'titulo',
     	'fechaprestamo',
         'fechadevolucion',
         'matricula',
         'liberado',
-        'cantidad',
-        'consec'
     ];
 
     public function detalle(){

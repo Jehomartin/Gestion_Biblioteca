@@ -48,12 +48,10 @@ class ApiPrestamosController extends Controller
                 'folioprestamo'=>$request->get('folioprestamo'),
                 'isbn'=>$prestar1[$i]['isbn'],
                 'titulo'=>$prestar1[$i]['titulo'],
-                'consec'=>$prestar1[$i]['consec'],
+                'devuelto'=>$prestar1[$i]['devuelto'],
                 'cantidad'=>$prestar1[$i]['cantidad'],
             ];
         }
-
-
 
         $prestamo->save();
         DetallePrestamos::insert($prestar);

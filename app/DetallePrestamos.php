@@ -20,9 +20,7 @@ class DetallePrestamos extends Model
     	'folioprestamo',
     	'isbn',
     	'titulo',
-    	'clasificacion',
     	'devuelto',
-    	'consec',
     	'cantidad'
     ];
 
@@ -30,7 +28,7 @@ class DetallePrestamos extends Model
         return $this->belongsTo(Libros::class,'isbn','isbn');
     }
 
-    public function detalles(){
-        return $this->belongsTo(Prestamos::class,'folioprestamo','folioprestamo');
-    }
+    // public function detalles(){
+    //     return $this->belongsTo(Prestamos::class,'folioprestamo','folioprestamo');
+    // }
 }

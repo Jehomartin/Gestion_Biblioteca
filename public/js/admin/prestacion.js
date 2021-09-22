@@ -1,7 +1,7 @@
 var route = document.querySelector("[name=route]").value;
 var ruta = 'http://localhost/Gestion_Biblioteca/public/';
-var urlPresta = ruta + '/apiPrestamos';
-var urlLibro = ruta + '/apiLibros';
+var urlPresta = ruta + 'apiPrestamos';
+var urlLibro = ruta + 'apiLibros';
 // var urlEjemplar = ruta + '/apiEjemplares';
 
 function init()
@@ -46,7 +46,7 @@ function init()
 					var unprestado={
 						'isbn':response.data.isbn,
 						'titulo':response.data.titulo,
-						'consec':response.data.consec,
+						'devuelto':0,
 						'cantidad':1,
 					}
 
@@ -73,7 +73,7 @@ function init()
 					presta.push({
 						isbn:this.prestamos[i].isbn,
 						titulo:this.prestamos[i].titulo,
-						consec:this.prestamos[i].consec,
+						devuelto:0,
 						cantidad:1,
 					})
 				}
