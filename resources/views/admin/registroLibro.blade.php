@@ -118,14 +118,14 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label for="clasificacion">Clasificación</label>
                             <input type="text" name="" placeholder="Clasificacion" class="form-control" v-model="clasificacion" style="border-color:#000">
                         </div>
-                        <div class="form-group col-md-6">
+                        <!-- <div class="form-group col-md-6">
                             <label for="cutter">Cutter del libro</label>
                             <input type="text" name="" placeholder="Cutter del libro" class="form-control" v-model="cutter" style="border-color:#000">
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="pull-right">

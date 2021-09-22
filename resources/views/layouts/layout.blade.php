@@ -245,9 +245,9 @@
 <script src="js/toastr.js"></script>
 
 <!-- js para la tabla -->
-<script type="text/javascript" src="table/popper/popper.min.js"></script>
+<!-- <script type="text/javascript" src="table/popper/popper.min.js"></script>
 <script type="text/javascript" src="table/datatables/datatables.min.js"></script>
-<script type="text/javascript" src="table/main.js"></script>
+<script type="text/javascript" src="table/main.js"></script> -->
 <!-- fin js tabla -->
 
 <!-- jQuery -->

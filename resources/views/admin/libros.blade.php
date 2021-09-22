@@ -12,7 +12,7 @@
             <br>
             <!-- search form (Optional) -->
             <div class="input-group">
-                <input type="text" name="searchText" class="form-control" placeholder="Buscar..." style="border-color: black" v-model="buscar">
+                <input type="text" name="searchText" class="form-control" placeholder="Buscar..." style="background-color: white" v-model="buscar">
                 <span class="input-group-btn">
                     <button type="submit" name="search" id="search-btn" class="btn btn-flat" style="background-color: orange"><i class="fa fa-search"></i>
                     </button>
@@ -30,7 +30,7 @@
     <div class="table-responsive-md">
       <br>
       <font color="black" face="times new roman">
-        <h2 class="text text-center">LIBROS REGISTRADOS</h2>
+        <h1 class="text text-center">Libros Registrados</h1>
       </font>
       <table class="table table-sm table-striped table-bordered table-hover">
         <thead class="thead-dark">
@@ -48,7 +48,7 @@
             <td v-on:click="">@{{libro.isbn}}</td>
             <td v-on:click="">@{{libro.titulo}}</td>
             <td v-on:click="">@{{libro.autor.nombre}}</td>
-            <td v-on:click="">@{{libro.editorial.editorial}}</td>
+            <td v-on:click="">@{{libro.id_editorial}}</td>
             <td v-on:click="">@{{libro.carrera.carrera}}</td>
             <td v-on:click="">@{{libro.ejemplares}}</td>
             <!-- <td v-on:click="">@{{libro.cutter}}</td> -->
@@ -187,14 +187,10 @@
             </div>
 
             <div class="pull-right">
-                <button style="margin-left: 10px" type="submit" class="btn btn-primary" v-on:click="agregarLibro()" v-if="!editando">
-                <span class="fas fa-save"></span>
-                Guardar</button>
+                <button style="margin-left: 10px" type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="updateLibro(auxLibro)" v-if="editando">
+                <span class="fas fa-check"></span>
+                Actualizar</button>
             </div>
-            
-            <button type="submit" class="btn btn-primary" v-on:click="updateLibro(auxLibro)" v-if="editando">
-           
-            Actualizar</button>
           </div>
           </div>
           <!-- fin footer modal -->
