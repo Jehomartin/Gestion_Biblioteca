@@ -30,7 +30,7 @@
                         <div class="form-group col-md-6">
                             <label for="editorial">Elija la editorial <span class="asterisco">*</span></label>
                             <div class="input-group">
-                                <select class="form-control" id="selectEditorial" v-model="id_editorial" @change="getEditorial" style="border-color:#000">
+                                <select class="form-control" id="selectEditorial" v-model="id_editorial" @change="getEditorials" style="border-color:#000">
                                 
                                     <option disabled value="">Elija la editorial del libro</option>
                                     <option value="">Agregar Nuevo</option>
@@ -49,7 +49,7 @@
                         <div class="form-group col-md-6">
                             <label for="autor">Elija el autor <span class="asterisco">*</span></label>
                             <div class="input-group">
-                                <select class="form-control" id="selectAutor" v-model="id_autor" @change="getAutor" style="border-color:#000">
+                                <select class="form-control" id="selectAutor" v-model="id_autor" @change="getAutors" style="border-color:#000">
                                 <option disabled value="">Elija el Autor del libro</option>
                                 <option v-for="a in autores" v-bind:value="a.id_autor">@{{a.nombre}}</option>
                                 </select>
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <label for="carrera">Elija la carrera <span class="asterisco">*</span></label>
                         <div class="input-group">
-                            <select class="form-control" v-model="id_carrera" @change="getCarrera" style="border-color:#000">
+                            <select class="form-control" v-model="id_carrera" @change="getCarreras" style="border-color:#000">
                             <option disabled value="">Elija la carrera del libro</option>
                             <option v-for="c in carreras" v-bind:value="c.id_carrera">@{{c.carrera}}</option>
                             </select>
@@ -81,7 +81,7 @@
                         <div class="form-group col-md-6">
                             <label for="pais">Elija el pais <span class="asterisco">*</span></label>
                             <div class="input-group">
-                                <select class="form-control" v-model="id_pais" @change="getPais" style="border-color:#000">
+                                <select class="form-control" v-model="id_pais" @change="getPaiss" style="border-color:#000">
                                 <option disabled value="">Elija el pais del libro</option>
                                 <option v-for="p in paises" v-bind:value="p.id_pais">@{{p.pais}}</option>
                                 </select>

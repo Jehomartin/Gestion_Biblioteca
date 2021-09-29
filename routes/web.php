@@ -19,7 +19,10 @@ Route::get('/', function () {
 Route::apiResource('apiEjemplares','ApiEjemplaresController');
 Route::apiResource('apiAlumnos','ApiAlumnosController');
 Route::apiResource('apiDevoluciones','ApiDevolucionesController');
+// esta api es para realizar el actualizar y eliminar del libro
 Route::apiResource('apiLibros','ApiLibrosController');
+// esta api es para realizar el registro de un nuevo libro
+Route::apiResource('apiRegistroLibros','ApiLibrousController');
 Route::apiResource('apiPrestamos','ApiPrestamosController');
 Route::apiResource('apiUsuarios','ApiUsuariosController');
 Route::apiResource('apiAcceso','AccesoController');

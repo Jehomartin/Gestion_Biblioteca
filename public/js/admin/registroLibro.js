@@ -1,11 +1,11 @@
 var ruta = document.querySelector("[name=route]").value;
 var rute = 'http://localhost/Gestion_Biblioteca/public/';
-var urlLibros = rute + '/apiLibros';
-var urlEditorial = rute + '/apiEditoriales';
-var urlAutor = rute + '/apiAutores';
-var urlCarrera = rute + '/apiCarreras';
-var urlPais = rute + '/apiPais';
-var urlEjemplar = rute + '/apiEjemplares';
+var urlLibros = rute + 'apiRegistroLibros';
+var urlEditorial = rute + 'apiEditoriales';
+var urlAutor = rute + 'apiAutores';
+var urlCarrera = rute + 'apiCarreras';
+var urlPais = rute + 'apiPais';
+var urlEjemplar = rute + 'apiEjemplares';
 
 new Vue({
 
@@ -18,11 +18,11 @@ http:{
 el:"#registros",
 
 created:function(){
-	this.getLibros();
-	this.getEditorial();
-	this.getAutor();
-	this.getCarrera();
-	this.getPais();
+	this.getLibross();
+	this.getEditorials();
+	this.getAutors();
+	this.getCarreras();
+	this.getPaiss();
 },
 
 data:{
@@ -58,7 +58,7 @@ data:{
 	},
 
 methods:{
-	getLibros:function(){
+	getLibross:function(){
 		this.$http.get(urlLibros).then(function(response){
 			this.libros=response.data;
 		}).catch(function(response){
@@ -66,7 +66,7 @@ methods:{
 		});
 	},
 
-	getEditorial:function(){
+	getEditorials:function(){
 		this.$http.get(urlEditorial).then(function(response){
 			this.editoriales=response.data;
 		}).catch(function(response){
@@ -74,7 +74,7 @@ methods:{
 		});
 	},
 
-	getAutor:function(){
+	getAutors:function(){
 		this.$http.get(urlAutor).then(function(response){
 			this.autores=response.data;
 		}).catch(function(response){
@@ -82,7 +82,7 @@ methods:{
 		});
 	},
 
-	getCarrera:function(){
+	getCarreras:function(){
 		this.$http.get(urlCarrera).then(function(response){
 			this.carreras=response.data;
 		}).catch(function(response){
@@ -90,7 +90,7 @@ methods:{
 		});
 	},
 
-	getPais:function(){
+	getPaiss:function(){
 		this.$http.get(urlPais).then(function(response){
 			this.paises=response.data;
 		}).catch(function(response){
@@ -156,7 +156,7 @@ methods:{
 
 		//se realiza el post para enviar el json y entrar al metodo store de la api
 		this.$http.post(urlLibros,libro).then(function(response) {
-		this.getLibros();
+		this.getLibross();
 		toastr.success("libro agregado con exito");
 
 		}).catch(function(response){
@@ -172,7 +172,7 @@ methods:{
 		};
 
 		this.$http.post(urlEditorial,editor).then(function(response){
-			this.getEditorial();
+			this.getEditorials();
 			$('#Editorial').modal('hide');
 			toastr.success("Editorial Agregado");
 			this.editorial='';
@@ -188,7 +188,7 @@ methods:{
 			nombre:this.nombre
 		};
 		this.$http.post(urlAutor,aut).then(function(response){
-			this.getAutor();
+			this.getAutors();
 			$('#Autor').modal('hide');
 			toastr.success("Autor agregado");
 		}).catch(function(response){
@@ -203,7 +203,7 @@ methods:{
 		};
 
 		this.$http.post(urlCarrera,carer).then(function(response){
-			this.getCarrera();
+			this.getCarreras();
 			$('#Carrera').modal('hide');
 			toastr.success("Carrera Registrada");
 		}).catch(function(response){
@@ -217,7 +217,7 @@ methods:{
 			pais:this.pais
 		};
 		this.$http.post(urlPais,pays).then(function(json){
-			this.getPais();
+			this.getPaiss();
 			$('#Pais').modal('hide');
 			toastr.success("Pais Registrado");
 		}).catch(function(json){

@@ -77,10 +77,13 @@
         <div class="modal-content">
           <!-- se inicia el encabezado de la ventana modal -->
           <div class="modal-header" style="background-color: #f39c12">
-            <h5 class="modal-title" id="exampleModalLiveLabel" v-if="!editando"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registrando Libro</font></font></h5>
-            <h5 class="modal-title" id="exampleModalLiveLabel" v-if="editando"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Editando Libro</font></font></h5>
+            <h5 class="modal-title" id="exampleModalLiveLabel">
+              <font style="vertical-align: inherit;">Editando Libro</font>
+            </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
-              <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
+              <span aria-hidden="true">
+                <font style="vertical-align: inherit;">x</font>
+              </span>
             </button>
             <!-- <span aria-hidden="true">&times;</span> -->
           </div>
@@ -187,7 +190,7 @@
             </div>
 
             <div class="pull-right">
-                <button style="margin-left: 10px" type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="updateLibro(auxLibro)" v-if="editando">
+                <button style="margin-left: 10px" type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="updateLibro(auxLibro)">
                 <span class="fas fa-check"></span>
                 Actualizar</button>
             </div>

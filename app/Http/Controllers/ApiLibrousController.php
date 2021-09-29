@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Libros;
-// use App\Editoriales;
+use App\Librous;
 
-class ApiLibrosController extends Controller
+class ApiLibrousController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class ApiLibrosController extends Controller
     public function index()
     {
         //
-        return Libros::all();
+        return Librous::all();
     }
 
     /**
@@ -28,6 +27,24 @@ class ApiLibrosController extends Controller
     public function store(Request $request)
     {
         //
+        $librou = new Librous;
+
+        $librou->isbn = $request->get('isbn');
+        $librou->folio = $request->get('isbn');
+        $librou->titulo = $request->get('titulo');
+        $librou->id_editorial = $request->get('id_editorial');
+        $librou->id_autor = $request->get('id_autor');
+        $librou->id_carrera =$request->get('id_carrera');
+        $librou->edicion = $request->get('edicion');
+        $librou->anio_pub = $request->get('anio_pub');
+        $librou->id_pais = $request->get('id_pais');
+        $librou->fecha_alta = $request->get('fecha_alta');
+        $librou->paginas = $request->get('paginas');
+        $librou->ejemplares = $request->get('ejemplares');
+        $librou->clasificacion = $request->get('clasificacion');
+        $librou->cutter =$request->get('cutter');
+
+        $librou->save();
     }
 
     /**
@@ -39,7 +56,6 @@ class ApiLibrosController extends Controller
     public function show($id)
     {
         //
-        return Libros::find($id);
     }
 
     /**
@@ -52,24 +68,6 @@ class ApiLibrosController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $libro = Libros::find($id);
-
-        $libro->isbn = $request->get('isbn');
-        $libro->folio = $request->get('isbn');
-        $libro->titulo = $request->get('titulo');
-        $libro->id_editorial = $request->get('id_editorial');
-        $libro->id_autor = $request->get('id_autor');
-        $libro->id_carrera =$request->get('id_carrera');
-        $libro->edicion = $request->get('edicion');
-        $libro->anio_pub = $request->get('anio_pub');
-        $libro->id_pais = $request->get('id_pais');
-        $libro->fecha_alta = $request->get('fecha_alta');
-        $libro->paginas = $request->get('paginas');
-        $libro->ejemplares = $request->get('ejemplares');
-        $libro->clasificacion = $request->get('clasificacion');
-        $libro->cutter =$request->get('cutter');
-
-        $libro->update();
     }
 
     /**
@@ -81,6 +79,5 @@ class ApiLibrosController extends Controller
     public function destroy($id)
     {
         //
-        return Libros::destroy($id);
     }
 }
