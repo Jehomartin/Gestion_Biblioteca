@@ -197,11 +197,23 @@ new Vue({
 
 				$('#modal_custom').modal('hide');
 
-				toastr.success("Actualizacion de libro exitosa");
+				swal({
+					title: "Libro Actualizado",
+					text: "Se modificaron los campos del libro",
+					icon: "success",
+					buttons:false,
+					timer: 3000,
+				});
 
 			}).catch(function(response){
 
-				toastr.error("Actualizacion fallida, ocurrio un error");
+				swal({
+					title: "Falló la actualización",
+					text: "El proceso no se completo, ocurrio un error",
+					icon: "error",
+					buttons:false,
+					timer: 3000,
+				});
 
 			});
 
@@ -209,18 +221,37 @@ new Vue({
 		},
 
 		eliminarLibro:function(id){
-			var resp =confirm("Esta seguro de eliminar el libro")
-			if (resp==true) 
-			{
-				this.$http.delete(urlLibros + '/' + id).then(function(json){
-					this.getLibros();
-				});
-				toastr.success("Libro eliminado");
-			}
-			else{
-				toastr.info("El libro no se elimino");
-			}
 			
+			swal({
+                title: 'Aviso',
+                text: "¿Está seguro de eliminar este registro?",
+                type: 'warning',
+                buttons: {
+                    confirm: {
+                        text: 'Eliminar!',
+                        className: 'btn btn-success'
+                    },
+                    cancel: {
+                        visible: true,
+                        className: 'btn btn-danger'
+                    },
+                },
+            }).then((result) => {
+                if (result) {
+                    this.$http.delete(urlLibros + '/' + id).then(function(json){
+                            swal({
+                                title: '¡Eliminado!',
+                                text: 'Usted a eliminado el registro corréctamente',
+                                icon: 'success',
+                                buttons: false,
+                                timer: 1500
+                            });
+                            this.getLibros();
+                        });
+                } else {
+                    swal.close();
+                }
+            });
 		},
 
 		cancelarEdit:function(){
@@ -266,11 +297,27 @@ new Vue({
 				this.getEjemplar();
 				$('#modal_ejemplar').modal('hide');
 
-				toastr.success("Ejemplar agregado con exito!!");
+				swal({
+					title: "Ejemplar agregado",
+					text: "Registro de ejemplar exitoso",
+					icon: "success",
+					buttons: {
+						comfirm: {
+							text: 'OK',
+							className: 'btn btn-success'
+						},
+					},
+					timer: 3000,
+				});
 
 			}).catch(function(response){
 
-				toastr.error("Ejemplar no agregado ocurrio un error");
+				swal({
+					text: "Ejemplar no registrado",
+					icon: "error",
+					buttons: false,
+					timer: 3000,
+				});
 
 			});
 

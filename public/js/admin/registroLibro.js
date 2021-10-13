@@ -62,7 +62,7 @@ methods:{
 		this.$http.get(urlLibros).then(function(response){
 			this.libros=response.data;
 		}).catch(function(response){
-			console.log(response);
+			// console.log(response);
 		});
 	},
 
@@ -70,7 +70,7 @@ methods:{
 		this.$http.get(urlEditorial).then(function(response){
 			this.editoriales=response.data;
 		}).catch(function(response){
-			console.log(response);
+			// console.log(response);
 		});
 	},
 
@@ -78,7 +78,7 @@ methods:{
 		this.$http.get(urlAutor).then(function(response){
 			this.autores=response.data;
 		}).catch(function(response){
-			console.log(response);
+			// console.log(response);
 		});
 	},
 
@@ -86,7 +86,7 @@ methods:{
 		this.$http.get(urlCarrera).then(function(response){
 			this.carreras=response.data;
 		}).catch(function(response){
-			console.log(response);
+			// console.log(response);
 		});
 	},
 
@@ -94,7 +94,7 @@ methods:{
 		this.$http.get(urlPais).then(function(response){
 			this.paises=response.data;
 		}).catch(function(response){
-			console.log(response);
+			// console.log(response);
 		});
 	},
 
@@ -157,10 +157,22 @@ methods:{
 		//se realiza el post para enviar el json y entrar al metodo store de la api
 		this.$http.post(urlLibros,libro).then(function(response) {
 		this.getLibross();
-		toastr.success("libro agregado con exito");
+		swal({
+			title: "Libro agregado",
+			text: "El libro fue registrado exitosamente",
+			icon: "success",
+			buttons:false,
+			timer: 3000,
+		});
 
 		}).catch(function(response){
-			toastr.error("Libro no agregado ocurrio un error o dejo algun campo importante vacío");
+			swal({
+				title: "Libro no registrado",
+				text: "Verifique si lleno todos los campos importantes",
+				icon: "error",
+				buttons:false,
+				timer: 3000,
+			});
 
 		});
     
@@ -174,10 +186,20 @@ methods:{
 		this.$http.post(urlEditorial,editor).then(function(response){
 			this.getEditorials();
 			$('#Editorial').modal('hide');
-			toastr.success("Editorial Agregado");
+			swal({
+				title: "Editorial agregada",
+				icon: "success",
+				buttons:false,
+				timer: 3000,
+			});
 			this.editorial='';
 		}).catch(function(response){
-			toastr.error("Editorial no agregado");
+			swal({
+				title: "Editorial no agregada",
+				icon: "error",
+				buttons:false,
+				timer: 3000,
+			});
 		});
 	},
 
@@ -190,9 +212,19 @@ methods:{
 		this.$http.post(urlAutor,aut).then(function(response){
 			this.getAutors();
 			$('#Autor').modal('hide');
-			toastr.success("Autor agregado");
+			swal({
+				title: "Autor agregado",
+				icon: "success",
+				buttons:false,
+				timer: 3000,
+			});
 		}).catch(function(response){
-			toastr.error("Autor no registrado");
+			swal({
+				title: "Autor no agregado",
+				icon: "error",
+				buttons:false,
+				timer: 3000,
+			});
 		});
 	},
 
@@ -205,9 +237,19 @@ methods:{
 		this.$http.post(urlCarrera,carer).then(function(response){
 			this.getCarreras();
 			$('#Carrera').modal('hide');
-			toastr.success("Carrera Registrada");
+			swal({
+				title: "Carrera agregada",
+				icon: "success",
+				buttons:false,
+				timer: 3000,
+			});
 		}).catch(function(response){
-			toastr.error("Carrera no Registrada");
+			swal({
+				title: "Carrera no agregada",
+				icon: "error",
+				buttons:false,
+				timer: 3000,
+			});
 		});
 	},
 
@@ -219,9 +261,19 @@ methods:{
 		this.$http.post(urlPais,pays).then(function(json){
 			this.getPaiss();
 			$('#Pais').modal('hide');
-			toastr.success("Pais Registrado");
+			swal({
+				title: "País agregado",
+				icon: "success",
+				buttons:false,
+				timer: 3000,
+			});
 		}).catch(function(json){
-			toastr.error("Pais no Registrado");
+			swal({
+				title: "País no agregado",
+				icon: "error",
+				buttons:false,
+				timer: 3000,
+			});
 		});
 	},
 

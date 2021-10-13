@@ -43,6 +43,15 @@ function init()
 			getLibros:function(){
 				this.$http.get(urlLibro + '/' + this.codigo)
 				.then(function(response){
+					if (response.data==="") {
+						swal({
+							text: "El libro no se encuentra disponible ",
+							icon: "warning",
+							buttons: ['OK'],
+							timer: 4000,
+						})
+						this.codigo='';
+					}
 					var unprestado={
 						'isbn':response.data.isbn,
 						'titulo':response.data.titulo,
@@ -68,14 +77,20 @@ function init()
 			},
 
 			prestar:function(){
-				var presta=[];
+				
+				var detalles2=[];
+				var newdetalle3=[];
+
 				for (var i = 0; i < this.prestamos.length; i++) {
-					presta.push({
+					detalles2.push({
 						isbn:this.prestamos[i].isbn,
 						titulo:this.prestamos[i].titulo,
 						devuelto:0,
 						cantidad:1,
 					})
+
+					var set = new Set(detalles2.map(JSON.stringify))
+					var newdetalle3 = Array.from(set).map(JSON.parse);
 				}
 
 				var unPrestamo={
@@ -83,19 +98,78 @@ function init()
 					fechaprestamo:this.fechaprestamo,
 					fechadevolucion:this.fechadevolucion,
 					matricula:this.matricula,
-					prestar1:presta
-				};
+					liberado:0,
+					newdetalle3:newdetalle3
+				}
 
-				this.$http.post(urlPresta,unPrestamo).then(function(response){
-					toastr.success("Prestamo realizado con exito");
-					this.foliarprestamo();
-					this.prestamos=[];
-					this.fechadevolucion='';
-					this.matricula='';
-				}).catch(function(response){
-					toastr.error("Prestamo no realizado");
-				});
+				if(newdetalle3=="")
+				{
+					swal({
+						title: "Datos Vacíos",
+						text: "No hay datos para realizar el prestamo",
+						icon: "error",
+						buttons: "ok",
+						timer: 4000,
+					  });
+				}
 
+				else if(detalles2.length!=newdetalle3.length){
+					swal({
+						title: "Datos repetidos",
+						text: "Solo se tomara en cuenta un libro ¿continuar?",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					  }).then((willDelete) => {
+						if (willDelete) {
+							this.$http.post(urlPresta,unPrestamo)
+							.then(function(json){
+							swal("Prestamo realizado con éxito, con folio:" + unPrestamo.folioprestamo, {
+								icon: "success",
+							});
+								this.foliarprestamo();
+								this.fechadevolucion='';
+								this.matricula='';
+								this.prestamos=[];
+							// document.getElementById("libro").disabled=true;
+							}).catch(function(json){
+								swal({
+									title: "Prestamo fallido",
+									text: "No se pudo realizar el prestamo",
+									icon: "error",
+									buttons: false,
+									timer: 3000,
+								});
+							});
+						}
+						else{
+							swal("revise los libros repetidos porfavor");
+						}
+					  });
+				}
+				else{
+					this.$http.post(urlPresta,unPrestamo).then(function(response){
+						swal({
+							title: "Prestamo Exitoso",
+							text: "Prestamo realizado correctamente con folio: \n " + unPrestamo.folioprestamo,
+							icon: "success",
+							buttons: false,
+							timer: 3000,
+						});
+						this.foliarprestamo();
+						this.prestamos=[];
+						this.fechadevolucion='';
+						this.matricula='';
+					}).catch(function(response){
+						swal({
+							title: "Prestamo fallido",
+							text: "No se pudo realizar el prestamo",
+							icon: "error",
+							buttons: false,
+							timer: 3000,
+						});
+					});
+				}
 			},
 		},
 	});

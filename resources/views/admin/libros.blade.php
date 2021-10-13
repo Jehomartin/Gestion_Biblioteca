@@ -48,7 +48,7 @@
             <td v-on:click="">@{{libro.isbn}}</td>
             <td v-on:click="">@{{libro.titulo}}</td>
             <td v-on:click="">@{{libro.autor.nombre}}</td>
-            <td v-on:click="">@{{libro.id_editorial}}</td>
+            <td v-on:click="">@{{libro.edit.editorial}}</td>
             <td v-on:click="">@{{libro.carrera.carrera}}</td>
             <td v-on:click="">@{{libro.ejemplares}}</td>
             <!-- <td v-on:click="">@{{libro.cutter}}</td> -->
@@ -81,9 +81,7 @@
               <font style="vertical-align: inherit;">Editando Libro</font>
             </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
-              <span aria-hidden="true">
-                <font style="vertical-align: inherit;">x</font>
-              </span>
+              <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
             </button>
             <!-- <span aria-hidden="true">&times;</span> -->
           </div>
@@ -222,47 +220,54 @@
             <!-- fin encabezado de ventana modal -->
 
             <!-- inicio cuerpo modal -->
-            <div class="modal-body div1">
+            <div class="modal-body div5" >
               <!-- <div class="form-group"> -->
-                <label for="clasificacion">Clasificación del ejemplar</label>
-                <input type="text" name="" placeholder="clasificacion del ejemplar" class="form-control" v-model='clasificacion'>
-              <!-- </div> -->
+              <div class="form-group">
+                <label for="folio">Folio</label>
+                <input type="text" name="" placeholder="folio" class="form-control" style="border-color:#000">
+              </div>
+                <!-- </div> -->
               <!-- <div class="form-group"> -->
-                <label for="folio">Folio del Libro</label>
-                <input type="text" name="" placeholder="folio del libro" class="form-control" v-model="folio">
-              <!-- </div> -->
+              <div class="form-group">
+                <label for="titulo">Titulo</label>
+                <input type="text" name="" placeholder="titulo" class="form-control" style="border-color:#000">
+              </div>
+                <!-- </div> -->
+              <div class="form-group">
+                <label for="autor">Elija el autor</label>
+                  <div class="input-group">
+                    <select class="form-control"  @change="getAutor" style="border-color:#000">
+                      <option disabled value="">Elija el Autor del libro</option>
+                      <option v-for="a in autores" v-bind:value="a.id_autor">@{{a.nombre}}</option>
+                    </select>
+                  </div>
+              </div>
+            <div class="form-group">
+              <label for="editorial">Elija la editorial</label>
+              <div class="input-group">
+                <select class="form-control" id="selectEditorial"  @change="getEditorial" style="border-color:#000">
+              
+                  <option disabled value="">Elija la editorial del libro</option>
+                  <!-- <option value="1">Agregar nueva editorial</option> -->
+                  <option v-for="e in editoriales" v-bind:value="e.id_editorial">@{{e.editorial}}</option>
+                </select>
+              </div>
+            </div>
               <!-- <div class="form-group"> -->
-                <label for="esbase">Identificador de base del ejemplar</label>
-                <input type="text" name="" placeholder="identificador de base" class="form-control" v-model="esbase">  
+                <label for="no_ejemplar">No. de ejemplar</label>
+                <input type="text" name="" placeholder="No. de ejemplar" class="form-control" style="border-color:#000">  
               <!-- </div> -->
-              <!-- <div class="form-group"> -->
-                <label for="prestado">Indicador de prestamo de ejemplar</label>
-                <input type="text" name="" placeholder="identificador de prestamo" class="form-control" v-model="prestado">
-              <!-- </div> -->
-              <label for="comentario">Comentario sobre el ejemplar</label> 
-              <input type="text" placeholder="Comentario sobre el ejemplar" class="form-control" v-model="comentario">
 
-              <label for="consec">Consecuente del libro</label>
-              <input type="text" name="" placeholder="Consec" class="form-control" v-model="consec">
-
-              <label for="fecha_alta">Fecha de alta del ejemplar</label>
-              <input type="date" name="" placeholder="Fecha de Alta" class="form-control" v-model="fecha_alta">
-
-              <label for="solodewee">Solo dewee del ejemplar</label>
-              <input type="text" name="" placeholder="Solo Dewee" class="form-control" v-model="solodewee">
-
-              <label for="deweecompleto"> Dewee Completo</label>
-              <input type="text" name="" placeholder="Dewee completo" class="form-control" v-model="deweecompleto">
             </div><!-- fin cuerpo modal -->
 
             <!-- footer modal -->
-            <div class="modal-footer div1">
+            <div class="modal-footer div5">
               <div class="pull-right">
                   <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelEditj()">Cancelar</button>
               </div>
 
               <div class="pull-right">
-                  <button style="margin-left: 10px" type="submit" class="btn btn-primary" v-on:click="agregarEjemplar()" v-if="!editejem">Guardar</button>
+                  <button style="margin-left: 10px" type="submit" class="btn btn-primary" v-on:click="" v-if="!editejem">Guardar</button>
               </div>
             </div><!-- fin footer modal -->
           </div> <!--fin modal content-->

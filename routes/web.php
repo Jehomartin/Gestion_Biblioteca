@@ -23,6 +23,7 @@ Route::apiResource('apiDevoluciones','ApiDevolucionesController');
 Route::apiResource('apiLibros','ApiLibrosController');
 // esta api es para realizar el registro de un nuevo libro
 Route::apiResource('apiRegistroLibros','ApiLibrousController');
+//
 Route::apiResource('apiPrestamos','ApiPrestamosController');
 Route::apiResource('apiUsuarios','ApiUsuariosController');
 Route::apiResource('apiAcceso','AccesoController');

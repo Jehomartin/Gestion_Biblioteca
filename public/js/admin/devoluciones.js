@@ -1,6 +1,6 @@
 var rut = document.querySelector("[name=route]").value;
 var route = 'http://localhost/Gestion_Biblioteca/public/';
-var urlDetalles = route + '/apiDetalles';
+var urlDetalles = route + 'apiDetalles';
 
 function init()
 {
@@ -52,7 +52,7 @@ function init()
 				this.$http.get(urlDetalles).then(function(json){
 					this.detalleprestamos=json.data;
 				}).catch(function(json){
-					// console.log(json);
+					toastr.error("no se encontraron datos");
 				});
 			},
 
@@ -66,7 +66,13 @@ function init()
 
 			infoPrestamo:function(id){
 				this.editando=true;
-				toastr.info("Esta visualizando la informacion del prestamo");
+				swal({
+					title: "Información",
+					text: "Esta visualizando informacion del prestamo",
+					icon: "info",
+					buttons: false,
+					timer: 2000,
+				});
 				$('#modal_custom').modal('show');
 				//peticion al servidor
 				this.$http.get(urlDetalles + '/' + id).then
