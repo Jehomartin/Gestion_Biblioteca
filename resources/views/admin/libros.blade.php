@@ -26,19 +26,20 @@
           <div class="col-md-3"></div>
       </div>
     </div>
+    
     <!-- <br> -->
 
 <div id="table-wrapper">
-    <div id="table-scroll">
+  <div id="table-scroll">
         <!-- <table bgcolor="white" border="0" cellpadding="0" cellspacing="0" id="header-fixed" width="100%" overflow="scroll" class="scrollTable"> -->
-  <div class="row">
+    <div class="row">
     <div class="col-md-12">
     <div class="table-responsive-md">
       <!-- <br> -->
       <font color="black" face="times new roman">
-        <h3 class="text text-center">Libros Registrados</h3>
+        <h4 class="text text-center">Libros Registrados</h4>
       </font>
-      <table class="table table-sm table-striped table-bordered table-hover">
+      <table style="font-size:14px" class="table table-sm table-striped table-bordered table-hover tamanio-font">
         <thead class="thead-dark">
           <th width="7%">ISBN</th>
           <th style width="10px">TITULO</th>
@@ -75,53 +76,10 @@
         </tbody>
       </table>
     </div>
-    </div>
-    </div>
-</div>
+  </div>
 </div>
 
 
-    <!-- INICIA CODIFICACION FILTRO AJEMPLARES  -->
-<div id="table-wrapper">
-  <div id="table-scroll">
-        <!-- <table bgcolor="white" border="0" cellpadding="0" cellspacing="0" id="header-fixed" width="100%" overflow="scroll" class="scrollTable"> -->
-    <div class="row">
-     <div class="col-md-12">
-      <div class="table-responsive-md">
-      <!-- <br> -->
-      <!-- <font color="black" face="times new roman">
-        <h3 class="text text-center">Libros Registrados</h3>
-      </font> -->
-      <table class="table table-sm table-striped table-bordered table-hover">
-        <thead class="thead-dark">
-          <th width="7%">ISBN</th>
-          <th>TITULO</th>
-          <th>AUTOR</th>
-          <th>EDITORIAL</th>
-          <th>CARRERA</th>
-          <th width="8%">EJEMPLARES</th>
-          <!-- <th width="5%">CUTTER</th> -->
-          <!-- <th width="15%">OPCIONES</th> -->
-        </thead>
-        <tbody>
-          <tr v-for="(libro,index) in filtroLibros">
-            <td v-on:click="">@{{libro.isbn}}</td>
-            <td v-on:click="">@{{libro.titulo}}</td>
-            <td v-on:click="">@{{libro.autor.nombre}}</td>
-            <td v-on:click="">@{{libro.editorial.editorial}}</td>
-            <td v-on:click="">@{{libro.carrera.carrera}}</td>
-            <td v-on:click="">@{{libro.ejemplares}}</td>
-            <!-- <td v-on:click="">@{{libro.cutter}}</td> -->
-           
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    </div>
-    </div>
-
-    <!-- FIN DE EJEMPLARES -->
-    
     <!-- inicio ventana modal -->
     <div id="modal_custom" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <!--inicio modal dialog-->
@@ -318,8 +276,61 @@
           </div> <!--fin modal content-->
         </div><!--/modal dialog-->
       </div><!--fin ventana modal-->
+
+    <!--INICIO FILTRO EJEMPLARES  -->
+    <div id="table-wrapper">
+  <div id="table-scroll">
+        <!-- <table bgcolor="white" border="0" cellpadding="0" cellspacing="0" id="header-fixed" width="100%" overflow="scroll" class="scrollTable"> -->
+    <div class="row">
+    <div class="col-md-12">
+    <div class="table-responsive-md">
+      <!-- <br> -->
+   
+      <table style="font-size:13px" class="table table-sm table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+          <th width="7%">ISBN</th>
+          <th style width="10px">TITULO</th>
+          <th>AUTOR</th>
+          <th>EDITORIAL</th>
+          <th>CARRERA</th>
+          <!-- <th width="8%">EJEMPLARES</th> -->
+          <!-- <th width="5%">CUTTER</th> -->
+          <th width="15%">OPCIONES</th>
+        </thead>
+        <tbody>
+          <tr v-for="(libro,index) in filtroLibros">
+            <td v-on:click="">@{{libro.isbn}}</td>
+            <td v-on:click="">@{{libro.titulo}}</td>
+            <td v-on:click="">@{{libro.autor.nombre}}</td>
+            <td v-on:click="">@{{libro.editorial.editorial}}</td>
+            <td v-on:click="">@{{libro.carrera.carrera}}</td>
+            <!-- <td v-on:click="">@{{libro.ejemplares}}</td> -->
+            <!-- <td v-on:click="">@{{libro.cutter}}</td> -->
+            <td>
+              <center>
+
+                <span class="btn btn-primary fas fa-edit" 
+                v-on:click="editLibro(libro.isbn)"></span>
+               
+                <span class="btn btn-danger fas fa-trash-alt" 
+                v-on:click="eliminarLibro(libro.isbn)"></span>
+
+                <span class="btn btn-success fas fa-share-square" v-on:click="showEjemplar"></span>
+                
+              </center>
+            </td> 
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
+    <!-- FIN EJEMPLARES -->
+
+  </div>
+</div>
+
+
 
 
 
