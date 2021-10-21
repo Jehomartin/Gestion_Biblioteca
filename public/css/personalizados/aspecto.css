@@ -161,7 +161,7 @@ box-shadow: inset -66px -73px 120px 23px rgba(242,242,169,1);
   justify-content: center;
   padding-top: 20px;
 }
-}
+
 
 .login100-form-btn {
   font-family: Montserrat-Bold;
@@ -299,4 +299,24 @@ box-shadow: inset -66px -73px 120px 23px rgba(242,242,169,1);
   color: black;
   border: 2px;
   border-radius: 30%;
+}
+
+/* Probando css para adaptar ventana de libros */
+.table-responsive{
+  max-height: 20em;
+}
+
+.body{
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.table-fixed tbody{
+  height: 233px;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.table-fixed tbody{
+  display: block;
 }

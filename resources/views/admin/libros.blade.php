@@ -2,6 +2,9 @@
 @section('titulo','Libros')
 @section('contenido')
 
+<!-- links de fixed -->
+<!-- <link rel="stylesheet" href="css/personalizados/aspecto.css"> -->
+<link rel="stylesheet" href="css/personalizados/stylo3.css">
 <!-- El id es del identificador del js -->
 <div id="libro">
 
@@ -9,7 +12,7 @@
       <div class="row">
         <div class="col-md-3"></div>
           <div class="col-md-6">
-            <br>
+            <!-- <br> -->
             <!-- search form (Optional) -->
             <div class="input-group">
                 <input type="text" name="searchText" class="form-control" placeholder="Buscar..." style="background-color: white" v-model="buscar">
@@ -23,19 +26,22 @@
           <div class="col-md-3"></div>
       </div>
     </div>
-    <br>
+    <!-- <br> -->
 
+<div id="table-wrapper">
+    <div id="table-scroll">
+        <!-- <table bgcolor="white" border="0" cellpadding="0" cellspacing="0" id="header-fixed" width="100%" overflow="scroll" class="scrollTable"> -->
   <div class="row">
     <div class="col-md-12">
     <div class="table-responsive-md">
-      <br>
+      <!-- <br> -->
       <font color="black" face="times new roman">
-        <h1 class="text text-center">Libros Registrados</h1>
+        <h3 class="text text-center">Libros Registrados</h3>
       </font>
       <table class="table table-sm table-striped table-bordered table-hover">
         <thead class="thead-dark">
           <th width="7%">ISBN</th>
-          <th>TITULO</th>
+          <th style width="10px">TITULO</th>
           <th>AUTOR</th>
           <th>EDITORIAL</th>
           <th>CARRERA</th>
@@ -48,7 +54,7 @@
             <td v-on:click="">@{{libro.isbn}}</td>
             <td v-on:click="">@{{libro.titulo}}</td>
             <td v-on:click="">@{{libro.autor.nombre}}</td>
-            <td v-on:click="">@{{libro.id_editorial}}</td>
+            <td v-on:click="">@{{libro.editorial.editorial}}</td>
             <td v-on:click="">@{{libro.carrera.carrera}}</td>
             <td v-on:click="">@{{libro.ejemplares}}</td>
             <!-- <td v-on:click="">@{{libro.cutter}}</td> -->
@@ -69,6 +75,53 @@
         </tbody>
       </table>
     </div>
+    </div>
+    </div>
+</div>
+</div>
+
+
+    <!-- INICIA CODIFICACION FILTRO AJEMPLARES  -->
+<div id="table-wrapper">
+  <div id="table-scroll">
+        <!-- <table bgcolor="white" border="0" cellpadding="0" cellspacing="0" id="header-fixed" width="100%" overflow="scroll" class="scrollTable"> -->
+    <div class="row">
+     <div class="col-md-12">
+      <div class="table-responsive-md">
+      <!-- <br> -->
+      <!-- <font color="black" face="times new roman">
+        <h3 class="text text-center">Libros Registrados</h3>
+      </font> -->
+      <table class="table table-sm table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+          <th width="7%">ISBN</th>
+          <th>TITULO</th>
+          <th>AUTOR</th>
+          <th>EDITORIAL</th>
+          <th>CARRERA</th>
+          <th width="8%">EJEMPLARES</th>
+          <!-- <th width="5%">CUTTER</th> -->
+          <!-- <th width="15%">OPCIONES</th> -->
+        </thead>
+        <tbody>
+          <tr v-for="(libro,index) in filtroLibros">
+            <td v-on:click="">@{{libro.isbn}}</td>
+            <td v-on:click="">@{{libro.titulo}}</td>
+            <td v-on:click="">@{{libro.autor.nombre}}</td>
+            <td v-on:click="">@{{libro.editorial.editorial}}</td>
+            <td v-on:click="">@{{libro.carrera.carrera}}</td>
+            <td v-on:click="">@{{libro.ejemplares}}</td>
+            <!-- <td v-on:click="">@{{libro.cutter}}</td> -->
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    </div>
+
+    <!-- FIN DE EJEMPLARES -->
+    
     <!-- inicio ventana modal -->
     <div id="modal_custom" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <!--inicio modal dialog-->
