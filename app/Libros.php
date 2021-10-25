@@ -13,7 +13,7 @@ class Libros extends Model
     protected $primaryKey = "isbn";
 
     //union con llaves foraneas
-    protected $with=['autor','edit','carrera','pais'];
+    protected $with=['autor','editorial','carrera','pais'];
 
     //incrementable o de tiempo;
     public $incrementing = false;
