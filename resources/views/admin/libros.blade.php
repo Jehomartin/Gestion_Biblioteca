@@ -55,11 +55,7 @@
             <td v-on:click="">@{{libro.isbn}}</td>
             <td v-on:click="">@{{libro.titulo}}</td>
             <td v-on:click="">@{{libro.autor.nombre}}</td>
-<<<<<<< HEAD
-            <!-- <td v-on:click="">@{{libro.editorial.editorial}}</td> -->
-=======
-            <td v-on:click="">@{{libro.edit.editorial}}</td>
->>>>>>> 29d6b0b9797f9cc736be6fa2441d315a6ba03c7d
+            <td v-on:click="">@{{libro.editorial.editorial}}</td>
             <td v-on:click="">@{{libro.carrera.carrera}}</td>
             <td v-on:click="">@{{libro.ejemplares}}</td>
             <!-- <td v-on:click="">@{{libro.cutter}}</td> -->
@@ -314,7 +310,7 @@
             <td v-on:click="">@{{libro.isbn}}</td>
             <td v-on:click="">@{{libro.titulo}}</td>
             <td v-on:click="">@{{libro.autor.nombre}}</td>
-            <td v-on:click="">@{{libro.edit.editorial}}</td>
+            <td v-on:click="">@{{libro.editorial.editorial}}</td>
             <td v-on:click="">@{{libro.carrera.carrera}}</td>
             <!-- <td v-on:click="">@{{libro.ejemplares}}</td> -->
             <!-- <td v-on:click="">@{{libro.cutter}}</td> -->
