@@ -39,22 +39,22 @@ class ApiPrestamosController extends Controller
         $prestamo->matricula = $request->get('matricula');
         $prestamo->liberado = $request->get('liberado');
 
-        $prestar=[];
+        $detalle1=[];
 
-        $prestar1 = $request->get('prestar1');
+        $newdetalle3 = $request->get('newdetalle3');
 
-        for ($i=0; $i < count($prestar1); $i++) { 
-            $prestar[]=[
+        for ($i=0; $i < count($newdetalle3); $i++) { 
+            $detalle1[]=[
                 'folioprestamo'=>$request->get('folioprestamo'),
-                'isbn'=>$prestar1[$i]['isbn'],
-                'titulo'=>$prestar1[$i]['titulo'],
-                'devuelto'=>$prestar1[$i]['devuelto'],
-                'cantidad'=>$prestar1[$i]['cantidad'],
+                'isbn'=>$newdetalle3[$i]['isbn'],
+                'titulo'=>$newdetalle3[$i]['titulo'],
+                'devuelto'=>$newdetalle3[$i]['devuelto'],
+                'cantidad'=>$newdetalle3[$i]['cantidad'],
             ];
         }
 
         $prestamo->save();
-        DetallePrestamos::insert($prestar);
+        DetallePrestamos::insert($detalle1);
         
     }
 

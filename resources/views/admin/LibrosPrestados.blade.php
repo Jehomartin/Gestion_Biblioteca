@@ -70,24 +70,63 @@
             <!-- se inicia el encabezado de la ventana modal -->
             <div class="modal-header" style="background-color: #f39c12">
               <!-- <h5 class="modal-title" id="exampleModalLiveLabel" v-if="!editando"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registro Nuevo Devolucion</font></font></h5> -->
-              <h5 class="modal-title" id="exampleModalLiveLabel" v-if="editando"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">INFORMACION DEL LIBRO PRESTADO</font></font></h5>
+              <h5 class="modal-title" id="exampleModalLiveLabel" v-if="editando">
+                <font style="vertical-align: inherit;" face="times new roman" color="black">INFORMACION DEL LIBRO PRESTADO</font>
+              </h5>
               
               <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
-                <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
+                <span aria-hidden="true">
+                  <font style="vertical-align: inherit;">x</font>
+                </span>
               </button>
             </div>
             <!-- fin encabezado de ventana modal -->
 
             <!-- inicio cuerpo modal -->
             <div class="modal-body div1">
-              <font color="black" face="arial black">
-                <span v-if="editando" class="form-control">Clave del detalle: @{{foliodetalle}} </span>
-                <span v-if="editando" class="form-control">Folio de prestamo: @{{folioprestamo}} </span>
-                <span v-if="editando" class="form-control">Folio del libro: @{{isbn}} </span>
-                <span v-if="editando" class="form-control">Titulo del libro: @{{titulo}} </span>
-                <span v-if="editando" class="form-control">Indicador de devolucion: @{{devuelto}} </span>
-                <span v-if="editando" class="form-control">Cantidad de libros prestados: @{{cantidad}} </span>
-                <span v-if="editando" class="form-control">Consec: @{{consec}} </span>
+              <font color="black" face="times new roman">
+                <div class="form-group">
+                  <label>Clave del detalle</label>
+                  <div class="input-group">
+                      <span v-if="editando" class="form-control"> @{{foliodetalle}} </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Folio del prestamo</label>
+                  <div class="input-group">
+                      <span v-if="editando" class="form-control"> @{{folioprestamo}} </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Folio del libro</label>
+                  <div class="input-group">
+                      <span v-if="editando" class="form-control"> @{{isbn}} </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Titulo del libro</label>
+                  <div class="input-group">
+                      <span v-if="editando" class="form-control"> @{{titulo}} </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Indicador de devolución</label>
+                  <div class="input-group">
+                      <span v-if="editando" class="form-control"> @{{devuelto}} </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Cantidad prestada</label>
+                  <div class="input-group">
+                      <span v-if="editando" class="form-control"> @{{cantidad}} </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Consecuente</label>
+                  <div class="input-group">
+                      <span v-if="editando" class="form-control"> @{{consec}} </span>
+                  </div>
+                </div>
               </font>
             </div>
             <!-- fin cuerpo modal -->
@@ -97,10 +136,7 @@
               <div class="pull-right">
                   <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">Aceptar</button>
               </div>
-
-              <!-- <div class="pull-right">
-                  <button style="margin-left: 10px" type="submit" class="btn btn-primary" v-on:click="cancelarEdit()">Aceptar</button>
-              </div> -->
+              </div>
             </div><!-- fin footer modal -->
           </div> <!--fin modal content-->
         </div><!--/modal dialog-->

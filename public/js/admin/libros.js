@@ -22,7 +22,7 @@ new Vue({
 		this.getAutor();
 		this.getCarrera();
 		this.getPais();
-		this.getBuscar();
+		// this.getBuscar();
 		this.getEjemplar();
 	},
 
@@ -34,7 +34,6 @@ new Vue({
 		paises:[],
 		ejemplars:[],
 		id_editorial:'',
-		editorial:'',
 		id_autor:'',
 		id_carrera:'',
 		id_pais:'',
@@ -48,7 +47,7 @@ new Vue({
 		titulo:'',
         ejemplares:'',
         cutter:'',
-        editando:false,
+        // editando:false,
         auxLibro:'',
         buscar:'',
 
@@ -71,39 +70,39 @@ new Vue({
 			this.$http.get(urlLibros).then(function(response){
 				this.libros=response.data;
 			}).catch(function(response){
-				console.log(response);
+				toastr.info("No se estan llamando los datos");
 			});
 		},
 
 		getEditorial:function(){
-			this.$http.get(urlEditorial).then(function(response){
-				this.editoriales=response.data;
-			}).catch(function(response){
-				console.log(response);
+			this.$http.get(urlEditorial).then(function(respons){
+				this.editoriales=respons.data;
+			}).catch(function(respons){
+				toastr.info("No se estan llamando los datos");
 			});
 		},
 
 		getAutor:function(){
-			this.$http.get(urlAutor).then(function(response){
-				this.autores=response.data;
-			}).catch(function(response){
-				console.log(response);
+			this.$http.get(urlAutor).then(function(respon){
+				this.autores=respon.data;
+			}).catch(function(respon){
+				toastr.info("No se estan llamando los datos");
 			});
 		},
 
 		getCarrera:function(){
-			this.$http.get(urlCarrera).then(function(response){
-				this.carreras=response.data;
-			}).catch(function(response){
-				console.log(response);
+			this.$http.get(urlCarrera).then(function(respo){
+				this.carreras=respo.data;
+			}).catch(function(respo){
+				toastr.info("No se estan llamando los datos");
 			});
 		},
 
 		getPais:function(){
-			this.$http.get(urlPais).then(function(response){
-				this.paises=response.data;
-			}).catch(function(response){
-				console.log(response);
+			this.$http.get(urlPais).then(function(career){
+				this.paises=career.data;
+			}).catch(function(career){
+				toastr.info("No se estan llamando los datos");
 			});
 		},
 
@@ -111,7 +110,7 @@ new Vue({
 			this.$http.get(urlEjemplar).then(function(response){
 				this.ejemplars=response.data;
 			}).catch(function(response){
-				console.log(response);
+				toastr.info("No se estan llamando los datos");
 			});
 		},
 
@@ -119,7 +118,7 @@ new Vue({
 			this.$http.get(urlLibros).then(function(json){
 				this.libros=json.data;
 			}).catch(function(json){
-				console.log(json);
+				toastr.info("No se estan llamando los datos");
 			});
 		},
 
@@ -149,7 +148,7 @@ new Vue({
 		},
 
 		editLibro:function(id){
-			this.editando=true;
+			// this.editando=true;
 			$('#modal_custom').modal('show');
 			this.$http.get(urlLibros + '/' + id).then(function(response){
 				this.isbn = response.data.isbn;
@@ -180,7 +179,7 @@ new Vue({
 
 			this.$http.put(urlLibros + '/' + this.isbn,libro).then(function(response){
 				this.getLibros();
-				this.editando=false;
+				// this.editando=false;
 				this.isbn='';
 				this.folio='';
 				this.titulo='';
@@ -198,11 +197,23 @@ new Vue({
 
 				$('#modal_custom').modal('hide');
 
-				toastr.success("Actualizacion de libro exitosa");
+				swal({
+					title: "Libro Actualizado",
+					text: "Se modificaron los campos del libro",
+					icon: "success",
+					buttons:false,
+					timer: 3000,
+				});
 
 			}).catch(function(response){
 
-				toastr.error("Actualizacion fallida, ocurrio un error");
+				swal({
+					title: "Falló la actualización",
+					text: "El proceso no se completo, ocurrio un error",
+					icon: "error",
+					buttons:false,
+					timer: 3000,
+				});
 
 			});
 
@@ -210,22 +221,41 @@ new Vue({
 		},
 
 		eliminarLibro:function(id){
-			var resp =confirm("Esta seguro de eliminar el libro")
-			if (resp==true) 
-			{
-				this.$http.delete(urlLibros + '/' + id).then(function(json){
-					this.getLibros();
-				});
-				toastr.success("Libro eliminado");
-			}
-			else{
-				toastr.info("El libro no se elimino");
-			}
 			
+			swal({
+                title: 'Aviso',
+                text: "¿Está seguro de eliminar este registro?",
+                type: 'warning',
+                buttons: {
+                    confirm: {
+                        text: 'Eliminar!',
+                        className: 'btn btn-success'
+                    },
+                    cancel: {
+                        visible: true,
+                        className: 'btn btn-danger'
+                    },
+                },
+            }).then((result) => {
+                if (result) {
+                    this.$http.delete(urlLibros + '/' + id).then(function(json){
+                            swal({
+                                title: '¡Eliminado!',
+                                text: 'Usted a eliminado el registro corréctamente',
+                                icon: 'success',
+                                buttons: false,
+                                timer: 1500
+                            });
+                            this.getLibros();
+                        });
+                } else {
+                    swal.close();
+                }
+            });
 		},
 
 		cancelarEdit:function(){
-			this.editando=false;
+			// this.editando=false;
 			this.isbn='';
 			this.folio='';
 			this.titulo='';
@@ -267,11 +297,27 @@ new Vue({
 				this.getEjemplar();
 				$('#modal_ejemplar').modal('hide');
 
-				toastr.success("Ejemplar agregado con exito!!");
+				swal({
+					title: "Ejemplar agregado",
+					text: "Registro de ejemplar exitoso",
+					icon: "success",
+					buttons: {
+						comfirm: {
+							text: 'OK',
+							className: 'btn btn-success'
+						},
+					},
+					timer: 3000,
+				});
 
 			}).catch(function(response){
 
-				toastr.error("Ejemplar no agregado ocurrio un error");
+				swal({
+					text: "Ejemplar no registrado",
+					icon: "error",
+					buttons: false,
+					timer: 3000,
+				});
 
 			});
 
@@ -294,9 +340,9 @@ new Vue({
 
 	computed:{
 		filtroLibros:function(){
-			return this.libros.filter((libro)=>{
-				return libro.isbn.match(this.buscar.trim()) ||
-				libro.titulo.toLowerCase()
+			return this.libros.filter((lib)=>{
+				return lib.isbn.match(this.buscar.trim()) ||
+				lib.titulo.toLowerCase()
 				.match(this.buscar.trim().toLowerCase());
 			});
 		},

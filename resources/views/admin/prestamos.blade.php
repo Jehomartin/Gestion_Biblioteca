@@ -11,13 +11,21 @@
   <br>
   <div class="container">
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <font color="green" face="times new roman"><h5>FOLIO : @{{folioprestamo}}</h5></font>
         <font color="green" face="times new roman"><h5>FECHA PRESTAMO : @{{fechaprestamo}}</h5></font>
       </div>
-      <div class="col-lg-6">
-        <font color="green" face="times new roman"><h5>Matricula del Alumno: </h5></font>
-        <input type="text" class="form-control" placeholder="matricula" v-model="matricula" style="border-color: #000">
+      <div class="col-lg-4">
+        <font color="green" face="times new roman">
+          <h5>Matricula del Alumno: </h5> 
+          <input type="text" class="form-control" placeholder="matricula" v-model="matricula" style="border-color: #000">
+        </font>
+      </div>
+      <div class="col-lg-4">
+        <font color="green" face="times new roman">
+          <h5>Fecha de devolución de los libros: </h5>
+          <input type="date" class="form-control" placeholder="fecha devolucion" v-model="fechadevolucion" style="border-color: #000">
+        </font>
       </div>
     </div>
     <hr style="border-color: #000">
@@ -32,37 +40,29 @@
           </span>
         </div>
         <br>
-        <button class="btn btn-primary form-control fas fa-save" @click="prestar()">
+        <button class="btn btn-warning form-control fas fa-save" @click="prestar()">
           GUARDAR PRESTAMO
         </button>
       </div>
       <div class="col-lg-4">
         <a href="{{url('devoluciones')}}">
-          <button class="btn btn-danger fas fa-list-alt" style="float: right;"> Verificar Prestamos</button>
+          <button class="btn btn-dark fas fa-list-alt" style="float: right;"> Verificar Prestamos</button>
         </a>
       </div>
     </div>
-    <hr>
+    <hr style="border-color: #000;">
     <div class="row">
       <div class="col-lg-11">
         <table class="table table-bordered table-responsive">
           <thead class="thead-dark">
             <th width="10%">ISBN</th>
             <th width="20%">TITULO</th>
-            <th width="15%">FECHA DEVOLUCIÓN</th>
-            <!-- <th width="10%">CANTIDAD</th> -->
             <th width="9%">ACCIONES</th>
           </thead>
           <tbody class="table table-bordered">
             <tr v-for="(p,index) in prestamos">
               <td> @{{p.isbn}} </td>
               <td> @{{p.titulo}} </td>
-              <td>
-                <input type="date" class="form-control" placeholder="fecha devolucion" v-model="fechadevolucion" style="border-color: #000">
-              <!-- </td>
-                <input type="number" class="form-control" min="1"
-                v-model="cantidad">
-              </td> -->
               <td>
                 <span class="fas fa-trash-alt btn btn-danger btn-xs" @click="cancelarPrestamo(index)"></span>
               </td>

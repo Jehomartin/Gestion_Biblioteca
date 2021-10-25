@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Libros extends Model
+class Librous extends Model
 {
+
     //llamado de la tabla
     protected $table = "libros";
 
@@ -13,7 +14,7 @@ class Libros extends Model
     protected $primaryKey = "isbn";
 
     //union con llaves foraneas
-    protected $with=['autor','edit','carrera','pais'];
+    protected $with=['autors','editorials','carreras','paiss',];
 
     //incrementable o de tiempo;
     public $incrementing = false;
@@ -37,18 +38,19 @@ class Libros extends Model
         'cutter'
     ];
 
-    public function edit(){
-        return $this->belongsTo(Edit::class,'id_editorial','id_editorial');
-    }
-
-    public function autor(){
+    public function autors(){
         return $this->belongsTo(Autores::class,'id_autor','id_autor');
     }
 
-    public function carrera(){
+    public function editorials(){
+        return $this->belongsTo(Editoriales::class,'id_editorial','id_editorial');
+    }
+
+    public function carreras(){
         return $this->belongsTo(Carreras::class,'id_carrera','id_carrera');
     }
-    public function pais(){
+    public function paiss(){
         return $this->belongsTo(paises::class,'id_pais','id_pais');
     }
+
 }

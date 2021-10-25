@@ -12,9 +12,6 @@ class Editoriales extends Model
     //se indica la llave primaria
     protected $primaryKey = "id_editorial";
 
-     //union con llaves foraneas
-//    protected $with=['libro'];
-
     //se indica si es incrementable o de tiempo
     public $timestamps = false;
 
@@ -24,7 +21,4 @@ class Editoriales extends Model
     	'editorial'
     ];
 
-    // public function libro(){
-    //     return $this->belongsTo(Libros::class,'id_editorial','id_editorial');
-    // }
 }

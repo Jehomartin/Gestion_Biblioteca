@@ -243,6 +243,7 @@
 <!-- AdminLTE App -->
 <script src="adminlte/js/adminlte.min.js"></script>
 <script src="js/toastr.js"></script>
+<script src="js/sweetalert.min.js"></script>
 
 <!-- js para la tabla -->
 <!-- <script type="text/javascript" src="table/popper/popper.min.js"></script>
