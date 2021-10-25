@@ -51,6 +51,12 @@ class ApiPrestamosController extends Controller
                 'devuelto'=>$newdetalle3[$i]['devuelto'],
                 'cantidad'=>$newdetalle3[$i]['cantidad'],
             ];
+
+            //se hace la actualización de la cantidad de ejemplares disponibles
+            $exem=$newdetalle3[$i]['cantidad'];
+            $codigo=$newdetalle3[$i]['isbn'];
+
+            DB::update("UPDATE libros SET ejemplares = ejemplares - $exem WHERE isbn = '$codigo'");
         }
 
         $prestamo->save();
