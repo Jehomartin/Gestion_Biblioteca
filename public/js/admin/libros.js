@@ -75,9 +75,9 @@ new Vue({
 		},
 
 		getEditorial:function(){
-			this.$http.get(urlEditorial).then(function(respons){
-				this.editoriales=respons.data;
-			}).catch(function(respons){
+			this.$http.get(urlEditorial).then(function(response){
+				this.editoriales=response.data;
+			}).catch(function(response){
 				toastr.info("No se estan llamando los datos");
 			});
 		},
@@ -340,9 +340,9 @@ new Vue({
 
 	computed:{
 		filtroLibros:function(){
-			return this.libros.filter((lib)=>{
-				return lib.isbn.match(this.buscar.trim()) ||
-				lib.titulo.toLowerCase()
+			return this.libros.filter((libros)=>{
+				return libros.isbn.match(this.buscar.trim()) ||
+				libros.titulo.toLowerCase()
 				.match(this.buscar.trim().toLowerCase());
 			});
 		},
