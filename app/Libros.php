@@ -13,7 +13,7 @@ class Libros extends Model
     protected $primaryKey = "isbn";
 
     //union con llaves foraneas
-    protected $with=['autor','edit','carrera','pais'];
+    protected $with=['autor','editorial','carrera','pais'];
 
     //incrementable o de tiempo;
     public $incrementing = false;
@@ -37,8 +37,8 @@ class Libros extends Model
         'cutter'
     ];
 
-    public function edit(){
-        return $this->belongsTo(Edit::class,'id_editorial','id_editorial');
+    public function editorial(){
+        return $this->belongsTo(Editoriales::class,'id_editorial','id_editorial');
     }
 
     public function autor(){
