@@ -25,6 +25,7 @@ function init()
 			saludo:'hola mundo',
 			prestamos:[],
 			libros:[],
+			ejemplares:'',
 			// ejemplares:[],
 			// isbn:'',
 			// titulo:'',
@@ -47,23 +48,34 @@ function init()
 						swal({
 							text: "El libro no se encuentra disponible ",
 							icon: "warning",
-							buttons: ['OK'],
-							timer: 4000,
+							buttons: true,
+							timer: 3000,
 						})
 						this.codigo='';
-					}
-					var unprestado={
-						'isbn':response.data.isbn,
-						'titulo':response.data.titulo,
-						'devuelto':0,
-						'cantidad':1,
-					}
-
-					if (unprestado.isbn) {
-						this.prestamos.push(unprestado);
+					} else if (response.data.ejemplares == 1) {
+						swal({
+							text:"El libro ya no tiene ejemplares disponibles",
+							icon:"warning",
+							buttons:true,
+							timer:3000,
+						})
 						this.codigo='';
-						this.$refs.buscar.focus();
+					} else {
+
+						var unprestado={
+							'isbn':response.data.isbn,
+							'titulo':response.data.titulo,
+							'devuelto':0,
+							'cantidad':1,
+						}
+
+						if (unprestado.isbn) {
+							this.prestamos.push(unprestado);
+							this.codigo='';
+							this.$refs.buscar.focus();
+						}
 					}
+					
 				});
 			},
 			//fin getLibro
