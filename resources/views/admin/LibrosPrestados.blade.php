@@ -86,19 +86,19 @@
             <div class="modal-body div1">
               <font color="black" face="times new roman">
                 <div class="form-group">
-                  <label>Clave del detalle</label>
+                  <label>CLAVE DEL DETALLE</label>
                   <div class="input-group">
                       <span v-if="editando" class="form-control"> @{{foliodetalle}} </span>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Folio del prestamo</label>
+                  <label>FOLIO DEL PRESTAMO</label>
                   <div class="input-group">
                       <span v-if="editando" class="form-control"> @{{folioprestamo}} </span>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Folio del libro</label>
+                  <label>FOLIO DEL LIBRO</label>
                   <div class="input-group">
                       <span v-if="editando" class="form-control"> @{{isbn}} </span>
                   </div>
@@ -110,19 +110,19 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Indicador de devolución</label>
+                  <label>INDICATOR DE DEV</label>
                   <div class="input-group">
                       <span v-if="editando" class="form-control"> @{{devuelto}} </span>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Cantidad prestada</label>
+                  <label>CANTIDAD PRESTADA</label>
                   <div class="input-group">
                       <span v-if="editando" class="form-control"> @{{cantidad}} </span>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Consecuente</label>
+                  <label>CONSECUENTE</label>
                   <div class="input-group">
                       <span v-if="editando" class="form-control"> @{{consec}} </span>
                   </div>
