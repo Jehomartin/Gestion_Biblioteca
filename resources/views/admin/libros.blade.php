@@ -313,7 +313,7 @@
             <td v-on:click="">@{{libro.autor.nombre}}</td>
             <td v-on:click="">@{{libro.editorial.editorial}}</td>
             <td v-on:click="">@{{libro.carrera.carrera}}</td>
-            <!-- <td v-on:click="">@{{libro.ejemplares}}</td> -->
+            <td v-on:click="">@{{libro.ejemplares}}</td>
             <!-- <td v-on:click="">@{{libro.cutter}}</td> -->
             <td>
               <center>
