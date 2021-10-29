@@ -41,14 +41,14 @@
       </font>
       <table style="font-size:14px" class="table table-sm table-striped table-bordered table-hover tamanio-font">
         <thead class="thead-dark">
-          <th width="7%">ISBN</th>
-          <th style width="10px">TITULO</th>
-          <th>AUTOR</th>
-          <th>EDITORIAL</th>
-          <th>CARRERA</th>
-          <th width="8%">EJEMPLARES</th>
+          <th width="7%" class="header" scope="col">ISBN</th>
+          <th class="header" scope="col">TITULO</th>
+          <th class="header" scope="col">AUTOR</th>
+          <th class="header" scope="col">EDITORIAL</th>
+          <th class="header" scope="col">CARRERA</th>
+          <th width="8%" class="header" scope="col">EJEMPLARES</th>
           <!-- <th width="5%">CUTTER</th> -->
-          <th width="15%">OPCIONES</th>
+          <th width="15%" class="header" scope="col">OPCIONES</th>
         </thead>
         <tbody>
           <tr v-for="(libro,index) in filtroLibros">
@@ -297,14 +297,14 @@
    
       <table style="font-size:13px" class="table table-sm table-striped table-bordered table-hover">
         <thead class="thead-dark">
-          <th width="7%">ISBN</th>
-          <th style width="10px">TITULO</th>
-          <th>AUTOR</th>
-          <th>EDITORIAL</th>
-          <th>CARRERA</th>
-          <!-- <th width="8%">EJEMPLARES</th> -->
+          <th width="7%" class="header" scope="col">ISBN</th>
+          <th class="header" scope="col">TITULO</th>
+          <th class="header" scope="col">AUTOR</th>
+          <th class="header" scope="col">EDITORIAL</th>
+          <th class="header" scope="col">CARRERA</th>
+          <th width="8%" class="header" scope="col">EJEMPLARES</th>
           <!-- <th width="5%">CUTTER</th> -->
-          <th width="15%">OPCIONES</th>
+          <th width="15%" class="header" scope="col">OPCIONES</th>
         </thead>
         <tbody>
           <tr v-for="(libro,index) in filtroLibros">
@@ -347,8 +347,6 @@
 
 @push('scripts')
   <script type="text/javascript" src="js/admin/libros.js"></script>
-
+  <link rel="stylesheet" type="text/css" href="css/diseño tabla/header_fijo.css">
   <!-- <script type="text/javascript" src="js/admin/ejemplares.js"></script> -->
-  <!-- <script type="text/javascript" src="js/vue-resource.js"></script>
-  <script type="text/javascript" src="js/vue.js"></script> -->
 @endpush
