@@ -154,13 +154,13 @@
                       <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
                     </button>
               </div>
-              <div class="modal-body div1">
+              <div class="modal-body div5">
                     <div class="form-group">
                         <label for="Editoriales">Editorial del libro</label>
                         <input type="text" name="" placeholder="Editorial del libro" class="form-control" v-model="editorial">
                     </div>
               </div>
-              <div class="modal-footer div1">
+              <div class="modal-footer div5">
                 <div class="pull-right">
                     <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
                     <span class="far fa-window-close"></span>
@@ -191,13 +191,13 @@
                       <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
                     </button>
               </div>
-              <div class="modal-body div1">
+              <div class="modal-body div5">
                     <div class="form-group">
                         <label for="Autores">Autor del libro</label>
                         <input type="text" name="" placeholder="Autor del libro" class="form-control" v-model="nombre">
                     </div>
               </div>
-              <div class="modal-footer div1">
+              <div class="modal-footer div5">
                 <div class="pull-right">
                     <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
                     <span class="far fa-window-close"></span>
@@ -228,13 +228,13 @@
                       <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
                     </button>
               </div>
-              <div class="modal-body div1">
+              <div class="modal-body div5">
                     <div class="form-group">
                         <label for="Carreras">Carrera del libro</label>
                         <input type="text" name="" placeholder="Carrera del libro" class="form-control" v-model="carrera">
                     </div>
               </div>
-              <div class="modal-footer div1">
+              <div class="modal-footer div5">
                 <div class="pull-right">
                     <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
                         <span class="far fa-window-close"></span>
@@ -270,13 +270,13 @@
                     </button>
                 <!-- <span aria-hidden="true">&times;</span> -->
               </div>
-              <div class="modal-body div1">
+              <div class="modal-body div5">
                     <div class="form-group">
                         <label for="Paises">País del libro</label>
                         <input type="text" name="" placeholder="País del libro" class="form-control" v-model="pais">
                     </div>
               </div>
-              <div class="modal-footer div1">
+              <div class="modal-footer div5">
                 <div class="pull-right">
                     <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
                         <span class="far fa-window-close"></span>

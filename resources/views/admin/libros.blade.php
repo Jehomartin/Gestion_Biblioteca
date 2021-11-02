@@ -36,11 +36,12 @@
     <div class="col-md-12">
     <div class="table-responsive-md">
       <!-- <br> -->
+      
+      <table style="font-size:14px" class="table table-sm table-striped table-bordered table-hover tamanio-font">
       <font color="black" face="times new roman">
         <h4 class="text text-center">Libros Registrados</h4>
-      </font>
-      <table style="font-size:14px" class="table table-sm table-striped table-bordered table-hover tamanio-font">
-        <thead class="thead-dark">
+      </font>  
+      <thead class="thead-dark">
           <th width="7%" class="header" scope="col">ISBN</th>
           <th class="header" scope="col">TITULO</th>
           <th class="header" scope="col">AUTOR</th>
