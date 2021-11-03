@@ -6,13 +6,14 @@
   <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                <br>
                 <font color="black" face="times new roman">
                     <h2 class="text text-center">REGISTRO DE LIBROS</h2>
                 </font>
-                <br>
-                <p class="text text-center">
-                    Por favor llene los campos importantes marcados con el ASTERISCO <span class="asterisco">*</span>
-                </p>
+                
+                
+                    <!-- <h4 class="text-center">LLENAR LOS CAMPOS MARCADOS CON EL ASTERISCO <span class="asterisco">*</span></h4> -->
+                
                 <br>
                 <div>
                     <div class="form-row">
