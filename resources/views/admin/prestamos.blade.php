@@ -2,7 +2,7 @@
 @section('titulo','Procesando Prestamo')
 @section('contenido')
 
-<font color="black" face="times new roman">
+<font color="black" face="Sylfaen">
   <h2 class="text text-center">PROCESANDO PRESTAMO DE LIBRO</h2>
 </font>
 
@@ -12,18 +12,18 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-4">
-        <font color="green" face="times new roman"><h5>FOLIO : @{{folioprestamo}}</h5></font>
-        <font color="green" face="times new roman"><h5>FECHA PRESTAMO : @{{fechaprestamo}}</h5></font>
+        <font color="black" face="Sylfaen"><h5>FOLIO : @{{folioprestamo}}</h5></font>
+        <font color="black" face="Sylfaen"><h5>FECHA PRESTAMO : @{{fechaprestamo}}</h5></font>
       </div>
       <div class="col-lg-4">
-        <font color="green" face="times new roman">
-          <h5>Matricula del Alumno: </h5> 
-          <input type="text" class="form-control" placeholder="matricula" v-model="matricula" style="border-color: #000">
+        <font color="black" face="Sylfaen">
+          <h5>MATRICULA DEL ALUMNO: </h5> 
+          <input type="text" class="form-control" placeholder="Matricula" v-model="matricula" style="border-color: #000">
         </font>
       </div>
       <div class="col-lg-4">
-        <font color="green" face="times new roman">
-          <h5>Fecha de devolución de los libros: </h5>
+        <font color="black" face="Sylfaen">
+          <h5>FECHA DE DEVOLUCIÓN DE LOS LIBROS: </h5>
           <input type="date" class="form-control" placeholder="fecha devolucion" v-model="fechadevolucion" style="border-color: #000">
         </font>
       </div>
@@ -33,20 +33,22 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group">
-          <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el codigo del libro" style="border-color: black">
+          <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el código del libro" style="border-color: black">
         
           <span class="input-group-btn">
             <button class="btn btn-dark fas fa-plus-square" @click="getLibros()"></button>
           </span>
         </div>
         <br>
-        <button class="btn btn-warning form-control fas fa-save" @click="prestar()">
-          GUARDAR PRESTAMO
+        <button class="btn btn-warning form-control fas fa-save" @click="prestar()" >
+         <font face="Sylfaen">GUARDAR PRESTAMO </font>
         </button>
       </div>
       <div class="col-lg-4">
         <a href="{{url('devoluciones')}}">
-          <button class="btn btn-dark fas fa-list-alt" style="float: right;"> Verificar Prestamos</button>
+         <button class="btn btn-dark fas fa-list-alt" style="float: right;">
+        <font face="Sylfaen"> VERIFICAR PRESTAMO </font>
+         </button>
         </a>
       </div>
     </div>

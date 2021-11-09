@@ -66,13 +66,13 @@ function init()
 
 			infoPrestamo:function(id){
 				this.editando=true;
-				swal({
-					title: "Información",
-					text: "Esta visualizando informacion del prestamo",
-					icon: "info",
-					buttons: false,
-					timer: 2000,
-				});
+				// swal({
+				// 	title: "Información",
+				// 	text: "Esta visualizando informacion del prestamo",
+				// 	icon: "info",
+				// 	buttons: false,
+				// 	timer: 2000,
+				// });
 				$('#modal_custom').modal('show');
 				//peticion al servidor
 				this.$http.get(urlDetalles + '/' + id).then

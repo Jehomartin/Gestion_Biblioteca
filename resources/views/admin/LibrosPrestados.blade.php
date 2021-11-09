@@ -25,11 +25,11 @@
   <br>
 
   <!-- <div class="container"> -->
-    <div class="row">
+    <div class="row"> 
       
       <div class="col-sm-12">
         <br>
-        <font color="black" face="times new roman">
+        <font color="black" face="Sylfaen">
           <h2 class="text text-center">PRESTAMOS REALIZADOS</h2>
         </font>
         <br>
@@ -71,7 +71,7 @@
             <div class="modal-header" style="background-color: #f39c12">
               <!-- <h5 class="modal-title" id="exampleModalLiveLabel" v-if="!editando"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registro Nuevo Devolucion</font></font></h5> -->
               <h5 class="modal-title" id="exampleModalLiveLabel" v-if="editando">
-                <font style="vertical-align: inherit;" face="times new roman" color="black">INFORMACION DEL LIBRO PRESTADO</font>
+                <font style="vertical-align: inherit;" face="Sylfaen" color="black">INFORMACION DEL LIBRO PRESTADO</font>
               </h5>
               
               <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
@@ -83,48 +83,48 @@
             <!-- fin encabezado de ventana modal -->
 
             <!-- inicio cuerpo modal -->
-            <div class="modal-body div1">
-              <font color="black" face="times new roman">
+            <div class="modal-body div5">
+              <font color="black" face="Sylfaen">
                 <div class="form-group">
-                  <label>CLAVE DEL DETALLE</label>
+                  <label >CLAVE DEL DETALLE</label>
                   <div class="input-group">
-                      <span v-if="editando" class="form-control"> @{{foliodetalle}} </span>
+                      <span v-if="editando" class="form-control" style="border-color:#000"> @{{foliodetalle}} </span>
                   </div>
                 </div>
                 <div class="form-group">
                   <label>FOLIO DEL PRESTAMO</label>
                   <div class="input-group">
-                      <span v-if="editando" class="form-control"> @{{folioprestamo}} </span>
+                      <span v-if="editando" class="form-control" style="border-color:#000"> @{{folioprestamo}} </span>
                   </div>
                 </div>
                 <div class="form-group">
                   <label>FOLIO DEL LIBRO</label>
                   <div class="input-group">
-                      <span v-if="editando" class="form-control"> @{{isbn}} </span>
+                      <span v-if="editando" class="form-control" style="border-color:#000"> @{{isbn}} </span>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Titulo del libro</label>
+                  <label>TITULO DEL LIBRO</label>
                   <div class="input-group">
-                      <span v-if="editando" class="form-control"> @{{titulo}} </span>
+                      <span v-if="editando" class="form-control" style="border-color:#000"> @{{titulo}} </span>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>INDICATOR DE DEV</label>
+                  <label>INDICATOR DE DEVOLUCION</label>
                   <div class="input-group">
-                      <span v-if="editando" class="form-control"> @{{devuelto}} </span>
+                      <span v-if="editando" class="form-control" style="border-color:#000"> @{{devuelto}} </span>
                   </div>
                 </div>
                 <div class="form-group">
                   <label>CANTIDAD PRESTADA</label>
                   <div class="input-group">
-                      <span v-if="editando" class="form-control"> @{{cantidad}} </span>
+                      <span v-if="editando" class="form-control" style="border-color:#000"> @{{cantidad}} </span>
                   </div>
                 </div>
                 <div class="form-group">
                   <label>CONSECUENTE</label>
                   <div class="input-group">
-                      <span v-if="editando" class="form-control"> @{{consec}} </span>
+                      <span v-if="editando" class="form-control" style="border-color:#000"> @{{consec}} </span>
                   </div>
                 </div>
               </font>

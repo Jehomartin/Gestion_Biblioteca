@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <br>
-                <font color="black" face="times new roman">
+                <font color="black" face="Sylfaen">
                     <h2 class="text text-center">REGISTRO DE LIBROS</h2>
                 </font>
                 
@@ -18,28 +18,25 @@
                 <div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="isbn">Isbn del libro <span class="asterisco">*</span></label>
+                          <font face="Sylfaen" size="4"><label for="isbn">Isbn del libro <span class="asterisco">*</span></label></font>
                             <input type="text" name="" placeholder="ISBN del libro" class="form-control" v-model="isbn" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="titulo">Titulo del libro <span class="asterisco">*</span></label>
+                           <font face="Sylfaen" size="4"><label for="titulo">Titulo del libro <span class="asterisco">*</span></label></font>
                             <input type="text" name="" placeholder="Titulo del libro" class="form-control" v-model="titulo" style="border-color:#000">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="editorial">Elija la editorial <span class="asterisco">*</span></label>
+                            <font face="Sylfaen" size="4"><label for="editorial">Elija la editorial <span class="asterisco">*</span></label></font>
                             <div class="input-group">
                                 <select class="form-control" id="selectEditorial" v-model="id_editorial" @change="getEditorials" style="border-color:#000">
-                                
                                     <option disabled value="">Elija la editorial del libro</option>
                                     <option value="">Agregar Nuevo</option>
                                     <!-- <option value="1">Agregar nueva editorial</option> -->
                                     <option v-for="e in editoriales" v-bind:value="e.id_editorial">@{{e.editorial}}</option>
                                 </select>
-                                
-                                
                                 <span class="input-group-btn">
                                     <button id="agregarEditorial" class="btn btn-success" type="button" v-on:click="showModalEditorial"> 
                                     <span class="fas fa-plus-circle"></span>
@@ -48,7 +45,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="autor">Elija el autor <span class="asterisco">*</span></label>
+                            <font face="Sylfaen" size="4"><label for="autor">Elija el autor <span class="asterisco">*</span></label></font>
                             <div class="input-group">
                                 <select class="form-control" id="selectAutor" v-model="id_autor" @change="getAutors" style="border-color:#000">
                                 <option disabled value="">Elija el Autor del libro</option>
@@ -64,7 +61,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="carrera">Elija la carrera <span class="asterisco">*</span></label>
+                        <font face="Sylfaen" size="4"><label for="carrera">Elija la carrera <span class="asterisco">*</span></label></font>
                         <div class="input-group">
                             <select class="form-control" v-model="id_carrera" @change="getCarreras" style="border-color:#000">
                             <option disabled value="">Elija la carrera del libro</option>
@@ -80,7 +77,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="pais">Elija el pais <span class="asterisco">*</span></label>
+                            <font face="Sylfaen" size="4"><label for="pais">Elija el pais <span class="asterisco">*</span></label></font>
                             <div class="input-group">
                                 <select class="form-control" v-model="id_pais" @change="getPaiss" style="border-color:#000">
                                 <option disabled value="">Elija el pais del libro</option>
@@ -94,33 +91,33 @@
                             </div>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="edicion">Edicion <span class="asterisco">*</span></label>
+                            <font face="Sylfaen" size="4"><label for="edicion">Edicion <span class="asterisco">*</span></label></font>
                             <input type="number" name="" placeholder="Edicion" class="form-control" min="1" v-model="edicion" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-2">
-                            <label for="anioPub">Año de publicación <span class="asterisco">*</span></label>
+                            <font face="Sylfaen" size="4"><label for="anioPub">Año de publicación <span class="asterisco">*</span></label></font>
                             <input type="text" name="" placeholder="Año publicacion" class="form-control" v-model="anio_pub" style="border-color:#000">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="fechaAlta">Fecha alta <span class="asterisco">*</span></label>
+                            <font face="Sylfaen" size="4"><label for="fechaAlta">Fecha alta <span class="asterisco">*</span></label></font>
                             <input type="date" name="" placeholder="Fecha alta" class="form-control" v-model="fecha_alta" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="noPagina">Numero páginas <span class="asterisco">*</span></label>
+                            <font face="Sylfaen" size="4"><label for="noPagina">Numero páginas <span class="asterisco">*</span></label></font>
                             <input type="number" name="" placeholder="Paginas" class="form-control" min="1" v-model="paginas" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="ejemplares">Ejemplares del libro <span class="asterisco">*</span></label>
+                            <font face="Sylfaen" size="4"><label for="ejemplares">Ejemplares del libro <span class="asterisco">*</span></label></font>
                             <input type="text" name="" placeholder="Ejemplares del libro" class="form-control" v-model="ejemplares" style="border-color:#000">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="clasificacion">Clasificación</label>
+                            <font face="Sylfaen" size="4"><label for="clasificacion">Clasificación</label></font>
                             <input type="text" name="" placeholder="Clasificacion" class="form-control" v-model="clasificacion" style="border-color:#000">
                         </div>
                         <!-- <div class="form-group col-md-6">
@@ -149,7 +146,7 @@
               <!-- se inicia el encabezado de la ventana modal -->
               <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLiveLabel">
-                        <font style="vertical-align: inherit;">REGISTRANDO EDITORIAL</font>
+                        <font style="vertical-align: inherit;" face="style">REGISTRANDO EDITORIAL</font>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
                       <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
@@ -157,7 +154,7 @@
               </div>
               <div class="modal-body div5">
                     <div class="form-group">
-                        <label for="Editoriales">Editorial del libro</label>
+                        <font face="Sylfaen" size="4"><label for="Editoriales">Editorial del libro</label></font>
                         <input type="text" name="" placeholder="Editorial del libro" class="form-control" v-model="editorial">
                     </div>
               </div>
@@ -186,7 +183,7 @@
               <!-- se inicia el encabezado de la ventana modal -->
               <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLiveLabel">
-                        <font style="vertical-align: inherit;">REGISTRANDO AUTOR</font>
+                        <font style="vertical-align: inherit;" face="Sylfaen">REGISTRANDO AUTOR</font>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
                       <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
@@ -194,7 +191,7 @@
               </div>
               <div class="modal-body div5">
                     <div class="form-group">
-                        <label for="Autores">Autor del libro</label>
+                        <font face="Sylfaen" size="4"><label for="Autores">Autor del libro</label></font>
                         <input type="text" name="" placeholder="Autor del libro" class="form-control" v-model="nombre">
                     </div>
               </div>
@@ -223,7 +220,7 @@
               <!-- se inicia el encabezado de la ventana modal -->
               <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLiveLabel">
-                        <font style="vertical-align: inherit;">REGISTRANDO CARRERA</font>
+                        <font style="vertical-align: inherit;" face="Sylfaen">REGISTRANDO CARRERA</font>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
                       <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
@@ -231,7 +228,7 @@
               </div>
               <div class="modal-body div5">
                     <div class="form-group">
-                        <label for="Carreras">Carrera del libro</label>
+                        <font face="Sylfaen" size="4"><label for="Carreras">Carrera del libro</label></font>
                         <input type="text" name="" placeholder="Carrera del libro" class="form-control" v-model="carrera">
                     </div>
               </div>
@@ -262,7 +259,7 @@
               <!-- se inicia el encabezado de la ventana modal -->
               <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLiveLabel">
-                        <font style="vertical-align: inherit;">REGISTRANDO PAÍS</font>
+                        <font style="vertical-align: inherit;" face="Sylfaen">REGISTRANDO PAÍS</font>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
                         <span aria-hidden="true">
@@ -273,7 +270,7 @@
               </div>
               <div class="modal-body div5">
                     <div class="form-group">
-                        <label for="Paises">País del libro</label>
+                        <font face="Sylfaen" size="4"><label for="Paises">País del libro</label></font>
                         <input type="text" name="" placeholder="País del libro" class="form-control" v-model="pais">
                     </div>
               </div>
