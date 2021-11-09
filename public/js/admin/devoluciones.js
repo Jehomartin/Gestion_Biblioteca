@@ -73,6 +73,8 @@ function init()
 					buttons: false,
 					timer: 2000,
 				});
+
+				
 				$('#modal_custom').modal('show');
 				//peticion al servidor
 				this.$http.get(urlDetalles + '/' + id).then

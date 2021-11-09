@@ -40,8 +40,10 @@
             <th>FOLIO</th>
             <th>ISBN</th>
             <th>TITULO</th>
-            <th>DEVUELTO</th>
+            <!-- <th>DEVUELTO</th> -->
             <th>CANTIDAD</th>
+            <th>FECHA DEVOLUCIÓN</th>
+            <th>OPCIONES</th>
             <!-- <th>Consec</th> -->
           </thead>
 
@@ -51,7 +53,7 @@
               <td v-on:click="infoPrestamo(detalle.foliodetalle)">@{{detalle.folioprestamo}}</td>
               <td v-on:click="infoPrestamo(detalle.foliodetalle)">@{{detalle.isbn}}</td>
               <td v-on:click="infoPrestamo(detalle.foliodetalle)">@{{detalle.titulo}}</td>
-              <td v-on:click="infoPrestamo(detalle.foliodetalle)">@{{detalle.devuelto}}</td>
+              <!-- <td v-on:click="infoPrestamo(detalle.foliodetalle)">@{{detalle.devuelto}}</td> -->
               <td v-on:click="infoPrestamo(detalle.foliodetalle)">@{{detalle.cantidad}}</td>
               <!-- <td v-on:click="infoPrestamo(prestamo.folioprestamo)">@{{prestamo.consec}}</td> -->
             </tr>
