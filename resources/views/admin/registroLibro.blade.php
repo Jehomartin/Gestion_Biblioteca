@@ -158,7 +158,7 @@
                         <input type="text" name="" placeholder="Editorial del libro" class="form-control" v-model="editorial">
                     </div>
               </div>
-              <div class="modal-footer div5">
+              <div class="modal-footer" style="background-color: #f39c12">
                 <div class="pull-right">
                     <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
                     <span class="far fa-window-close"></span>
@@ -195,7 +195,7 @@
                         <input type="text" name="" placeholder="Autor del libro" class="form-control" v-model="nombre">
                     </div>
               </div>
-              <div class="modal-footer div5">
+              <div class="modal-footer" style="background-color: #f39c12">
                 <div class="pull-right">
                     <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
                     <span class="far fa-window-close"></span>
@@ -232,7 +232,7 @@
                         <input type="text" name="" placeholder="Carrera del libro" class="form-control" v-model="carrera">
                     </div>
               </div>
-              <div class="modal-footer div5">
+              <div class="modal-footer" style="background-color: #f39c12">
                 <div class="pull-right">
                     <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
                         <span class="far fa-window-close"></span>
@@ -274,7 +274,7 @@
                         <input type="text" name="" placeholder="País del libro" class="form-control" v-model="pais">
                     </div>
               </div>
-              <div class="modal-footer div5">
+              <div class="modal-footer" style="background-color: #f39c12">
                 <div class="pull-right">
                     <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
                         <span class="far fa-window-close"></span>
