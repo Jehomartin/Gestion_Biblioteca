@@ -2,7 +2,7 @@
 @section('titulo','Inicio')
 @section('contenido')
 <div class="container">
-    <font color="black" face="times new roman" class="text text-center">
+    <font color="black" face="Sylfaen" class="text text-center">
         <h1>GESTIÓN BIBLIOTECA</h1>
         <h2>BIENVENIDO {{Session::get('usuario')}}</h2>
         <hr>
@@ -17,7 +17,7 @@
         <ul class="slides">       
             <li class="slide" id="slide1">
                 <a href="#">
-                    <p class="texto-encima">Ingenieria en Gestión y desarrollo de software</p>
+                    <p class="texto-encima"></p>
                     <img src="login/img/UTC.png" alt="photo 1">      
                 </a>
             </li>
