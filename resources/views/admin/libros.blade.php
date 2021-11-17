@@ -30,15 +30,12 @@
     <font color="black" face="Sylfaen">
         <h2 class="text text-center">LIBROS REGISTRADOS</h2>
       </font>
-    <!-- <br> -->
 
 <div id="table-wrapper">
   <div id="table-scroll">
-        <!-- <table bgcolor="white" border="0" cellpadding="0" cellspacing="0" id="header-fixed" width="100%" overflow="scroll" class="scrollTable"> -->
     <div class="row">
     <div class="col-md-12">
     <div class="table-responsive-md">
-      <!-- <br> -->
       
       <table style="font-size:14px" class="table table-sm table-striped table-bordered table-hover tamanio-font">  
       <thead class="thead-dark">
@@ -48,7 +45,6 @@
           <th class="header" scope="col">EDITORIAL</th>
           <th class="header" scope="col">CARRERA</th>
           <th width="8%" class="header" scope="col">EJEMPLARES</th>
-          <!-- <th width="5%">CUTTER</th> -->
           <th width="15%" class="header" scope="col">OPCIONES</th>
         </thead>
         <tbody>
@@ -56,11 +52,9 @@
             <td v-on:click="">@{{libro.isbn}}</td>
             <td v-on:click="">@{{libro.titulo}}</td>
             <td v-on:click="">@{{libro.autor.nombre}}</td>
-            <!-- <td v-on:click="">@{{libro.edit.editorial}}</td> -->
             <td v-on:click="">@{{libro.editorial.editorial}}</td>
             <td v-on:click="">@{{libro.carrera.carrera}}</td>
             <td v-on:click="">@{{libro.ejemplares}}</td>
-            <!-- <td v-on:click="">@{{libro.cutter}}</td> -->
             <td>
               <center>
 
@@ -103,7 +97,6 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
               <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
             </button>
-            <!-- <span aria-hidden="true">&times;</span> -->
           </div>
 
 
@@ -129,9 +122,6 @@
                 <input type="text" name="" placeholder="Titulo del libro" class="form-control" v-model="titulo" style="border-color:#000">
               </div>
             </div>
-          </div>
-            <!-- <input type="text" name="" placeholder="ISBN del libro" class="form-control" v-model='isbn'> -->
-            
            
             <!-- <input type="text" name="" placeholder="Titulo del libro" class="form-control" v-model="titulo"> -->
             
@@ -294,7 +284,6 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelEditj()">
                 <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
               </button>
-              <!-- <span aria-hidden="true">&times;</span> -->
             </div>
             <!-- fin encabezado de ventana modal -->
 
@@ -327,7 +316,6 @@
                 <select class="form-control" id="selectEditorial"  @change="getEditorial" style="border-color:#000">
               
                   <option disabled value="">Elija la editorial del libro</option>
-                  <!-- <option value="1">Agregar nueva editorial</option> -->
                   <option v-for="e in editoriales" v-bind:value="e.id_editorial">@{{e.editorial}}</option>
                 </select>
               </div>
@@ -356,11 +344,9 @@
     <!--INICIO FILTRO EJEMPLARES  -->
     <div id="table-wrapper">
   <div id="table-scroll">
-        <!-- <table bgcolor="white" border="0" cellpadding="0" cellspacing="0" id="header-fixed" width="100%" overflow="scroll" class="scrollTable"> -->
     <div class="row">
     <div class="col-md-12">
     <div class="table-responsive-md">
-      <!-- <br> -->
    
       <table style="font-size:13px" class="table table-sm table-striped table-bordered table-hover">
         <thead class="thead-dark">
@@ -370,7 +356,6 @@
           <th class="header" scope="col">EDITORIAL</th>
           <th class="header" scope="col">CARRERA</th>
           <th width="8%" class="header" scope="col">EJEMPLARES</th>
-          <!-- <th width="5%">CUTTER</th> -->
           <th width="15%" class="header" scope="col">OPCIONES</th>
         </thead>
         <tbody>
@@ -381,7 +366,6 @@
             <td v-on:click="">@{{libro.editorial.editorial}}</td>
             <td v-on:click="">@{{libro.carrera.carrera}}</td>
             <td v-on:click="">@{{libro.ejemplares}}</td>
-            <!-- <td v-on:click="">@{{libro.cutter}}</td> -->
             <td>
               <center>
 
@@ -415,5 +399,4 @@
 @push('scripts')
   <script type="text/javascript" src="js/admin/libros.js"></script>
   <link rel="stylesheet" type="text/css" href="css/diseño tabla/header_fijo.css">
-  <!-- <script type="text/javascript" src="js/admin/ejemplares.js"></script> -->
 @endpush
