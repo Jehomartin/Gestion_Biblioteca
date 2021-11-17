@@ -1,6 +1,7 @@
 var rut = document.querySelector("[name=route]").value;
 var route = 'http://localhost/Gestion_Biblioteca/public/';
 var urlDetalles = route + 'apiDetalles';
+var urlPrestamos = route + 'apiPrestamos';
 
 function init()
 {
@@ -17,11 +18,14 @@ function init()
 		created:function(){
 			this.getDetalles();
 			this.getBuscar();
+			this.getPrestamos();
 		},
 
 		data:{
 			saludo:'holamundo',
 			detalleprestamos:[],
+			prestamos:[],
+			fechadevolucion:'',
 			foliodetalle:'',
 	    	folioprestamo:'',
 	    	isbn:'',
@@ -31,7 +35,7 @@ function init()
 	    	consec:'',
 	    	cantidad:'',
 			editando:false,
-			auxPrestamo:'',
+			auxDev:'',
 			buscar:'',
 
 			// cantidades:[1,1,1,1,1,1,1,1,1,1],
@@ -56,6 +60,15 @@ function init()
 				});
 			},
 
+			getPrestamos:function()
+			{
+				this.$http.get(urlPrestamos).then(function(json){
+					this.prestamos = json.data;
+				}).catch(function(json){
+					toastr.error("no se cargaron los datos");
+				});
+			},
+
 			showModal:function(){
 				$("#modal_custom").find(".modal-header").css("background","#f39c12");
 				$("#modal_custom").find(".modal-header").css("color", "black");
@@ -65,14 +78,8 @@ function init()
 			},
 
 			infoPrestamo:function(id){
-				this.editando=true;
-				// swal({
-				// 	title: "Información",
-				// 	text: "Esta visualizando informacion del prestamo",
-				// 	icon: "info",
-				// 	buttons: false,
-				// 	timer: 2000,
-				// });
+				var fecha = this.prestamos.fechadevolucion;
+				
 				$('#modal_custom').modal('show');
 				//peticion al servidor
 				this.$http.get(urlDetalles + '/' + id).then
@@ -81,13 +88,71 @@ function init()
 					this.folioprestamo = response.data.folioprestamo;
 					this.isbn = response.data.isbn;
 					this.titulo = response.data.titulo;
-					this.clasificacion = response.data.clasificacion;
+					this.fechadevolucion = response.data.fecha;
 					this.devuelto = response.data.devuelto;
 					this.cantidad = response.data.cantidad;
-					this.consec = response.data.consec;
-					this.auxPrestamo = response.data.folioprestamo;
 				});
 
+			},
+
+			Datoscargar:function(id){
+				var fecha = this.prestamos.fechadevolucion;
+
+				this.editando=true;
+				$('#modal_custom').modal('show');
+				//peticion al servidor
+				this.$http.get(urlDetalles + '/' + id).then
+				(function(response){
+					this.foliodetalle = response.data.foliodetalle;
+					this.folioprestamo = response.data.folioprestamo;
+					this.isbn = response.data.isbn;
+					this.titulo = response.data.titulo;
+					this.fechadevolucion = response.data.fecha;
+					this.devuelto = response.data.devuelto;
+					this.cantidad = response.data.cantidad;
+					this.auxDev = response.data.foliodetalle;
+				});
+			},
+
+			Devolver:function(id){
+				var devuelto = {
+					foliodetalle:this.foliodetalle, folioprestamo:this.folioprestamo, isbn:this.isbn,
+					titulo:this.titulo, devuelto:this.devuelto,cantidad:this.cantidad
+				};
+
+				this.$http.put(urlDetalles + '/' + this.foliodetalle,devuelto).then(function(response){
+					// this.getDetalles().splice(id,1);
+					this.getDetalles();
+					this.foliodetalle='';
+					this.folioprestamo='';
+					this.isbn='';
+					this.titulo='';
+					// this.fechadevolucion='';
+					this.devuelto='';
+					this.cantidad='';
+
+					$('#modal_custom').modal('hide');
+
+
+
+					swal({
+						title:"DEVOLUCIÓN REALIZADA",
+						text: "La devolución se realizo correctamente",
+						icon:"success",
+						buttons:false,
+						timer:3000
+					});
+
+				}).catch(function(response){
+					swal({
+						title: "FALLÓ LA DEVOLUCIÓN",
+						text: "El proceso no se completo, ocurrio un error",
+						icon: "error",
+						buttons:false,
+						timer: 3000,
+					});
+
+				});
 			},
 
 			cancelarEdit:function(){
@@ -96,9 +161,9 @@ function init()
 				this.folioprestamo='';
 				this.isbn='';
 				this.titulo='';
+				this.fechadevolucion='';
 				this.devuelto='';
 				this.cantidad='';
-				this.consec='';
 			},
 
 		},

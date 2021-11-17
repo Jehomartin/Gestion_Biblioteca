@@ -158,8 +158,16 @@ function init()
 							swal("revise los libros repetidos porfavor");
 						}
 					  });
-				}
-				else{
+				}else if (this.fechaprestamo >= this.fechadevolucion) {
+					swal({
+						title:"ERROR DE PRESTAMO",
+						text:"Verifique las fechas, la de devolución no puede ser menor a la de prestamo",
+						icon:"error",
+						buttons:"OK",
+						timer:4000,
+					});
+
+				}else{
 					this.$http.post(urlPresta,unPrestamo).then(function(response){
 						swal({
 							title: "Prestamo Exitoso",
