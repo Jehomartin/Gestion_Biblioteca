@@ -58,7 +58,7 @@
         <table class="table table-bordered table-responsive">
           <thead class="thead-dark">
             <th width="10%">ISBN</th>
-            <th width="20%">TITULO</th>
+            <th width="20%">TÍTULO</th>
             <th width="9%">ACCIONES</th>
           </thead>
           <tbody class="table table-bordered">

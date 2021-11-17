@@ -169,7 +169,7 @@
               <font color="white" size="4" face="times new roman">
                 <i class="nav-icon fas fa-shopping-cart"></i>
                 <p>
-                  Proceso Prestamo
+                  Proceso Préstamo
                 </p>
               </font>
             </a>
@@ -180,7 +180,7 @@
               <font color="white" size="4" face="times new roman">
                 <i class="nav-icon fas fa-share"></i>
                 <p>
-                  Libros prestados
+                  Libros Prestados
                 </p>
               </font>
             </a>

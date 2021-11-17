@@ -39,7 +39,7 @@
             <th width="10%" class="header" scope="col">CLAVE</th>
             <th class="header" scope="col">FOLIO</th>
             <th class="header" scope="col">ISBN</th>
-            <th class="header" scope="col">TITULO</th>
+            <th class="header" scope="col">TÍTULO</th>
             <th class="header" scope="col">FECHA_DEVOLUCIÓN</th>
             <th width="10%" class="header" scope="col">DEVUELTO</th>
             <th width="10%" class="header" scope="col">CANTIDAD</th>

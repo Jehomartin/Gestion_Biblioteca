@@ -22,7 +22,7 @@
                             <input type="text" name="" placeholder="ISBN del libro" class="form-control" v-model="isbn" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-6">
-                           <font face="Sylfaen" size="4"><label for="titulo">Titulo del libro <span class="asterisco">*</span></label></font>
+                           <font face="Sylfaen" size="4"><label for="titulo">Título del libro <span class="asterisco">*</span></label></font>
                             <input type="text" name="" placeholder="Titulo del libro" class="form-control" v-model="titulo" style="border-color:#000">
                         </div>
                     </div>
@@ -77,7 +77,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <font face="Sylfaen" size="4"><label for="pais">Elija el pais <span class="asterisco">*</span></label></font>
+                            <font face="Sylfaen" size="4"><label for="pais">Elija el país <span class="asterisco">*</span></label></font>
                             <div class="input-group">
                                 <select class="form-control" v-model="id_pais" @change="getPaiss" style="border-color:#000">
                                 <option disabled value="">Elija el pais del libro</option>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-4">
-                            <font face="Sylfaen" size="4"><label for="edicion">Edicion <span class="asterisco">*</span></label></font>
+                            <font face="Sylfaen" size="4"><label for="edicion">Edición <span class="asterisco">*</span></label></font>
                             <input type="number" name="" placeholder="Edicion" class="form-control" min="1" v-model="edicion" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-2">
@@ -106,7 +106,7 @@
                             <input type="date" name="" placeholder="Fecha alta" class="form-control" v-model="fecha_alta" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-4">
-                            <font face="Sylfaen" size="4"><label for="noPagina">Numero páginas <span class="asterisco">*</span></label></font>
+                            <font face="Sylfaen" size="4"><label for="noPagina">Número páginas <span class="asterisco">*</span></label></font>
                             <input type="number" name="" placeholder="Paginas" class="form-control" min="1" v-model="paginas" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-4">

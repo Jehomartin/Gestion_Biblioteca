@@ -40,7 +40,7 @@
       <table style="font-size:14px" class="table table-sm table-striped table-bordered table-hover tamanio-font">  
       <thead class="thead-dark">
           <th width="7%" class="header" scope="col">ISBN</th>
-          <th class="header" scope="col">TITULO</th>
+          <th class="header" scope="col">TÍTULO</th>
           <th class="header" scope="col">AUTOR</th>
           <th class="header" scope="col">EDITORIAL</th>
           <th class="header" scope="col">CARRERA</th>
