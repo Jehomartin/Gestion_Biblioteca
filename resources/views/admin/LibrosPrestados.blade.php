@@ -92,20 +92,26 @@
             <!-- inicio cuerpo modal -->
             <div class="modal-body div5">
               <font color="black" face="Sylfaen">
-                <div class="form-group">
-                  <label >CLAVE DEL DETALLE</label>
-                  <div class="input-group">
-                    <span v-if="!editando" class="form-control" style="border-color:#000"> @{{foliodetalle}} </span>
-                    <input type="text" class="form-control" style="border-color: #000" v-model="foliodetalle" v-if="editando">
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label >CLAVE DEL DETALLE</label>
+                      <div class="input-group">
+                        <span v-if="!editando" class="form-control" style="border-color:#000"> @{{foliodetalle}} </span>
+                        <input type="text" class="form-control" style="border-color: #000" v-model="foliodetalle" v-if="editando">
+                      </div>
+                    </div>
+                  </div>
+                    <div class="col-md-7 ml-auto">
+                    <div class="form-group">
+                      <label>FOLIO DEL PRESTAMO</label>
+                      <div class="input-group">
+                        <span v-if="!editando" class="form-control" style="border-color:#000"> @{{folioprestamo}} </span>
+                        <input type="text" class="form-control" style="border-color: #000" v-model="folioprestamo" v-if="editando">
+                      </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label>FOLIO DEL PRESTAMO</label>
-                  <div class="input-group">
-                    <span v-if="!editando" class="form-control" style="border-color:#000"> @{{folioprestamo}} </span>
-                    <input type="text" class="form-control" style="border-color: #000" v-model="folioprestamo" v-if="editando">
-                  </div>
-                </div>
+              </div>
                 <div class="form-group">
                   <label>FOLIO DEL LIBRO</label>
                   <div class="input-group">
@@ -128,24 +134,31 @@
                     </span>
                   </div>
                 </div> -->
-                <div class="form-group">
-                  <label>INDICATOR DE DEVOLUCION</label>
-                  <font size="2"><p><span class="asterisco">*</span>Nota el 1 indica devuelto, el 0 no devuelto.</p></font>
-                  <div class="input-group">
-                    <span v-if="!editando" class="form-control" style="border-color:#000"> @{{devuelto}} </span>
-                    <select class="form-control" style="border-color: #000" v-if="editando" v-model="devuelto">
-                      <option disabled value="">SELECCIONE UNA OPCIÓN</option>
-                      <option>0</option>
-                      <option>1</option>
-                    </select>
+                <div class="row">
+                <div class="col-md-7">
+                  <div class="form-group">
+                    <label>INDICATOR DE DEVOLUCION</label>
+                    <font size="2"><p><span class="asterisco">*</span>Nota el 1 indica devuelto, el 0 no devuelto.</p></font>
+                    <div class="input-group">
+                      <span v-if="!editando" class="form-control" style="border-color:#000"> @{{devuelto}} </span>
+                      <select class="form-control" style="border-color: #000" v-if="editando" v-model="devuelto">
+                        <option disabled value="">SELECCIONE UNA OPCIÓN</option>
+                        <option>0</option>
+                        <option>1</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
+                <div class="col-md-5 ml-auto">
                 <div class="form-group">
                   <label>CANTIDAD PRESTADA</label>
+                  <font size="2"><p><span class="asterisco"></span>.</p></font>
                   <div class="input-group">
                     <span v-if="!editando" class="form-control" style="border-color:#000"> @{{cantidad}} </span>
                     <input type="text" class="form-control" style="border-color: #000" v-model="cantidad" v-if="editando">
                   </div>
+                </div>
+                </div>
                 </div>
               </font>
             </div>
