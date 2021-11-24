@@ -335,6 +335,30 @@ new Vue({
 			this.solodewee = '';
 			this.deweecompleto = '';
 		},
+		detalleli:function(id){
+			// this.editando=true;
+			$('#modal_detalle').modal('show');
+			this.$http.get(urlLibros + '/' + id).then(function(response){
+				this.isbn = response.data.isbn;
+				this.folio = response.data.isbn;
+				this.titulo = response.data.titulo;
+				this.id_editorial = response.data.id_editorial;
+				this.id_autor = response.data.id_autor;
+				this.id_carrera = response.data.id_carrera;
+				this.edicion = response.data.edicion;
+				this.anio_pub = response.data.anio_pub;
+				this.id_pais = response.data.id_pais;
+				this.fecha_alta = response.data.fecha_alta;
+				this.paginas = response.data.paginas;
+				this.ejemplares = response.data.ejemplares;
+				this.clasificacion = response.data.clasificacion;
+				this.cutter = response.data.cutter;
+				this.auxLibro = response.data.isbn;
+			});
+
+			toastr.success("Informacion del libro");
+		},
+
 		
 	},
 

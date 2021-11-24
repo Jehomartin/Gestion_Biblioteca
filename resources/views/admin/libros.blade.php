@@ -49,12 +49,12 @@
         </thead>
         <tbody>
           <tr v-for="(libro,index) in filtroLibros">
-            <td v-on:click="">@{{libro.isbn}}</td>
-            <td v-on:click="">@{{libro.titulo}}</td>
-            <td v-on:click="">@{{libro.autor.nombre}}</td>
-            <td v-on:click="">@{{libro.editorial.editorial}}</td>
-            <td v-on:click="">@{{libro.carrera.carrera}}</td>
-            <td v-on:click="">@{{libro.ejemplares}}</td>
+            <td v-on:click="detalleli(libro.isbn)">@{{libro.isbn}}</td>
+            <td v-on:click="detalleli(libro.isbn)">@{{libro.titulo}}</td>
+            <td v-on:click="detalleli(libro.isbn)">@{{libro.autor.nombre}}</td>
+            <td v-on:click="detalleli(libro.isbn)">@{{libro.editorial.editorial}}</td>
+            <td v-on:click="detalleli(libro.isbn)">@{{libro.carrera.carrera}}</td>
+            <td v-on:click="detalleli(libro.isbn)">@{{libro.ejemplares}}</td>
             <td>
               <center>
 
@@ -341,6 +341,190 @@
         </div><!--/modal dialog-->
       </div><!--fin ventana modal-->
 
+      <div id="modal_detalle" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <!--inicio modal dialog-->
+      <div class="modal-dialog modal-lg" role="document">
+        <!--inicio modal content-->
+        <div class="modal-content">
+          <!-- se inicia el encabezado de la ventana modal -->
+          <div class="modal-header" style="background-color: #f39c12">
+            <h5 class="modal-title" id="exampleModalLiveLabel">
+              <font style="vertical-align: inherit;" face="Sylfaen">DETALLE DEL LIBRO</font>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
+              <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
+            </button>
+          </div>
+
+
+<!-- PROBANDO DIVISION DE  MODAL -->
+     
+
+          <!-- inicio cuerpo modal detalle-->
+          <div class="modal-body div5">
+            <div class="row">
+               <div class="col-md-12">
+                <div class="form-group">
+                  <label class="labelin"><font face="Sylfaen" size="4">Portada del libro</font></label>
+                  <img class="imgli" src="img/utc.jpeg">
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-group">
+                  <label for="isbn">
+                    <font face="Sylfaen" size="4">Isbn del libro</font>
+                  </label>
+                  <input type="text" name="" readonly="readonly" placeholder="ISBN del libro" class="form-control" v-model="isbn" style="border-color:#000">
+                </div>
+              </div>
+            <div class="col-md-7 ml-auto">
+              <div class="form-group">
+                <label for="titulo">
+                  <font face="Sylfaen" size="4">Título del libro</font>
+                </label>
+                <input type="text" name="" readonly="readonly"placeholder="Titulo del libro" class="form-control" v-model="titulo" style="border-color:#000">
+              </div>
+            </div>
+           
+            <!-- <input type="text" name="" placeholder="Titulo del libro" class="form-control" v-model="titulo"> -->
+            
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="editorial">
+                    <font face="Sylfaen" size="4">Editorial del libro</font>
+                  </label>
+                <div class="input-group">
+                  <select class="form-control" disabled="disabled" id="selectEditorial" v-model="id_editorial" @change="getEditorial" style="border-color:#000">
+                    <option disabled value="">Editorial del libro</option>
+                    <!-- <option value="1">Agregar nueva editorial</option> -->
+                    <option v-for="e in editoriales" v-bind:value="e.id_editorial">@{{e.editorial}}</option>
+                  </select>
+                </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 ml-auto">
+                <div class="form-group">
+                  <label for="autor">
+                    <font face="Sylfaen" size="4">Autor del libro</font>
+                  </label>
+                <div class="input-group">
+                  <select class="form-control" disabled="disabled" v-model="id_autor" @change="getAutor" style="border-color:#000">
+                    <option disabled value="">Autor del libro</option>
+                    <option v-for="a in autores" v-bind:value="a.id_autor">@{{a.nombre}}</option>
+                  </select>
+                </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="carrera">
+                    <font face="Sylfaen" size="4">Carrera del libro</font>
+                  </label>
+                <div class="input-group">
+                  <select class="form-control" disabled="disabled" v-model="id_carrera" @change="getCarrera" style="border-color:#000">
+                    <option disabled value="">Carrera del libro</option>
+                    <option v-for="c in carreras" v-bind:value="c.id_carrera">@{{c.carrera}}</option>
+                  </select>
+                </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 ml-auto">
+                <div class="form-group">
+                  <label for="edicion">
+                    <font face="Sylfaen" size="4">Edición</font>
+                  </label>
+                <input type="number" readonly="readonly" name="" placeholder="Edicion" class="form-control" min="1" v-model="edicion" style="border-color:#000">
+                </div>
+              </div>
+
+            </div>
+           
+            
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="anioPub">
+                    <font face="Sylfaen" size="4">Año de publicación</font>
+                  </label>
+                <input type="text" readonly="readonly" name="" placeholder="Año publicacion" class="form-control" v-model="anio_pub" style="border-color:#000">
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="pais">
+                    <font face="Sylfaen" size="4">País del libro</font>
+                  </label>
+                <div class="input-group">
+                  <select class="form-control" disabled="disabled" v-model="id_pais" @change="getPais" style="border-color:#000">
+                    <option disabled value="">País del libro</option>
+                    <option v-for="p in paises" v-bind:value="p.id_pais">@{{p.pais}}</option>
+                  </select>
+                </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                    <label for="pais">
+                      <font face="Sylfaen" size="4">Clasificación</font>
+                    </label>   
+                      <input type="text" name="" readonly="readonly" placeholder="Clasificacion" class="form-control" v-model="clasificacion" style="border-color:#000">
+                  </div>
+                </div>
+              </div>
+            
+            
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="fechaAlta">
+                    <font face="Sylfaen" size="4">Fecha alta</font>
+                  </label>
+                  <input type="date" name="" readonly="readonly" placeholder="Fecha alta" class="form-control" v-model="fecha_alta"  style="border-color:#000">
+                </div>
+               </div>
+               <div class="col-md-4">
+                <div class="form-group">
+                  <label for="noPagina">
+                    <font face="Sylfaen" size="4">Número de paginas</font>
+                  </label>
+                  <input type="number" name="" readonly="readonly" placeholder="Paginas" class="form-control" min="1" v-model="paginas" style="border-color:#000">
+                </div>
+               </div>
+               <div class="col-md-4">
+                <div class="form-group">
+                  <label for="ejemplares">
+                    <font face="Sylfaen" size="4">Ejemplares del libro</font>
+                  </label>
+                  <input type="text" name="" readonly="readonly" placeholder="Ejemplares del libro" class="form-control" v-model="ejemplares" style="border-color:#000">
+                </div>
+               </div>
+            </div>
+          </div>
+          
+          <!-- fin cuerpo modal -->
+
+          <!-- footer modal -->
+          <div class="modal-footer" style="background-color: #f39c12">
+            <div class="pull-right">
+                <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">
+                <span class="far fa-window-close"></span>
+                Cerrar</button>
+            </div>
+          </div>
+          </div>
+          
+          <!-- fin footer modal -->
+        </div> <!-- fin modal content -->
+      </div>  <!--/modal dialog -->
+    </div> <!-- fin ventana modal -->
+
     <!--INICIO FILTRO EJEMPLARES  -->
     <div id="table-wrapper">
   <div id="table-scroll">
@@ -399,4 +583,5 @@
 @push('scripts')
   <script type="text/javascript" src="js/admin/libros.js"></script>
   <link rel="stylesheet" type="text/css" href="css/diseño tabla/header_fijo.css">
+  <link rel="stylesheet" type="text/css" href="css/personalizados/info.css">
 @endpush

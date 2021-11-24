@@ -41,10 +41,12 @@ Route::view('prestamos','admin.prestamos');
 Route::view('devoluciones','admin.LibrosPrestados');
 Route::view('prestacion','admin.prestacion');
 Route::view('registro','admin.registroLibro');
+Route::view('info','admin.infoli');
 
 //enrutamiento de las funciones de validación
 Route::post('entrar','AccesoController@validar');
 Route::get('sale','AccesoController@salir');
+Route::post('detalle','DetalleController@detalle');
 
 //enrutamiento basico
 Route::view('/','login');
