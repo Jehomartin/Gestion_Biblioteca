@@ -1,0 +1,20 @@
+.imgli{
+	display: block;
+	margin: auto;
+	
+	width: 200px;
+	height: 200px;
+	border-radius: 250px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: yellow;
+}
+
+.colorin{
+	border-color: #FFC300;
+}
+.labelin{
+	 display:flex;
+    justify-content: center;
+    align-items: center;
+}
