@@ -114,46 +114,114 @@ function init()
 				});
 			},
 
+			// funcion devolver con modal
 			Devolver:function(id){
 				var devuelto = {
 					foliodetalle:this.foliodetalle, folioprestamo:this.folioprestamo, isbn:this.isbn,
 					titulo:this.titulo, devuelto:this.devuelto,cantidad:this.cantidad
 				};
 
-				this.$http.put(urlDetalles + '/' + this.foliodetalle,devuelto).then(function(response){
-					// this.getDetalles().splice(id,1);
-					this.getDetalles();
-					this.foliodetalle='';
-					this.folioprestamo='';
-					this.isbn='';
-					this.titulo='';
-					// this.fechadevolucion='';
-					this.devuelto='';
-					this.cantidad='';
+				if (this.devuelto==1) {
+					this.$http.put(urlDetalles + '/' + this.foliodetalle,devuelto).then(function(response){
+						// this.getDetalles().splice(id,1);
+						this.getDetalles();
+						this.foliodetalle='';
+						this.folioprestamo='';
+						this.isbn='';
+						this.titulo='';
+						// this.fechadevolucion='';
+						this.devuelto='';
+						this.cantidad='';
 
-					$('#modal_custom').modal('hide');
+						$('#modal_custom').modal('hide');
 
 
 
+						swal({
+							title:"DEVOLUCIÓN REALIZADA",
+							text: "La devolución se realizo correctamente",
+							icon:"success",
+							buttons:false,
+							timer:3000
+						});
+					});
+				}else if (this.devuelto == 0) {
 					swal({
-						title:"DEVOLUCIÓN REALIZADA",
-						text: "La devolución se realizo correctamente",
-						icon:"success",
+						title:"DEVOLUCIÓN FALLIDA",
+						text: "El indicador de devolución debe ser 1",
+						icon:"error",
 						buttons:false,
 						timer:3000
 					});
+				}
+				
+			},
+			// fin devolver com modal
 
-				}).catch(function(response){
-					swal({
-						title: "FALLÓ LA DEVOLUCIÓN",
-						text: "El proceso no se completo, ocurrio un error",
-						icon: "error",
-						buttons:false,
-						timer: 3000,
-					});
+			// función devolución con mensaje
+			DevolverLibro:function(id){
+				// se crea la variable para almacenar los datos
+				var devoluciones=[];
 
+				devoluciones.push({
+					foliodetalle:this.detalleprestamos.foliodetalle,
+					folioprestamo:this.detalleprestamos.folioprestamo,
+					isbn:this.detalleprestamos.isbn,
+					titulo:this.detalleprestamos.titulo,
+					devuelto:1,
+					cantidad:this.detalleprestamos.cantidad,
+				});
+				// fin
+
+				swal({
+					title:"REALIZANDO DEVOLUCIÓN",
+					text:"¿Está seguro de realizar la devolución del libro con clave \n" + this.isbn,
+					type: 'info',
+					icon: 'warning',
+					buttons:{
+						confirm:{
+							text: '¡Devolver!',
+							className: 'btn btn-success',
+						},
+						cancel:{
+							visible:true,
+							className:'btn btn-danger'
+						},
+					}, 
+				}).then((result) =>{
+					if (result) {
+						this.$http.post(urlDetalles + '/' + this.foliodetalle,devoluciones).then(function(response){
+							// this.foliodetalle='';
+							// this.folioprestamo='';
+							// this.isbn='';
+							// this.titulo='';
+							// this.fechadevolucion='';
+							// this.devuelto='';
+							// this.cantidad='';
+
+							swal({
+								title:"DEVOLUCIÓN REALIZADA",
+								text: "La devolución se realizo correctamente",
+								icon:"success",
+								buttons:false,
+								timer:3000
+							});
+							this.getDetalles();
+						}).catch(function(response){
+							swal({
+								title: "FALLÓ LA DEVOLUCIÓN",
+								text: "El proceso no se completo, ocurrio un error",
+								icon: "error",
+								buttons:false,
+								timer: 3000,
+							});
+						});
+					}else{
+						swal.close();
+					}
 				});
 			},
+			// fin devolución con mensaje
 
 			cancelarEdit:function(){
 				this.editando=false;
