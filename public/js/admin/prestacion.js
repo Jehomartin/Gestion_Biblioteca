@@ -167,7 +167,15 @@ function init()
 						timer:4000,
 					});
 
-				}else{
+				}else if (this.matricula == "") {
+					swal({
+						title:"ADVERTENCIA",
+						text:"Verifique que todos los campos solicitados esten llenos",
+						icon:"error",
+						buttons:false,
+						timer:4000,
+					});
+				} else{
 					this.$http.post(urlPresta,unPrestamo).then(function(response){
 						swal({
 							title: "Prestamo Exitoso",
