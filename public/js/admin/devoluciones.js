@@ -118,10 +118,10 @@ function init()
 			Devolver:function(id){
 				var devuelto = {
 					foliodetalle:this.foliodetalle, folioprestamo:this.folioprestamo, isbn:this.isbn,
-					titulo:this.titulo, devuelto:this.devuelto,cantidad:this.cantidad
+					titulo:this.titulo, devuelto:1,cantidad:this.cantidad
 				};
 
-				if (this.devuelto==1) {
+				// if (this.devuelto==1) {
 					this.$http.put(urlDetalles + '/' + this.foliodetalle,devuelto).then(function(response){
 						// this.getDetalles().splice(id,1);
 						this.getDetalles();
@@ -145,15 +145,15 @@ function init()
 							timer:3000
 						});
 					});
-				}else if (this.devuelto == 0) {
-					swal({
-						title:"DEVOLUCIÓN FALLIDA",
-						text: "El indicador de devolución debe ser 1",
-						icon:"error",
-						buttons:false,
-						timer:3000
-					});
-				}
+				// }else if (this.devuelto == 0) {
+				// 	swal({
+				// 		title:"DEVOLUCIÓN FALLIDA",
+				// 		text: "El indicador de devolución debe ser 1",
+				// 		icon:"error",
+				// 		buttons:false,
+				// 		timer:3000
+				// 	});
+				// }
 				
 			},
 			// fin devolver com modal

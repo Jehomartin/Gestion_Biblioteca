@@ -137,15 +137,15 @@
                 <div class="row">
                 <div class="col-md-7">
                   <div class="form-group">
-                    <label>INDICATOR DE DEVOLUCION</label>
-                    <font size="2"><p><span class="asterisco">*</span>Nota el 1 indica devuelto, el 0 no devuelto.</p></font>
+                    <label v-if="!editando">INDICATOR DE DEVOLUCION</label>
+                    <!-- <font size="2"><p><span class="asterisco">*</span>Nota el 1 indica devuelto, el 0 no devuelto.</p></font> -->
                     <div class="input-group">
                       <span v-if="!editando" class="form-control" style="border-color:#000"> @{{devuelto}} </span>
-                      <select class="form-control" style="border-color: #000" v-if="editando" v-model="devuelto">
+                      <!-- <select class="form-control" style="border-color: #000" v-if="editando" v-model="devuelto">
                         <option disabled value="">SELECCIONE UNA OPCIÓN</option>
                         <option>0</option>
                         <option>1</option>
-                      </select>
+                      </select> -->
                     </div>
                   </div>
                 </div>
@@ -168,6 +168,7 @@
             <div class="modal-footer div1">
               <div class="pull-right">
                 <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">ACEPTAR</button>
+                <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()" v.if="editando">CERRAR</button>
               </div>
               <div class="pull-right">
                 <button style="margin-left: 10px" type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="Devolver(auxDev)" v-if="editando">
