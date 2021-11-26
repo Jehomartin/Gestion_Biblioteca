@@ -97,8 +97,8 @@
                     <div class="form-group">
                       <label >CLAVE DEL DETALLE</label>
                       <div class="input-group">
-                        <span v-if="!editando" class="form-control" style="border-color:#000"> @{{foliodetalle}} </span>
-                        <input type="text" class="form-control" style="border-color: #000" v-model="foliodetalle" v-if="editando">
+                        <span class="form-control" style="border-color:#000"> @{{foliodetalle}} </span>
+                        <!-- <input type="text" class="form-control" style="border-color: #000" v-model="foliodetalle" v-if="editando"> -->
                       </div>
                     </div>
                   </div>
@@ -106,8 +106,8 @@
                     <div class="form-group">
                       <label>FOLIO DEL PRESTAMO</label>
                       <div class="input-group">
-                        <span v-if="!editando" class="form-control" style="border-color:#000"> @{{folioprestamo}} </span>
-                        <input type="text" class="form-control" style="border-color: #000" v-model="folioprestamo" v-if="editando">
+                        <span class="form-control" style="border-color:#000"> @{{folioprestamo}} </span>
+                        <!-- <input type="text" class="form-control" style="border-color: #000" v-model="folioprestamo" v-if="editando"> -->
                       </div>
                   </div>
                 </div>
@@ -115,15 +115,15 @@
                 <div class="form-group">
                   <label>FOLIO DEL LIBRO</label>
                   <div class="input-group">
-                    <span v-if="!editando" class="form-control" style="border-color:#000"> @{{isbn}} </span>
-                    <input type="text" class="form-control" style="border-color: #000" v-model="isbn" v-if="editando">
+                    <span class="form-control" style="border-color:#000"> @{{isbn}} </span>
+                    <!-- <input type="text" class="form-control" style="border-color: #000" v-model="isbn" v-if="editando"> -->
                   </div>
                 </div>
                 <div class="form-group">
                   <label>TITULO DEL LIBRO</label>
                   <div class="input-group">
-                    <span v-if="!editando" class="form-control" style="border-color:#000"> @{{titulo}} </span>
-                    <input type="text" class="form-control" style="border-color: #000" v-model="titulo" v-if="editando">
+                    <span class="form-control" style="border-color:#000"> @{{titulo}} </span>
+                    <!-- <input type="text" class="form-control" style="border-color: #000" v-model="titulo" v-if="editando"> -->
                   </div>
                 </div>
                <!--  <div class="form-group">
@@ -134,31 +134,12 @@
                     </span>
                   </div>
                 </div> -->
-                <div class="row">
-                <div class="col-md-7">
-                  <div class="form-group">
-                    <label v-if="!editando">INDICATOR DE DEVOLUCION</label>
-                    <!-- <font size="2"><p><span class="asterisco">*</span>Nota el 1 indica devuelto, el 0 no devuelto.</p></font> -->
-                    <div class="input-group">
-                      <span v-if="!editando" class="form-control" style="border-color:#000"> @{{devuelto}} </span>
-                      <!-- <select class="form-control" style="border-color: #000" v-if="editando" v-model="devuelto">
-                        <option disabled value="">SELECCIONE UNA OPCIÓN</option>
-                        <option>0</option>
-                        <option>1</option>
-                      </select> -->
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-5 ml-auto">
                 <div class="form-group">
                   <label>CANTIDAD PRESTADA</label>
-                  <font size="2"><p><span class="asterisco"></span>.</p></font>
                   <div class="input-group">
-                    <span v-if="!editando" class="form-control" style="border-color:#000"> @{{cantidad}} </span>
-                    <input type="text" class="form-control" style="border-color: #000" v-model="cantidad" v-if="editando">
-                  </div>
-                </div>
-                </div>
+                    <span class="form-control" style="border-color:#000"> @{{cantidad}} </span>
+                    <!-- <input type="text" class="form-control" style="border-color: #000" v-model="cantidad" v-if="editando">
+ -->               </div>
                 </div>
               </font>
             </div>
@@ -167,8 +148,8 @@
             <!-- footer modal -->
             <div class="modal-footer div1">
               <div class="pull-right">
-                <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()">ACEPTAR</button>
-                <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()" v.if="editando">CERRAR</button>
+                <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()" v-if="!editando">ACEPTAR</button>
+                <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()" v-if="editando">CERRAR</button>
               </div>
               <div class="pull-right">
                 <button style="margin-left: 10px" type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="Devolver(auxDev)" v-if="editando">
