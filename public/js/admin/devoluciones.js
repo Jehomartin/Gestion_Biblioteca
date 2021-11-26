@@ -38,6 +38,8 @@ function init()
 			auxDev:'',
 			buscar:'',
 
+			auxFecha:moment().format('YYYY-MM-DD'),
+
 			// cantidades:[1,1,1,1,1,1,1,1,1,1],
 		},
 
@@ -45,19 +47,41 @@ function init()
 
 			getDetalles:function()
 		    {
-				this.$http.get(urlDetalles).then(function(response){
-					this.detalleprestamos=response.data;
-				}).catch(function(response){
-					toastr.error("no se encontraron datos");
-				});
+		    	// if (this.detalleprestamos.devuelto == 0) {
+		    		this.$http.get(urlDetalles).then(function(response){
+						this.detalleprestamos=response.data;
+					}).catch(function(response){
+						toastr.error("no se encontraron datos");
+					});	
+		    	// }else{
+		    	// 	swal({
+		    	// 		title:"NO HAY DATOS",
+		    	// 		text:"No hay libros prestados",
+		    	// 		icon:"info",
+		    	// 		buttons:false,
+		    	// 		timer:3000
+		    	// 	});
+		    	// }
+				
 			},
 
 			getBuscar:function(){
-				this.$http.get(urlDetalles).then(function(json){
-					this.detalleprestamos=json.data;
-				}).catch(function(json){
-					toastr.error("no se encontraron datos");
-				});
+
+				// if (this.detalleprestamos.devuelto == 0) {
+		    		this.$http.get(urlDetalles).then(function(response){
+						this.detalleprestamos=response.data;
+					}).catch(function(response){
+						toastr.error("no se encontraron datos");
+					});	
+		    	// }else{
+		    	// 	swal({
+		    	// 		title:"NO HAY DATOS",
+		    	// 		text:"No hay libros prestados",
+		    	// 		icon:"info",
+		    	// 		buttons:false,
+		    	// 		timer:3000
+		    	// 	});
+		    	// }
 			},
 
 			getPrestamos:function()

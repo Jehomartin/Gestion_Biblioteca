@@ -18,7 +18,11 @@ class ApiDetallePrestamosController extends Controller
     public function index()
     {
         //
-        return DetallePrestamos::all();
+
+        // $dev = DB::select("SELECT * FROM detalle_prestamo WHERE devuelto = 0");
+        // return $dev
+
+        return DetallePrestamos::where('devuelto',0)->get(['foliodetalle','folioprestamo','isbn','titulo']);
     }
 
     /**
