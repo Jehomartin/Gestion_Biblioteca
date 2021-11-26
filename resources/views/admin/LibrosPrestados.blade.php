@@ -36,25 +36,25 @@
 
         <table class="table table-sm table-striped table-bordered table-hover">
           <thead class="thead-dark">
-            <th width="10%" class="header" scope="col">CLAVE</th>
+            <!-- <th width="10%" class="header" scope="col">CLAVE</th> -->
             <th class="header" scope="col">FOLIO</th>
             <th class="header" scope="col">ISBN</th>
             <th class="header" scope="col">TITULO</th>
             <th class="header" scope="col">FECHA_DEVOLUCIÓN</th>
-            <th width="10%" class="header" scope="col">DEVUELTO</th>
-            <th width="10%" class="header" scope="col">CANTIDAD</th>
+            <!-- <th width="10%" class="header" scope="col">DEVUELTO</th> -->
+            <!-- <th width="10%" class="header" scope="col">CANTIDAD</th> -->
             <th width="10%" class="header" scope="col">OPCIONES</th>
           </thead>
 
           <tbody>
             <tr v-for="(detalle,index) in filtroDetalles">
-              <td> @{{detalle.foliodetalle}} </td>
+              <!-- <td> @{{detalle.foliodetalle}} </td> -->
               <td> @{{detalle.folioprestamo}} </td>
               <td> @{{detalle.isbn}} </td>
               <td> @{{detalle.titulo}} </td>
               <td> @{{detalle.prestamo.fechadevolucion}} </td>
-              <td> @{{detalle.devuelto}} </td>
-              <td> @{{detalle.cantidad}} </td>
+              <!-- <td> @{{detalle.devuelto}} </td> -->
+              <!-- <td> @{{detalle.cantidad}} </td> -->
               <td>
                 <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-retweet"></i></span>
                 <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
