@@ -1,7 +1,6 @@
-var route = document.querySelector("[name=route]").value;
-var ruta = 'http://localhost/Gestion_Biblioteca/public/';
-var urlPresta = ruta + 'apiPrestamos';
-var urlLibro = ruta + 'apiLibros';
+var route = document.querySelector("#route").getAttribute("value");
+var urlPresta = route + '/apiPrestamos';
+var urlLibro = route + '/apiLibros';
 // var urlEjemplar = ruta + '/apiEjemplares';
 
 function init()
@@ -11,8 +10,8 @@ function init()
 
 		http:{
 			headers:{
-				'X-CSRF-TOKEN':document.querySelector('#token').getAttribute('value')
-			}
+				'X-CSRF-TOKEN':document.querySelector("#token").getAttribute("value"),
+			},
 		},
 
 		el:'#prestacion',
@@ -46,6 +45,7 @@ function init()
 				.then(function(response){
 					if (response.data==="") {
 						swal({
+							title:"ADVERTENCIA",
 							text: "El libro no se encuentra disponible ",
 							icon: "warning",
 							buttons: true,
@@ -54,6 +54,7 @@ function init()
 						this.codigo='';
 					} else if (response.data.ejemplares == 1) {
 						swal({
+							title:"ADVERTENCIA",
 							text:"El libro ya no tiene ejemplares disponibles",
 							icon:"warning",
 							buttons:true,
@@ -117,7 +118,7 @@ function init()
 				if(newdetalle3=="")
 				{
 					swal({
-						title: "Datos Vacíos",
+						title: "DATOS VACÍOS",
 						text: "No hay datos para realizar el prestamo",
 						icon: "error",
 						buttons: "ok",
@@ -127,7 +128,7 @@ function init()
 
 				else if(detalles2.length!=newdetalle3.length){
 					swal({
-						title: "Datos repetidos",
+						title: "DATOS REPETIDOS",
 						text: "Solo se tomara en cuenta un libro ¿continuar?",
 						icon: "warning",
 						buttons: true,
@@ -136,17 +137,16 @@ function init()
 						if (willDelete) {
 							this.$http.post(urlPresta,unPrestamo)
 							.then(function(json){
-							swal("Prestamo realizado con éxito, con folio:" + unPrestamo.folioprestamo, {
+							swal("PRESTAMO REALIZADO EXITOSAMENTE, CON FOLIO:" + unPrestamo.folioprestamo, {
 								icon: "success",
 							});
 								this.foliarprestamo();
 								this.fechadevolucion='';
 								this.matricula='';
 								this.prestamos=[];
-							// document.getElementById("libro").disabled=true;
 							}).catch(function(json){
 								swal({
-									title: "Prestamo fallido",
+									title: "PRESTAMO FALLIDO",
 									text: "No se pudo realizar el prestamo",
 									icon: "error",
 									buttons: false,
@@ -155,13 +155,13 @@ function init()
 							});
 						}
 						else{
-							swal("revise los libros repetidos porfavor");
+							swal("POR FAVOR, REVISE LOS LIBROS REPETIDOS");
 						}
 					  });
-				}else if (this.fechaprestamo >= this.fechadevolucion) {
+				}else if (this.fechadevolucion=="" && this.matricula=="") {
 					swal({
 						title:"ERROR DE PRESTAMO",
-						text:"Verifique las fechas, la de devolución no puede ser menor a la de prestamo",
+						text:"Verifique que los campos solicitados esten llenos",
 						icon:"error",
 						buttons:"OK",
 						timer:4000,
@@ -169,16 +169,37 @@ function init()
 
 				}else if (this.matricula == "") {
 					swal({
-						title:"ADVERTENCIA",
-						text:"Verifique que todos los campos solicitados esten llenos",
+						title:"ERROR DE PRESTAMO",
+						text:"Verifique que la matricula este colocada",
 						icon:"error",
 						buttons:false,
 						timer:4000,
 					});
+				}else if (this.fechadevolucion=="") {
+					swal({
+						title:"ERROR DE PRESTAMO",
+						text:"Verifique que la fecha de devolución este colocada",
+						icon:"error",
+						buttons:false,
+						timer:4000,
+					});
+				} else if (this.fechaprestamo >= this.fechadevolucion) {
+					swal({
+						title:"ERROR DE PRESTAMO",
+						text:"Verifique las fechas, la de devolución no puede ser menor a la de prestamo",
+						icon:"error",
+						buttons:{
+							comfirm: {
+								text: 'OK',
+								className: 'btn btn-success'
+							},
+						},
+						timer:5000,
+					});
 				} else{
 					this.$http.post(urlPresta,unPrestamo).then(function(response){
 						swal({
-							title: "Prestamo Exitoso",
+							title: "PRESTAMO EXITOSO",
 							text: "Prestamo realizado correctamente con folio: \n " + unPrestamo.folioprestamo,
 							icon: "success",
 							buttons: false,
@@ -190,7 +211,7 @@ function init()
 						this.matricula='';
 					}).catch(function(response){
 						swal({
-							title: "Prestamo fallido",
+							title: "PRESTAMO FALLIDO",
 							text: "No se pudo realizar el prestamo",
 							icon: "error",
 							buttons: false,

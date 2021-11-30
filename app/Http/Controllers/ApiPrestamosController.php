@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\RouteServiceProvider;
+use Illuminate\Routing\RouteCollection;
+
+// uso de modelos
 use App\Prestamos;
 use App\DetallePrestamos;
-use DB;
 use App\Libros;
 // use App\Alumnos;
+
+// uso de base datos
+use DB;
 
 class ApiPrestamosController extends Controller
 {

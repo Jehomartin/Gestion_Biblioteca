@@ -1,13 +1,12 @@
-var ruta = document.querySelector("[name=route]").value;
-var rute = 'http://localhost/Gestion_Biblioteca/public/';
-var urlEjemplar = rute + '/apiEjemplares';
-var urlLibro = rute + '/apiLibros';
+var route = document.querySelector("#route").getAttribute("value");
+var urlEjemplar = route + '/apiEjemplares';
+var urlLibro = route + '/apiLibros';
 
 new Vue({
 	http:{
 		headers:{
-			'X-CSRF-TOKEN':document.querySelector('#token').getAttribute('value')
-		}
+			'X-CSRF-TOKEN':document.querySelector("#token").getAttribute("value"),
+		},
 	},
 
 	el:"#ejemplar",
@@ -41,7 +40,7 @@ new Vue({
 			this.$http.get(urlEjemplar).then(function(response){
 				this.ejemplares=response.data;
 			}).catch(function(response){
-				console.log(response);
+				toastr.error("LOS DATOS NO SE CARGARON");
 			});
 		},
 
@@ -49,7 +48,7 @@ new Vue({
 			this.$http.get(urlLibro).then(function(json){
 				this.libros = json.data;
 			}).catch(function(json){
-				console.log(json);
+				toastr.error("LOS DATOS NO SE CARGARON");
 			});
 		},
 
@@ -57,7 +56,7 @@ new Vue({
 			this.$http.get(urlEjemplar).then(function(response){
 				this.ejemplares=response.data;
 			}).catch(function(response){
-				console.log(response);
+				toastr.error("LOS DATOS NO SE CARGARON");
 			});
 		},
 
@@ -66,7 +65,7 @@ new Vue({
 			$("#modal_custo").find(".modal-header").css("color", "black");
 			$("#modal_custo").find(".modal-title")   
 			$('#modal_custo').modal('show');
-			// $('#addejemplar').modal('show');
+			
 		},
 
 		agregarEjemplar:function(){
@@ -89,11 +88,23 @@ new Vue({
 				this.getEjemplar();
 				$('#addejemplar').modal('hide');
 
-				toastr.success("Ejemplar agregado con exito!!");
+				swal({
+					title:"EJEMPLAR AGREGADO",
+					text:"Ejemplar agregado con exito!!",
+					icon:"success",
+					buttons:false,
+					timer:3000,
+				});
 
 			}).catch(function(response){
 
-				toastr.error("Ejemplar no agregado ocurrio un error");
+				swal({
+					title:"ERROR DE REGISTRO",
+					text:"El ejemplar no se agrego ocurrio un error",
+					icon:"error",
+					buttons:false,
+					timer:3000,
+				});
 
 			});
 
@@ -139,27 +150,60 @@ new Vue({
 
 				$('#modal_custo').modal('hide');
 
-				toastr.success("Ejemplar Actualizado con exito!!");
+				swal({
+					title:"ACTUALIZACION EXITOSA",
+					text:"Ejemplar Actualizado con exito!!",
+					icon:"success",
+					buttons:false,
+					timer:3000,
+				});
 				
 			}).catch(function(response){
 
-				toastr.error("Ejemplar no Actualizado ocurrio un error");
+				swal({
+					title:"ERROR DE ACTUALIZACIÓN",
+					text:"Ocurrio un error al actualizar el ejemplar",
+					icon:"error",
+					buttons:false,
+					timer:3000,
+				});
 
 			});
 			
 		},
 
 		eliminarEjemplar:function(id){
-			// toastr.warning("Esta a punto de eliminar el registro de un ejemplar");
-			var resp=confirm("Esta seguro de eliminar dicho ejemplar")
-			if (resp==true) {
-				this.$http.delete(urlEjemplar + '/' + id).then(function(json){
-					this.getEjemplar();
-				});
-				toastr.success("La eliminacion del ejemplar se realizó correctamente");
-			}else{
-				toastr.info("El ejemplar no fue eliminado");
-			}
+
+			swal({
+                title: 'ADVERTENCIA',
+                text: "¿Está seguro de eliminar este registro?",
+                type: 'warning',
+                buttons: {
+                    confirm: {
+                        text: 'Eliminar!',
+                        className: 'btn btn-success'
+                    },
+                    cancel: {
+                        visible: true,
+                        className: 'btn btn-danger'
+                    },
+                },
+            }).then((result) => {
+                if (result) {
+                    this.$http.delete(urlEjemplar + '/' + id).then(function(json){
+                            swal({
+                                title: '¡ELIMINADO!',
+                                text: 'Usted a eliminado el registro corréctamente',
+                                icon: 'success',
+                                buttons: false,
+                                timer: 1500
+                            });
+                            this.getEjemplar();
+                        });
+                } else {
+                    swal.close();
+                }
+            });
 		},
 
 		cancelEditj:function(){

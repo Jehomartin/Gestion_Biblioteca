@@ -1,7 +1,6 @@
-var rut = document.querySelector("[name=route]").value;
-var route = 'http://localhost/Gestion_Biblioteca/public/';
-var urlDetalles = route + 'apiDetalles';
-var urlPrestamos = route + 'apiPrestamos';
+var route = document.querySelector("#route").getAttribute("value");
+var urlDetalles = route + '/apiDetalles';
+var urlPrestamos = route + '/apiPrestamos';
 
 function init()
 {
@@ -9,8 +8,8 @@ function init()
 
 		http:{
 			headers:{
-				'X-CSRF-TOKEN':document.querySelector('#token').getAttribute('value')
-			}
+				'X-CSRF-TOKEN':document.querySelector("#token").getAttribute("value"),
+			},
 		},
 
 		el:"#devolver",
@@ -47,41 +46,19 @@ function init()
 
 			getDetalles:function()
 		    {
-		    	// if (this.detalleprestamos.devuelto == 0) {
-		    		this.$http.get(urlDetalles).then(function(response){
-						this.detalleprestamos=response.data;
-					}).catch(function(response){
-						toastr.error("no se encontraron datos");
-					});	
-		    	// }else{
-		    	// 	swal({
-		    	// 		title:"NO HAY DATOS",
-		    	// 		text:"No hay libros prestados",
-		    	// 		icon:"info",
-		    	// 		buttons:false,
-		    	// 		timer:3000
-		    	// 	});
-		    	// }
-				
+	    		this.$http.get(urlDetalles).then(function(response){
+					this.detalleprestamos=response.data;
+				}).catch(function(response){
+					toastr.error("no se encontraron datos");
+				});
 			},
 
 			getBuscar:function(){
-
-				// if (this.detalleprestamos.devuelto == 0) {
-		    		this.$http.get(urlDetalles).then(function(response){
-						this.detalleprestamos=response.data;
-					}).catch(function(response){
-						toastr.error("no se encontraron datos");
-					});	
-		    	// }else{
-		    	// 	swal({
-		    	// 		title:"NO HAY DATOS",
-		    	// 		text:"No hay libros prestados",
-		    	// 		icon:"info",
-		    	// 		buttons:false,
-		    	// 		timer:3000
-		    	// 	});
-		    	// }
+	    		this.$http.get(urlDetalles).then(function(response){
+					this.detalleprestamos=response.data;
+				}).catch(function(response){
+					toastr.error("no se encontraron datos");
+				});
 			},
 
 			getPrestamos:function()
@@ -98,7 +75,7 @@ function init()
 				$("#modal_custom").find(".modal-header").css("color", "black");
 				$("#modal_custom").find(".modal-title")   
 				$('#modal_custom').modal('show');
-				// $('#addprestamo').modal('show');
+				
 			},
 
 			infoPrestamo:function(id){

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('titulo')</title>
   <meta name="token" id="token" value="{{ csrf_token() }}">
-  <meta name="route" value="{{url('/')}}">
+  <meta name="route" value="{{url('/')}}" id="route">
   
   <!-- icono de la pagina -->
     <link rel="shortcut icon" type="image/x-icon" href="img/utc.jpeg">
