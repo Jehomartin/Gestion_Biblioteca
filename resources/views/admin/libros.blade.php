@@ -524,7 +524,7 @@
     </div> <!-- fin ventana modal -->
 
     <!--INICIO FILTRO EJEMPLARES  -->
-    <div id="table-wrapper">
+    <!-- <div id="table-wrapper">
   <div id="table-scroll">
     <div class="row">
     <div class="col-md-12">
@@ -566,7 +566,7 @@
       </table>
     </div>
   </div>
-</div>
+</div> -->
     <!-- FIN EJEMPLARES -->
 
   </div>

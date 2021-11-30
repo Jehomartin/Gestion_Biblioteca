@@ -331,6 +331,7 @@ new Vue({
 			this.solodewee = '';
 			this.deweecompleto = '';
 		},
+
 		detalleli:function(id){
 			// this.editando=true;
 			$('#modal_detalle').modal('show');
@@ -354,7 +355,6 @@ new Vue({
 
 			toastr.success("Informacion del libro");
 		},
-
 		
 	},
 
