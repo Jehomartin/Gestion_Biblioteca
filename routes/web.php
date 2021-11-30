@@ -19,11 +19,6 @@ Route::get('/', function () {
 Route::apiResource('apiEjemplares','ApiEjemplaresController');
 Route::apiResource('apiAlumnos','ApiAlumnosController');
 Route::apiResource('apiDevoluciones','ApiDevolucionesController');
-// esta api es para realizar el actualizar y eliminar del libro
-Route::apiResource('apiLibros','ApiLibrosController');
-// esta api es para realizar el registro de un nuevo libro
-Route::apiResource('apiRegistroLibros','ApiLibrousController');
-//
 Route::apiResource('apiPrestamos','ApiPrestamosController');
 Route::apiResource('apiUsuarios','ApiUsuariosController');
 Route::apiResource('apiAcceso','AccesoController');
@@ -33,7 +28,7 @@ Route::apiResource('apiEditoriales','ApiEditorialesController');
 Route::apiResource('apiCarreras','ApiCarrerasController');
 Route::apiResource('apiDetalles','ApiDetallePrestamosController');
 
-//enrutamiento admin
+//enrutamiento admin(VISTAS)
 Route::view('inicio','admin.index');
 Route::view('libros','admin.libros');
 Route::view('ejemplares','admin.ejemplares');
@@ -41,18 +36,20 @@ Route::view('prestamos','admin.prestamos');
 Route::view('devoluciones','admin.LibrosPrestados');
 Route::view('prestacion','admin.prestacion');
 Route::view('registro','admin.registroLibro');
-Route::view('info','admin.infoli');
 
-//enrutamiento de las funciones de validación
+//enrutamiento funciones de validación(LOGIN)
 Route::post('entrar','AccesoController@validar');
 Route::get('sale','AccesoController@salir');
 Route::post('detalle','DetalleController@detalle');
 
-//enrutamiento basico
-Route::view('/','login');
-Route::view('mensaje','mensaje');
 
+// ruta de evento
 Route::get('getLibros/{id}',[
 	'as' => 'getLibros',
 	'uses' => 'ApiPrestamosController@getLibros',
 ]);
+
+// esta api es para realizar el actualizar y eliminar del libro
+Route::apiResource('apiLibros','ApiLibrosController');
+// esta api es para realizar el registro de un nuevo libro
+Route::apiResource('apiRegistroLibros','ApiLibrousController');

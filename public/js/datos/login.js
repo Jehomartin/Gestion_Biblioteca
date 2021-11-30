@@ -1,14 +1,13 @@
-var rute=document.querySelector("[name=route]").value;
-var rut='http://localhost/Gestion_Biblioteca/public/';
-var urlValidar = rut + '/apiAccess';
-var urlUser = rut + '/apiUsuarios';
+var route = document.querySelector("#route").getAttribute("value");
+var urlValidar = route + '/apiAccess';
+var urlUser = route + '/apiUsuarios';
 
 new Vue({
 
 	http: {
 		headers: {
-			'X-CSRF-TOKEN': document.querySelector('#token').getAttribute('value')
-		}
+			'X-CSRF-TOKEN': document.querySelector("#token").getAttribute("value"),
+		},
 	},
 
 	created:function(){

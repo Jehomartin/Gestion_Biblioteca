@@ -1,17 +1,16 @@
-var ruta = document.querySelector("[name=route]").value;
-var rute = 'http://localhost/Gestion_Biblioteca/public/';
-var urlLibros = rute + 'apiLibros';
-var urlEditorial = rute + 'apiEditoriales';
-var urlAutor = rute + 'apiAutores';
-var urlCarrera = rute + 'apiCarreras';
-var urlPais = rute + 'apiPais';
-var urlEjemplar = rute + 'apiEjemplares';
+var route = document.querySelector("#route").getAttribute("value");
+var urlLibros = route + '/apiLibros';
+var urlEditorial = route + '/apiEditoriales';
+var urlAutor = route + '/apiAutores';
+var urlCarrera = route + '/apiCarreras';
+var urlPais = route + '/apiPais';
+var urlEjemplar = route + '/apiEjemplares';
 
 new Vue({
 	http:{
 		headers:{
-			'X-CSRF-TOKEN':document.querySelector('#token').getAttribute('value')
-		}
+			'X-CSRF-TOKEN':document.querySelector("#token").getAttribute("value"),
+		},
 	},
 
 	el:"#libro",
@@ -47,7 +46,6 @@ new Vue({
 		titulo:'',
         ejemplares:'',
         cutter:'',
-        // editando:false,
         auxLibro:'',
         buscar:'',
 
@@ -136,7 +134,7 @@ new Vue({
 			$("#modal_custom").find(".modal-header").css("color", "black");
 			$("#modal_custom").find(".modal-title")   
 			$('#modal_custom').modal('show');
-			// $('#addlibro').modal('show');
+
 		},
 
 		showEjemplar:function(){
@@ -144,11 +142,10 @@ new Vue({
 			$("#modal_ejemplar").find(".modal-header").css("color", "black");
 			$("#modal_ejemplar").find(".modal-title")   
 			$('#modal_ejemplar').modal('show');
-			// $('#addejemplar').modal('show');
+
 		},
 
 		editLibro:function(id){
-			// this.editando=true;
 			$('#modal_custom').modal('show');
 			this.$http.get(urlLibros + '/' + id).then(function(response){
 				this.isbn = response.data.isbn;
@@ -179,7 +176,6 @@ new Vue({
 
 			this.$http.put(urlLibros + '/' + this.isbn,libro).then(function(response){
 				this.getLibros();
-				// this.editando=false;
 				this.isbn='';
 				this.folio='';
 				this.titulo='';
@@ -198,7 +194,7 @@ new Vue({
 				$('#modal_custom').modal('hide');
 
 				swal({
-					title: "Libro Actualizado",
+					title: "ACTUALIZACIÓN EXITOSA",
 					text: "Se modificaron los campos del libro",
 					icon: "success",
 					buttons:false,
@@ -208,7 +204,7 @@ new Vue({
 			}).catch(function(response){
 
 				swal({
-					title: "Falló la actualización",
+					title: "ERROR DE ACTUALIZACIÓN",
 					text: "El proceso no se completo, ocurrio un error",
 					icon: "error",
 					buttons:false,
@@ -223,7 +219,7 @@ new Vue({
 		eliminarLibro:function(id){
 			
 			swal({
-                title: 'Aviso',
+                title: 'ADVERTENCIA',
                 text: "¿Está seguro de eliminar este registro?",
                 type: 'warning',
                 buttons: {
@@ -240,7 +236,7 @@ new Vue({
                 if (result) {
                     this.$http.delete(urlLibros + '/' + id).then(function(json){
                             swal({
-                                title: '¡Eliminado!',
+                                title: '¡ELIMINADO!',
                                 text: 'Usted a eliminado el registro corréctamente',
                                 icon: 'success',
                                 buttons: false,
@@ -255,7 +251,6 @@ new Vue({
 		},
 
 		cancelarEdit:function(){
-			// this.editando=false;
 			this.isbn='';
 			this.folio='';
 			this.titulo='';
@@ -298,7 +293,7 @@ new Vue({
 				$('#modal_ejemplar').modal('hide');
 
 				swal({
-					title: "Ejemplar agregado",
+					title: "REGISTRO EXITOSO",
 					text: "Registro de ejemplar exitoso",
 					icon: "success",
 					buttons: {
@@ -313,6 +308,7 @@ new Vue({
 			}).catch(function(response){
 
 				swal({
+					title:"ERROR DE REGISTRO",
 					text: "Ejemplar no registrado",
 					icon: "error",
 					buttons: false,

@@ -25,42 +25,34 @@
 
   	<div class="container">
 		<div class="row">
-			<!-- <div class="col-lg-12"> -->
-				<!-- <div class="table-responsive"> -->
-					<!-- <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"> -->
-						<!-- <div class="row"> -->
-							<div class="col-md-12">
-								<h2 class="text text-center">Listado de Ejemplares</h2>
-								<table class="table table-sm table-striped table-bordered table-hover">
-									<thead class="thead-dark">
-										<th>FOLIO</th>
-										<th>CLASIFICACION</th>
-										<th>ESBASE</th>
-										<th>PRESTADO</th>
-										<th>CONSEC</th>
-										<th>FECHA ALTA</th>
-										<th>OPCIONES</th>
-									</thead>
-									<tbody>
-										<tr v-for="(ejemplar,index) in filtroEjemplares">
-											<td>@{{ejemplar.folio}}</td>
-											<td>@{{ejemplar.clasificacion}}</td>
-											<td>@{{ejemplar.esbase}}</td>
-											<td>@{{ejemplar.prestado}}</td>
-											<td>@{{ejemplar.consec}}</td>
-											<td>@{{ejemplar.fecha_alta}}</td>
-											<td>
-												<span class="btn btn-primary nav-icon fas fa-edit" v-on:click="editEjemplar(ejemplar.clasificacion)"></span>
-												<span class="btn btn-danger fas fa-trash-alt" v-on:click="eliminarEjemplar(ejemplar.clasificacion)"></span>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						<!-- </div> -->
-					<!-- </div> -->
-				<!-- </div> -->
-			<!-- </div> -->
+			<div class="col-md-12">
+				<h2 class="text text-center">Listado de Ejemplares</h2>
+				<table class="table table-sm table-striped table-bordered table-hover">
+					<thead class="thead-dark">
+						<th>FOLIO</th>
+						<th>CLASIFICACION</th>
+						<th>ESBASE</th>
+						<th>PRESTADO</th>
+						<th>CONSEC</th>
+						<th>FECHA ALTA</th>
+						<th>OPCIONES</th>
+					</thead>
+					<tbody>
+						<tr v-for="(ejemplar,index) in filtroEjemplares">
+							<td>@{{ejemplar.folio}}</td>
+							<td>@{{ejemplar.clasificacion}}</td>
+							<td>@{{ejemplar.esbase}}</td>
+							<td>@{{ejemplar.prestado}}</td>
+							<td>@{{ejemplar.consec}}</td>
+							<td>@{{ejemplar.fecha_alta}}</td>
+							<td>
+								<span class="btn btn-primary nav-icon fas fa-edit" v-on:click="editEjemplar(ejemplar.clasificacion)"></span>
+								<span class="btn btn-danger fas fa-trash-alt" v-on:click="eliminarEjemplar(ejemplar.clasificacion)"></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 			<!-- inicio ventana modal -->
 	  		 <div id="modal_custo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" id="addlibro">
 			      <!--inicio modal dialog-->
@@ -126,5 +118,5 @@
 @endsection
 
 @push('scripts')
-	<script type="text/javascript" src="js/admin/ejemplares.js"></script>
+	<script type="text/javascript" src="js/datos/ejemplares.js"></script>
 @endpush

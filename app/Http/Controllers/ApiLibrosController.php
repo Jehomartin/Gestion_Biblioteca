@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\RouteServiceProvider;
+use Illuminate\Routing\RouteCollection;
+
+// uso de modelo
 use App\Libros;
-// use App\Editoriales;
 
 class ApiLibrosController extends Controller
 {

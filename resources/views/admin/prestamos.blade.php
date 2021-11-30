@@ -7,7 +7,6 @@
 </font>
 
 <div id="prestacion">
-<!--  <font color="white" size="10">@{{saludo}}</font> -->
   <br>
   <div class="container">
     <div class="row">
@@ -82,7 +81,6 @@
 @endsection
 
 @push('scripts')
-  <script src="js/admin/prestacion.js"></script>
-  <!-- <script type="text/javascript" src="js/vue/vue.min.js"></script> -->
+  <script src="js/datos/prestacion.js"></script>
   <script src="js/moment-with-locales.min.js"></script>
 @endpush

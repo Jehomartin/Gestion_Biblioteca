@@ -1,18 +1,17 @@
-var ruta = document.querySelector("[name=route]").value;
-var rute = 'http://localhost/Gestion_Biblioteca/public/';
-var urlLibros = rute + 'apiRegistroLibros';
-var urlEditorial = rute + 'apiEditoriales';
-var urlAutor = rute + 'apiAutores';
-var urlCarrera = rute + 'apiCarreras';
-var urlPais = rute + 'apiPais';
-var urlEjemplar = rute + 'apiEjemplares';
+var route = document.querySelector("#route").getAttribute("value");
+var urlLibros = route + '/apiRegistroLibros';
+var urlEditorial = route + '/apiEditoriales';
+var urlAutor = route + '/apiAutores';
+var urlCarrera = route + '/apiCarreras';
+var urlPais = route + '/apiPais';
+var urlEjemplar = route + '/apiEjemplares';
 
 new Vue({
 
 http:{
 	headers:{
-		'X-CSRF-TOKEN':document.querySelector('#token').getAttribute('value')
-	}
+		'X-CSRF-TOKEN':document.querySelector("#token").getAttribute("value"),
+	},
 },
 
 el:"#registros",
@@ -35,26 +34,30 @@ data:{
 	anio_pub:'',
 	fecha_alta:'',
 	paginas:'',
-        ejemplares:'',
-        clasificacion:'',
-        cutter:'',
+    ejemplares:'',
+    clasificacion:'',
+    cutter:'',
 
-        // datas para editorial
-        editoriales:[],
-        id_editorial:'',
+    // datas para editorial
+    editoriales:[],
+    id_editorial:'',
 	editorial:'',
-        // dastas para autor
+
+    // dastas para autor
 	autores:[],
-        id_autor:'',
+    id_autor:'',
 	nombre:'',
-        // datas para carreras
+
+    // datas para carreras
 	carreras:[],
 	id_carrera:'',
 	carrera:'',
-        // datas para pais
-        paises:[],
-        id_pais:'',
-        pais:'',
+
+    // datas para pais
+    paises:[],
+    id_pais:'',
+    pais:'',
+
 	},
 
 methods:{
@@ -62,7 +65,7 @@ methods:{
 		this.$http.get(urlLibros).then(function(response){
 			this.libros=response.data;
 		}).catch(function(response){
-			// console.log(response);
+			toastr.error("Datos no cargados");
 		});
 	},
 
@@ -70,7 +73,7 @@ methods:{
 		this.$http.get(urlEditorial).then(function(response){
 			this.editoriales=response.data;
 		}).catch(function(response){
-			// console.log(response);
+			toastr.error("Datos no cargados");
 		});
 	},
 
@@ -78,7 +81,7 @@ methods:{
 		this.$http.get(urlAutor).then(function(response){
 			this.autores=response.data;
 		}).catch(function(response){
-			// console.log(response);
+			toastr.error("Datos no cargados");
 		});
 	},
 
@@ -86,7 +89,7 @@ methods:{
 		this.$http.get(urlCarrera).then(function(response){
 			this.carreras=response.data;
 		}).catch(function(response){
-			// console.log(response);
+			toastr.error("Datos no cargados");
 		});
 	},
 
@@ -94,7 +97,7 @@ methods:{
 		this.$http.get(urlPais).then(function(response){
 			this.paises=response.data;
 		}).catch(function(response){
-			// console.log(response);
+			toastr.error("Datos no cargados");
 		});
 	},
 
@@ -103,7 +106,6 @@ methods:{
 		$("#Editorial").find(".modal-header").css("color", "black");
 		$("#Editorial").find(".modal-title")   
 		$('#Editorial').modal('show');
-		// $('#addEditorial').modal('show');
 	},
 
 	showModalAutor:function(){
@@ -158,7 +160,7 @@ methods:{
 		this.$http.post(urlLibros,libro).then(function(response) {
 		this.getLibross();
 		swal({
-			title: "Libro agregado",
+			title: "REGISTRO EXITOSO",
 			text: "El libro fue registrado exitosamente",
 			icon: "success",
 			buttons:false,
@@ -167,7 +169,7 @@ methods:{
 
 		}).catch(function(response){
 			swal({
-				title: "Libro no registrado",
+				title: "REGISTRO FALLIDO",
 				text: "Verifique si lleno todos los campos importantes",
 				icon: "error",
 				buttons:false,
@@ -187,7 +189,8 @@ methods:{
 			this.getEditorials();
 			$('#Editorial').modal('hide');
 			swal({
-				title: "Editorial agregada",
+				title: "REGISTRO EXITOSO",
+				text:"Editorial registrada con exito",
 				icon: "success",
 				buttons:false,
 				timer: 3000,
@@ -195,7 +198,8 @@ methods:{
 			this.editorial='';
 		}).catch(function(response){
 			swal({
-				title: "Editorial no agregada",
+				title: "REGISTRO FALLIDO",
+				text:"Editorial no registrada",
 				icon: "error",
 				buttons:false,
 				timer: 3000,
@@ -213,14 +217,16 @@ methods:{
 			this.getAutors();
 			$('#Autor').modal('hide');
 			swal({
-				title: "Autor agregado",
+				title: "REGISTRO EXITOSO",
+				text:"Autor registrado con exito",
 				icon: "success",
 				buttons:false,
 				timer: 3000,
 			});
 		}).catch(function(response){
 			swal({
-				title: "Autor no agregado",
+				title: "REGISTRO FALLIDO",
+				text:"Autor no registrado",
 				icon: "error",
 				buttons:false,
 				timer: 3000,
@@ -238,14 +244,16 @@ methods:{
 			this.getCarreras();
 			$('#Carrera').modal('hide');
 			swal({
-				title: "Carrera agregada",
+				title: "REGISTRO EXITOSO",
+				text:"Carrera registrada con exito",
 				icon: "success",
 				buttons:false,
 				timer: 3000,
 			});
 		}).catch(function(response){
 			swal({
-				title: "Carrera no agregada",
+				title: "REGISTRO FALLIDO",
+				text:"Carrera no registrada",
 				icon: "error",
 				buttons:false,
 				timer: 3000,
@@ -262,14 +270,16 @@ methods:{
 			this.getPaiss();
 			$('#Pais').modal('hide');
 			swal({
-				title: "País agregado",
+				title: "REGISTRO EXITOSO",
+				text:"País registrado con exito",
 				icon: "success",
 				buttons:false,
 				timer: 3000,
 			});
 		}).catch(function(json){
 			swal({
-				title: "País no agregado",
+				title: "REGISTRO FALLIDO",
+				text:"País no registrado",
 				icon: "error",
 				buttons:false,
 				timer: 3000,

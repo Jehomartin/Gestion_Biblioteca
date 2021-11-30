@@ -2,8 +2,6 @@
 @section('titulo','Libros')
 @section('contenido')
 
-<!-- links de fixed -->
-<!-- <link rel="stylesheet" href="css/personalizados/aspecto.css"> -->
 <link rel="stylesheet" href="css/personalizados/stylo3.css">
 <!-- El id es del identificador del js -->
 <div id="libro">
@@ -581,7 +579,7 @@
 @endsection
 
 @push('scripts')
-  <script type="text/javascript" src="js/admin/libros.js"></script>
+  <script type="text/javascript" src="js/datos/libros.js"></script>
   <link rel="stylesheet" type="text/css" href="css/diseño tabla/header_fijo.css">
   <link rel="stylesheet" type="text/css" href="css/personalizados/info.css">
 @endpush
