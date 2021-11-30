@@ -36,6 +36,8 @@ Route::view('prestamos','admin.prestamos');
 Route::view('devoluciones','admin.LibrosPrestados');
 Route::view('prestacion','admin.prestacion');
 Route::view('registro','admin.registroLibro');
+Route::view('info','admin.infoli');
+Route::view('/','login');
 
 //enrutamiento funciones de validación(LOGIN)
 Route::post('entrar','AccesoController@validar');
