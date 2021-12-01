@@ -169,7 +169,7 @@
               <font color="white" size="4" face="times new roman">
                 <i class="nav-icon fas fa-shopping-cart"></i>
                 <p>
-                  Proceso Prestamo
+                  Proceso Préstamo
                 </p>
               </font>
             </a>
@@ -217,7 +217,7 @@
 
  <!-- Main Footer -->
    <footer class="main-footer">
-      <strong>Gestion Biblioteca <span class="fa fa-book"></span></strong>
+      <strong>Gestión Biblioteca <span class="fa fa-book"></span></strong>
       Todos los derechos reservados.
       <div class="float-right d-none d-sm-inline-block">
         <img src="adminlte/img/utc.png" width="20px" height="20px">

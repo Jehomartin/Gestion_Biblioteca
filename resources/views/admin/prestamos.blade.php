@@ -17,13 +17,13 @@
       <div class="col-lg-4">
         <font color="black" face="Sylfaen">
           <h5>MATRÍCULA DEL ALUMNO: </h5> 
-          <input type="text" class="form-control" placeholder="Matricula" v-model="matricula" style="border-color: #000">
+          <input type="text" class="form-control" placeholder="Matrícula" v-model="matricula" style="border-color: #000">
         </font>
       </div>
       <div class="col-lg-4">
         <font color="black" face="Sylfaen">
           <h5>FECHA DEVOLUCIÓN: </h5>
-          <input type="date" class="form-control" placeholder="fecha devolucion" v-model="fechadevolucion" style="border-color: #000">
+          <input type="date" class="form-control" placeholder="fecha devolución" v-model="fechadevolucion" style="border-color: #000">
         </font>
       </div>
     </div>
@@ -55,7 +55,7 @@
         <table class="table table-striped table-bordered table-responsive">
           <thead class="thead-dark">
             <th width="10%">ISBN</th>
-            <th width="20%">TITULO</th>
+            <th width="20%">TÍTULO</th>
             <th width="9%">ACCIONES</th>
           </thead>
           <tbody class="table table-bordered">

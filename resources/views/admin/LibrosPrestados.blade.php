@@ -29,7 +29,7 @@
       <div class="col-sm-12">
         <br>
         <font color="black" face="Sylfaen">
-          <h2 class="text text-center">PRESTAMOS REALIZADOS</h2>
+          <h2 class="text text-center">PRÉSTAMOS REALIZADOS</h2>
         </font>
         <br>
 
@@ -37,7 +37,7 @@
           <thead class="thead-dark">
             <th class="header" scope="col">FOLIO</th>
             <th class="header" scope="col">ISBN</th>
-            <th class="header" scope="col">TITULO</th>
+            <th class="header" scope="col">TÍTULO</th>
             <th class="header" scope="col">FECHA_DEVOLUCIÓN</th>
             <th width="10%" class="header" scope="col">OPCIONES</th>
           </thead>
@@ -71,7 +71,7 @@
                 <font style="vertical-align: inherit;" face="Sylfaen" color="black">REGISTRANDO DEVOLUCIÓN</font>
               </h5>
               <h5 class="modal-title" id="exampleModalLiveLabel" v-if="!editando">
-                <font style="vertical-align: inherit;" face="Sylfaen" color="black">INFORMACION DEL LIBRO PRESTADO</font>
+                <font style="vertical-align: inherit;" face="Sylfaen" color="black">INFORMACIÓN DEL LIBRO PRESTADO</font>
               </h5>
               
               <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
@@ -97,7 +97,7 @@
                   </div>
                     <div class="col-md-7 ml-auto">
                     <div class="form-group">
-                      <label>FOLIO DEL PRESTAMO</label>
+                      <label>FOLIO DEL PRÉSTAMO</label>
                       <div class="input-group">
                         <span class="form-control" style="border-color:#000"> @{{folioprestamo}} </span>
                         <!-- <input type="text" class="form-control" style="border-color: #000" v-model="folioprestamo" v-if="editando"> -->
@@ -113,7 +113,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>TITULO DEL LIBRO</label>
+                  <label>TÍTULO DEL LIBRO</label>
                   <div class="input-group">
                     <span class="form-control" style="border-color:#000"> @{{titulo}} </span>
                     <!-- <input type="text" class="form-control" style="border-color: #000" v-model="titulo" v-if="editando"> -->
