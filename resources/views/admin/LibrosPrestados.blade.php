@@ -2,6 +2,11 @@
 @section('titulo','Listado Prestamos')
 @section('contenido')
 
+<style type="text/css">
+  
+</style>
+
+<input type="hidden" id="fechaActual" value="<?php echo date('Y-m-d'); ?>">
 <div class="main-panel" id="devolver">
   <div class="container">
     <div class="row">
@@ -43,7 +48,17 @@
           </thead>
 
           <tbody>
-            <tr v-for="(detalle,index) in filtroDetalles">
+            <tr v-for="(detalle,index) in filtroDetalles" v-if="$('#fechaActual').val() <= detalle.prestamo.fechadevolucion" style="background: green;">
+              <td> @{{detalle.folioprestamo}} </td>
+              <td> @{{detalle.isbn}} </td>
+              <td> @{{detalle.titulo}} </td>
+              <td> @{{detalle.prestamo.fechadevolucion}} </td>
+              <td>
+                <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-retweet"></i></span>
+                <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
+              </td>
+            </tr>
+            <tr v-else style="background: red;">
               <td> @{{detalle.folioprestamo}} </td>
               <td> @{{detalle.isbn}} </td>
               <td> @{{detalle.titulo}} </td>
