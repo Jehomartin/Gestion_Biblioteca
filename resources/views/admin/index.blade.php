@@ -30,19 +30,25 @@
             <li class="slide" id="slide3">
                 <a href="#">
                     <p class="texto-encima"></p>
-                    <img src="login/img/libroos.jpg" alt="photo 3">      
+                    <img src="login/img/img-utc4.jpg" alt="photo 3">      
                 </a>
             </li>
             <li class="slide" id="slide4">
                 <a href="#">
                     <p class="texto-encima"></p>
-                    <img src="img/2019.jpg" alt="photo 4">      
+                    <img src="login/img/img-utc2.png" alt="photo 4">      
                 </a>
             </li>     
             <li class="slide" id="slide5">
                 <a href="#">
                     <p class="texto-encima"></p>
-                    <img src="login/img/biblio.jpg" alt="photo 5">      
+                    <img src="login/img/img-utc5.jpg" alt="photo 5">      
+                </a>
+            </li>
+            <li class="slide" id="slide6">
+                <a href="#">
+                    <p class="texto-encima"></p>
+                    <img src="login/img/img-utc3.jpeg" alt="photo 5">      
                 </a>
             </li>                 
         </ul>
