@@ -86,4 +86,10 @@ class ApiLibrosController extends Controller
         //
         return Libros::destroy($id);
     }
+
+    public function detallelibro(Request $request, $id)
+    {
+        $libros = Libros::find($id);
+        return view('admin.infoli', compact('libros'));
+    }
 }

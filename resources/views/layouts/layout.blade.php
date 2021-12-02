@@ -9,49 +9,49 @@
   <meta name="route" value="{{url('/')}}" id="route">
   
   <!-- icono de la pagina -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/utc.jpeg">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/utc.jpeg') }}">
   <!-- fin icono -->
 
   <!-- css colocados a parte -->
-    <link rel="stylesheet" type="text/css" href="css/personalizados/logeo.css">
-    <link rel="stylesheet" type="text/css" href="css/personalizados/color.css">
+    <link rel="stylesheet" href="{{ asset('css/personalizados/logeo.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/personalizados/color.css') }}">
     <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-3/bootstrap.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="css/toastr.css">
-    <link rel="stylesheet" type="text/css" href="css/carrusel.css">
-    <link rel="stylesheet" type="text/css" href="css/personalizados/efectos.css">
-    <link rel="stylesheet" type="text/css" href="css/css1/css2.css">
+    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/carrusel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/personalizados/efectos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/css1/css2.css') }}">
     <!-- <link rel="stylesheet" type="text/css" href="css/responsive/responsive1.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="css/diseño tabla/tabla.css"> -->
   <!-- fin css -->
 
   <!-- links de tabla para cargar datos por partes-->
     <!--datables CSS básico-->
-    <link rel="stylesheet" type="text/css" href="table/datatables/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('table/datatables/datatables.min.css') }}"/>
     <!--datables estilo bootstrap 4 CSS-->  
     <!-- <link rel="stylesheet"  type="text/css" href="table/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="table/main.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('table/main.css') }}">
     <!-- <link rel="stylesheet" href="table/bootstrap/css/bootstrap.min.css"> -->
   <!-- fin link tabla -->
   
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Tempusdominus Bbootstrap 4 -->
-  <link rel="stylesheet" href="adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
   <!-- iCheck -->
-  <link rel="stylesheet" href="adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <!-- JQVMap -->
-  <link rel="stylesheet" href="adminlte/plugins/jqvmap/jqvmap.min.css">
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/jqvmap/jqvmap.min.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="adminlte/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
-  <link rel="stylesheet" href="adminlte/plugins/summernote/summernote-bs4.css">
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/summernote/summernote-bs4.css') }}">
 
-  <script src="js/vue/vue.min.js"></script>
-  <script src="js/vue/vue-resource.min.js"></script>
+  <script src="{{ asset('js/vue/vue.min.js') }}"></script>
+  <script src="{{ asset('js/vue/vue-resource.min.js') }}"></script>
   
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -75,7 +75,7 @@
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="img/user.png" width="30" height="30">
+              <img src="{{ asset('img/user.png') }}" width="30" height="30">
               <!-- <span class="hidden-xs"><font color="black">{{Session::get('usuario')}}</font></span> -->
             </a>
             <ul class="dropdown-menu">
@@ -107,7 +107,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <font color="white"><a class="brand-link">
-      <img src="img/utc.jpeg" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ asset('img/utc.jpeg') }}" class="brand-image img-circle elevation-3" style="opacity: .8">
       <font face="Arial black"><span class="brand-text font-weight-light">UTC</span></font>
     </a></font>
 
@@ -116,7 +116,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="img/user.png" class="img-circle elevation-2">
+          <img src="{{ asset('img/user.png') }}" class="img-circle elevation-2">
         </div>
         <div class="info">
           <font size="2" color="yellow">
@@ -220,7 +220,7 @@
       <strong>Gestión Biblioteca <span class="fa fa-book"></span></strong>
       Todos los derechos reservados.
       <div class="float-right d-none d-sm-inline-block">
-        <img src="adminlte/img/utc.png" width="20px" height="20px">
+        <img src="{{ asset('adminlte/img/utc.png') }}" width="20px" height="20px">
         <b>Universidad Tecnológica del Centro</b>
     </div>
     </footer>
@@ -236,14 +236,14 @@
 @stack('scripts')
 
 <!-- jQuery 3 -->
-<script src="adminlte/js/jquery.min.js"></script>
-<script src="js/jquery/jquery-3.3.1.min.js"></script>
+<script src="{{ asset('adminlte/js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/jquery/jquery-3.3.1.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <!-- <script src="adminlte/js/bootstrap.min.js"></script> -->
 <!-- AdminLTE App -->
-<script src="adminlte/js/adminlte.min.js"></script>
-<script src="js/toastr.js"></script>
-<script src="js/sweetalert.min.js"></script>
+<script src="{{ asset('adminlte/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('js/toastr.js') }}"></script>
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
 
 <!-- js para la tabla -->
 <!-- <script type="text/javascript" src="table/popper/popper.min.js"></script>
@@ -252,23 +252,24 @@
 <!-- fin js tabla -->
 
 <!-- jQuery -->
-<script src="adminlte/plugins/jquery/jquery.min.js"></script>
+<script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
-<script src="adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- ChartJS -->
-<script src="adminlte/plugins/chart.js/Chart.min.js"></script>
+<script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
 <!-- daterangepicker -->
-<script src="adminlte/plugins/moment/moment.min.js"></script>
-<script src="adminlte/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="{{ asset('adminlte/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('adminlte/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="{{ asset('adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <!-- Summernote -->
-<script src="adminlte/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <!-- overlayScrollbars -->
-<script src="adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="{{ asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="adminlte/dist/js/adminlte.js"></script>
+<script src="{{ asset('adminlte/dist/js/adminlte.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="adminlte/dist/js/demo.js"></script>
+<script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
+
 </body>
 </html>
