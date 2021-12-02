@@ -47,12 +47,12 @@
         </thead>
         <tbody>
           <tr v-for="(libro,index) in filtroLibros">
-            <td v-on:click="detalleli(libro.isbn)">@{{libro.isbn}}</td>
-            <td v-on:click="detalleli(libro.isbn)">@{{libro.titulo}}</td>
-            <td v-on:click="detalleli(libro.isbn)">@{{libro.autor.nombre}}</td>
-            <td v-on:click="detalleli(libro.isbn)">@{{libro.editorial.editorial}}</td>
-            <td v-on:click="detalleli(libro.isbn)">@{{libro.carrera.carrera}}</td>
-            <td v-on:click="detalleli(libro.isbn)">@{{libro.ejemplares}}</td>
+            <td v-on:click="">@{{libro.isbn}}</td>
+            <td v-on:click="">@{{libro.titulo}}</td>
+            <td v-on:click="">@{{libro.autor.nombre}}</td>
+            <td v-on:click="">@{{libro.editorial.editorial}}</td>
+            <td v-on:click="">@{{libro.carrera.carrera}}</td>
+            <td v-on:click="">@{{libro.ejemplares}}</td>
             <td>
               <center>
 
@@ -63,6 +63,10 @@
                 v-on:click="eliminarLibro(libro.isbn)"></span>
 
                 <span class="btn btn-success fas fa-share-square" v-on:click="showEjemplar"></span>
+
+                <a :href="'libros/detallelibro/'+libro.isbn"><button type="button" title="Ver Detalles" class="btn btn-link btn-outline-dark btn-sm">
+                  <i class="fas fa-eye"></i>
+                </button></a>
                 
               </center>
             </td> 
