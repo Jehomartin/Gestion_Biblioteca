@@ -61,12 +61,28 @@ new Vue({
         deweecompleto:'',
         editejem:false,
         auxEjemplar:'',
+
+        pagination: {
+            total: 0,
+            current_page: 0,
+            per_page: 0,
+            last_page: 0,
+            from: 0,
+            to: 0,
+        },
+        offset: 2,
+        adjacents: 3,
+        numerador: 0,
 	},
 
 	methods:{
-		getLibros:function(){
-			this.$http.get(urlLibros).then(function(response){
-				this.libros=response.data;
+		getLibros:function(page){
+			var url = urlLibros + "?page=" + page;
+			this.$http.get(url).then(function(response){
+
+				this.libros = response.data.tasks.data;
+				this.pagination = response.data.pagination;
+
 			}).catch(function(response){
 				toastr.info("No se estan llamando los datos");
 			});
@@ -355,10 +371,51 @@ new Vue({
 
 			toastr.success("Informacion del libro");
 		},
+
+		NextPage:function(page){
+			this.pagination.current_page = page;
+			this.getLibros(page);
+		},
 		
 	},
 
 	computed:{
+		Numerador(){
+			var valNo = (this.pagination.current_page - 1) * this.pagination.per_page;
+			num = valNo == "" ? 1 : valNo + 1;
+			this.numerador = num;
+			return num;
+		},
+
+		Activates(){
+			return this.pagination.current_page;
+		},
+
+		PagesNo:function(){
+			if (!this.pagination.to) {
+				return [];
+			}
+
+			var from = this.pagination.current_page - this.offsets;
+			if (from < 1) {
+				from = 1;
+			}
+
+			var to = from + this.offsets * 2;
+			if (to >= this.pagination.last_page) {
+				to = this.pagination.last_page;
+			}
+
+			var paginas = [];
+			while (from <= to ){
+				paginas.push(from);
+				from ++;
+			}
+
+			return paginas;
+
+		},
+
 		filtroLibros:function(){
 			return this.libros.filter((libros)=>{
 				return libros.isbn.match(this.buscar.trim()) ||

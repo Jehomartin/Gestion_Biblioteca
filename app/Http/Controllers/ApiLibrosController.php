@@ -19,7 +19,19 @@ class ApiLibrosController extends Controller
     public function index()
     {
         //
-        return Libros::all();
+        $libro = Libros::orderBy('titulo','ASC')->paginate(15);
+
+        return [
+            'pagination' => [
+                'total'         => $libro->total(),
+                'current_page'  => $libro->currentpage(),
+                'per_page'      => $libro->perPage(),
+                'last_page'     => $libro->lastPage(),
+                'from'          => $libro->firstItem(),
+                'to'            => $libro->lastItem(),
+            ],
+            'tasks' => $libro
+        ];
     }
 
     /**

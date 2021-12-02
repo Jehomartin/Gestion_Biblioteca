@@ -3,84 +3,103 @@
 @section('contenido')
 
 <link rel="stylesheet" href="css/personalizados/stylo3.css">
-<!-- El id es del identificador del js -->
+<!-- El id es del identificador del js INICIO-->
 <div id="libro">
 
-    <div class="container">
+    <!-- INICIO DIV DE TITULO -->
+    <div class="container ">
       <div class="row">
         <div class="col-md-3"></div>
           <div class="col-md-6">
-            <br>
-            <!-- search form (Optional) -->
-            <div class="input-group">
-                <input type="text" name="searchText" class="form-control" placeholder="Buscar..." style="border-color: #000" v-model="buscar">
-                <span class="input-group-btn">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat" style="background-color: orange"><i class="fa fa-search"></i>
-                    </button>
-                </span>
-              </div>
-            <!-- /.search form -->
+            <font color="black" face="Sylfaen">
+              <h2 class="text text-center">LIBROS REGISTRADOS</h2>
+            </font>
           </div>
           <div class="col-md-3"></div>
       </div>
     </div>
-    
-    <font color="black" face="Sylfaen">
-        <h2 class="text text-center">LIBROS REGISTRADOS</h2>
-      </font>
+    <!-- FIN DIV TITULO -->
 
-<div id="table-wrapper">
+<div id="table-wrapper" class="page-inner mt--5">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <!-- search form (Optional) -->
+            <div class="input-group">
+              <input type="text" name="searchText" class="form-control" placeholder="Buscar..." style="border-color: #000" v-model="buscar">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat" style="background-color: orange" @click="filtroLibros()"><i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+            <!-- /.search form -->
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+    <nav>
+      <ul class="pagination pull-right">
+        <li class="page-item" v-if="pagination.current_page > 1">
+          <a class="page-link" href="#" @click.prevent="NextPage(pagination.current_page - 1)">
+            <span>Atrás</span>
+          </a>
+        </li>
+        <li v-for="page in PagesNo" v-bind:class="[page == Activates ? 'page-item active' : 'page-item']">
+          <a class="page-link" href="#" @click.prevent="NextPage(page)">
+            @{{ page }}
+          </a>
+        </li>
+        <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+          <a class="page-link" href="#" @click.prevent="NextPage(pagination.current_page + 1)">
+            <span>Siguiente</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   <div id="table-scroll">
     <div class="row">
-    <div class="col-md-12">
-    <div class="table-responsive-md">
-      
-      <table style="font-size:14px" class="table table-sm table-striped table-bordered table-hover tamanio-font">  
-      <thead class="thead-dark">
-          <th width="7%" class="header" scope="col">ISBN</th>
-          <th class="header" scope="col">TÍTULO</th>
-          <th class="header" scope="col">AUTOR</th>
-          <th class="header" scope="col">EDITORIAL</th>
-          <th class="header" scope="col">CARRERA</th>
-          <th width="8%" class="header" scope="col">EJEMPLARES</th>
-          <th width="15%" class="header" scope="col">OPCIONES</th>
-        </thead>
-        <tbody>
-          <tr v-for="(libro,index) in filtroLibros">
-            <td v-on:click="detalleli(libro.isbn)">@{{libro.isbn}}</td>
-            <td v-on:click="detalleli(libro.isbn)">@{{libro.titulo}}</td>
-            <td v-on:click="detalleli(libro.isbn)">@{{libro.autor.nombre}}</td>
-            <td v-on:click="detalleli(libro.isbn)">@{{libro.editorial.editorial}}</td>
-            <td v-on:click="detalleli(libro.isbn)">@{{libro.carrera.carrera}}</td>
-            <td v-on:click="detalleli(libro.isbn)">@{{libro.ejemplares}}</td>
-            <td>
-              <center>
+      <div class="col-md-12">
+        <div class="table-responsive-md">
+          <table style="font-size:14px" class="table table-sm table-striped table-bordered table-hover tamanio-font">  
+            <thead class="thead-dark">
+              <th width="7%" class="header" scope="col">ISBN</th>
+              <th class="header" scope="col">TÍTULO</th>
+              <th class="header" scope="col">AUTOR</th>
+              <th class="header" scope="col">EDITORIAL</th>
+              <th class="header" scope="col">CARRERA</th>
+              <th width="8%" class="header" scope="col">EJEMPLARES</th>
+              <th width="15%" class="header" scope="col">OPCIONES</th>
+            </thead>
+            <tbody>
+              <tr v-for="(libro,index) in filtroLibros">
+                <td v-on:click="detalleli(libro.isbn)">@{{libro.isbn}}</td>
+                <td v-on:click="detalleli(libro.isbn)">@{{libro.titulo}}</td>
+                <td v-on:click="detalleli(libro.isbn)">@{{libro.autor.nombre}}</td>
+                <td v-on:click="detalleli(libro.isbn)">@{{libro.editorial.editorial}}</td>
+                <td v-on:click="detalleli(libro.isbn)">@{{libro.carrera.carrera}}</td>
+                <td v-on:click="detalleli(libro.isbn)">@{{libro.ejemplares}}</td>
+                <td>
+                  <center>
 
-                <span class="btn btn-primary fas fa-edit" 
-                v-on:click="editLibro(libro.isbn)"></span>
-               
-                <span class="btn btn-danger fas fa-trash-alt" 
-                v-on:click="eliminarLibro(libro.isbn)"></span>
+                    <span class="btn btn-primary fas fa-edit" 
+                    v-on:click="editLibro(libro.isbn)"></span>
+                   
+                    <span class="btn btn-danger fas fa-trash-alt" 
+                    v-on:click="eliminarLibro(libro.isbn)"></span>
 
-                <span class="btn btn-success fas fa-share-square" v-on:click="showEjemplar"></span>
-                
-              </center>
-            </td> 
-          </tr>
-        </tbody>
-      </table>
+                    <span class="btn btn-success fas fa-share-square" v-on:click="showEjemplar"></span>
+                    
+                  </center>
+                </td> 
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- PROBANDO MODAL GRANDE -->
-<!-- <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      ...
-    </div>
-  </div> -->
-
+    <!-- INICIO MODAL lIBROS -->
     <!-- inicio ventana modal -->
     <div id="modal_custom" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <!--inicio modal dialog-->
@@ -96,10 +115,7 @@
               <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
             </button>
           </div>
-
-
-<!-- PROBANDO DIVISION DE  MODAL -->
-     
+          <!-- fin encabezado modal -->
 
           <!-- inicio cuerpo modal -->
           <div class="modal-body div5">
@@ -242,7 +258,6 @@
                </div>
             </div>
           </div>
-          
           <!-- fin cuerpo modal -->
 
           <!-- footer modal -->
@@ -259,18 +274,15 @@
                 Actualizar</button>
             </div>
           </div>
-          </div>
-          
-          <!-- fin footer modal -->
+          </div><!-- fin footer modal -->
         </div> <!-- fin modal content -->
       </div>  <!--/modal dialog -->
     </div> <!-- fin ventana modal -->
+    <!-- FIN MODAL LIBROS -->
 
-
-    <!-- declaracion de codigo para la ventana modal de ejemplares -->
-
+    <!-- INICIO MODAL EJEMPLARES -->
     <!-- inicio ventana modal -->
-      <div id="modal_ejemplar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div id="modal_ejemplar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <!--inicio modal dialog-->
         <div class="modal-dialog" role="document">
           <!--inicio modal content-->
@@ -337,9 +349,12 @@
             </div><!-- fin footer modal -->
           </div> <!--fin modal content-->
         </div><!--/modal dialog-->
-      </div><!--fin ventana modal-->
+    </div><!--fin ventana modal-->
+      <!-- FIN MODAL EJEMPLARES -->
 
-      <div id="modal_detalle" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+      <!-- INICIO MODAL DETALLES -->
+    <div id="modal_detalle" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <!--inicio modal dialog-->
       <div class="modal-dialog modal-lg" role="document">
         <!--inicio modal content-->
@@ -353,11 +368,6 @@
               <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
             </button>
           </div>
-
-
-<!-- PROBANDO DIVISION DE  MODAL -->
-     
-
           <!-- inicio cuerpo modal detalle-->
           <div class="modal-body div5">
             <div class="row">
@@ -505,7 +515,6 @@
                </div>
             </div>
           </div>
-          
           <!-- fin cuerpo modal -->
 
           <!-- footer modal -->
@@ -516,59 +525,11 @@
                 Cerrar</button>
             </div>
           </div>
-          </div>
-          
-          <!-- fin footer modal -->
+          </div><!-- fin footer modal -->
         </div> <!-- fin modal content -->
       </div>  <!--/modal dialog -->
     </div> <!-- fin ventana modal -->
-
-    <!--INICIO FILTRO EJEMPLARES  -->
-    <!-- <div id="table-wrapper">
-  <div id="table-scroll">
-    <div class="row">
-    <div class="col-md-12">
-    <div class="table-responsive-md">
-   
-      <table style="font-size:13px" class="table table-sm table-striped table-bordered table-hover">
-        <thead class="thead-dark">
-          <th width="7%" class="header" scope="col">ISBN</th>
-          <th class="header" scope="col">TITULO</th>
-          <th class="header" scope="col">AUTOR</th>
-          <th class="header" scope="col">EDITORIAL</th>
-          <th class="header" scope="col">CARRERA</th>
-          <th width="8%" class="header" scope="col">EJEMPLARES</th>
-          <th width="15%" class="header" scope="col">OPCIONES</th>
-        </thead>
-        <tbody>
-          <tr v-for="(libro,index) in filtroLibros">
-            <td v-on:click="">@{{libro.isbn}}</td>
-            <td v-on:click="">@{{libro.titulo}}</td>
-            <td v-on:click="">@{{libro.autor.nombre}}</td>
-            <td v-on:click="">@{{libro.editorial.editorial}}</td>
-            <td v-on:click="">@{{libro.carrera.carrera}}</td>
-            <td v-on:click="">@{{libro.ejemplares}}</td>
-            <td>
-              <center>
-
-                <span class="btn btn-primary fas fa-edit" 
-                v-on:click="editLibro(libro.isbn)"></span>
-               
-                <span class="btn btn-danger fas fa-trash-alt" 
-                v-on:click="eliminarLibro(libro.isbn)"></span>
-
-                <span class="btn btn-success fas fa-share-square" v-on:click="showEjemplar"></span>
-                
-              </center>
-            </td> 
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div> -->
-    <!-- FIN EJEMPLARES -->
-
+    <!-- FIN MODAL DETALLES -->
   </div>
 </div>
 
