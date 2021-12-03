@@ -73,12 +73,12 @@
             </thead>
             <tbody>
               <tr v-for="(libro,index) in filtroLibros">
-                <td v-on:click="detalleli(libro.isbn)">@{{libro.isbn}}</td>
-                <td v-on:click="detalleli(libro.isbn)">@{{libro.titulo}}</td>
-                <td v-on:click="detalleli(libro.isbn)">@{{libro.autor.nombre}}</td>
-                <td v-on:click="detalleli(libro.isbn)">@{{libro.editorial.editorial}}</td>
-                <td v-on:click="detalleli(libro.isbn)">@{{libro.carrera.carrera}}</td>
-                <td v-on:click="detalleli(libro.isbn)">@{{libro.ejemplares}}</td>
+                <td>@{{libro.isbn}}</td>
+                <td>@{{libro.titulo}}</td>
+                <td>@{{libro.autor.nombre}}</td>
+                <td>@{{libro.editorial.editorial}}</td>
+                <td>@{{libro.carrera.carrera}}</td>
+                <td>@{{libro.ejemplares}}</td>
                 <td>
                   <center>
 
@@ -359,10 +359,6 @@
       <!-- FIN MODAL EJEMPLARES -->
   </div>
 </div>
-
-
-
-
 
 @endsection
 
