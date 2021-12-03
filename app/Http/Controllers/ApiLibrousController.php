@@ -8,6 +8,7 @@ use Illuminate\Routing\RouteCollection;
 
 // uso de modelo
 use App\Librous;
+use App\Ejemplares;
 
 class ApiLibrousController extends Controller
 {
@@ -48,6 +49,28 @@ class ApiLibrousController extends Controller
         $librou->clasificacion = $request->get('clasificacion');
         $librou->cutter =$request->get('cutter');
 
+        $canti = $request->get("ejemplares");
+        $foli = $request->get("isbn");
+        $fechi = $request->get("fecha_alta");
+
+        for ($i=0; $i <($canti) ; $i++) 
+        { 
+            $ejemplar[] = [
+                'id_ejemplar'=> $foli.'-'. 1,
+                'folio'=>$foli,
+                'esbase'=>1,
+                'prestado'=>0,
+                'fecha_alta'=>$fechi,
+            ];
+        }
+
+        // $exemp=[];
+        // $detalles=$request->get('detalles');
+
+        // for ($i=0; $i < count($detalles); $i++) { 
+
+        // }
+        Ejemplares::insert($ejemplar);
         $librou->save();
     }
 

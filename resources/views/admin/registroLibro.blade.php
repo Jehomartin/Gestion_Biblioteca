@@ -15,22 +15,21 @@
                 <div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                          <font face="Sylfaen" size="4"><label for="isbn">Isbn del libro <span class="asterisco">*</span></label></font>
+                          <font face="Sylfaen" size="4"><label for="isbn">Isbn del libro: <span class="asterisco">*</span></label></font>
                             <input type="text" name="" placeholder="ISBN del libro" class="form-control" v-model="isbn" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-6">
-                           <font face="Sylfaen" size="4"><label for="titulo">Título del libro <span class="asterisco">*</span></label></font>
+                           <font face="Sylfaen" size="4"><label for="titulo">Título del libro: <span class="asterisco">*</span></label></font>
                             <input type="text" name="" placeholder="Título del libro" class="form-control" v-model="titulo" style="border-color:#000">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <font face="Sylfaen" size="4"><label for="editorial">Elija la editorial <span class="asterisco">*</span></label></font>
+                            <font face="Sylfaen" size="4"><label for="editorial">Elija la editorial: <span class="asterisco">*</span></label></font>
                             <div class="input-group">
                                 <select class="form-control" id="selectEditorial" v-model="id_editorial" @change="getEditorials" style="border-color:#000">
                                     <option disabled value="">Elija la editorial del libro</option>
-                                    <option value="">Agregar Nuevo</option>
                                     <!-- <option value="1">Agregar nueva editorial</option> -->
                                     <option v-for="e in editoriales" v-bind:value="e.id_editorial">@{{e.editorial}}</option>
                                 </select>
@@ -42,7 +41,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-6">
-                            <font face="Sylfaen" size="4"><label for="autor">Elija el autor <span class="asterisco">*</span></label></font>
+                            <font face="Sylfaen" size="4"><label for="autor">Elija el autor: <span class="asterisco">*</span></label></font>
                             <div class="input-group">
                                 <select class="form-control" id="selectAutor" v-model="id_autor" @change="getAutors" style="border-color:#000">
                                 <option disabled value="">Elija el Autor del libro</option>
@@ -58,7 +57,7 @@
                     </div>
 
                     <div class="form-group">
-                        <font face="Sylfaen" size="4"><label for="carrera">Elija la carrera <span class="asterisco">*</span></label></font>
+                        <font face="Sylfaen" size="4"><label for="carrera">Elija la carrera: <span class="asterisco">*</span></label></font>
                         <div class="input-group">
                             <select class="form-control" v-model="id_carrera" @change="getCarreras" style="border-color:#000">
                             <option disabled value="">Elija la carrera del libro</option>
@@ -74,7 +73,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <font face="Sylfaen" size="4"><label for="pais">Elija el país <span class="asterisco">*</span></label></font>
+                            <font face="Sylfaen" size="4"><label for="pais">Elija el país: <span class="asterisco">*</span></label></font>
                             <div class="input-group">
                                 <select class="form-control" v-model="id_pais" @change="getPaiss" style="border-color:#000">
                                 <option disabled value="">Elija el país del libro</option>
@@ -88,33 +87,26 @@
                             </div>
                         </div>
                         <div class="form-group col-md-4">
-                            <font face="Sylfaen" size="4"><label for="edicion">Edición <span class="asterisco">*</span></label></font>
+                            <font face="Sylfaen" size="4"><label for="edicion">Edición: <span class="asterisco">*</span></label></font>
                             <input type="number" name="" placeholder="Edición" class="form-control" min="1" v-model="edicion" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-2">
-                            <font face="Sylfaen" size="4"><label for="anioPub">Año de publicación <span class="asterisco">*</span></label></font>
+                            <font face="Sylfaen" size="4"><label for="anioPub">Año de publicación: <span class="asterisco">*</span></label></font>
                             <input type="text" name="" placeholder="Año publicación" class="form-control" v-model="anio_pub" style="border-color:#000">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <font face="Sylfaen" size="4"><label for="fechaAlta">Fecha alta <span class="asterisco">*</span></label></font>
+                            <font face="Sylfaen" size="4"><label for="fechaAlta">Fecha alta: <span class="asterisco">*</span></label></font>
                             <input type="date" name="" placeholder="Fecha alta" class="form-control" v-model="fecha_alta" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-4">
-                            <font face="Sylfaen" size="4"><label for="noPagina">Numero páginas <span class="asterisco">*</span></label></font>
+                            <font face="Sylfaen" size="4"><label for="noPagina">Número páginas: <span class="asterisco">*</span></label></font>
                             <input type="number" name="" placeholder="Páginas" class="form-control" min="1" v-model="paginas" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-4">
-                            <font face="Sylfaen" size="4"><label for="ejemplares">Ejemplares del libro <span class="asterisco">*</span></label></font>
-                            <input type="text" name="" placeholder="Ejemplares del libro" class="form-control" v-model="ejemplares" style="border-color:#000">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <font face="Sylfaen" size="4"><label for="clasificacion">Clasificación</label></font>
+                            <font face="Sylfaen" size="4"><label for="ejemplares">Clasificación: <span class="asterisco">*</span></label></font>
                             <input type="text" name="" placeholder="Clasificación" class="form-control" v-model="clasificacion" style="border-color:#000">
                         </div>
                     </div>

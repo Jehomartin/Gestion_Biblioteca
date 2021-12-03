@@ -134,10 +134,20 @@ methods:{
 	agregarLibro:function(){
 
 		//creación del objeto json para enviar a la api
-		var libro={isbn:this.isbn,folio:this.isbn,titulo:this.titulo,id_editorial:this.id_editorial,
-			id_autor:this.id_autor,id_carrera:this.id_carrera,edicion:this.edicion,anio_pub:this.anio_pub,
-			id_pais:this.id_pais,fecha_alta:this.fecha_alta,paginas:this.paginas,ejemplares:1,
-			clasificacion:this.clasificacion,cutter:this.cutter
+		var libro={isbn:this.isbn,
+			folio:this.isbn,
+			titulo:this.titulo,
+			id_editorial:this.id_editorial,
+			id_autor:this.id_autor,
+			id_carrera:this.id_carrera,
+			edicion:this.edicion,
+			anio_pub:this.anio_pub,
+			id_pais:this.id_pais,
+			fecha_alta:this.fecha_alta,
+			paginas:this.paginas,
+			ejemplares:1,
+			clasificacion:this.clasificacion,
+			cutter:this.cutter,
 		};
 
 		//limpieza de los campos
