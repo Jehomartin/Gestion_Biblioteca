@@ -8,6 +8,8 @@ use Illuminate\Routing\RouteCollection;
 
 // uso de modelo
 use App\Libros;
+use DB;
+use App\Ejemplares;
 
 class ApiLibrosController extends Controller
 {
@@ -55,6 +57,7 @@ class ApiLibrosController extends Controller
     {
         //
         return Libros::find($id);
+
     }
 
     /**

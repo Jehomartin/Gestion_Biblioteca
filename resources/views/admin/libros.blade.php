@@ -88,7 +88,7 @@
                     <span class="btn btn-danger fas fa-trash-alt" 
                     v-on:click="eliminarLibro(libro.isbn)"></span>
 
-                    <span class="btn btn-success fas fa-share-square" v-on:click="showEjemplar"></span>
+                    <span class="btn btn-success" v-on:click="loadExample(libro.isbn)"><i class="far fa-copy"></i></span>
                     
                   </center>
                 </td> 
@@ -288,11 +288,11 @@
           <!--inicio modal content-->
           <div class="modal-content">
             <!-- se inicia el encabezado de la ventana modal -->
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLiveLabel" v-if="!editejem"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registro Nuevo Ejemplar</font></font></h5>
+            <div class="modal-header" style="background-color:#f39c12">
+              <h5 class="modal-title" id="exampleModalLiveLabel" v-if="editejem"><font color="black" style="vertical-align: inherit;" face="Sylfaen">Registro Nuevo Ejemplar</font></h5>
               
               <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelEditj()">
-                <span aria-hidden="true"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
+                <span aria-hidden="true"><font style="vertical-align: inherit;">x</font></span>
               </button>
             </div>
             <!-- fin encabezado de ventana modal -->
@@ -301,38 +301,37 @@
             <div class="modal-body div5" >
               <!-- <div class="form-group"> -->
               <div class="form-group">
-                <label for="folio">Folio</label>
-                <input type="text" name="" placeholder="folio" class="form-control" style="border-color:#000">
+                <label for="id_ejemplar">
+                <font face="Sylfaen" size="4">Clasificación:</font>
+                </label>
+                <span class="form-control" style="border-color:#000"> @{{id_ejemplar}} </span>
+              </div>
+              <div class="form-group">
+                <label for="folio">
+                  <font face="Sylfaen" size="4">Folio del libro:</font>
+                </label>
+                <input type="text" name="" placeholder="folio del libro" class="form-control" style="border-color:#000" v-model="folio">
               </div>
                 <!-- </div> -->
               <!-- <div class="form-group"> -->
               <div class="form-group">
-                <label for="titulo">Título</label>
-                <input type="text" name="" placeholder="titulo" class="form-control" style="border-color:#000">
+                <label for="titulo">
+                  <font face="Sylfaen" size="4">Título:</font>
+                </label>
+                <input type="text" name="" placeholder="titulo" class="form-control" style="border-color:#000" v-model="titulo">
               </div>
                 <!-- </div> -->
               <div class="form-group">
-                <label for="autor">Elija el autor</label>
-                  <div class="input-group">
-                    <select class="form-control"  @change="getAutor" style="border-color:#000">
-                      <option disabled value="">Elija el Autor del libro</option>
-                      <option v-for="a in autores" v-bind:value="a.id_autor">@{{a.nombre}}</option>
-                    </select>
-                  </div>
+                <label for="fecha_alta">
+                  <font face="Sylfaen" size="4">FECHA DE ALTA:</font>
+                </label>
+                  <input type="date" name="" class="form-control" v-model="fecha_alta" placeholder="Fecha de Alta" style="border-color: #000;" value="date">
               </div>
-            <div class="form-group">
-              <label for="editorial">Elija la editorial</label>
-              <div class="input-group">
-                <select class="form-control" id="selectEditorial"  @change="getEditorial" style="border-color:#000">
-              
-                  <option disabled value="">Elija la editorial del libro</option>
-                  <option v-for="e in editoriales" v-bind:value="e.id_editorial">@{{e.editorial}}</option>
-                </select>
-              </div>
-            </div>
               <!-- <div class="form-group"> -->
-                <label for="no_ejemplar">No. de ejemplar</label>
-                <input type="text" name="" placeholder="No. de ejemplar" class="form-control" style="border-color:#000">  
+                <label for="ejemplares">
+                  <font face="Sylfaen" size="4">No. de ejemplar</font>
+                </label>
+                <input type="text" name="" placeholder="No. de ejemplar" class="form-control" style="border-color:#000" v-model="ejemplares">  
               <!-- </div> -->
 
             </div><!-- fin cuerpo modal -->
@@ -340,11 +339,11 @@
             <!-- footer modal -->
             <div class="modal-footer" style="background-color: #f39c12">
               <div class="pull-right">
-                  <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelEditj()">Cancelar</button>
+                  <button style="margin-left: 10px" type="button" class="btn btn-danger fas fa-window-close" data-dismiss="modal" v-on:click="cancelEditj()"> Cancelar</button>
               </div>
 
               <div class="pull-right">
-                  <button style="margin-left: 10px" type="submit" class="btn btn-primary" v-on:click="" v-if="!editejem">Guardar</button>
+                  <button style="margin-left: 10px" type="submit" class="btn btn-primary fas fa-save" v-on:click="agregarEjemplar()" v-if="editejem"> Guardar</button>
               </div>
             </div><!-- fin footer modal -->
           </div> <!--fin modal content-->

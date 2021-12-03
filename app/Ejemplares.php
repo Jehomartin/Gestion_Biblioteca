@@ -11,7 +11,7 @@ class Ejemplares extends Model
     protected $table = "ejemplares";
 
     //llamado de llave primaria
-    protected $primaryKey = "clasificacion";
+    protected $primaryKey = "id_ejemplar";
 
     //union con llaves foraneas
    protected $with=['libro'];
@@ -22,7 +22,7 @@ class Ejemplares extends Model
 
     //llamado resto datos
     protected $Fillable = [
-    	'clasificacion',
+    	'id_ejemplar',
         'folio',
         'esbase',
         'prestado',

@@ -167,7 +167,7 @@
           <li class="nav-item">
             <a href="{{url('prestamos') }}" class="nav-link {{ Request::is('prestamos') ? 'active' : '' }}">
               <font color="white" size="4" face="times new roman">
-                <i class="nav-icon fas fa-shopping-cart"></i>
+                <i class="far fa-list-alt"></i>
                 <p>
                   Proceso Préstamo
                 </p>

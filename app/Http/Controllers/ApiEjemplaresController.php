@@ -8,6 +8,10 @@ use Illuminate\Routing\RouteCollection;
 
 // uso de modelo
 use App\Ejemplares;
+use App\Libros;
+
+// uso de db
+use DB;
 
 class ApiEjemplaresController extends Controller
 {
@@ -33,15 +37,20 @@ class ApiEjemplaresController extends Controller
         //
         $ejemplar = new Ejemplares;
 
-        $ejemplar->clasificacion = $request->get('clasificacion');
-        $ejemplar->folio = $request->get('folio');
-        $ejemplar->esbase = $request->get('esbase');
-        $ejemplar->prestado = $request->get('prestado');
-        $ejemplar->comentario = $request->get('comentario');
-        $ejemplar->consec = $request->get('consec');
-        $ejemplar->fecha_alta = $request->get('fecha_alta');
-        $ejemplar->solodewee = $request->get('solodewee');
-        $ejemplar->deweecompleto = $request->get('deweecompleto');
+        $ejemplar->id_ejemplar = $request->get("id_ejemplar");
+        $ejemplar->folio = $request->get("folio");
+        $ejemplar->esbase = $request->get("esbase");
+        $ejemplar->prestado = $request->get("prestado");
+        $ejemplar->comentario = $request->get("comentario");
+        $ejemplar->consec = $request->get("consec");
+        $ejemplar->fecha_alta = $request->get("fecha_alta");
+        $ejemplar->solodewee = $request->get("solodewee");
+        $ejemplar->deweecompleto = $request->get("deweecompleto");
+
+        // $num = $request->get("1");
+        $cont = $request->get("folio");
+
+        DB::update("UPDATE libros SET ejemplares = ejemplares + 1 WHERE folio = '$cont'");
 
         $ejemplar->save();
     }
@@ -55,7 +64,11 @@ class ApiEjemplaresController extends Controller
     public function show($id)
     {
         //
-        return Ejemplares::find($id);
+        // return Ejemplares::find($id);
+        return Libros::find($id);
+        // $codigo = $id;
+        // $libro = DB::select("SELECT * FROM libros WHERE folio = '$codigo'");
+        // return $libro;
     }
 
     /**

@@ -50,8 +50,8 @@ new Vue({
         buscar:'',
 
         //datos para agregar el ejemplar
+        id_ejemplar:'',
         folio:'',
-		clasificacion:'',
 		esbase:'',
 		prestado:'',
 		comentario:'',
@@ -283,61 +283,148 @@ new Vue({
 			this.cutter='';
 		},
 
-		// selecEjemp:function(id){
-			
-		// },
+		moreExem:function(){
+			var ejemps = this.ejemplares + 1;
+		},
+
+		clasificarEj:function(){
+			this.id_ejemplar = this.isbn + '-' + this.ejemplares;
+		},
+
+		loadExample:function(id){
+			this.editejem=true;
+			$('#modal_ejemplar').modal('show');
+			this.$http.get(urlEjemplar + '/' + id).then(function(response){
+				// this.auxEjemplar = response.data.ejemplares + 1;
+				this.id_ejemplar = response.data.folio + '-' + (response.data.ejemplares + 1);
+				this.folio = response.data.folio;
+				this.titulo = response.data.titulo;
+				this.ejemplares = response.data.ejemplares + 1;
+			});
+		},
 
 		agregarEjemplar:function(){
 			
 			//creación del objeto json para enviar al metodo post
-			var ejemplar={clasificacion:this.clasificacion,folio:this.folio,esbase:this.esbase,
-				prestado:this.prestado,comentario:this.comentario,consec:this.consec,
-				fecha_alta:this.fecha_alta,solodewee:this.solodewee,deweecompleto:this.deweecompleto};
-			// se realiza la limpieza de los campos
-			this.clasificacion = '';
-			this.folio = '';
-			this.esbase = '';
-			this.prestado = '';
-			this.comentario = '';
-			this.consec = '';
-			this.fecha_alta = '';
-			this.solodewee = '';
-			this.deweecompleto = '';
-			// se realiza el envío del objeto json con un post
-			this.$http.post(urlEjemplar, ejemplar).then(function(response){
-				this.getEjemplar();
-				$('#modal_ejemplar').modal('hide');
+			if (this.ejemplares >= 1) {
+				var ejemplar1={
+					id_ejemplar:this.id_ejemplar,
+					folio:this.folio,
+					esbase:0,
+					prestado:0,
+					comentario:this.comentario,
+					consec:this.consec,
+					fecha_alta:this.fecha_alta,
+					solodewee:null,
+					deweecompleto:null,
+				};
 
-				swal({
-					title: "REGISTRO EXITOSO",
-					text: "Registro de ejemplar exitoso",
-					icon: "success",
-					buttons: {
-						comfirm: {
-							text: 'OK',
-							className: 'btn btn-success'
+				// se realiza la limpieza de los campos
+				this.id_ejemplar = '';
+				this.folio = '';
+				this.esbase = '';
+				this.prestado = '';
+				this.comentario = '';
+				this.consec = '';
+				this.fecha_alta = '';
+				this.solodewee = '';
+				this.deweecompleto = '';
+				this.getLibros();
+				// se realiza el envío del objeto json con un post
+				this.$http.post(urlEjemplar, ejemplar1).then(function(response){
+					this.getEjemplar();
+					$('#modal_ejemplar').modal('hide');
+
+					swal({
+						title: "REGISTRO EXITOSO",
+						text: "Registro de ejemplar exitoso",
+						icon: "success",
+						buttons: {
+							comfirm: {
+								text: 'OK',
+								className: 'btn btn-success'
+							},
 						},
-					},
-					timer: 3000,
+						timer: 3000,
+					});
+					console.log(response);
+					console.log(ejemplar1);
+
+				}).catch(function(response){
+					console.log(response);
+
+					swal({
+						title:"ERROR DE REGISTRO",
+						text: "Ejemplar no registrado",
+						icon: "error",
+						buttons: false,
+						timer: 3000,
+					});
+
 				});
 
-			}).catch(function(response){
+			}else{
+				var ejemplar2={
+					id_ejemplar:this.id_ejemplar,
+					folio:this.folio,
+					esbase:1,
+					prestado:0,
+					comentario:this.comentario,
+					consec:this.consec,
+					fecha_alta:this.fecha_alta,
+					solodewee:null,
+					deweecompleto:null,
+				};
 
-				swal({
-					title:"ERROR DE REGISTRO",
-					text: "Ejemplar no registrado",
-					icon: "error",
-					buttons: false,
-					timer: 3000,
+				// se realiza la limpieza de los campos
+				this.id_ejemplar = '';
+				this.folio = '';
+				this.esbase = '';
+				this.prestado = '';
+				this.comentario = '';
+				this.consec = '';
+				this.fecha_alta = '';
+				this.solodewee = '';
+				this.deweecompleto = '';
+				// se realiza el envío del objeto json con un post
+				this.$http.post(urlEjemplar, ejemplar2).then(function(response){
+					this.getEjemplar();
+					$('#modal_ejemplar').modal('hide');
+
+					swal({
+						title: "REGISTRO EXITOSO",
+						text: "Registro de ejemplar exitoso",
+						icon: "success",
+						buttons: {
+							comfirm: {
+								text: 'OK',
+								className: 'btn btn-success'
+							},
+						},
+						timer: 3000,
+					});
+					console.log(response);
+					console.log(ejemplar2);
+
+				}).catch(function(response){
+					console.log(response);
+
+					swal({
+						title:"ERROR DE REGISTRO",
+						text: "Ejemplar no registrado",
+						icon: "error",
+						buttons: false,
+						timer: 3000,
+					});
+
 				});
-
-			});
+			};
 
 		},
 
 		cancelEditj:function(){
 			this.editejem=false;
-			this.clasificacion = '';
+			this.id_ejemplar = '';
 			this.folio = '';
 			this.esbase = '';
 			this.prestado = '';
