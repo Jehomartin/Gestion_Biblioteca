@@ -36,7 +36,7 @@ Route::view('prestamos','admin.prestamos');
 Route::view('devoluciones','admin.LibrosPrestados');
 Route::view('prestacion','admin.prestacion');
 Route::view('registro','admin.registroLibro');
-Route::view('info','admin.infoli');
+Route::view('infoli','admin.infoli');
 Route::view('/','login');
 
 //enrutamiento funciones de validación(LOGIN)
@@ -55,3 +55,6 @@ Route::get('getLibros/{id}',[
 Route::apiResource('apiLibros','ApiLibrosController');
 // esta api es para realizar el registro de un nuevo libro
 Route::apiResource('apiRegistroLibros','ApiLibrousController');
+
+//ruta informacion 
+Route::get('libros/detallelibro/{id}', 'ApiLibrosController@detallelibro')->where('id','[0-9]+');
