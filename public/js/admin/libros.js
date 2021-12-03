@@ -1,16 +1,17 @@
-var route = document.querySelector("#route").getAttribute("value");
-var urlLibros = route + '/apiLibros';
-var urlEditorial = route + '/apiEditoriales';
-var urlAutor = route + '/apiAutores';
-var urlCarrera = route + '/apiCarreras';
-var urlPais = route + '/apiPais';
-var urlEjemplar = route + '/apiEjemplares';
+var ruta = document.querySelector("[name=route]").value;
+var rute = 'http://localhost/Gestion_Biblioteca/public/';
+var urlLibros = rute + 'apiLibros';
+var urlEditorial = rute + 'apiEditoriales';
+var urlAutor = rute + 'apiAutores';
+var urlCarrera = rute + 'apiCarreras';
+var urlPais = rute + 'apiPais';
+var urlEjemplar = rute + 'apiEjemplares';
 
 new Vue({
 	http:{
 		headers:{
-			'X-CSRF-TOKEN':document.querySelector("#token").getAttribute("value"),
-		},
+			'X-CSRF-TOKEN':document.querySelector('#token').getAttribute('value')
+		}
 	},
 
 	el:"#libro",
@@ -46,12 +47,13 @@ new Vue({
 		titulo:'',
         ejemplares:'',
         cutter:'',
+        // editando:false,
         auxLibro:'',
         buscar:'',
 
         //datos para agregar el ejemplar
-        id_ejemplar:'',
         folio:'',
+		clasificacion:'',
 		esbase:'',
 		prestado:'',
 		comentario:'',
@@ -61,28 +63,12 @@ new Vue({
         deweecompleto:'',
         editejem:false,
         auxEjemplar:'',
-
-        pagination: {
-            total: 0,
-            current_page: 0,
-            per_page: 0,
-            last_page: 0,
-            from: 0,
-            to: 0,
-        },
-        offset: 2,
-        adjacents: 3,
-        numerador: 0,
 	},
 
 	methods:{
-		getLibros:function(page){
-			var url = urlLibros + "?page=" + page;
-			this.$http.get(url).then(function(response){
-
-				this.libros = response.data.tasks.data;
-				this.pagination = response.data.pagination;
-
+		getLibros:function(){
+			this.$http.get(urlLibros).then(function(response){
+				this.libros=response.data;
 			}).catch(function(response){
 				toastr.info("No se estan llamando los datos");
 			});
@@ -150,7 +136,7 @@ new Vue({
 			$("#modal_custom").find(".modal-header").css("color", "black");
 			$("#modal_custom").find(".modal-title")   
 			$('#modal_custom').modal('show');
-
+			// $('#addlibro').modal('show');
 		},
 
 		showEjemplar:function(){
@@ -158,10 +144,11 @@ new Vue({
 			$("#modal_ejemplar").find(".modal-header").css("color", "black");
 			$("#modal_ejemplar").find(".modal-title")   
 			$('#modal_ejemplar').modal('show');
-
+			// $('#addejemplar').modal('show');
 		},
 
 		editLibro:function(id){
+			// this.editando=true;
 			$('#modal_custom').modal('show');
 			this.$http.get(urlLibros + '/' + id).then(function(response){
 				this.isbn = response.data.isbn;
@@ -192,6 +179,7 @@ new Vue({
 
 			this.$http.put(urlLibros + '/' + this.isbn,libro).then(function(response){
 				this.getLibros();
+				// this.editando=false;
 				this.isbn='';
 				this.folio='';
 				this.titulo='';
@@ -210,7 +198,7 @@ new Vue({
 				$('#modal_custom').modal('hide');
 
 				swal({
-					title: "ACTUALIZACIÓN EXITOSA",
+					title: "Libro Actualizado",
 					text: "Se modificaron los campos del libro",
 					icon: "success",
 					buttons:false,
@@ -220,7 +208,7 @@ new Vue({
 			}).catch(function(response){
 
 				swal({
-					title: "ERROR DE ACTUALIZACIÓN",
+					title: "Falló la actualización",
 					text: "El proceso no se completo, ocurrio un error",
 					icon: "error",
 					buttons:false,
@@ -235,7 +223,7 @@ new Vue({
 		eliminarLibro:function(id){
 			
 			swal({
-                title: 'ADVERTENCIA',
+                title: 'Aviso',
                 text: "¿Está seguro de eliminar este registro?",
                 type: 'warning',
                 buttons: {
@@ -252,7 +240,7 @@ new Vue({
                 if (result) {
                     this.$http.delete(urlLibros + '/' + id).then(function(json){
                             swal({
-                                title: '¡ELIMINADO!',
+                                title: '¡Eliminado!',
                                 text: 'Usted a eliminado el registro corréctamente',
                                 icon: 'success',
                                 buttons: false,
@@ -267,6 +255,7 @@ new Vue({
 		},
 
 		cancelarEdit:function(){
+			// this.editando=false;
 			this.isbn='';
 			this.folio='';
 			this.titulo='';
@@ -283,146 +272,60 @@ new Vue({
 			this.cutter='';
 		},
 
-		moreExem:function(){
-			var ejemps = this.ejemplares + 1;
-		},
-
-		clasificarEj:function(){
-			this.id_ejemplar = this.isbn + '-' + this.ejemplares;
-		},
-
-		loadExample:function(id){
-			this.editejem=true;
-			$('#modal_ejemplar').modal('show');
-			this.$http.get(urlEjemplar + '/' + id).then(function(response){
-				// this.auxEjemplar = response.data.ejemplares + 1;
-				this.id_ejemplar = response.data.folio + '-' + (response.data.ejemplares + 1);
-				this.folio = response.data.folio;
-				this.titulo = response.data.titulo;
-				this.ejemplares = response.data.ejemplares + 1;
-			});
-		},
+		// selecEjemp:function(id){
+			
+		// },
 
 		agregarEjemplar:function(){
 			
 			//creación del objeto json para enviar al metodo post
-			if (this.ejemplares >= 1) {
-				var ejemplar1={
-					id_ejemplar:this.id_ejemplar,
-					folio:this.folio,
-					esbase:0,
-					prestado:0,
-					comentario:this.comentario,
-					consec:this.consec,
-					fecha_alta:this.fecha_alta,
-					solodewee:null,
-					deweecompleto:null,
-				};
+			var ejemplar={clasificacion:this.clasificacion,folio:this.folio,esbase:this.esbase,
+				prestado:this.prestado,comentario:this.comentario,consec:this.consec,
+				fecha_alta:this.fecha_alta,solodewee:this.solodewee,deweecompleto:this.deweecompleto};
+			// se realiza la limpieza de los campos
+			this.clasificacion = '';
+			this.folio = '';
+			this.esbase = '';
+			this.prestado = '';
+			this.comentario = '';
+			this.consec = '';
+			this.fecha_alta = '';
+			this.solodewee = '';
+			this.deweecompleto = '';
+			// se realiza el envío del objeto json con un post
+			this.$http.post(urlEjemplar, ejemplar).then(function(response){
+				this.getEjemplar();
+				$('#modal_ejemplar').modal('hide');
 
-				// se realiza la limpieza de los campos
-				this.id_ejemplar = '';
-				this.folio = '';
-				this.esbase = '';
-				this.prestado = '';
-				this.comentario = '';
-				this.consec = '';
-				this.fecha_alta = '';
-				this.solodewee = '';
-				this.deweecompleto = '';
-				this.getLibros();
-				// se realiza el envío del objeto json con un post
-				this.$http.post(urlEjemplar, ejemplar1).then(function(response){
-					this.getEjemplar();
-					$('#modal_ejemplar').modal('hide');
-
-					swal({
-						title: "REGISTRO EXITOSO",
-						text: "Registro de ejemplar exitoso",
-						icon: "success",
-						buttons: {
-							comfirm: {
-								text: 'OK',
-								className: 'btn btn-success'
-							},
+				swal({
+					title: "Ejemplar agregado",
+					text: "Registro de ejemplar exitoso",
+					icon: "success",
+					buttons: {
+						comfirm: {
+							text: 'OK',
+							className: 'btn btn-success'
 						},
-						timer: 3000,
-					});
-					
-
-				}).catch(function(response){
-					
-
-					swal({
-						title:"ERROR DE REGISTRO",
-						text: "Ejemplar no registrado",
-						icon: "error",
-						buttons: false,
-						timer: 3000,
-					});
-
+					},
+					timer: 3000,
 				});
 
-			}else{
-				var ejemplar2={
-					id_ejemplar:this.id_ejemplar,
-					folio:this.folio,
-					esbase:1,
-					prestado:0,
-					comentario:this.comentario,
-					consec:this.consec,
-					fecha_alta:this.fecha_alta,
-					solodewee:null,
-					deweecompleto:null,
-				};
+			}).catch(function(response){
 
-				// se realiza la limpieza de los campos
-				this.id_ejemplar = '';
-				this.folio = '';
-				this.esbase = '';
-				this.prestado = '';
-				this.comentario = '';
-				this.consec = '';
-				this.fecha_alta = '';
-				this.solodewee = '';
-				this.deweecompleto = '';
-				// se realiza el envío del objeto json con un post
-				this.$http.post(urlEjemplar, ejemplar2).then(function(response){
-					this.getEjemplar();
-					$('#modal_ejemplar').modal('hide');
-
-					swal({
-						title: "REGISTRO EXITOSO",
-						text: "Registro de ejemplar exitoso",
-						icon: "success",
-						buttons: {
-							comfirm: {
-								text: 'OK',
-								className: 'btn btn-success'
-							},
-						},
-						timer: 3000,
-					});
-					
-
-				}).catch(function(response){
-					
-
-					swal({
-						title:"ERROR DE REGISTRO",
-						text: "Ejemplar no registrado",
-						icon: "error",
-						buttons: false,
-						timer: 3000,
-					});
-
+				swal({
+					text: "Ejemplar no registrado",
+					icon: "error",
+					buttons: false,
+					timer: 3000,
 				});
-			};
+
+			});
 
 		},
 
 		cancelEditj:function(){
 			this.editejem=false;
-			this.id_ejemplar = '';
+			this.clasificacion = '';
 			this.folio = '';
 			this.esbase = '';
 			this.prestado = '';
@@ -432,75 +335,10 @@ new Vue({
 			this.solodewee = '';
 			this.deweecompleto = '';
 		},
-
-		detalleli:function(id){
-			// this.editando=true;
-			$('#modal_detalle').modal('show');
-			this.$http.get(urlLibros + '/' + id).then(function(response){
-				this.isbn = response.data.isbn;
-				this.folio = response.data.isbn;
-				this.titulo = response.data.titulo;
-				this.id_editorial = response.data.id_editorial;
-				this.id_autor = response.data.id_autor;
-				this.id_carrera = response.data.id_carrera;
-				this.edicion = response.data.edicion;
-				this.anio_pub = response.data.anio_pub;
-				this.id_pais = response.data.id_pais;
-				this.fecha_alta = response.data.fecha_alta;
-				this.paginas = response.data.paginas;
-				this.ejemplares = response.data.ejemplares;
-				this.clasificacion = response.data.clasificacion;
-				this.cutter = response.data.cutter;
-				this.auxLibro = response.data.isbn;
-			});
-
-			toastr.success("Informacion del libro");
-		},
-
-		NextPage:function(page){
-			this.pagination.current_page = page;
-			this.getLibros(page);
-		},
 		
 	},
 
 	computed:{
-		Numerador(){
-			var valNo = (this.pagination.current_page - 1) * this.pagination.per_page;
-			num = valNo == "" ? 1 : valNo + 1;
-			this.numerador = num;
-			return num;
-		},
-
-		Activates(){
-			return this.pagination.current_page;
-		},
-
-		PagesNo:function(){
-			if (!this.pagination.to) {
-				return [];
-			}
-
-			var from = this.pagination.current_page - this.offsets;
-			if (from < 1) {
-				from = 1;
-			}
-
-			var to = from + this.offsets * 2;
-			if (to >= this.pagination.last_page) {
-				to = this.pagination.last_page;
-			}
-
-			var paginas = [];
-			while (from <= to ){
-				paginas.push(from);
-				from ++;
-			}
-
-			return paginas;
-
-		},
-
 		filtroLibros:function(){
 			return this.libros.filter((libros)=>{
 				return libros.isbn.match(this.buscar.trim()) ||
