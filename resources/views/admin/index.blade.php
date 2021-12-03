@@ -3,14 +3,14 @@
 @section('contenido')
 <div class="container">
     <font color="black" face="Sylfaen" class="text text-center">
-        <h1>GESTIÓN BIBLIOTECA</h1>
+        <h2>GESTIÓN BIBLIOTECA</h2>
         <h2>BIENVENIDO {{Session::get('usuario')}}</h2>
         <hr>
         <h3>
             SISTEMA CONTROL DE PRÉSTAMOS
         </h3>
     </font>
-    <br>
+    <!-- <br> -->
 
         <!-- <div class="wrapper"> -->
     <div class="slider" id="slider">      
