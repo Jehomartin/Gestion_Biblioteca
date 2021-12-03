@@ -48,7 +48,7 @@
           </thead>
 
           <tbody>
-            <tr v-for="(detalle,index) in filtroDetalles" v-if="$('#fechaActual').val() <= detalle.prestamo.fechadevolucion" style="background: green;">
+            <tr v-for="(detalle,index) in filtroDetalles" v-if="$('#fechaActual').val() <= detalle.prestamo.fechadevolucion" style="background: #6BDA27;">
               <td> @{{detalle.folioprestamo}} </td>
               <td> @{{detalle.isbn}} </td>
               <td> @{{detalle.titulo}} </td>
@@ -58,7 +58,7 @@
                 <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
               </td>
             </tr>
-            <tr v-else style="background: red;">
+            <tr v-else style="background: #EA4D2C;">
               <td> @{{detalle.folioprestamo}} </td>
               <td> @{{detalle.isbn}} </td>
               <td> @{{detalle.titulo}} </td>

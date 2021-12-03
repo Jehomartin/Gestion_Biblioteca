@@ -347,11 +347,10 @@ new Vue({
 						},
 						timer: 3000,
 					});
-					console.log(response);
-					console.log(ejemplar1);
+					
 
 				}).catch(function(response){
-					console.log(response);
+					
 
 					swal({
 						title:"ERROR DE REGISTRO",
@@ -403,11 +402,10 @@ new Vue({
 						},
 						timer: 3000,
 					});
-					console.log(response);
-					console.log(ejemplar2);
+					
 
 				}).catch(function(response){
-					console.log(response);
+					
 
 					swal({
 						title:"ERROR DE REGISTRO",
