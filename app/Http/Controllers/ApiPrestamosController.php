@@ -9,7 +9,7 @@ use Illuminate\Routing\RouteCollection;
 // uso de modelos
 use App\Prestamos;
 use App\DetallePrestamos;
-use App\Libros;
+use App\LibrosB;
 // use App\Alumnos;
 
 // uso de base datos
@@ -117,8 +117,4 @@ class ApiPrestamosController extends Controller
         // return Prestamos::destroy($id);
     }
 
-    public function getLibros($id){
-     $libros = DB::select("SELECT * FROM libros WHERE isbn=$id");
-     return $libros;
-    }
 }

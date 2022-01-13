@@ -1,7 +1,6 @@
 var rut = document.querySelector("[name=route]").value;
-var route = 'http://localhost/Gestion_Biblioteca/public/';
-var urlDetalles = route + 'apiDetalles';
-var urlPrestamos = route + 'apiPrestamos';
+var urlDetalles = rut + 'apiDetalles';
+var urlPrestamos = rut + 'apiPrestamos';
 
 function init()
 {

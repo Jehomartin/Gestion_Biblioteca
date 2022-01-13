@@ -1,7 +1,6 @@
 var ruta = document.querySelector("[name=route]").value;
-var rute = 'http://localhost/Gestion_Biblioteca/public/';
-var urlEjemplar = rute + '/apiEjemplares';
-var urlLibro = rute + '/apiLibros';
+var urlEjemplar = ruta + '/apiEjemplares';
+var urlLibro = ruta + '/apiLibros';
 
 new Vue({
 	http:{

@@ -32,22 +32,15 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group">
-          <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el código del libro" style="border-color: black">
+          <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el código o título del libro" style="border-color: black">
         
           <span class="input-group-btn">
             <button class="btn btn-success fas fa-plus-square" @click="getLibros()"></button>
           </span>
         </div>
-        <!-- <br> -->
        
       </div>
-      <!-- <div class="col-lg-4">
-        <a href="{{url('devoluciones')}}">
-         <button class="btn btn-dark float-right fas fa-list-alt" style="float: right;">
-        <font face="Sylfaen"> VERIFICAR PRÉSTAMO </font>
-         </button>
-        </a>
-      </div> -->
+      
     </div>
     <hr style="border-color: #000;">
     <div class="row">
