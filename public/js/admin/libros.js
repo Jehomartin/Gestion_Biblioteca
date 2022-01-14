@@ -1,10 +1,11 @@
-var route = document.querySelector("[name=route]").value;
-var urlLibros = route + 'apiLibros';
-var urlEditorial = route + 'apiEditoriales';
-var urlAutor = route + 'apiAutores';
-var urlCarrera = route + 'apiCarreras';
-var urlPais = route + 'apiPais';
-var urlEjemplar = route + 'apiEjemplares';
+var ruta = document.querySelector("[name=route]").value;
+var rute = 'http://localhost/Gestion_Biblioteca/public/';
+var urlLibros = rute + 'apiLibros';
+var urlEditorial = rute + 'apiEditoriales';
+var urlAutor = rute + 'apiAutores';
+var urlCarrera = rute + 'apiCarreras';
+var urlPais = rute + 'apiPais';
+var urlEjemplar = rute + 'apiEjemplares';
 
 new Vue({
 	http:{

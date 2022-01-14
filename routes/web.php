@@ -38,7 +38,6 @@ Route::view('prestacion','admin.prestacion');
 Route::view('registro','admin.registroLibro');
 Route::view('infoli','admin.infoli');
 Route::view('/','login');
-Route::view('buscar','search.busqueda');
 
 //enrutamiento funciones de validación(LOGIN)
 Route::post('entrar','AccesoController@validar');
@@ -59,6 +58,3 @@ Route::apiResource('apiRegistroLibros','ApiLibrousController');
 
 //ruta informacion 
 Route::get('libros/detallelibro/{id}', 'ApiLibrosController@detallelibro')->where('id','[0-9]+');
-
-// ruta prestar con titulo
-Route::apiResource('apiLibu','ApiLiBusController');

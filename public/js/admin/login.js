@@ -1,6 +1,7 @@
 var rute=document.querySelector("[name=route]").value;
-var urlValidar = rute + 'apiAccess';
-var urlUser = rute + 'apiUsuarios';
+var rut='http://localhost/Gestion_Biblioteca/public/';
+var urlValidar = rut + '/apiAccess';
+var urlUser = rut + '/apiUsuarios';
 
 new Vue({
 

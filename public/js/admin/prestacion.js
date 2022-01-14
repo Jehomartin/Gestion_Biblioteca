@@ -1,6 +1,7 @@
 var route = document.querySelector("[name=route]").value;
-var urlPresta = route + 'apiPrestamos';
-var urlBusL = route + 'apiLibu';
+var ruta = 'http://localhost/Gestion_Biblioteca/public/';
+var urlPresta = ruta + 'apiPrestamos';
+var urlLibro = ruta + 'apiLibros';
 // var urlEjemplar = ruta + '/apiEjemplares';
 
 function init()
@@ -41,13 +42,13 @@ function init()
 		methods:{
 			//inicio del getLibro
 			getLibros:function(){
-				this.http.get(urlBusL + '/' + this.codigo)
+				this.$http.get(urlLibro + '/' + this.codigo)
 				.then(function(response){
 					if (response.data==="") {
 						swal({
 							text: "El libro no se encuentra disponible ",
 							icon: "warning",
-							buttons: false,
+							buttons: true,
 							timer: 3000,
 						})
 						this.codigo='';
@@ -55,7 +56,7 @@ function init()
 						swal({
 							text:"El libro ya no tiene ejemplares disponibles",
 							icon:"warning",
-							buttons:false,
+							buttons:true,
 							timer:3000,
 						})
 						this.codigo='';
@@ -68,7 +69,7 @@ function init()
 							'cantidad':1,
 						}
 
-						if (unprestado.titulo) {
+						if (unprestado.isbn) {
 							this.prestamos.push(unprestado);
 							this.codigo='';
 							this.$refs.buscar.focus();
