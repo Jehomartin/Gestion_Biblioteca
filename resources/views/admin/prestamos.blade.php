@@ -38,17 +38,9 @@
             <button class="btn btn-success fas fa-plus-square" @click="getLibros()"></button>
           </span>
         </div>
-        <!-- <br> -->
-       
       </div>
-      <!-- <div class="col-lg-4">
-        <a href="{{url('devoluciones')}}">
-         <button class="btn btn-dark float-right fas fa-list-alt" style="float: right;">
-        <font face="Sylfaen"> VERIFICAR PRÉSTAMO </font>
-         </button>
-        </a>
-      </div> -->
     </div>
+
     <hr style="border-color: #000;">
     <div class="row">
       <div class="col-lg-12">
@@ -69,13 +61,12 @@
           </tbody>          
         </table>
       </div>
-  <!-- <button class="btn btn-secondary ml-auto">Button</button> -->
-  <button class="btn btn-primary ml-auto float-right fa fa-save" @click="prestar()" >
-         <font face="Sylfaen"> GUARDAR</font>
-        </button>
-  </div>
-
+      <!-- <button class="btn btn-secondary ml-auto">Button</button> -->
+      <button class="btn btn-primary ml-auto float-right fa fa-save" @click="prestar()" >
+        <font face="Sylfaen"> GUARDAR</font>
+       </button>
     </div>
+  </div>
 </div>
 
 @endsection

@@ -54,3 +54,8 @@ body div figure:hover img
 .edit2{
 	float: right;
 }
+
+.imagin{
+  border-radius: 30px;
+  border-color: #fff;
+}

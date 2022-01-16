@@ -27,6 +27,7 @@ Route::apiResource('apiAutores','ApiAutoresController');
 Route::apiResource('apiEditoriales','ApiEditorialesController');
 Route::apiResource('apiCarreras','ApiCarrerasController');
 Route::apiResource('apiDetalles','ApiDetallePrestamosController');
+Route::apiResource('apiBusqueda','ApiBusquedaController');
 
 //enrutamiento admin(VISTAS)
 Route::view('inicio','admin.index');
@@ -38,6 +39,7 @@ Route::view('prestacion','admin.prestacion');
 Route::view('registro','admin.registroLibro');
 Route::view('infoli','admin.infoli');
 Route::view('/','login');
+Route::view('buscar','search.busqueda');
 
 //enrutamiento funciones de validación(LOGIN)
 Route::post('entrar','AccesoController@validar');

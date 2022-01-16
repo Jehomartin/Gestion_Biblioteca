@@ -15,23 +15,11 @@
   <!-- css colocados a parte -->
     <link rel="stylesheet" href="{{ asset('css/personalizados/logeo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/personalizados/color.css') }}">
-    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-3/bootstrap.min.css"> -->
     <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
     <link rel="stylesheet" href="{{ asset('css/carrusel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/personalizados/efectos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/css1/css2.css') }}">
-    <!-- <link rel="stylesheet" type="text/css" href="css/responsive/responsive1.css"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="css/diseño tabla/tabla.css"> -->
   <!-- fin css -->
-
-  <!-- links de tabla para cargar datos por partes-->
-    <!--datables CSS básico-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('table/datatables/datatables.min.css') }}"/>
-    <!--datables estilo bootstrap 4 CSS-->  
-    <!-- <link rel="stylesheet"  type="text/css" href="table/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('table/main.css') }}">
-    <!-- <link rel="stylesheet" href="table/bootstrap/css/bootstrap.min.css"> -->
-  <!-- fin link tabla -->
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
@@ -93,7 +81,9 @@
               <!-- Menu Footer-->
               <li class="user-footer" style="background-color: black">
                 <div class="pull-right">
-                  <a href="{{url('sale')}}" class="btn btn-danger btn-flat">Cerrar Sesión</a>
+                  <a href="{{url('sale')}}" class="btn btn-danger">
+                    Salir <i class="nav-icon fas fa-power-off"></i>
+                  </a>
                 </div>
               </li>
             </ul>
@@ -244,12 +234,6 @@
 <script src="{{ asset('adminlte/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('js/toastr.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
-
-<!-- js para la tabla -->
-<!-- <script type="text/javascript" src="table/popper/popper.min.js"></script>
-<script type="text/javascript" src="table/datatables/datatables.min.js"></script>
-<script type="text/javascript" src="table/main.js"></script> -->
-<!-- fin js tabla -->
 
 <!-- jQuery -->
 <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>

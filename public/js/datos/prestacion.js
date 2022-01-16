@@ -1,6 +1,6 @@
 var route = document.querySelector("#route").getAttribute("value");
 var urlPresta = route + '/apiPrestamos';
-var urlLibro = route + '/apiLibros';
+var urlLibro = route + '/apiBusqueda';
 // var urlEjemplar = ruta + '/apiEjemplares';
 
 function init()
@@ -70,7 +70,7 @@ function init()
 							'cantidad':1,
 						}
 
-						if (unprestado.isbn) {
+						if (unprestado.titulo) {
 							this.prestamos.push(unprestado);
 							this.codigo='';
 							this.$refs.buscar.focus();

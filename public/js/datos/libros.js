@@ -136,15 +136,6 @@ new Vue({
 			});
 		},
 
-		// inicio del evento libros
-		// getLibrou(event){
-		// 	var id = event.target.value;
-		// 	this.$http.get(urlLibros + id).then(function(json){
-		// 		this.libros = json.data;
-		// 	});
-		// },
-		// fin del evento libros
-
 		showModal:function(){
 			$("#modal_custom").find(".modal-header").css("background","#f39c12");
 			$("#modal_custom").find(".modal-header").css("color", "black");
@@ -283,13 +274,13 @@ new Vue({
 			this.cutter='';
 		},
 
-		moreExem:function(){
-			var ejemps = this.ejemplares + 1;
-		},
+		// moreExem:function(){
+		// 	var ejemps = this.ejemplares + 1;
+		// },
 
-		clasificarEj:function(){
-			this.id_ejemplar = this.isbn + '-' + this.ejemplares;
-		},
+		// clasificarEj:function(){
+		// 	this.id_ejemplar = this.isbn + '-' + this.ejemplares;
+		// },
 
 		loadExample:function(id){
 			this.editejem=true;
@@ -306,7 +297,7 @@ new Vue({
 		agregarEjemplar:function(){
 			
 			//creación del objeto json para enviar al metodo post
-			if (this.ejemplares >= 1) {
+			// if (this.ejemplares >= 1) {
 				var ejemplar1={
 					id_ejemplar:this.id_ejemplar,
 					folio:this.folio,
@@ -362,61 +353,61 @@ new Vue({
 
 				});
 
-			}else{
-				var ejemplar2={
-					id_ejemplar:this.id_ejemplar,
-					folio:this.folio,
-					esbase:1,
-					prestado:0,
-					comentario:this.comentario,
-					consec:this.consec,
-					fecha_alta:this.fecha_alta,
-					solodewee:null,
-					deweecompleto:null,
-				};
+			// }else{
+			// 	var ejemplar2={
+			// 		id_ejemplar:this.id_ejemplar,
+			// 		folio:this.folio,
+			// 		esbase:1,
+			// 		prestado:0,
+			// 		comentario:this.comentario,
+			// 		consec:this.consec,
+			// 		fecha_alta:this.fecha_alta,
+			// 		solodewee:null,
+			// 		deweecompleto:null,
+			// 	};
 
-				// se realiza la limpieza de los campos
-				this.id_ejemplar = '';
-				this.folio = '';
-				this.esbase = '';
-				this.prestado = '';
-				this.comentario = '';
-				this.consec = '';
-				this.fecha_alta = '';
-				this.solodewee = '';
-				this.deweecompleto = '';
-				// se realiza el envío del objeto json con un post
-				this.$http.post(urlEjemplar, ejemplar2).then(function(response){
-					this.getEjemplar();
-					$('#modal_ejemplar').modal('hide');
+			// 	// se realiza la limpieza de los campos
+			// 	this.id_ejemplar = '';
+			// 	this.folio = '';
+			// 	this.esbase = '';
+			// 	this.prestado = '';
+			// 	this.comentario = '';
+			// 	this.consec = '';
+			// 	this.fecha_alta = '';
+			// 	this.solodewee = '';
+			// 	this.deweecompleto = '';
+			// 	// se realiza el envío del objeto json con un post
+			// 	this.$http.post(urlEjemplar, ejemplar2).then(function(response){
+			// 		this.getEjemplar();
+			// 		$('#modal_ejemplar').modal('hide');
 
-					swal({
-						title: "REGISTRO EXITOSO",
-						text: "Registro de ejemplar exitoso",
-						icon: "success",
-						buttons: {
-							comfirm: {
-								text: 'OK',
-								className: 'btn btn-success'
-							},
-						},
-						timer: 3000,
-					});
+			// 		swal({
+			// 			title: "REGISTRO EXITOSO",
+			// 			text: "Registro de ejemplar exitoso",
+			// 			icon: "success",
+			// 			buttons: {
+			// 				comfirm: {
+			// 					text: 'OK',
+			// 					className: 'btn btn-success'
+			// 				},
+			// 			},
+			// 			timer: 3000,
+			// 		});
 					
 
-				}).catch(function(response){
+			// 	}).catch(function(response){
 					
 
-					swal({
-						title:"ERROR DE REGISTRO",
-						text: "Ejemplar no registrado",
-						icon: "error",
-						buttons: false,
-						timer: 3000,
-					});
+			// 		swal({
+			// 			title:"ERROR DE REGISTRO",
+			// 			text: "Ejemplar no registrado",
+			// 			icon: "error",
+			// 			buttons: false,
+			// 			timer: 3000,
+			// 		});
 
-				});
-			};
+			// 	});
+			// };
 
 		},
 
