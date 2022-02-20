@@ -17,7 +17,9 @@
       <div class="col-lg-4">
         <font color="black" face="Sylfaen">
           <h5>MATRÍCULA DEL ALUMNO: </h5> 
-          <input type="text" class="form-control" placeholder="Matrícula" v-model="matricula" style="border-color: #000">
+          <input type="text" class="form-control" placeholder="Matrícula" v-model="matricula" style="border-color: #000" id="matricula">
+          <h5>CORREO DEL ALUMNO:</h5>
+          <input type="text" class="form-control" placeholder="Correo electrónico del alumno" v-model="correo" style="border-color: #000;" id="correo">
         </font>
       </div>
       <div class="col-lg-4">
@@ -32,13 +34,14 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group">
-          <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el código del libro" style="border-color: black">
+          <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el título del libro" style="border-color: black">
         
           <span class="input-group-btn">
             <button class="btn btn-success fas fa-plus-square" @click="getLibros()"></button>
           </span>
         </div>
       </div>
+      <label>usted a elegido un total de :</label> @{{permisos}}
     </div>
 
     <hr style="border-color: #000;">
@@ -51,7 +54,7 @@
             <th width="9%">ACCIONES</th>
           </thead>
           <tbody class="table table-bordered">
-            <tr v-for="(p,index) in prestamos">
+            <tr v-for="(p,index) in arrayprestamos">
               <td> @{{p.isbn}} </td>
               <td> @{{p.titulo}} </td>
               <td>

@@ -38,39 +38,54 @@
         </font>
         <br>
 
-        <table class="table table-sm table-striped table-bordered table-hover">
-          <thead class="thead-dark">
-            <th class="header" scope="col">FOLIO</th>
-            <th class="header" scope="col">ISBN</th>
-            <th class="header" scope="col">TÍTULO</th>
-            <th class="header" scope="col">FECHA_DEVOLUCIÓN</th>
-            <th width="10%" class="header" scope="col">OPCIONES</th>
-          </thead>
-
-          <tbody>
-            <tr v-for="(detalle,index) in filtroDetalles" v-if="$('#fechaActual').val() <= detalle.prestamo.fechadevolucion" style="background: #6BDA27;">
-              <td> @{{detalle.folioprestamo}} </td>
-              <td> @{{detalle.isbn}} </td>
-              <td> @{{detalle.titulo}} </td>
-              <td> @{{detalle.prestamo.fechadevolucion}} </td>
-              <td>
-                <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-retweet"></i></span>
-                <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
-              </td>
-            </tr>
-            <tr v-else style="background: #EA4D2C;">
-              <td> @{{detalle.folioprestamo}} </td>
-              <td> @{{detalle.isbn}} </td>
-              <td> @{{detalle.titulo}} </td>
-              <td> @{{detalle.prestamo.fechadevolucion}} </td>
-              <td>
-                <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-retweet"></i></span>
-                <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
-              </td>
-            </tr>
-          </tbody>
-
-        </table>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive-md">
+              <table class="table table-sm table-striped table-bordered table-hover tamanio-font">
+                <thead class="thead-dark" style="text-align: center;">
+                  <th class="header" scope="col" width="12%">FOLIO</th>
+                  <th class="header" scope="col" width="10%">ISBN</th>
+                  <th class="header" scope="col">TÍTULO</th>
+                  <th class="header" scope="col" width="10%">MATRICULA</th>
+                  <!-- <th class="header" scope="col" width="">ALUMNO</th> -->
+                  <th class="header" scope="col" width="">CORREO</th>
+                  <th class="header" scope="col">FECHA_DEVOLUCIÓN</th>
+                  <th width="10%" class="header" scope="col">OPCIONES</th>
+                </thead>
+                <tbody>
+                  <tr v-for="(detalle,index) in filtroDetalles" v-if="$('#fechaActual').val() <= detalle.prestamo.fechadevolucion" style="background: #5cb85c;">
+                    <td> @{{detalle.folioprestamo}} </td>
+                    <td> @{{detalle.isbn}} </td>
+                    <td> @{{detalle.titulo}} </td>
+                    <td> @{{detalle.prestamo.matricula}} </td>
+                    <!-- <td> @{{detalle.prestamo.alumno.nombre}}, @{{detalle.prestamo.alumno.apellidos}} </td> -->
+                    <td> @{{detalle.prestamo.correo}} </td>
+                    <td> @{{detalle.prestamo.fechadevolucion}} </td>
+                    <td>
+                      <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-reply-all"></i></span>
+                      <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
+                      <span class="btn btn-dark" @click=""><i class="nav-icon fas fa-envelope"></i></span>
+                    </td>
+                  </tr>
+                  <tr v-else style="background: #d9534f;">
+                    <td> @{{detalle.folioprestamo}} </td>
+                    <td> @{{detalle.isbn}} </td>
+                    <td> @{{detalle.titulo}} </td>
+                    <td> @{{detalle.prestamo.matricula}} </td>
+                    <!-- <td> @{{detalle.prestamo.alumno.nombre}}, @{{detalle.prestamo.alumno.apellidos}} </td> -->
+                    <td> @{{detalle.prestamo.correo}} </td>
+                    <td> @{{detalle.prestamo.fechadevolucion}} </td>
+                    <td>
+                      <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-reply-all"></i></span>
+                      <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
+                      <span class="btn btn-dark" @click=""><i class="nav-icon fas fa-envelope"></i></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- inicio ventana modal -->
@@ -88,7 +103,6 @@
               <h5 class="modal-title" id="exampleModalLiveLabel" v-if="!editando">
                 <font style="vertical-align: inherit;" face="Sylfaen" color="black">INFORMACIÓN DEL LIBRO PRESTADO</font>
               </h5>
-              
               <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelarEdit()">
                 <span aria-hidden="true">
                   <font style="vertical-align: inherit;">x</font>

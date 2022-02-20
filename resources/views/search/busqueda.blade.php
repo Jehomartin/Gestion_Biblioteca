@@ -43,13 +43,6 @@
 		<!-- fin buscar -->
 
 		<hr>
-	<!-- 	<div class="row">
-			<div class="col-md-10"></div>
-			<div class="col-md-2">
-				
-			</div>
-		</div>
-		<hr> -->
 		<!-- Inicio tabla -->
 		<div class="row">
 	      <div class="col-lg-12">
@@ -61,6 +54,7 @@
               	<th class="header" scope="col" style="color: #fff;">EDITORIAL</th>
               	<th class="header" scope="col" style="color: #fff;">CARRERA</th>
               	<th width="8%" class="header" scope="col" style="color: #fff;">EJEMPLARES</th>
+              	<th class="header" scope="col" style="color: #fff;">CARATULA</th>
 	          </thead>
 	          <tbody class="table table-bordered">
 	            <tr v-for="(b,index) in consultas">
@@ -70,6 +64,15 @@
 	              <td> @{{b.editorial.editorial}} </td>
 	              <td> @{{b.carrera.carrera}} </td>
 	              <td> @{{b.ejemplares}} </td>
+	              <td>
+	              	<div v-if="arraycaratulas.lenght">
+	              		<div class="input-group" v-for="image in arraycaratulas">
+	              			<a data-fancybox="gallery" v-bind:href="'../../storage/' + image.caratula">
+	              				<img v-bind:src="'../../storage/' + image.caratula" class="img-fluid" width="80px" height="80px">
+	              			</a>
+	              		</div>
+	              	</div>
+	              </td>
 	            </tr>
 	          </tbody>          
 	        </table>

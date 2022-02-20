@@ -73,6 +73,8 @@ class ApiDetallePrestamosController extends Controller
         $devolucion->titulo  = $request->get("titulo");
         $devolucion->devuelto  = $request->get("devuelto");
         $devolucion->cantidad  = $request->get("cantidad");
+        $devolucion->matricula = $request->get("matricula");
+        $devolucion->correo = $request->get("correo");
 
 
         $cant=$request->get("cantidad");

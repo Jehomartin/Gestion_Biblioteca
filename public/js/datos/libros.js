@@ -5,6 +5,7 @@ var urlAutor = route + '/apiAutores';
 var urlCarrera = route + '/apiCarreras';
 var urlPais = route + '/apiPais';
 var urlEjemplar = route + '/apiEjemplares';
+var urlImg = route + '/apiCaratula';
 
 new Vue({
 	http:{
@@ -21,7 +22,7 @@ new Vue({
 		this.getAutor();
 		this.getCarrera();
 		this.getPais();
-		// this.getBuscar();
+		// this.getCaratulas(this.id);
 		this.getEjemplar();
 	},
 
@@ -274,14 +275,6 @@ new Vue({
 			this.cutter='';
 		},
 
-		// moreExem:function(){
-		// 	var ejemps = this.ejemplares + 1;
-		// },
-
-		// clasificarEj:function(){
-		// 	this.id_ejemplar = this.isbn + '-' + this.ejemplares;
-		// },
-
 		loadExample:function(id){
 			this.editejem=true;
 			$('#modal_ejemplar').modal('show');
@@ -297,118 +290,60 @@ new Vue({
 		agregarEjemplar:function(){
 			
 			//creación del objeto json para enviar al metodo post
-			// if (this.ejemplares >= 1) {
-				var ejemplar1={
-					id_ejemplar:this.id_ejemplar,
-					folio:this.folio,
-					esbase:0,
-					prestado:0,
-					comentario:this.comentario,
-					consec:this.consec,
-					fecha_alta:this.fecha_alta,
-					solodewee:null,
-					deweecompleto:null,
-				};
+			var ejemplar1={
+				id_ejemplar:this.id_ejemplar,
+				folio:this.folio,
+				esbase:0,
+				prestado:0,
+				comentario:this.comentario,
+				consec:this.consec,
+				fecha_alta:this.fecha_alta,
+				solodewee:null,
+				deweecompleto:null,
+			};
 
-				// se realiza la limpieza de los campos
-				this.id_ejemplar = '';
-				this.folio = '';
-				this.esbase = '';
-				this.prestado = '';
-				this.comentario = '';
-				this.consec = '';
-				this.fecha_alta = '';
-				this.solodewee = '';
-				this.deweecompleto = '';
-				this.getLibros();
-				// se realiza el envío del objeto json con un post
-				this.$http.post(urlEjemplar, ejemplar1).then(function(response){
-					this.getEjemplar();
-					$('#modal_ejemplar').modal('hide');
+			// se realiza la limpieza de los campos
+			this.id_ejemplar = '';
+			this.folio = '';
+			this.esbase = '';
+			this.prestado = '';
+			this.comentario = '';
+			this.consec = '';
+			this.fecha_alta = '';
+			this.solodewee = '';
+			this.deweecompleto = '';
+			this.getLibros();
+			// se realiza el envío del objeto json con un post
+			this.$http.post(urlEjemplar, ejemplar1).then(function(response){
+				this.getEjemplar();
+				$('#modal_ejemplar').modal('hide');
 
-					swal({
-						title: "REGISTRO EXITOSO",
-						text: "Registro de ejemplar exitoso",
-						icon: "success",
-						buttons: {
-							comfirm: {
-								text: 'OK',
-								className: 'btn btn-success'
-							},
+				swal({
+					title: "REGISTRO EXITOSO",
+					text: "Registro de ejemplar exitoso",
+					icon: "success",
+					buttons: {
+						comfirm: {
+							text: 'OK',
+							className: 'btn btn-success'
 						},
-						timer: 3000,
-					});
+					},
+					timer: 3000,
+				});
 					
 
-				}).catch(function(response){
-					
+			}).catch(function(response){
+				
 
-					swal({
-						title:"ERROR DE REGISTRO",
-						text: "Ejemplar no registrado",
-						icon: "error",
-						buttons: false,
-						timer: 3000,
-					});
-
+				swal({
+					title:"ERROR DE REGISTRO",
+					text: "Ejemplar no registrado",
+					icon: "error",
+					buttons: false,
+					timer: 3000,
 				});
 
-			// }else{
-			// 	var ejemplar2={
-			// 		id_ejemplar:this.id_ejemplar,
-			// 		folio:this.folio,
-			// 		esbase:1,
-			// 		prestado:0,
-			// 		comentario:this.comentario,
-			// 		consec:this.consec,
-			// 		fecha_alta:this.fecha_alta,
-			// 		solodewee:null,
-			// 		deweecompleto:null,
-			// 	};
-
-			// 	// se realiza la limpieza de los campos
-			// 	this.id_ejemplar = '';
-			// 	this.folio = '';
-			// 	this.esbase = '';
-			// 	this.prestado = '';
-			// 	this.comentario = '';
-			// 	this.consec = '';
-			// 	this.fecha_alta = '';
-			// 	this.solodewee = '';
-			// 	this.deweecompleto = '';
-			// 	// se realiza el envío del objeto json con un post
-			// 	this.$http.post(urlEjemplar, ejemplar2).then(function(response){
-			// 		this.getEjemplar();
-			// 		$('#modal_ejemplar').modal('hide');
-
-			// 		swal({
-			// 			title: "REGISTRO EXITOSO",
-			// 			text: "Registro de ejemplar exitoso",
-			// 			icon: "success",
-			// 			buttons: {
-			// 				comfirm: {
-			// 					text: 'OK',
-			// 					className: 'btn btn-success'
-			// 				},
-			// 			},
-			// 			timer: 3000,
-			// 		});
-					
-
-			// 	}).catch(function(response){
-					
-
-			// 		swal({
-			// 			title:"ERROR DE REGISTRO",
-			// 			text: "Ejemplar no registrado",
-			// 			icon: "error",
-			// 			buttons: false,
-			// 			timer: 3000,
-			// 		});
-
-			// 	});
-			// };
-
+			});
 		},
 
 		cancelEditj:function(){
@@ -422,30 +357,6 @@ new Vue({
 			this.fecha_alta = '';
 			this.solodewee = '';
 			this.deweecompleto = '';
-		},
-
-		detalleli:function(id){
-			// this.editando=true;
-			$('#modal_detalle').modal('show');
-			this.$http.get(urlLibros + '/' + id).then(function(response){
-				this.isbn = response.data.isbn;
-				this.folio = response.data.isbn;
-				this.titulo = response.data.titulo;
-				this.id_editorial = response.data.id_editorial;
-				this.id_autor = response.data.id_autor;
-				this.id_carrera = response.data.id_carrera;
-				this.edicion = response.data.edicion;
-				this.anio_pub = response.data.anio_pub;
-				this.id_pais = response.data.id_pais;
-				this.fecha_alta = response.data.fecha_alta;
-				this.paginas = response.data.paginas;
-				this.ejemplares = response.data.ejemplares;
-				this.clasificacion = response.data.clasificacion;
-				this.cutter = response.data.cutter;
-				this.auxLibro = response.data.isbn;
-			});
-
-			toastr.success("Informacion del libro");
 		},
 
 		NextPage:function(page){

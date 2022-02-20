@@ -10,7 +10,7 @@ use Illuminate\Routing\RouteCollection;
 use App\Prestamos;
 use App\DetallePrestamos;
 use App\Libros;
-// use App\Alumnos;
+use App\Alumnos;
 
 // uso de base datos
 use DB;
@@ -43,7 +43,11 @@ class ApiPrestamosController extends Controller
         $prestamo->fechaprestamo = $request->get('fechaprestamo');
         $prestamo->fechadevolucion = $request->get('fechadevolucion');
         $prestamo->matricula = $request->get('matricula');
-        $prestamo->liberado = $request->get('liberado');
+        $prestamo->correo = $request->get('correo');
+
+        $mat = $request->get('matricula');
+        $cont = $request->get('permisos');
+        DB::update("UPDATE alumnos SET permisos = permisos - $cont WHERE matricula = '$mat'");
 
         $detalle1=[];
 
@@ -56,15 +60,16 @@ class ApiPrestamosController extends Controller
                 'titulo'=>$newdetalle3[$i]['titulo'],
                 'devuelto'=>$newdetalle3[$i]['devuelto'],
                 'cantidad'=>$newdetalle3[$i]['cantidad'],
+                'matricula'=>$request->get('matricula'),
+                'correo'=>$request->get('correo'),
             ];
 
             //se hace la actualización de la cantidad de ejemplares disponibles
             $exem=$newdetalle3[$i]['cantidad'];
             $codigo=$newdetalle3[$i]['isbn'];
-
-            DB::update("UPDATE libros SET ejemplares = ejemplares - $exem WHERE isbn = '$codigo'");
         }
-
+        DB::update("UPDATE libros SET ejemplares = ejemplares - $exem WHERE isbn = '$codigo'");
+        
         $prestamo->save();
         DetallePrestamos::insert($detalle1);
         

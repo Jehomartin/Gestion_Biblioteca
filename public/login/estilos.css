@@ -146,3 +146,11 @@ header a:hover{
 .boton:hover{
   border: 120%;
 }
+
+.header{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: lightgray;
+  color: black;
+  font-family: sylfean;
+}

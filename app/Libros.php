@@ -34,7 +34,7 @@ class Libros extends Model
         'id_pais',
         'ejemplares',
         'clasificacion',
-        'cutter'
+        'cutter',
     ];
 
     public function editorial(){

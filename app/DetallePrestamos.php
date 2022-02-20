@@ -11,7 +11,7 @@ class DetallePrestamos extends Model
 
     protected $primaryKey = "foliodetalle";
 
-    protected $with = ['libros', 'prestamo'];
+    protected $with = ['libros', 'prestamo', 'alumno'];
 
     public $timestamps = false;
 
@@ -21,7 +21,9 @@ class DetallePrestamos extends Model
     	'isbn',
     	'titulo',
     	'devuelto',
-    	'cantidad'
+    	'cantidad',
+        'matricula',
+        'correo'
     ];
 
     public function libros(){
@@ -30,5 +32,9 @@ class DetallePrestamos extends Model
 
     public function prestamo(){
         return $this->belongsTo(Prestamos::class,'folioprestamo','folioprestamo');
+    }
+
+    public function alumno(){
+        return $this->belongsTo(Alumnos::class,'matricula','matricula');
     }
 }

@@ -34,7 +34,8 @@ class Busqueda extends Model
         'id_pais',
         'ejemplares',
         'clasificacion',
-        'cutter'
+        'cutter',
+        'caratula'
     ];
 
     public function editorial(){

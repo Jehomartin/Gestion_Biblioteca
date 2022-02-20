@@ -34,7 +34,7 @@
   <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
       <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+      <nav class="navbar navbar-expand-lg bg-warning text-uppercase fixed-top" id="mainNav">
         <div class="container">
           <a class="navbar-brand js-scroll-trigger">Universidad Tecnológica del Centro</a>
           <ul class="navbar-nav">

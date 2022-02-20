@@ -27,7 +27,7 @@
 
     <!--===============================================================================================-->
       <script src="login/vendor/jquery/jquery-3.2.1.min.js"></script>
-      <script src="login/vendor/bootstrap/js/bootstrap.min.js"></script>
+      <script src="js/bootstrap-3/bootstrap.min.js"></script>
     <!--===============================================================================================-->
       <script src="login/js/main.js"></script>
   </body>

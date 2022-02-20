@@ -1,6 +1,7 @@
 var route = document.querySelector("#route").getAttribute("value");
 var urlDetalles = route + '/apiDetalles';
 var urlPrestamos = route + '/apiPrestamos';
+var urlAlumnos = route + '/apiAlumnos';
 
 function init()
 {
@@ -24,14 +25,16 @@ function init()
 			saludo:'holamundo',
 			detalleprestamos:[],
 			prestamos:[],
+			alumnos:[],
 			fechadevolucion:'',
+			matricula:'',
+			nombre:'',
+			apellidos:'',
 			foliodetalle:'',
 	    	folioprestamo:'',
 	    	isbn:'',
 	    	titulo:'',
-	    	clasificacion:'',
 	    	devuelto:'',
-	    	consec:'',
 	    	cantidad:'',
 			editando:false,
 			auxDev:'',
@@ -48,6 +51,14 @@ function init()
 		    {
 	    		this.$http.get(urlDetalles).then(function(response){
 					this.detalleprestamos=response.data;
+				}).catch(function(response){
+					toastr.error("no se encontraron datos");
+				});
+			},
+
+			getAlumnos:function(){
+				this.$http.get(urlAlumnos).then(function(response){
+					this.alumnos = response.data;
 				}).catch(function(response){
 					toastr.error("no se encontraron datos");
 				});
@@ -79,7 +90,6 @@ function init()
 			},
 
 			infoPrestamo:function(id){
-				var fecha = this.prestamos.fechadevolucion;
 				
 				$('#modal_custom').modal('show');
 				//peticion al servidor
@@ -89,9 +99,10 @@ function init()
 					this.folioprestamo = response.data.folioprestamo;
 					this.isbn = response.data.isbn;
 					this.titulo = response.data.titulo;
-					this.fechadevolucion = response.data.fecha;
 					this.devuelto = response.data.devuelto;
 					this.cantidad = response.data.cantidad;
+					this.matricula = response.data.matricula;
+					this.correo = response.data.correo;
 				});
 
 			},
@@ -111,6 +122,8 @@ function init()
 					this.fechadevolucion = response.data.fecha;
 					this.devuelto = response.data.devuelto;
 					this.cantidad = response.data.cantidad;
+					this.matricula = response.data.matricula;
+					this.correo = response.data.correo;
 					this.auxDev = response.data.foliodetalle;
 				});
 			},
@@ -122,92 +135,67 @@ function init()
 					titulo:this.titulo, devuelto:1,cantidad:this.cantidad
 				};
 
-				// if (this.devuelto==1) {
-					this.$http.put(urlDetalles + '/' + this.foliodetalle,devuelto).then(function(response){
-						// this.getDetalles().splice(id,1);
-						this.getDetalles();
-						this.foliodetalle='';
-						this.folioprestamo='';
-						this.isbn='';
-						this.titulo='';
-						// this.fechadevolucion='';
-						this.devuelto='';
-						this.cantidad='';
+				this.$http.put(urlDetalles + '/' + this.foliodetalle,devuelto).then(function(response){
+					// this.getDetalles().splice(id,1);
+					this.getDetalles();
+					this.foliodetalle='';
+					this.folioprestamo='';
+					this.isbn='';
+					this.titulo='';
+					// this.fechadevolucion='';
+					this.devuelto='';
+					this.cantidad='';
+					this.matricula='';
+					this.correo='';
 
-						$('#modal_custom').modal('hide');
+					$('#modal_custom').modal('hide');
 
 
 
-						swal({
-							title:"DEVOLUCIÓN REALIZADA",
-							text: "La devolución se realizo correctamente",
-							icon:"success",
-							buttons:false,
-							timer:3000
-						});
+					swal({
+						title:"DEVOLUCIÓN REALIZADA",
+						text: "La devolución se realizo correctamente",
+						icon:"success",
+						buttons:false,
+						timer:3000
 					});
-				// }else if (this.devuelto == 0) {
-				// 	swal({
-				// 		title:"DEVOLUCIÓN FALLIDA",
-				// 		text: "El indicador de devolución debe ser 1",
-				// 		icon:"error",
-				// 		buttons:false,
-				// 		timer:3000
-				// 	});
-				// }
-				
+				});
 			},
 			// fin devolver com modal
 
 			// función devolución con mensaje
 			DevolverLibro:function(id){
 				// se crea la variable para almacenar los datos
-				var devoluciones=[];
-
-				devoluciones.push({
-					foliodetalle:this.detalleprestamos.foliodetalle,
-					folioprestamo:this.detalleprestamos.folioprestamo,
-					isbn:this.detalleprestamos.isbn,
-					titulo:this.detalleprestamos.titulo,
+				var devol = {
+					foliodetalle:this.foliodetalle,
+					folioprestamo:this.folioprestamo,
+					isbn:this.isbn,
+					titulo:this.titulo,
 					devuelto:1,
-					cantidad:this.detalleprestamos.cantidad,
-				});
-				// fin
+					cantidad:this.cantidad,
+				};
 
 				swal({
 					title:"REALIZANDO DEVOLUCIÓN",
-					text:"¿Está seguro de realizar la devolución del libro con clave \n" + this.isbn,
-					type: 'info',
+					text:"¿Está seguro de realizar la devolución del libro?",
 					icon: 'warning',
-					buttons:{
-						confirm:{
-							text: '¡Devolver!',
-							className: 'btn btn-success',
-						},
-						cancel:{
-							visible:true,
-							className:'btn btn-danger'
-						},
-					}, 
-				}).then((result) =>{
-					if (result) {
-						this.$http.post(urlDetalles + '/' + this.foliodetalle,devoluciones).then(function(response){
-							// this.foliodetalle='';
-							// this.folioprestamo='';
-							// this.isbn='';
-							// this.titulo='';
-							// this.fechadevolucion='';
-							// this.devuelto='';
-							// this.cantidad='';
-
-							swal({
-								title:"DEVOLUCIÓN REALIZADA",
-								text: "La devolución se realizo correctamente",
-								icon:"success",
-								buttons:false,
-								timer:3000
+					buttons:true,
+					dangerMode:true,
+				}).then((willDelete) =>{
+					if (willDelete) {
+						this.$http.put(urlDetalles + '/' + this.foliodetalle,devol).then(function(response){
+							swal("DEVOLUCIÓN REALIZADA EXITOSAMENTE", {
+								icon: "success",
 							});
 							this.getDetalles();
+							this.foliodetalle='';
+							this.folioprestamo='';
+							this.isbn='';
+							this.titulo='';
+							this.fechadevolucion='';
+							this.devuelto='';
+							this.cantidad='';
+						
 						}).catch(function(response){
 							swal({
 								title: "FALLÓ LA DEVOLUCIÓN",
@@ -218,7 +206,7 @@ function init()
 							});
 						});
 					}else{
-						swal.close();
+						swal("LA DEVOLUCIÓN NO SE PROCESO");
 					}
 				});
 			},
@@ -233,6 +221,8 @@ function init()
 				this.fechadevolucion='';
 				this.devuelto='';
 				this.cantidad='';
+				this.matricula='';
+				this.correo='';
 			},
 
 		},

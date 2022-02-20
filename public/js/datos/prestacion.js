@@ -1,6 +1,7 @@
 var route = document.querySelector("#route").getAttribute("value");
 var urlPresta = route + '/apiPrestamos';
 var urlLibro = route + '/apiBusqueda';
+var urlAlumnos = route + '/apiAlumnos';
 // var urlEjemplar = ruta + '/apiEjemplares';
 
 function init()
@@ -22,20 +23,21 @@ function init()
 
 		data:{
 			saludo:'hola mundo',
-			prestamos:[],
-			libros:[],
+			nopres:'',
+			arrayprestamos:[],
+			arraylibros:[],
+			arrayalumnos:[],
 			ejemplares:'',
-			// ejemplares:[],
-			// isbn:'',
-			// titulo:'',
-			// consec:'',
+
 			codigo:'',
 			folioprestamo:'',
 			fechadevolucion:'',
 			matricula:'',
-			// cantidad:'',
+			correo:'',
 
 			fechaprestamo:moment().format('YYYY-MM-DD'),
+
+			permisos:0,
 		},
 
 		methods:{
@@ -46,7 +48,7 @@ function init()
 					if (response.data==="") {
 						swal({
 							title:"ADVERTENCIA",
-							text: "El libro no se encuentra disponible ",
+							text: "El libro no se encuentra disponible o coloco el título de manera incorrecta",
 							icon: "warning",
 							buttons: true,
 							timer: 3000,
@@ -62,27 +64,50 @@ function init()
 						})
 						this.codigo='';
 					} else {
-
-						var unprestado={
+						this.permisos = this.permisos + 1;
+						if (this.permisos > 3) {
+							swal({
+								title: "PERMISOS ALCANZADOS",
+								text: "El alumno ha alcanzado el limite de 3 permisos para prestar un libro",
+								icon: "warning",
+								buttons: false,
+								timer: 4000,
+							});
+							this.permisos = this.permisos - 1;
+							response.data="";
+							this.codigo='';
+						}else{
+							var unprestado={
 							'isbn':response.data.isbn,
 							'titulo':response.data.titulo,
 							'devuelto':0,
 							'cantidad':1,
-						}
+							}
 
-						if (unprestado.titulo) {
-							this.prestamos.push(unprestado);
-							this.codigo='';
-							this.$refs.buscar.focus();
+							if (unprestado.titulo) {
+								this.arrayprestamos.push(unprestado);
+								this.codigo='';
+								this.$refs.buscar.focus();
+							}
 						}
+						
 					}
 					
 				});
 			},
 			//fin getLibro
 
+			getAlumnos:function(){
+				this.$http.get(urlAlumnos).then(function(response){
+					this.arrayalumnos = response.data;
+				}).catch(function(response){
+					toastr.error("no se encontraron datos");
+				});
+			},
+
 			cancelarPrestamo:function(id){
-				this.prestamos.splice(id,1);
+				this.arrayprestamos.splice(id,1);
+				this.permisos = this.permisos - 1;
 			},
 
 			foliarprestamo:function(){
@@ -94,12 +119,14 @@ function init()
 				var detalles2=[];
 				var newdetalle3=[];
 
-				for (var i = 0; i < this.prestamos.length; i++) {
+				for (var i = 0; i < this.arrayprestamos.length; i++) {
 					detalles2.push({
-						isbn:this.prestamos[i].isbn,
-						titulo:this.prestamos[i].titulo,
+						isbn:this.arrayprestamos[i].isbn,
+						titulo:this.arrayprestamos[i].titulo,
 						devuelto:0,
 						cantidad:1,
+						// matricula:this.arrayprestamos[i].matricula,
+						// correo:this.arrayprestamos[i].correo,
 					})
 
 					var set = new Set(detalles2.map(JSON.stringify))
@@ -111,7 +138,9 @@ function init()
 					fechaprestamo:this.fechaprestamo,
 					fechadevolucion:this.fechadevolucion,
 					matricula:this.matricula,
+					correo:this.correo,
 					liberado:0,
+					permisos:this.permisos,
 					newdetalle3:newdetalle3
 				}
 
@@ -123,9 +152,8 @@ function init()
 						icon: "error",
 						buttons: "ok",
 						timer: 4000,
-					  });
+					 });
 				}
-
 				else if(detalles2.length!=newdetalle3.length){
 					swal({
 						title: "DATOS REPETIDOS",
@@ -143,7 +171,8 @@ function init()
 								this.foliarprestamo();
 								this.fechadevolucion='';
 								this.matricula='';
-								this.prestamos=[];
+								this.correo='';
+								this.arrayprestamos=[];
 							}).catch(function(json){
 								swal({
 									title: "PRESTAMO FALLIDO",
@@ -158,7 +187,7 @@ function init()
 							swal("POR FAVOR, REVISE LOS LIBROS REPETIDOS");
 						}
 					  });
-				}else if (this.fechadevolucion=="" && this.matricula=="") {
+				}else if (this.fechadevolucion=="" && this.matricula=="" && this.correo=="") {
 					swal({
 						title:"ERROR DE PRESTAMO",
 						text:"Verifique que los campos solicitados esten llenos",
@@ -175,7 +204,15 @@ function init()
 						buttons:false,
 						timer:4000,
 					});
-				}else if (this.fechadevolucion=="") {
+				}else if(this.correo == ""){
+					swal({
+						title:"ERROR DE PRESTAMO",
+						text:"Verifique que el correo este colocado",
+						icon:"error",
+						buttons:false,
+						timer:4000,
+					});
+				} else if (this.fechadevolucion=="") {
 					swal({
 						title:"ERROR DE PRESTAMO",
 						text:"Verifique que la fecha de devolución este colocada",
@@ -206,10 +243,12 @@ function init()
 							timer: 3000,
 						});
 						this.foliarprestamo();
-						this.prestamos=[];
+						this.arrayprestamos=[];
 						this.fechadevolucion='';
 						this.matricula='';
+						this.correo='';
 					}).catch(function(response){
+						console.log(unPrestamo);
 						swal({
 							title: "PRESTAMO FALLIDO",
 							text: "No se pudo realizar el prestamo",
