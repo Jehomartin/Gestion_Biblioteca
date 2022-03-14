@@ -42,36 +42,59 @@ class ApiPrestamosController extends Controller
         $prestamo->folioprestamo = $request->get('folioprestamo');
         $prestamo->fechaprestamo = $request->get('fechaprestamo');
         $prestamo->fechadevolucion = $request->get('fechadevolucion');
-        $prestamo->matricula = $request->get('matricula');
-        $prestamo->correo = $request->get('correo');
-
-        $mat = $request->get('matricula');
-        $cont = $request->get('permisos');
-        DB::update("UPDATE alumnos SET permisos = permisos - $cont WHERE matricula = '$mat'");
+        $prestamo->prestamista = $request->get('prestamista');
 
         $detalle1=[];
 
         $newdetalle3 = $request->get('newdetalle3');
 
-        for ($i=0; $i < count($newdetalle3); $i++) { 
-            $detalle1[]=[
-                'folioprestamo'=>$request->get('folioprestamo'),
-                'isbn'=>$newdetalle3[$i]['isbn'],
-                'titulo'=>$newdetalle3[$i]['titulo'],
-                'devuelto'=>$newdetalle3[$i]['devuelto'],
-                'cantidad'=>$newdetalle3[$i]['cantidad'],
-                'matricula'=>$request->get('matricula'),
-                'correo'=>$request->get('correo'),
-            ];
+        $prestmis = $request->get('prestamista');
 
-            //se hace la actualización de la cantidad de ejemplares disponibles
-            $exem=$newdetalle3[$i]['cantidad'];
-            $codigo=$newdetalle3[$i]['isbn'];
+        if ($prestmis == "alumno") {
+            for ($i=0; $i < count($newdetalle3); $i++) { 
+                $detalle1[]=[
+                    'folioprestamo'=>$request->get('folioprestamo'),
+                    'isbn'=>$newdetalle3[$i]['isbn'],
+                    'titulo'=>$newdetalle3[$i]['titulo'],
+                    'devuelto'=>$newdetalle3[$i]['devuelto'],
+                    'cantidad'=>$newdetalle3[$i]['cantidad'],
+                    'matricula'=>$request->get('matricula'),
+                    'correo'=>$request->get('correo'),
+                ];
+
+                //se hace la actualización de la cantidad de ejemplares disponibles
+                $exem=$newdetalle3[$i]['cantidad'];
+                $codigo=$newdetalle3[$i]['isbn'];
+            }
+
+            $mat = $request->get('matricula');
+            $cont = $request->get('permisos');
+            DB::update("UPDATE alumnos SET permisos = permisos - $cont WHERE matricula = '$mat'");
+            // DB::update("UPDATE libros SET ejemplares = ejemplares - $exem WHERE isbn = '$codigo'");
+
+        } elseif ($prestmis == "docente") {
+            for ($i=0; $i < count($newdetalle3); $i++) { 
+                $detalle1[]=[
+                    'folioprestamo'=>$request->get('folioprestamo'),
+                    'isbn'=>$newdetalle3[$i]['isbn'],
+                    'titulo'=>$newdetalle3[$i]['titulo'],
+                    'devuelto'=>$newdetalle3[$i]['devuelto'],
+                    'cantidad'=>$newdetalle3[$i]['cantidad'],
+                    'claves'=>$request->get('claves'),
+                    'correo'=>$request->get('email'),
+                ];
+
+                //se hace la actualización de la cantidad de ejemplares disponibles
+                $exem=$newdetalle3[$i]['cantidad'];
+                $codigo=$newdetalle3[$i]['isbn'];
+            }
+            
         }
-        DB::update("UPDATE libros SET ejemplares = ejemplares - $exem WHERE isbn = '$codigo'");
         
         $prestamo->save();
         DetallePrestamos::insert($detalle1);
+
+        DB::update("UPDATE libros SET ejemplares = ejemplares - $exem WHERE isbn = '$codigo'");
         
     }
 
@@ -122,8 +145,8 @@ class ApiPrestamosController extends Controller
         // return Prestamos::destroy($id);
     }
 
-    public function getLibros($id){
-     $libros = DB::select("SELECT * FROM libros WHERE isbn=$id");
-     return $libros;
+    public function getAlumnos($id){
+     $alumnos = DB::select("SELECT * FROM alumnos WHERE matricula=$id");
+     return $alumnos;
     }
 }

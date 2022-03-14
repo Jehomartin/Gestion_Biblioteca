@@ -12,6 +12,8 @@ class Alumnos extends Model
     //se indica la llave primaria
     protected $primaryKey = "matricula";
 
+    protected $with = ['carrera2'];
+
     //se indica si es incrementable o de tiempo
     // public $timestamps = false;
     // public $incrementing = false;
@@ -21,7 +23,14 @@ class Alumnos extends Model
     	'matricula',
     	'nombre',
     	'apellidos',
-    	'bloqueado'
+        'clave_carrera',
+    	'bloqueado',
+        'correo',
+        'permisos'
     ];
+
+    public function carrera2(){
+        return $this->belongsTo(Carreras2::class,'clave_carrera','clave_carrera');
+    }
 
 }

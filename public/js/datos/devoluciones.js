@@ -132,7 +132,8 @@ function init()
 			Devolver:function(id){
 				var devuelto = {
 					foliodetalle:this.foliodetalle, folioprestamo:this.folioprestamo, isbn:this.isbn,
-					titulo:this.titulo, devuelto:1,cantidad:this.cantidad
+					titulo:this.titulo, devuelto:1,cantidad:this.cantidad, matricula:this.matricula,
+					correo:this.correo,
 				};
 
 				this.$http.put(urlDetalles + '/' + this.foliodetalle,devuelto).then(function(response){

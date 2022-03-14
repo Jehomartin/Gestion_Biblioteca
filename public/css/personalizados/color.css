@@ -4,7 +4,7 @@
 	font-family: Baskerville Old Face;
 }
 
-.fondo{
+.fondo1{
 	background: rgba(179,220,237,1);
 	background: -moz-linear-gradient(top, rgba(179,220,237,1) 0%, rgba(37,115,138,1) 0%, rgba(188,224,238,1) 100%);
 	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(179,220,237,1)), color-stop(0%, rgba(37,115,138,1)), color-stop(100%, rgba(188,224,238,1)));
@@ -15,7 +15,12 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee', GradientType=0 );
 }
 
-.fondo1{
+.fondo2{
+ 	width: 100%;
+  background-color: rgba(1,0,0,1);
+}
+
+.fondo3{
 	background-color:lightgreen;
 	color: black;
 }
@@ -122,9 +127,9 @@
 
 .sombra
 {
-  -webkit-box-shadow: inset -100px -174px 145px -28px rgba(0,0,0,0.58);
--moz-box-shadow: inset -100px -174px 145px -28px rgba(0,0,0,0.58);
-box-shadow: inset -100px -174px 145px -28px rgba(0,0,0,0.58);
+  -webkit-box-shadow: inset -100px -174px 145px -28px rgba(1,0,0,1);
+-moz-box-shadow: inset -100px -174px 145px -28px rgba(1,0,0,1);
+box-shadow: inset -100px -174px 145px -28px rgba(1,0,0,1);
 
 }
 

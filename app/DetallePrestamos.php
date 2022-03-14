@@ -23,6 +23,7 @@ class DetallePrestamos extends Model
     	'devuelto',
     	'cantidad',
         'matricula',
+        'claves',
         'correo'
     ];
 
@@ -36,5 +37,9 @@ class DetallePrestamos extends Model
 
     public function alumno(){
         return $this->belongsTo(Alumnos::class,'matricula','matricula');
+    }
+
+    public function docente(){
+        return $this->belongsTo(Docentes::class,'claves','claves');
     }
 }

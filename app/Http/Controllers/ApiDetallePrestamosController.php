@@ -28,7 +28,7 @@ class ApiDetallePrestamosController extends Controller
         // $dev = DB::select("SELECT * FROM detalle_prestamo WHERE devuelto = 0");
         // return $dev
 
-        return DetallePrestamos::where('devuelto',0)->get(['foliodetalle','folioprestamo','isbn','titulo']);
+        return DetallePrestamos::where('devuelto',0)->get(['foliodetalle','folioprestamo','isbn','titulo','matricula','correo']);
     }
 
     /**
@@ -76,13 +76,17 @@ class ApiDetallePrestamosController extends Controller
         $devolucion->matricula = $request->get("matricula");
         $devolucion->correo = $request->get("correo");
 
+        // if ("correo" != "" && "matricula" != "") {
+            $cant=$request->get("cantidad");
+            $clave=$request->get("isbn");
 
-        $cant=$request->get("cantidad");
-        $clave=$request->get("isbn");
+            DB::update("UPDATE libros SET ejemplares = ejemplares + $cant WHERE isbn = '$clave'");
 
-        DB::update("UPDATE libros SET ejemplares = ejemplares + $cant WHERE isbn = '$clave'");
-
-        $devolucion->update();
+            $devolucion->update();    
+        // }else{
+            // return 'error';
+        // }
+        
     }
 
     /**

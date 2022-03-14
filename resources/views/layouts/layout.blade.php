@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('css/carrusel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/personalizados/efectos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/css1/css2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('select2/dist/css/select2.min.css')}} ">
   <!-- fin css -->
   
   <!-- Font Awesome -->
@@ -54,6 +55,12 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </font>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{url('ajustes') }}" class="nav-link">
+          <font size="5" color="black"><i class="nav-icon fas fa-cogs"></i></font>
+          <!-- Ajustes -->
+        </a>
+      </li> 
     </ul>
 
     <!-- Right navbar links -->
@@ -82,12 +89,17 @@
               <li class="user-footer" style="background-color: black">
                 <div class="pull-right">
                   <a href="{{url('sale')}}" class="btn btn-danger">
-                    Salir <i class="nav-icon fas fa-power-off"></i>
+                    Salir <i class="nav-icon fas fa-sign-out-alt"></i>
                   </a>
                 </div>
               </li>
             </ul>
           </li>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
       </li>
     </ul>
   </nav>
@@ -142,33 +154,62 @@
               <li class="nav-item">
                 <a href="{{url('libros') }}" class="nav-link {{ Request::is('libros') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-book"></i>
-                  <font color="orange" size="4" face="times new roman"><span class="glyphicon glyphicon-book"></span> Libros </font>
+                  <font color="orange" size="4" face="times new roman">
+                    <p>
+                      Libros
+                    </p>
+                  </font>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{url('registro') }}" class="nav-link {{ Request::is('registro') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-pencil-alt"></i>
-                  <font color="orange" size="4" face="times new roman">Registro Libro</font>
+                  <font color="orange" size="4" face="times new roman">
+                    <p>
+                      Registro Libro
+                    </p>
+                  </font>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link {{ Request::is('prestamos') ? 'active' : '' }}  {{ Request::is('devoluciones') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-file-signature"></i>
+              <p>
+                <font color="white" size="4" face="times new roman"> Procesos </font>
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('prestamos') }}" class="nav-link {{ Request::is('prestamos') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-exchange-alt"></i>
+                  <font color="orange" size="4" face="times new roman">
+                    <p>
+                      Proceso Préstamo
+                    </p>
+                  </font>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('devoluciones') }}" class="nav-link {{ Request::is('devoluciones') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-file-import"></i>
+                  <font color="orange" size="4" face="times new roman">
+                    <p>
+                      Proceso Devolución
+                    </p>
+                  </font>
                 </a>
               </li>
             </ul>
           </li>
           
           <li class="nav-item">
-            <a href="{{url('prestamos') }}" class="nav-link {{ Request::is('prestamos') ? 'active' : '' }}">
+            <a href="{{url('historial') }}" class="nav-link {{ Request::is('historial') ? 'active' : '' }}">
               <font color="white" size="4" face="times new roman">
-                <i class="nav-icon fas fa-list-alt"></i>
-                <p>
-                  Proceso Préstamo
-                </p>
-              </font>
-            </a>
-          </li>
-          
-          <li class="nav-item">
-            <a href="{{url('devoluciones') }}" class="nav-link {{ Request::is('devoluciones') ? 'active' : '' }}">
-              <font color="white" size="4" face="times new roman">
-                <i class="nav-icon fas fa-share"></i>
+                <i class="nav-icon fas fa-history"></i>
                 <p>
                   Libros prestados
                 </p>
@@ -177,15 +218,26 @@
           </li>
 
           <!-- <li class="nav-item">
-            <a href="{{url('ejemplares') }}" class="nav-link {{ Request::is('ejemplares') ? 'active' : '' }}">
+            <a href="{{url('ajustes') }}" class="nav-link {{ Request::is('ajustes') ? 'active' : '' }}">
               <font color="white" size="4" face="times new roman">
-                <i class="nav-icon fas fa-copy"></i>
+                <i class="nav-icon fas fa-cog"></i>
                 <p>
-                  Ejemplares
+                  Configuración
                 </p>
               </font>
             </a>
           </li> -->
+
+          <li class="nav-item">
+            <a href="{{url('adeudos') }}" class="nav-link {{ Request::is('adeudos') ? 'active' : '' }}">
+              <font color="white" size="4" face="times new roman">
+                <i class="nav-icon fas fa-file-invoice-dollar"></i>
+                <p>
+                  Adeudos
+                </p>
+              </font>
+            </a>
+          </li>
 
         </ul>
       </nav>
@@ -234,6 +286,7 @@
 <script src="{{ asset('adminlte/js/adminlte.min.js') }}"></script>
 <script src="{{ asset('js/toastr.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('select2/dist/js/select2.min.js')}} "></script>
 
 <!-- jQuery -->
 <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>

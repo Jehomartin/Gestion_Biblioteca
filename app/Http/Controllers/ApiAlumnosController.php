@@ -48,7 +48,7 @@ class ApiAlumnosController extends Controller
     public function show($id)
     {
         //
-        //return Alumnos::find($id);
+        return Alumnos::find($id);
     }
 
     /**

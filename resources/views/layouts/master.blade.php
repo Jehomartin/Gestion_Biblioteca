@@ -36,7 +36,7 @@
       <!-- Navigation -->
       <nav class="navbar navbar-expand-lg bg-warning text-uppercase fixed-top" id="mainNav">
         <div class="container">
-          <a class="navbar-brand js-scroll-trigger">Universidad Tecnológica del Centro</a>
+          <a class="navbar-brand js-scroll-trigger" style="color: black;">Universidad Tecnológica del Centro</a>
           <ul class="navbar-nav">
             <li class="nav-item">
               <img src="{{ asset('img/utc.jpeg') }}" class="imagin" style="opacity: .8" width="75px" height="75px">
@@ -44,9 +44,6 @@
           </ul>
         </div>
       </nav>
-
-      <!-- Masthead -->
-      <br>
       <!-- Portfolio Section -->
       <div class="content-wrapper">
         <section class="page-section">
@@ -57,6 +54,7 @@
       </div>
 
       <!-- Footer -->
+      <!-- <br>
       <section class="copyright py-4 text-white">
         <div class="container">
           <strong>Gestión Biblioteca <span class="fa fa-book"></span></strong>
@@ -66,7 +64,7 @@
             <b>Universidad Tecnológica del Centro</b>
         </div>
         </div>
-      </section>
+      </section> -->
       <!-- Fin Footer -->
     </div>
     

@@ -24,8 +24,8 @@ class Prestamos extends Model
     	'folioprestamo',
     	'fechaprestamo',
         'fechadevolucion',
-        'matricula',
-        'correo'
+        'prestamista',
+        // 'correo'
     ];
 
     public function alumno(){

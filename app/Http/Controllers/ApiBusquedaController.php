@@ -68,4 +68,27 @@ class ApiBusquedaController extends Controller
     {
         //
     }
+
+     /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function search(Request $request){
+        
+        $term = trim($request->L);
+
+        if (empty($term)) {
+            return \Response::json([]);
+        }
+
+        $libs = Busqueda::search($term)->limit(3)->get();
+
+        $formatted_libs = [];
+
+        foreach ($libs as $lib) {
+            $formatted_libs[] = ['id' => $lib->isbn, 'text' => $lib->titulo];
+        }
+
+        return \Response::json($formatted_libs);
+    }
 }

@@ -9,6 +9,12 @@
 <input type="hidden" id="fechaActual" value="<?php echo date('Y-m-d'); ?>">
 <div class="main-panel" id="devolver">
   <div class="container">
+    <!-- inicio titulo -->
+    <font color="black" face="Sylfaen">
+      <h2 class="text text-center">PRÉSTAMOS REALIZADOS</h2>
+    </font>
+    <!-- /titulo -->
+
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
@@ -32,12 +38,6 @@
     <div class="row"> 
       
       <div class="col-sm-12">
-        <br>
-        <font color="black" face="Sylfaen">
-          <h2 class="text text-center">PRÉSTAMOS REALIZADOS</h2>
-        </font>
-        <br>
-
         <div class="row">
           <div class="col-md-12">
             <div class="table-responsive-md">
@@ -57,12 +57,12 @@
                     <td> @{{detalle.folioprestamo}} </td>
                     <td> @{{detalle.isbn}} </td>
                     <td> @{{detalle.titulo}} </td>
-                    <td> @{{detalle.prestamo.matricula}} </td>
+                    <td> @{{detalle.matricula}} </td>
                     <!-- <td> @{{detalle.prestamo.alumno.nombre}}, @{{detalle.prestamo.alumno.apellidos}} </td> -->
-                    <td> @{{detalle.prestamo.correo}} </td>
+                    <td> @{{detalle.correo}} </td>
                     <td> @{{detalle.prestamo.fechadevolucion}} </td>
                     <td>
-                      <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-reply-all"></i></span>
+                      <!-- <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-reply-all"></i></span> -->
                       <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
                       <span class="btn btn-dark" @click=""><i class="nav-icon fas fa-envelope"></i></span>
                     </td>
@@ -71,12 +71,12 @@
                     <td> @{{detalle.folioprestamo}} </td>
                     <td> @{{detalle.isbn}} </td>
                     <td> @{{detalle.titulo}} </td>
-                    <td> @{{detalle.prestamo.matricula}} </td>
+                    <td> @{{detalle.matricula}} </td>
                     <!-- <td> @{{detalle.prestamo.alumno.nombre}}, @{{detalle.prestamo.alumno.apellidos}} </td> -->
-                    <td> @{{detalle.prestamo.correo}} </td>
+                    <td> @{{detalle.correo}} </td>
                     <td> @{{detalle.prestamo.fechadevolucion}} </td>
                     <td>
-                      <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-reply-all"></i></span>
+                      <!-- <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-reply-all"></i></span> -->
                       <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
                       <span class="btn btn-dark" @click=""><i class="nav-icon fas fa-envelope"></i></span>
                     </td>
@@ -90,7 +90,6 @@
 
       <!-- inicio ventana modal -->
       <div id="modal_custom" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <!--inicio modal dialog-->
         <!--inicio modal dialog-->
         <div class="modal-dialog" role="document">
           <!--inicio modal content-->
@@ -124,16 +123,16 @@
                       </div>
                     </div>
                   </div>
-                    <div class="col-md-7 ml-auto">
+                  <div class="col-md-7 ml-auto">
                     <div class="form-group">
                       <label>FOLIO DEL PRÉSTAMO</label>
                       <div class="input-group">
                         <span class="form-control" style="border-color:#000"> @{{folioprestamo}} </span>
                         <!-- <input type="text" class="form-control" style="border-color: #000" v-model="folioprestamo" v-if="editando"> -->
                       </div>
+                    </div>
                   </div>
                 </div>
-              </div>
                 <div class="form-group">
                   <label>FOLIO DEL LIBRO</label>
                   <div class="input-group">
@@ -160,8 +159,7 @@
                   <label>CANTIDAD PRESTADA</label>
                   <div class="input-group">
                     <span class="form-control" style="border-color:#000"> @{{cantidad}} </span>
-                    <!-- <input type="text" class="form-control" style="border-color: #000" v-model="cantidad" v-if="editando">
- -->               </div>
+                  </div>
                 </div>
               </font>
             </div>
@@ -178,7 +176,6 @@
                 <span class="fas fa-check"></span>
                 DEVOLVER</button>
               </div>
-            </div>
             </div><!-- fin footer modal -->
           </div> <!--fin modal content-->
         </div><!--/modal dialog-->

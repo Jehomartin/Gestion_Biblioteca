@@ -330,8 +330,8 @@ new Vue({
 					},
 					timer: 3000,
 				});
-					
-
+				
+				this.getEjemplar();
 			}).catch(function(response){
 				
 

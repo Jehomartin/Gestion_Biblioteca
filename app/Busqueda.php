@@ -13,7 +13,7 @@ class Busqueda extends Model
     protected $primaryKey = "titulo";
 
     //union con llaves foraneas
-    protected $with=['autor','editorial','carrera','pais'];
+    protected $with=['autor','editorial','carrera','pais','caratula'];
 
     //incrementable o de tiempo;
     public $incrementing = false;
@@ -51,5 +51,9 @@ class Busqueda extends Model
     }
     public function pais(){
         return $this->belongsTo(paises::class,'id_pais','id_pais');
+    }
+
+    public function caratula(){
+        return $this->belongsTo(Caratulas::class,'isbn','isbn');
     }
 }

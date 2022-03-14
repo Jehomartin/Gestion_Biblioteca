@@ -29,19 +29,25 @@ Route::apiResource('apiCarreras','ApiCarrerasController');
 Route::apiResource('apiDetalles','ApiDetallePrestamosController');
 Route::apiResource('apiBusqueda','ApiBusquedaController');
 Route::apiResource('apiCaratula','ApiCaratulasController');
+Route::apiResource('apiAdeudo','ApiAdeudosController');
+Route::apiResource('apiCareer','ApiCarreras2Controller');
+Route::apiResource('apiMultas','ApiMultasController');
+Route::apiResource('apiDocente','ApiDocentesController');
 
 //enrutamiento admin(VISTAS)
 Route::view('inicio','admin.index');
 Route::view('libros','admin.libros');
 Route::view('ejemplares','admin.ejemplares');
 Route::view('prestamos','admin.prestamos');
-Route::view('devoluciones','admin.LibrosPrestados');
+Route::view('historial','admin.LibrosPrestados');
 Route::view('prestacion','admin.prestacion');
 Route::view('registro','admin.registroLibro');
 Route::view('infoli','admin.infoli');
+Route::view('adeudos','admin.adeudos');
 Route::view('/','login');
-Route::view('buscar','search.busqueda');
+Route::view('informacion','search.busqueda');
 Route::view('ingreso','ingreso');
+Route::view('ajustes','configuracion.ajustes');
 
 //enrutamiento funciones de validación(LOGIN)
 Route::post('entrar','AccesoController@validar');
@@ -62,3 +68,5 @@ Route::apiResource('apiRegistroLibros','ApiLibrousController');
 
 //ruta informacion 
 Route::get('libros/detallelibro/{id}', 'ApiLibrosController@detallelibro')->where('id','[0-9]+');
+
+Route::get('search2','ApiBusquedaController@search');

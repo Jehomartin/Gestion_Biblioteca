@@ -11,37 +11,136 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-4">
-        <font color="black" face="Sylfaen"><h5>FOLIO : @{{folioprestamo}}</h5></font>
-        <font color="black" face="Sylfaen"><h5>FECHA PRÉSTAMO : @{{fechaprestamo}}</h5></font>
-      </div>
-      <div class="col-lg-4">
         <font color="black" face="Sylfaen">
-          <h5>MATRÍCULA DEL ALUMNO: </h5> 
-          <input type="text" class="form-control" placeholder="Matrícula" v-model="matricula" style="border-color: #000" id="matricula">
-          <h5>CORREO DEL ALUMNO:</h5>
-          <input type="text" class="form-control" placeholder="Correo electrónico del alumno" v-model="correo" style="border-color: #000;" id="correo">
+          <h6>FOLIO : @{{folioprestamo}}</h6>
+          <h6>FECHA PRÉSTAMO : @{{fechaprestamo}}</h6>
+          <h6>FECHA DEVOLUCIÓN : @{{fechadevolucion}}</h6>
         </font>
+
+        <!-- elejir alumno o docente -->
+        <div class="form-group">
+          <div class="input-group">
+              <button class="btn btn-warning form-control" @click="student()">
+                ALUMNO <i class="fas fa-book"></i><i class="fas fa-pencil-alt"></i>
+              </button>
+              <button class="btn btn-success form-control" @click="teacher()">
+                DOCENTE <i class="fas fa-briefcase"></i>
+              </button>
+          </div>
+        </div>
+        <!-- /elejir alumno o docente -->
       </div>
-      <div class="col-lg-4">
-        <font color="black" face="Sylfaen">
-          <h5>FECHA DEVOLUCIÓN: </h5>
-          <input type="date" class="form-control" placeholder="fecha devolución" v-model="fechadevolucion" style="border-color: #000">
-        </font>
-      </div>
+      <!-- /folio y fechas -->
+
+      <!-- inicio de los if -->
+      <div class="col-lg-8">
+        <!-- alumno -->
+        <div class="container">
+          <!-- matricula y nombre -->
+          <div class="row">
+            <div class="container">
+              <font color="black" face="Sylfaen">
+                <h5 class="text text-center" v-if="estudiante">DATOS DEL ALUMNO: </h5>
+                <h5 class="text text-center" v-if="docente">DATOS DEL DOCENTE: </h5>
+              </font>
+            </div>
+            <br>
+            <div class="col-md-6" v-if="estudiante">
+              <div class="form-group">
+                <label >MATRICULA</label>
+                <div class="input-group">
+                 <input type="text" placeholder="Matrícula" class="form-control" v-model="matricula" style="border-color: #000" id="matricula" maxlength="8" v-on:keyup.enter="getAlumnos()">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" v-for="al in arrayalumnos" v-if="estudiante">
+              <div class="form-group">
+                <label>NOMBRE: </label>
+                <div class="input-group">
+                  <span style="border-color: #000;" class="form-control"> @{{al.nombre}} </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" v-if="docente">
+              <div class="form-group">
+                <label>CLAVE: </label>
+                <div class="input-group">
+                  <input type="text" placeholder="Clave de docente" class="form-control" v-model="claves" style="border-color: #000" id="maestro" maxlength="8" v-on:keyup.enter="getDocentes()">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" v-for="(dc,index) in arraydocentes" v-if="docente">
+              <div class="form-group">
+                <label>NOMBRE(S): </label>
+                <div class="input-group">
+                  <span class="form-control" style="border-color: #000;"> @{{dc.nombres}} </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /matricula y nombre -->
+
+          <!-- apellidos y correo -->
+          <div class="row" v-for="al in arrayalumnos" v-if="estudiante">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>APELLIDOS:</label>
+                <div class="input-group">
+                 <span style="border-color: #000;" class="form-control"> @{{al.apellidos}} </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>CORREO:</label>
+                <div class="input-group">
+                 <span style="border-color: #000;" class="form-control" v-model="correo"> @{{correo}} </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" v-for="(dc,index) in arraydocentes" v-if="docente">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>APELLIDOS:</label>
+                <div class="input-group">
+                  <span class="form-control" style="border-color: #000;"> @{{dc.apellidos}} </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>CORREO:</label>
+                <div class="input-group">
+                  <span class="form-control" style="border-color: #000;"> @{{dc.email}} </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /apellidos y correo -->
+        </div>
+        <!-- /fin alumno -->
+
+
+      </div> <!-- /fin los if -->
     </div>
     <hr style="border-color: #000">
 
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group">
-          <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el título del libro" style="border-color: black">
+          <!-- <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el título del libro" style="border-color: black"> -->
+          <select class="form-control selectlib" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" @change="getLib" name="selectli[]" id="selectlib">
+            <option disabled value="">Ingrese el titulo</option>
+            <option v-for="l in arraylibros" v-bind:value="l.titulo"> @{{l.titulo}} </option>
+          </select>
         
           <span class="input-group-btn">
             <button class="btn btn-success fas fa-plus-square" @click="getLibros()"></button>
           </span>
         </div>
       </div>
-      <label>usted a elegido un total de :</label> @{{permisos}}
+      <!-- <label>usted a elegido un total de :</label> @{{permisos}} -->
     </div>
 
     <hr style="border-color: #000;">
@@ -67,7 +166,10 @@
       <!-- <button class="btn btn-secondary ml-auto">Button</button> -->
       <button class="btn btn-primary ml-auto float-right fa fa-save" @click="prestar()" >
         <font face="Sylfaen"> GUARDAR</font>
-       </button>
+      </button>
+      <!-- <button class="btn btn-primary ml-auto float-right fa fa-save" @click="prestar()" >
+        <font face="Sylfaen"> GUARDAR</font>
+      </button> -->
     </div>
   </div>
 </div>
@@ -76,5 +178,6 @@
 
 @push('scripts')
   <script src="js/datos/prestacion.js"></script>
+  <!-- <script src="js/seleccion.js"></script> -->
   <script src="js/moment-with-locales.min.js"></script>
 @endpush
