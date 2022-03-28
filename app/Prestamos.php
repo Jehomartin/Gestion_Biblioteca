@@ -13,7 +13,7 @@ class Prestamos extends Model
     protected $primaryKey = "folioprestamo";
 
     //declaracion de la union con otra tabla
-    protected $with=['alumno'];
+    // protected $with=['alumno'];
 
     //especificado de incrementable o tiempo
     public $timestamps = false;
@@ -28,7 +28,7 @@ class Prestamos extends Model
         // 'correo'
     ];
 
-    public function alumno(){
-        return $this->belongsTo(Alumnos::class,'matricula','matricula');
-    }
+    // public function alumno(){
+    //     return $this->belongsTo(Alumnos::class,'matricula','matricula');
+    // }
 }

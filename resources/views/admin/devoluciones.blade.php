@@ -1,23 +1,20 @@
 @extends('layouts.layout')
-@section('titulo','Procesando Prestamo')
+@section('titulo','Procesando Devolución')
 @section('contenido')
-
 <font color="black" face="Sylfaen">
-  <h2 class="text text-center">PROCESANDO PRÉSTAMO DE LIBRO</h2>
+  <h2 class="text text-center">PROCESANDO DEVOLUCIÓN DE LIBRO</h2>
 </font>
 
-<div id="prestacion">
-  <br>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4">
-        <font color="black" face="Sylfaen">
-          <h6>FOLIO : @{{folioprestamo}}</h6>
-          <h6>FECHA PRÉSTAMO : @{{fechaprestamo}}</h6>
-          <h6>FECHA DEVOLUCIÓN : @{{fechadevolucion}}</h6>
+<div id="devolucion">
+	<br>
+	<div class="container">
+		<!-- datos principales -->
+		<div class="row">
+			<div class="col-lg-4">
+				<font color="black" face="Sylfaen">
+          <h6>FOLIO : @{{foliodevolucion}}</h6>
+          <h6>FECHA DEVOLUCIÓN : @{{datedevolucion}}</h6>
         </font>
-
-        <!-- elejir alumno o docente -->
         <div class="form-group">
           <div class="input-group">
               <button class="btn btn-warning form-control" @click="student()">
@@ -28,11 +25,8 @@
               </button>
           </div>
         </div>
-        <!-- /elejir alumno o docente -->
-      </div>
-      <!-- /folio y fechas -->
-
-      <!-- inicio de los if -->
+			</div>
+			<!-- inicio de los if -->
       <div class="col-lg-8">
         <div class="container">
           <!-- matricula y nombre -->
@@ -119,61 +113,58 @@
           <!-- /apellidos y correo -->
         </div>
       </div> <!-- /fin los if -->
-    </div>
-    <hr style="border-color: #000">
-
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="input-group">
-          <!-- <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el título del libro" style="border-color: black"> -->
-          <select class="form-control selectlib" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" @change="getLib" name="selectli[]" id="selectlib">
-            <option disabled value="">Ingrese el titulo</option>
-            <option v-for="l in arraylibros" v-bind:value="l.titulo"> @{{l.titulo}} </option>
-          </select>
-        
-          <span class="input-group-btn">
-            <button class="btn btn-success fas fa-plus-square" @click="getLibros()"></button>
-          </span>
-        </div>
-      </div>
-      <!-- <label>usted a elegido un total de :</label> @{{permisos}} -->
-    </div>
-
-    <hr style="border-color: #000;">
-    <div class="row">
-      <div class="col-lg-12">
-        <table class="table table-striped table-bordered table-responsive">
-          <thead class="thead-dark">
-            <th width="10%">ISBN</th>
-            <th width="20%">TÍTULO</th>
-            <th width="9%">ACCIONES</th>
-          </thead>
-          <tbody class="table table-bordered">
-            <tr v-for="(p,index) in arrayprestamos">
-              <td> @{{p.isbn}} </td>
-              <td> @{{p.titulo}} </td>
-              <td>
-                <span class="fas fa-trash-alt btn btn-danger btn-xs" @click="cancelarPrestamo(index)"></span>
-              </td>
-            </tr>
-          </tbody>          
-        </table>
-      </div>
-      <!-- <button class="btn btn-secondary ml-auto">Button</button> -->
-      <button class="btn btn-primary ml-auto float-right fa fa-save" @click="prestar()" >
-        <font face="Sylfaen"> GUARDAR</font>
-      </button>
-      <!-- <button class="btn btn-primary ml-auto float-right fa fa-save" @click="prestar()" >
-        <font face="Sylfaen"> GUARDAR</font>
-      </button> -->
-    </div>
-  </div>
+		</div>
+		<!-- /datos principales -->
+		<hr style="border-color: #000">
+		<!-- ingreso de folio -->
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="input-group">
+					<input type="text" class="form-control" v-model="folio" ref="buscar" v-on:keyup.enter="getDetalles()" placeholder="Ingrese el folio de prestamo" style="border-color: black">
+					<span class="input-group-btn">
+			      <button class="btn btn-success fas fa-plus-square" @click="getDetalles()"></button>
+			    </span>
+				</div>
+			</div>
+		</div>
+		<!-- /ingreso folio -->
+		<hr style="border-color: #000;">
+		<div class="row">
+      		<div class="col-lg-12">
+		        <table class="table table-striped table-bordered table-responsive">
+		          <thead class="thead-dark">
+		          	<th width="10%">FOLIO PRESTAMO</th>
+		            <th width="10%">ISBN</th>
+		            <th width="20%">TÍTULO</th>
+		            <!-- <th width="10%">CANTIDAD</th> -->
+		            <th width="">ID PRESTADOR</th>
+		            <th width="">CORREO</th>
+		            <th width="9%">ACCIONES</th>
+		          </thead>
+		          <tbody class="table table-bordered">
+		            <tr v-for="(dv,index) in arraydevolucion">
+		            	<td> @{{dv.folioprestamo}} </td>
+		            	<td> @{{dv.isbn}} </td>
+		            	<td> @{{dv.titulo}} </td>
+		            	<!-- <td> @{{dv.cantidad}} </td> -->
+		            	<td> @{{dv.matricula}} @{{dv.claves}} </td>
+		            	<td> @{{dv.correo}} </td>
+		            	<td>
+		            		<span class="fas fa-trash-alt btn btn-danger btn-xs" @click="cancelarDevolucion(index)"></span>
+		              	</td>
+		            </tr>
+		          </tbody>          
+		        </table>
+      		</div>
+      		<!-- <button class="btn btn-secondary ml-auto">Button</button> -->
+	      	<button class="btn btn-primary ml-auto float-right" @click="prestar()" >
+	        	<i class="fas fa-file-import"></i><font face="Sylfaen"> DEVOLVER</font>
+	      	</button>
+    	</div>
+	</div>
 </div>
-
 @endsection
 
 @push('scripts')
-  <script src="js/datos/prestacion.js"></script>
-  <!-- <script src="js/seleccion.js"></script> -->
-  <!-- <script src="js/moment-with-locales.min.js"></script> -->
+	<script src="js/datos/devoluciones.js"></script>
 @endpush

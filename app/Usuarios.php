@@ -22,6 +22,9 @@ class Usuarios extends Model
         'pass',
     	'nombre',
     	'apellidos',
+        'sexo',
+        'edad',
+        'telefono',
     	'nivel'
     ];
 }

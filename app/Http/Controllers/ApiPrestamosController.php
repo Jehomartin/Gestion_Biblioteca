@@ -58,7 +58,7 @@ class ApiPrestamosController extends Controller
                     'titulo'=>$newdetalle3[$i]['titulo'],
                     'devuelto'=>$newdetalle3[$i]['devuelto'],
                     'cantidad'=>$newdetalle3[$i]['cantidad'],
-                    'matricula'=>$request->get('matricula'),
+                    'id_prestador'=>$request->get('matricula'),
                     'correo'=>$request->get('correo'),
                 ];
 
@@ -80,7 +80,7 @@ class ApiPrestamosController extends Controller
                     'titulo'=>$newdetalle3[$i]['titulo'],
                     'devuelto'=>$newdetalle3[$i]['devuelto'],
                     'cantidad'=>$newdetalle3[$i]['cantidad'],
-                    'claves'=>$request->get('claves'),
+                    'id_prestador'=>$request->get('claves'),
                     'correo'=>$request->get('email'),
                 ];
 

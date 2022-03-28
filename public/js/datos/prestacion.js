@@ -31,6 +31,7 @@ function init()
 			arrayalumnos:[],
 			arraydocentes:[],
 			ejemplares:'',
+			id_prestador:'',
 
 			codigo:'',
 			folioprestamo:'',
@@ -138,6 +139,7 @@ function init()
 						if (alumno.matricula) {
 							this.arrayalumnos.push(alumno);
 							this.$refs.buscar.focus();
+							this.matricula = json.data.matricula;
 							this.correo=json.data.correo;
 						}
 					}
@@ -168,6 +170,7 @@ function init()
 						if (maestro.claves) {
 							this.arraydocentes.push(maestro);
 							this.$refs.buscar.focus();
+							this.claves = teach.data.claves;
 							this.email = teach.data.email;
 						}
 					};

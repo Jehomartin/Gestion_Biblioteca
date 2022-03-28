@@ -91,7 +91,7 @@
 		</div>
 		<!-- /datos alumnos -->
 		<hr>
-		<div class="form-row">
+		<div class="form-row" v-if="validado">
 			<div class="form-group">
 				<label>DESEA CONSULTAR ALGUN LIBRO</label>
 				<span class="btn btn-success" @click="consultar()">
@@ -142,11 +142,11 @@
 		        	</div>
 		        	<!-- /.search form -->
 				</div>
-				<div class="col-md-2">
+				<!-- <div class="col-md-2">
 					<button class="btn btn-success" @click="NewSearch()">
 						<span class="fas fa-sync-alt"></span>
 					</button>
-				</div>
+				</div> -->
 			</div>
 			<br>
 			<!-- fin buscar -->
@@ -262,6 +262,10 @@
 		        </div>
 		    </div>
 		    <!-- /fecha, folio y edicion -->
+
+		    <div class="input-group">
+		    	<button class="btn btn-success" @click="NewSearch()">ACEPTAR <i class="fas fa-check"></i></button>
+		    </div>
 		</div>
 	</div>
 	<!--/consulta -->

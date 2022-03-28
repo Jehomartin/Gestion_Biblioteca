@@ -31,15 +31,18 @@ class ApiUsuariosController extends Controller
     public function store(Request $request)
     {
         //
-        // $usuario = new Usuarios;
+        $usuario = new Usuarios;
 
-        // $usuario->id_usuario = $request->get('id_usuario');
-        // $usuario->pass = $request->get('pass');
-        // $usuario->nombre = $request->get('nombre');
-        // $usuario->apellidos = $request->get('apellidos');
-        // $usuario->nivel = $request->get('nivel');
+        $usuario->login = $request->get('login');
+        $usuario->pass = $request->get('pass');
+        $usuario->nombre = $request->get('nombre');
+        $usuario->apellidos = $request->get('apellidos');
+        $usuario->sexo = $request->get('sexo');
+        $usuario->edad = $request->get('edad');
+        $usuario->telefono = $request->get('telefono');
+        $usuario->nivel = $request->get('nivel');
 
-        // $usuario->save();
+        $usuario->save();
     }
 
     /**

@@ -12,7 +12,7 @@
     <article class="fondo">
       <img src="img/utc.jpeg">
       <font color="white">
-        <h3>Inicio de Sesión</h3>
+        <h3>INICIO DE SESIÓN</h3>
       </font>
       <form class="validate-form" action="{{url('entrar')}}" method="POST">
 
@@ -46,10 +46,18 @@
         
         <div class="container-login100-form-btn">
           <button class="login100-form-btn" type="submit" name="submit">
-            Entrar
+            ENTRAR
           </button>
         </div>
+        <br>
       </form>
+      <div class="col-md-8">
+        <a href="{{url('ingreso')}}">
+          <button class="btn btn-primary form-control">
+            <font size="3"> REGISTRARSE <i class="glyphicon glyphicon-edit"></i> </font>
+          </button>
+        </a>
+      </div>
     </article>
   </div>
 </div>

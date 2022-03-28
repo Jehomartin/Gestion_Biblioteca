@@ -11814,7 +11814,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 
 .user-panel .image {
   display: inline-block;
-  padding-left: 0.8rem;
+  padding-left: 0.0rem;
 }
 
 .user-panel img {
@@ -11824,7 +11824,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 
 .user-panel .info {
   display: inline-block;
-  padding: 5px 5px 5px 10px;
+  padding: 0px 5px 5px 10px;
 }
 
 .user-panel .status,

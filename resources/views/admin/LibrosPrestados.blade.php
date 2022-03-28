@@ -7,7 +7,7 @@
 </style>
 
 <input type="hidden" id="fechaActual" value="<?php echo date('Y-m-d'); ?>">
-<div class="main-panel" id="devolver">
+<div class="main-panel" id="historial">
   <div class="container">
     <!-- inicio titulo -->
     <font color="black" face="Sylfaen">
@@ -46,7 +46,7 @@
                   <th class="header" scope="col" width="12%">FOLIO</th>
                   <th class="header" scope="col" width="10%">ISBN</th>
                   <th class="header" scope="col">TÍTULO</th>
-                  <th class="header" scope="col" width="10%">MATRICULA</th>
+                  <th class="header" scope="col" width="15%">ID_PRESTADOR</th>
                   <!-- <th class="header" scope="col" width="">ALUMNO</th> -->
                   <th class="header" scope="col" width="">CORREO</th>
                   <th class="header" scope="col">FECHA_DEVOLUCIÓN</th>
@@ -57,7 +57,7 @@
                     <td> @{{detalle.folioprestamo}} </td>
                     <td> @{{detalle.isbn}} </td>
                     <td> @{{detalle.titulo}} </td>
-                    <td> @{{detalle.matricula}} </td>
+                    <td> @{{detalle.id_prestador}} </td>
                     <!-- <td> @{{detalle.prestamo.alumno.nombre}}, @{{detalle.prestamo.alumno.apellidos}} </td> -->
                     <td> @{{detalle.correo}} </td>
                     <td> @{{detalle.prestamo.fechadevolucion}} </td>
@@ -71,7 +71,7 @@
                     <td> @{{detalle.folioprestamo}} </td>
                     <td> @{{detalle.isbn}} </td>
                     <td> @{{detalle.titulo}} </td>
-                    <td> @{{detalle.matricula}} </td>
+                    <td> @{{detalle.id_prestador}} </td>
                     <!-- <td> @{{detalle.prestamo.alumno.nombre}}, @{{detalle.prestamo.alumno.apellidos}} </td> -->
                     <td> @{{detalle.correo}} </td>
                     <td> @{{detalle.prestamo.fechadevolucion}} </td>
@@ -188,6 +188,6 @@
 @endsection
 
 @push('scripts')
-  <script src="js/datos/devoluciones.js"></script>
+  <script src="js/datos/historial.js"></script>
   <script src="js/moment-with-locales.min.js"></script>
 @endpush

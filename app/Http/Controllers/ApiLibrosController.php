@@ -21,7 +21,7 @@ class ApiLibrosController extends Controller
     public function index()
     {
         //
-        $libro = Libros::orderBy('titulo','ASC')->paginate(15);
+        $libro = Libros::orderBy('titulo','ASC')->paginate(20);
 
         return [
             'pagination' => [

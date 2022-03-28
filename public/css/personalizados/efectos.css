@@ -58,4 +58,16 @@ body div figure:hover img
 .imagin{
   border-radius: 30px;
   border-color: #fff;
+  /*width: 20px;
+  height: 20px;*/
+}
+
+.loag{
+	margin-top: 15px;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  height: 90%;
 }

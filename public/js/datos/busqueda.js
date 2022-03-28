@@ -32,6 +32,7 @@ function init()
 
 	        consulta:false,
 	        verificar:false,
+	        validado:false,
 		},
 
 		methods:{
@@ -82,6 +83,7 @@ function init()
 			cancelarP:function(){
 				this.consulta=false;
 				this.verificar=false;
+				this.validado=false;
 			},
 
 			// Inicio Consulta
@@ -184,6 +186,7 @@ function init()
 							this.arrayAlumno.push(alumno);
 							this.matri='';
 							this.$refs.buscar.focus();
+							this.validado=true;
 						}
 
 						swal({
