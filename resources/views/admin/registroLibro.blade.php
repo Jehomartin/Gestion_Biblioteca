@@ -14,13 +14,23 @@
                 <br>
                 <div>
                     <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <font face="Sylfaen" size="4"><label for="caratula">Imagen del libro:</label></font>
+                            <input type="file" name="caratulafile[]" id="caratulafile[]" multiple @change="previewFiles" accept=".png, .jpg, .jpeg">
+                        </div>
+                        <div class="form-group col-md-8">
+                            <!-- <img v-bind:src="previewFiles" class="img img-rounded" width="400px" height="200px" v-if="preview"> -->
+                           <!--  <img v-bind:src="preview" class="img img-rounded" width="400px" height="200px" v-if="preview"> -->
+                        </div>
+                    </div>
+                    <div class="form-row">
                         <div class="form-group col-md-6">
                           <font face="Sylfaen" size="4"><label for="isbn">Isbn del libro: <span class="asterisco">*</span></label></font>
-                            <input type="text" name="" placeholder="ISBN del libro" class="form-control" v-model="isbn" style="border-color:#000">
+                            <input type="text" name="isbn" placeholder="ISBN del libro" class="form-control" v-model="isbn" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-6">
                            <font face="Sylfaen" size="4"><label for="titulo">Título del libro: <span class="asterisco">*</span></label></font>
-                            <input type="text" name="" placeholder="Título del libro" class="form-control" v-model="titulo" style="border-color:#000">
+                            <input type="text" name="titulo" placeholder="Título del libro" class="form-control" v-model="titulo" style="border-color:#000">
                         </div>
                     </div>
 
@@ -28,7 +38,7 @@
                         <div class="form-group col-md-6">
                             <font face="Sylfaen" size="4"><label for="editorial">Elija la editorial: <span class="asterisco">*</span></label></font>
                             <div class="input-group">
-                                <select class="form-control" id="selectEditorial" v-model="id_editorial" @change="getEditorials" style="border-color:#000">
+                                <select class="form-control" id="selectEditorial" v-model="id_editorial" @change="getEditorials" style="border-color:#000" name="id_editorial">
                                     <option disabled value="">Elija la editorial del libro</option>
                                     <!-- <option value="1">Agregar nueva editorial</option> -->
                                     <option v-for="e in editoriales" v-bind:value="e.id_editorial">@{{e.editorial}}</option>
@@ -43,7 +53,7 @@
                         <div class="form-group col-md-6">
                             <font face="Sylfaen" size="4"><label for="autor">Elija el autor: <span class="asterisco">*</span></label></font>
                             <div class="input-group">
-                                <select class="form-control" id="selectAutor" v-model="id_autor" @change="getAutors" style="border-color:#000">
+                                <select class="form-control" id="selectAutor" v-model="id_autor" @change="getAutors" style="border-color:#000" name="id_autor">
                                 <option disabled value="">Elija el Autor del libro</option>
                                 <option v-for="a in autores" v-bind:value="a.id_autor">@{{a.nombre}}</option>
                                 </select>
@@ -59,7 +69,7 @@
                     <div class="form-group">
                         <font face="Sylfaen" size="4"><label for="carrera">Elija la carrera: <span class="asterisco">*</span></label></font>
                         <div class="input-group">
-                            <select class="form-control" v-model="id_carrera" @change="getCarreras" style="border-color:#000">
+                            <select class="form-control" v-model="id_carrera" @change="getCarreras" style="border-color:#000" name="id_carrera">
                             <option disabled value="">Elija la carrera del libro</option>
                             <option v-for="c in carreras" v-bind:value="c.id_carrera">@{{c.carrera}}</option>
                             </select>
@@ -75,7 +85,7 @@
                         <div class="form-group col-md-6">
                             <font face="Sylfaen" size="4"><label for="pais">Elija el país: <span class="asterisco">*</span></label></font>
                             <div class="input-group">
-                                <select class="form-control" v-model="id_pais" @change="getPaiss" style="border-color:#000">
+                                <select class="form-control" v-model="id_pais" @change="getPaiss" style="border-color:#000" name="id_pais">
                                 <option disabled value="">Elija el país del libro</option>
                                 <option v-for="p in paises" v-bind:value="p.id_pais">@{{p.pais}}</option>
                                 </select>
@@ -88,26 +98,27 @@
                         </div>
                         <div class="form-group col-md-4">
                             <font face="Sylfaen" size="4"><label for="edicion">Edición: <span class="asterisco">*</span></label></font>
-                            <input type="number" name="" placeholder="Edición" class="form-control" min="1" v-model="edicion" style="border-color:#000">
+                            <input type="number" name="edicion" placeholder="Edición" class="form-control" min="1" v-model="edicion" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-2">
                             <font face="Sylfaen" size="4"><label for="anioPub">Año de publicación: <span class="asterisco">*</span></label></font>
-                            <input type="text" name="" placeholder="Año publicación" class="form-control" v-model="anio_pub" style="border-color:#000">
+                            <input type="text" name="anio_pub" placeholder="Año publicación" class="form-control" v-model="anio_pub" style="border-color:#000">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <font face="Sylfaen" size="4"><label for="fechaAlta">Fecha alta: <span class="asterisco">*</span></label></font>
-                            <input type="date" name="" placeholder="Fecha alta" class="form-control" v-model="fecha_alta" style="border-color:#000">
+                            <!-- <input type="date" name="fecha_alta" class="form-control" style="border-color:#000" v-model="fecha_alta"> -->
+                            <span style="border-color:#000" class="form-control"> @{{fecha_alta}} </span>
                         </div>
                         <div class="form-group col-md-4">
                             <font face="Sylfaen" size="4"><label for="noPagina">Número páginas: <span class="asterisco">*</span></label></font>
-                            <input type="number" name="" placeholder="Páginas" class="form-control" min="1" v-model="paginas" style="border-color:#000">
+                            <input type="number" name="paginas" placeholder="Páginas" class="form-control" min="1" v-model="paginas" style="border-color:#000">
                         </div>
                         <div class="form-group col-md-4">
                             <font face="Sylfaen" size="4"><label for="ejemplares">Clasificación: <span class="asterisco">*</span></label></font>
-                            <input type="text" name="" placeholder="Clasificación" class="form-control" v-model="clasificacion" style="border-color:#000">
+                            <input type="text" name="clasificacion" placeholder="Clasificación" class="form-control" v-model="clasificacion" style="border-color:#000">
                         </div>
                     </div>
 
@@ -284,5 +295,5 @@
 @push('scripts')
 <link rel="stylesheet" type="text/css" href="css/form_prestamo/prestamos.css">
 <script type="text/javascript" src="js/datos/registroLibro.js"></script>
-<script src="js/moment-with-locales.min.js"></script>
+<!-- <script src="js/moment-with-locales.min.js"></script> -->
 @endpush

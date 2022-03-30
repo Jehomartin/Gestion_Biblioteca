@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\RouteServiceProvider;
 use Illuminate\Routing\RouteCollection;
+use Illuminate\Support\Facades\Storage;
 
 // uso de modelo
 use App\Librous;
 use App\Ejemplares;
+use App\Caratulas;
 
 class ApiLibrousController extends Controller
 {
@@ -34,6 +36,8 @@ class ApiLibrousController extends Controller
         //
         $librou = new Librous;
 
+        // dd( $request->hasFile('caratula'));
+
         $librou->isbn = $request->get('isbn');
         $librou->folio = $request->get('isbn');
         $librou->titulo = $request->get('titulo');
@@ -49,6 +53,24 @@ class ApiLibrousController extends Controller
         $librou->clasificacion = $request->get('clasificacion');
         $librou->cutter =$request->get('cutter');
 
+        // <--función para guardar y mandar la imagen-->
+        $llave = $request->get('isbn');
+
+        if ($request->hasFile('caratulafile')) {
+            $caratulas = $request->file('caratulafile');
+            foreach ($caratulas as $caratula){
+                $namefile = storage::disk('public')->put('caratulas',$caratula);
+                $portada[]=[
+                    'caratula'=>$namefile,
+                    'isbn'=>$llave
+                ];
+            }
+        }
+        // <--fin guardar imagen-->
+
+
+        // <--inicio agregar ejemplar-->
+
         $canti = $request->get("ejemplares");
         $foli = $request->get("isbn");
         $fechi = $request->get("fecha_alta");
@@ -63,13 +85,9 @@ class ApiLibrousController extends Controller
                 'fecha_alta'=>$fechi,
             ];
         }
+        // <--fin ejemplar-->
 
-        // $exemp=[];
-        // $detalles=$request->get('detalles');
-
-        // for ($i=0; $i < count($detalles); $i++) { 
-
-        // }
+        Caratulas::insert($portada);
         Ejemplares::insert($ejemplar);
         $librou->save();
     }

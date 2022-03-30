@@ -13,7 +13,7 @@ class Caratulas extends Model
 
     protected $with = ['libro'];
 
-    public $timestamps = false;
+    // public $timestamps = false;
 
     protected $Fillable = [
         'id_caratula',

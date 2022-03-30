@@ -3,6 +3,7 @@ var urlPresta = route + '/apiPrestamos';
 var urlLibro = route + '/apiBusqueda';
 var urlAlumnos = route + '/apiAlumnos';
 var urlDocentes = route + '/apiDocente';
+var urlRegreso = route + '/fechi';
 // var urlEjemplar = ruta + '/apiEjemplares';
 
 function init()
@@ -35,7 +36,7 @@ function init()
 
 			codigo:'',
 			folioprestamo:'',
-			fechadevolucion:moment().format('YYYY/MM/(DD+2)'),
+			fechadevolucion:'',
 			matricula:'',
 			correo:'',
 			email:'',
@@ -52,6 +53,15 @@ function init()
 
 		// inicio methods
 		methods:{
+
+			// fechandoregreso:function(){
+			// 	this.$http.get(urlRegreso).then(function(response){
+			// 		var arrfech = response.data;
+			// 		console.log(arrfech);
+			// 		this.fechadevolucion = response.data;
+			// 	});
+				
+			// },
 
 			getLib:function(){
 				this.$http.get(urlLibro).then(function(response){
@@ -178,6 +188,11 @@ function init()
 			},
 
 			student:function(){
+				this.$http.get(urlRegreso).then(function(response){
+					var arrfech = response.data;
+					console.log(arrfech);
+					this.fechadevolucion = response.data;
+				});
 				this.estudiante=true;
 				this.docente=false;
 				this.arraydocentes=[];
@@ -185,6 +200,11 @@ function init()
 			},
 
 			teacher:function(){
+				this.$http.get(urlRegreso).then(function(response){
+					var arrfech = response.data;
+					console.log(arrfech);
+					this.fechadevolucion = response.data;
+				});
 				this.docente=true;
 				this.estudiante=false;
 				this.arrayalumnos=[];

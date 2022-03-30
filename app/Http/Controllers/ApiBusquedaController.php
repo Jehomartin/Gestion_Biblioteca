@@ -8,6 +8,7 @@ use Illuminate\Routing\RouteCollection;
 
 // llamdo y uso de los modelos y DB
 use App\Busqueda;
+use App\Caratulas;
 use DB;
 
 class ApiBusquedaController extends Controller

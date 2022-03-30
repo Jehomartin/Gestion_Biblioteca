@@ -135,15 +135,15 @@
                   <input type="text" name="" placeholder="ISBN del libro" class="form-control" v-model="isbn" style="border-color:#000">
                 </div>
               </div>
-            <div class="col-md-7 ml-auto">
-              <div class="form-group">
-                <label for="titulo">
-                  <font face="Sylfaen" size="4">Título del libro</font>
-                </label>
-                <input type="text" name="" placeholder="Titulo del libro" class="form-control" v-model="titulo" style="border-color:#000">
+              <div class="col-md-7 ml-auto">
+                <div class="form-group">
+                  <label for="titulo">
+                    <font face="Sylfaen" size="4">Título del libro</font>
+                  </label>
+                  <input type="text" name="" placeholder="Titulo del libro" class="form-control" v-model="titulo" style="border-color:#000">
+                </div>
               </div>
             </div>
-           
             <!-- <input type="text" name="" placeholder="Titulo del libro" class="form-control" v-model="titulo"> -->
             
             <div class="row">
@@ -197,10 +197,9 @@
                   <label for="edicion">
                     <font face="Sylfaen" size="4">Edición</font>
                   </label>
-                <input type="number" name="" placeholder="Edicion" class="form-control" min="1" v-model="edicion" style="border-color:#000">
+                  <input type="number" name="" placeholder="Edicion" class="form-control" min="1" v-model="edicion" style="border-color:#000">
                 </div>
               </div>
-
             </div>
            
             
@@ -219,12 +218,12 @@
                   <label for="pais">
                     <font face="Sylfaen" size="4">Elija el país</font>
                   </label>
-                <div class="input-group">
-                  <select class="form-control" v-model="id_pais" @change="getPais" style="border-color:#000">
-                    <option disabled value="">Elija el país del libro</option>
-                    <option v-for="p in paises" v-bind:value="p.id_pais">@{{p.pais}}</option>
-                  </select>
-                </div>
+                  <div class="input-group">
+                    <select class="form-control" v-model="id_pais" @change="getPais" style="border-color:#000">
+                      <option disabled value="">Elija el país del libro</option>
+                      <option v-for="p in paises" v-bind:value="p.id_pais">@{{p.pais}}</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div class="col-md-4">
@@ -232,11 +231,10 @@
                     <label for="pais">
                       <font face="Sylfaen" size="4">Clasificación</font>
                     </label>   
-                      <input type="text" name="" placeholder="Clasificacion" class="form-control" v-model="clasificacion" style="border-color:#000">
-                  </div>
+                    <input type="text" name="" placeholder="Clasificacion" class="form-control" v-model="clasificacion" style="border-color:#000">
                 </div>
               </div>
-            
+            </div>
             
             <div class="row">
               <div class="col-md-4">
@@ -246,22 +244,22 @@
                   </label>
                   <input type="date" name="" placeholder="Fecha alta" class="form-control" v-model="fecha_alta"  style="border-color:#000">
                 </div>
+              </div>
+               <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="noPagina">
+                      <font face="Sylfaen" size="4">Número de paginas</font>
+                    </label>
+                    <input type="number" name="" placeholder="Paginas" class="form-control" min="1" v-model="paginas" style="border-color:#000">
+                  </div>
                </div>
                <div class="col-md-4">
-                <div class="form-group">
-                  <label for="noPagina">
-                    <font face="Sylfaen" size="4">Número de paginas</font>
-                  </label>
-                  <input type="number" name="" placeholder="Paginas" class="form-control" min="1" v-model="paginas" style="border-color:#000">
-                </div>
-               </div>
-               <div class="col-md-4">
-                <div class="form-group">
-                  <label for="ejemplares">
-                    <font face="Sylfaen" size="4">Ejemplares del libro</font>
-                  </label>
-                  <input type="text" name="" placeholder="Ejemplares del libro" class="form-control" v-model="ejemplares" style="border-color:#000">
-                </div>
+                  <div class="form-group">
+                    <label for="ejemplares">
+                      <font face="Sylfaen" size="4">Ejemplares del libro</font>
+                    </label>
+                    <input type="text" name="" placeholder="Ejemplares del libro" class="form-control" v-model="ejemplares" style="border-color:#000">
+                  </div>
                </div>
             </div>
           </div>
@@ -280,7 +278,6 @@
                 <span class="fas fa-check"></span>
                 Actualizar</button>
             </div>
-          </div>
           </div><!-- fin footer modal -->
         </div> <!-- fin modal content -->
       </div>  <!--/modal dialog -->
@@ -332,7 +329,8 @@
                 <label for="fecha_alta">
                   <font face="Sylfaen" size="4">FECHA DE ALTA:</font>
                 </label>
-                  <input type="date" name="" class="form-control" v-model="fecha_alta" placeholder="Fecha de Alta" style="border-color: #000;" value="date">
+                <span class="form-control" style="border-color:#000"> @{{fechalta}} </span>
+                  <!-- <input type="date" name="" class="form-control" v-model="fecha_alta" placeholder="Fecha de Alta" style="border-color: #000;" value="date"> -->
               </div>
               <!-- <div class="form-group"> -->
                 <label for="ejemplares">

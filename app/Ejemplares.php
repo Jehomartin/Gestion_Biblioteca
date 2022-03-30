@@ -28,7 +28,7 @@ class Ejemplares extends Model
         'prestado',
         'comentario',
         'consec',
-        'fecha_alta',
+        'fechalta',
         'solodewee',
         'deweecompleto'
     ];

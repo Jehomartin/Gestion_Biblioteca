@@ -59,7 +59,7 @@ function init()
 				this.$http.get(urlLibro).then(function(response){
 					this.librosb = response.data;
 				}).catch(function(response){
-					toastr.error("no se encontraron datos");
+					// toastr.error("no se encontraron datos");
 				});
 			},
 

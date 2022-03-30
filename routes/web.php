@@ -71,3 +71,5 @@ Route::apiResource('apiRegistroLibros','ApiLibrousController');
 Route::get('libros/detallelibro/{id}', 'ApiLibrosController@detallelibro')->where('id','[0-9]+');
 
 Route::get('search2','ApiBusquedaController@search');
+
+Route::get('fechi','ApiPrestamosController@fechavuelta');

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\RouteServiceProvider;
 use Illuminate\Routing\RouteCollection;
 
+use Carbon;
+
 // uso de modelos
 use App\Prestamos;
 use App\DetallePrestamos;
@@ -148,5 +150,18 @@ class ApiPrestamosController extends Controller
     public function getAlumnos($id){
      $alumnos = DB::select("SELECT * FROM alumnos WHERE matricula=$id");
      return $alumnos;
+    }
+
+    public function fechavuelta(){
+
+        $finde = Carbon\Carbon::now()->addDay(2)->isWeekend();
+
+        if ($finde == true) {
+            return 'fecha invalida';
+        } else{
+            $fec = Carbon\Carbon::now()->addDay(2)->format('Y-m-d');
+            $regreso = $fec;
+            return $regreso;
+        }
     }
 }

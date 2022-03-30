@@ -6,8 +6,13 @@
   <h2 class="text text-center">PROCESANDO PRÉSTAMO DE LIBRO</h2>
 </font>
 
+<!-- <div>
+  <input type="hidden" value="<?php ?>">
+</div> -->
+
 <div id="prestacion">
   <br>
+  <button @click="fechandoregreso()" class="btn btn-primary">ok</button>
   <div class="container">
     <div class="row">
       <div class="col-lg-4">

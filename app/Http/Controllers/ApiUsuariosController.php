@@ -9,6 +9,13 @@ use Illuminate\Routing\RouteCollection;
 // uso de modelos
 use App\Usuarios;
 
+use Illuminate\Validation\ValidationException;
+
+use Redirect;
+use Session;
+use Cookie;
+use Cache;
+
 class ApiUsuariosController extends Controller
 {
     /**
@@ -31,18 +38,41 @@ class ApiUsuariosController extends Controller
     public function store(Request $request)
     {
         //
-        $usuario = new Usuarios;
+        $userN = new Usuarios;
 
-        $usuario->login = $request->get('login');
-        $usuario->pass = $request->get('pass');
-        $usuario->nombre = $request->get('nombre');
-        $usuario->apellidos = $request->get('apellidos');
-        $usuario->sexo = $request->get('sexo');
-        $usuario->edad = $request->get('edad');
-        $usuario->telefono = $request->get('telefono');
-        $usuario->nivel = $request->get('nivel');
+        $userN->login = $request->get('login');
+        $userN->pass = $request->get('pass');
+        $userN->nombre = $request->get('nombre');
+        $userN->apellidos = $request->get('apellidos');
+        $userN->sexo = $request->get('sexo');
+        $userN->edad = $request->get('edad');
+        $userN->telefono = $request->get('telefono');
+        $userN->nivel = $request->get('nivel');
 
-        $usuario->save();
+        $userN->save();
+
+        // if ($request->get($userN)) {
+        //     $usuario=$request->usuario;
+        //     $password=$request->pass;
+
+        //     $res = Usuarios::where('login','=',$usuario)
+        //     ->where('pass','=',$password)->get();
+        //     if (count($res)>0) {
+                
+        //         $usuario = $res[0]->nombre.' '.$res[0]->apellidos;
+        //         Session::put('usuario',$usuario);
+        //         Session::put('puesto',$res[0]->nivel);
+
+        //         if ($res[0]->nivel == "Administrador") {
+        //             return Redirect::to('inicio');    
+        //         }
+        //     } else {
+        //         return 'fallaste';
+        //     }
+        // } else {
+        //     return 'error';
+        // }
+
     }
 
     /**

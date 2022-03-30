@@ -13,14 +13,14 @@
 					<h3>REGISTRANDO USUARIO</h3>
 				</font>
 
-				<form>
+				<form action="{{url('entrar')}}" method="POST">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="input-group">
 								<label class="text text-center">
 									<font color="white" size="4">*Nombre de usuario:</font>
 								</label>
-								<input type="text" placeholder="Nombre de usuario*" v-model='login' style="background-color: #0F1628" class="input100">		
+								<input type="text" placeholder="Nombre de usuario*" v-model='login' style="background-color: #0F1628" class="input100" name="usuario">		
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -28,7 +28,7 @@
 								<label class="text text-center">
 									<font color="white" size="4">*Contraseña de usuario:</font><i class="fa fa-window-close btn-danger" v-if="auxpass"></i>
 								</label>
-								<input type="password" placeholder="Escriba su Contraseña*" v-model="pass" style="background-color: #0F1628" class="input100">	
+								<input type="password" placeholder="Escriba su Contraseña*" v-model="pass" style="background-color: #0F1628" class="input100" name="pass">	
 
 							</div>
 						</div>

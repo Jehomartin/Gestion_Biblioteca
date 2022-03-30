@@ -43,7 +43,7 @@ class ApiEjemplaresController extends Controller
         $ejemplar->prestado = $request->get("prestado");
         $ejemplar->comentario = $request->get("comentario");
         $ejemplar->consec = $request->get("consec");
-        $ejemplar->fecha_alta = $request->get("fecha_alta");
+        $ejemplar->fechalta = $request->get("fechalta");
         $ejemplar->solodewee = $request->get("solodewee");
         $ejemplar->deweecompleto = $request->get("deweecompleto");
 
