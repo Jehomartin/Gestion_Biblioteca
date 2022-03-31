@@ -23,8 +23,8 @@ class DetallePrestamos extends Model
     	'devuelto',
     	'cantidad',
         'id_prestador',
-        // 'claves',
-        'correo'
+        'correo',
+        'prst',
     ];
 
     public function libros(){

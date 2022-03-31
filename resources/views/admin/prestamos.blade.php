@@ -12,7 +12,6 @@
 
 <div id="prestacion">
   <br>
-  <button @click="fechandoregreso()" class="btn btn-primary">ok</button>
   <div class="container">
     <div class="row">
       <div class="col-lg-4">
@@ -141,7 +140,7 @@
           </span>
         </div>
       </div>
-      <!-- <label>usted a elegido un total de :</label> @{{permisos}} -->
+      <label>usted a elegido un total de :</label> @{{permisos}}
     </div>
 
     <hr style="border-color: #000;">

@@ -18,12 +18,14 @@ function init()
 
 		created:function(){
 			this.getLib();
+			this.getStudent();
 			// this.Consultalib(key);
 		},
 
 		data:{
 			saludo:'jajajajaj',
 			librosb:[],
+			students:[],
 			consultas:[],
 			arraycaratulas:[],
 			arrayAlumno:[],
@@ -59,13 +61,21 @@ function init()
 				this.$http.get(urlLibro).then(function(response){
 					this.librosb = response.data;
 				}).catch(function(response){
-					// toastr.error("no se encontraron datos");
+					toastr.error("no se encontraron datos");
 				});
 			},
 
 			getCaratulas:function(id){
 				this.$http.get(urlImg + '/' + id).then(function(response){
 					this.arraycaratulas = response.data["caratulas"];
+				});
+			},
+
+			getStudent:function(){
+				this.$http.get(urlAlumno).then(function(response){
+					this.students = response.data;
+				}).catch(function(response){
+					toastr.error("no se encontraron datos");
 				});
 			},
 
@@ -118,10 +128,6 @@ function init()
 							'edicion':response.data.edicion,
 							// 'caratula':response.data.caratula,
 						};
-						// var caratula={
-						// 	'caratula':response.data.caratula,
-						// };
-
 
 						if (response.data.ejemplares >= 2) {
 							swal({
@@ -146,7 +152,7 @@ function init()
 						} else {
 							swal({
 								title:"AVISO",
-								text:"El libro consultado no cuenta con ejemplares para ser prestados",
+								text:"El libro consultado solo cuenta con 1 ejemplar el cual siendo el original no puede ser prestado, pero puede visualizar la información de este.",
 								icon:"warning",
 								buttons:{
 									confirm: {
@@ -156,6 +162,12 @@ function init()
 								},
 							});
 							this.clave='';
+							if (unaconsulta.titulo) {
+								this.consultas.push(unaconsulta);
+								// this.arraycaratulas.push(caratula);
+								this.clave='';
+								this.$refs.buscar.focus();
+							}
 						}
 					}
 				});

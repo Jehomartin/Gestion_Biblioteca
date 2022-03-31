@@ -18,7 +18,7 @@
 			</div> -->
 			<div class="col-md-6">
 				<span class="btn btn-danger form-control" @click="cancelarP()">
-					CANCELAR PROCESOS <i class="fas fa-window-close"></i>
+					FINALIZAR PROCESOS <i class="fas fa-window-close"></i>
 				</span>
 			</div>
 		</div>
@@ -37,7 +37,11 @@
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
 					<div class="input-group">
-						<input type="text" class="form-control" v-model="matri" ref="buscar" v-on:keyup.enter="getVerificar()" placeholder="Buscando alumno..." style="border-color:orange;">
+						<select class="form-control" v-model="matri" ref="buscar" v-on:keyup.enter="getVerificar()" @change="getStudent">
+							<option disabled value="">Seleccione su matricula</option>
+							<option v-for="s in students" v-bind:value="s.matricula"> @{{s.matricula}} </option>
+						</select>
+						<!-- <input type="text" class="form-control" v-model="matri" ref="buscar" v-on:keyup.enter="getVerificar()" placeholder="Buscando alumno..." style="border-color:orange;"> -->
 						<span class="input-group-btn">
 		                	<button type="submit" name="search" id="search-btn" class="btn btn-flat" style="background-color: orange" @click="getVerificar()"><i class="fa fa-search"></i>
 		                	</button>

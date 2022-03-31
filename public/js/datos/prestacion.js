@@ -46,6 +46,7 @@ function init()
 
 			permisos:0,
 			prestamista:'',
+			prst:'',
 
 			estudiante:false,
 			docente:false,
@@ -211,11 +212,6 @@ function init()
 				this.matricula='';
 			},
 
-			// fecharegreso:function(){
-			// 	this.fechadevolucion ='devol-' + moment().format('YYMMDDhmmss');
-			// 	console.log(fechadevolucion);
-			// },
-
 			cancelarPrestamo:function(id){
 				this.arrayprestamos.splice(id,1);
 				this.permisos = this.permisos - 1;
@@ -253,6 +249,7 @@ function init()
 						matricula:this.matricula,
 						correo:this.correo,
 						prestamista:'alumno',
+						prst:1,
 						permisos:this.permisos,
 						newdetalle3:newdetalle3
 					};
@@ -350,7 +347,7 @@ function init()
 						claves:this.claves,
 						email:this.email,
 						prestamista:'docente',
-						// permisos:this.permisos,
+						prst:2,
 						newdetalle3:newdetalle3
 					};
 

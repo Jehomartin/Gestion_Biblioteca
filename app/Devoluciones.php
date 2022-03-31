@@ -23,9 +23,7 @@ class Devoluciones extends Model
     protected $Fillable = [
     	'foliodevolucion',
         'folioprestamo',
-    	'clasificación',
-        'devuelto',
-        'consec'
+        'datedevolucion',
     ];
 
     public function prestamo(){

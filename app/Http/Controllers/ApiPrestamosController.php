@@ -62,6 +62,7 @@ class ApiPrestamosController extends Controller
                     'cantidad'=>$newdetalle3[$i]['cantidad'],
                     'id_prestador'=>$request->get('matricula'),
                     'correo'=>$request->get('correo'),
+                    'prst'=>$request->get('prst');
                 ];
 
                 //se hace la actualización de la cantidad de ejemplares disponibles
@@ -84,6 +85,7 @@ class ApiPrestamosController extends Controller
                     'cantidad'=>$newdetalle3[$i]['cantidad'],
                     'id_prestador'=>$request->get('claves'),
                     'correo'=>$request->get('email'),
+                    'prst'=>$request->get('prst');
                 ];
 
                 //se hace la actualización de la cantidad de ejemplares disponibles
@@ -154,12 +156,13 @@ class ApiPrestamosController extends Controller
 
     public function fechavuelta(){
 
-        $finde = Carbon\Carbon::now()->addDay(2)->isWeekend();
+        $finde = Carbon\Carbon::now()->addDay(4)->isWeekend();
 
         if ($finde == true) {
             return 'fecha invalida';
+            
         } else{
-            $fec = Carbon\Carbon::now()->addDay(2)->format('Y-m-d');
+            $fec = Carbon\Carbon::now()->addDay(4)->format('Y-m-d');
             $regreso = $fec;
             return $regreso;
         }
