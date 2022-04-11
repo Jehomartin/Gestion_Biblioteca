@@ -2,6 +2,8 @@ var route = document.querySelector("#route").getAttribute("value");
 var urlDetalles = route + '/apiDetalles';
 var urlPrestamos = route + '/apiPrestamos';
 var urlAlumnos = route + '/apiAlumnos';
+var urlMail = route + '/maili';
+var urlPrint = route + '/ticket';
 
 function init()
 {
@@ -23,6 +25,8 @@ function init()
 
 		data:{
 			saludo:'holamundo',
+			mail:[],
+			arrayprint:[],
 			detalleprestamos:[],
 			prestamos:[],
 			alumnos:[],
@@ -106,6 +110,72 @@ function init()
 				});
 
 			},
+
+			sendMail(id){
+				id = id;
+				det = this.detalleprestamos;
+
+				var valObj = det.filter(function(elem){
+					if (elem.foliodetalle == id) return elem;
+				});
+
+				if (valObj.length > 0){
+					this.mail = valObj[0];
+				};
+				this.$http.post(urlMail, this.mail).then(function(json){
+					// console.log(json);
+					swal({
+						title:"CORREO ENVIADO",
+						text: "El envío del mensaje se realizo correctamente",
+						icon:"success",
+						buttons:false,
+						timer:3000
+					});
+				});
+			},
+
+			imprimir(id){
+				swal({
+	                title: 'AVISO',
+	                text: "¿Está seguro de imprimir este registro?",
+	                type: 'warning',
+	                buttons: {
+	                    confirm: {
+	                        text: 'Imprimir!',
+	                        className: 'btn btn-success'
+	                    },
+	                    cancel: {
+	                        visible: true,
+	                        className: 'btn btn-danger'
+	                    },
+	                },
+	            }).then((result) => {
+	                if (result) {
+	                	id = id;
+						print = this.detalleprestamos;
+
+						var impobj = print.filter(function(obj){
+							if (obj.foliodetalle == id) return obj;
+						});
+
+						if (impobj.length > 0) {
+							this.arrayprint = impobj[0];
+						}
+	                    this.$http.post(urlPrint, this.arrayprint).then(function(print){
+                            swal({
+                                title: '¡Imprimido!',
+                                text: 'Usted a obtenido su ticket de préstamo',
+                                icon: 'success',
+                                buttons: false,
+                                timer: 1500
+                            });
+	                    });
+	                } else {
+	                    swal.close();
+	                }
+	            });
+			},
+			
 
 			Datoscargar:function(id){
 				var fecha = this.prestamos.fechadevolucion;

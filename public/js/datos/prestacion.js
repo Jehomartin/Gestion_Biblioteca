@@ -3,7 +3,8 @@ var urlPresta = route + '/apiPrestamos';
 var urlLibro = route + '/apiBusqueda';
 var urlAlumnos = route + '/apiAlumnos';
 var urlDocentes = route + '/apiDocente';
-var urlRegreso = route + '/fechi';
+var urlFechaA = route + '/fechi';
+var UrlFechaD = route + '/fechDc';
 // var urlEjemplar = ruta + '/apiEjemplares';
 
 function init()
@@ -189,7 +190,7 @@ function init()
 			},
 
 			student:function(){
-				this.$http.get(urlRegreso).then(function(response){
+				this.$http.get(urlFechaA).then(function(response){
 					var arrfech = response.data;
 					console.log(arrfech);
 					this.fechadevolucion = response.data;
@@ -201,7 +202,7 @@ function init()
 			},
 
 			teacher:function(){
-				this.$http.get(urlRegreso).then(function(response){
+				this.$http.get(UrlFechaD).then(function(response){
 					var arrfech = response.data;
 					console.log(arrfech);
 					this.fechadevolucion = response.data;

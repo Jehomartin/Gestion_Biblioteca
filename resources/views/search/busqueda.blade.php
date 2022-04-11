@@ -6,17 +6,17 @@
 <div id="consultar">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<span class="btn btn-primary form-control" @click="verificacion()">
 					VALIDAR MATRICULA <i class="fas fa-file-signature"></i>
 				</span>
 			</div>
-<!-- 			<div class="col-md-4">
+			<div class="col-md-4" v-if="validado">
 				<span class="btn btn-success form-control" @click="consultar()">
 					CONSULTAR LIBROS <i class="fas fa-search"></i>
 				</span>
-			</div> -->
-			<div class="col-md-6">
+			</div>
+			<div class="col-md-4" v-if="validado">
 				<span class="btn btn-danger form-control" @click="cancelarP()">
 					FINALIZAR PROCESOS <i class="fas fa-window-close"></i>
 				</span>
@@ -37,11 +37,11 @@
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
 					<div class="input-group">
-						<select class="form-control" v-model="matri" ref="buscar" v-on:keyup.enter="getVerificar()" @change="getStudent">
+						<!-- <select class="form-control" v-model="matri" ref="buscar" v-on:keyup.enter="getVerificar()" @change="getStudent">
 							<option disabled value="">Seleccione su matricula</option>
 							<option v-for="s in students" v-bind:value="s.matricula"> @{{s.matricula}} </option>
-						</select>
-						<!-- <input type="text" class="form-control" v-model="matri" ref="buscar" v-on:keyup.enter="getVerificar()" placeholder="Buscando alumno..." style="border-color:orange;"> -->
+						</select> -->
+						<input type="text" class="form-control" v-model="matri" ref="buscar" v-on:keyup.enter="getVerificar()" placeholder="Buscando alumno..." style="border-color:orange;">
 						<span class="input-group-btn">
 		                	<button type="submit" name="search" id="search-btn" class="btn btn-flat" style="background-color: orange" @click="getVerificar()"><i class="fa fa-search"></i>
 		                	</button>
@@ -95,7 +95,7 @@
 		</div>
 		<!-- /datos alumnos -->
 		<hr>
-		<div class="form-row" v-if="validado">
+		<!-- <div class="form-row" v-if="validado">
 			<div class="form-group">
 				<label>DESEA CONSULTAR ALGUN LIBRO</label>
 				<span class="btn btn-success" @click="consultar()">
@@ -105,7 +105,7 @@
 					NO <i class="fas fa-window-close"></i>
 				</span>
 			</div>
-		</div>
+		</div> -->
 	</div>
 	<!--/verificar -->
 

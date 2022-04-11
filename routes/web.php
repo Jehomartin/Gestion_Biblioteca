@@ -72,4 +72,17 @@ Route::get('libros/detallelibro/{id}', 'ApiLibrosController@detallelibro')->wher
 
 Route::get('search2','ApiBusquedaController@search');
 
+// ruta fecha
 Route::get('fechi','ApiPrestamosController@fechavuelta');
+Route::get('fechDc','ApiPrestamosController@fechaDoc');
+Route::get('days','ApiPrestamosController@daysWeek');
+// fin
+
+// ruta enviar correo
+Route::post('maili','CorreoController@mail');
+Route::view('vista','components.correo.newmensaje');
+// fin correo
+
+// ruta imprimir
+Route::post('ticket','ApiDetallePrestamosController@print');
+// fin

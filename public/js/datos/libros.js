@@ -75,6 +75,12 @@ function init(){
 	        offset: 2,
 	        adjacents: 3,
 	        numerador: 0,
+
+	        // imagen
+		    preview:false,
+		    arraycaratulas:[],
+		    caratulafile:'',
+		    // 
 		},
 
 		methods:{
@@ -154,6 +160,11 @@ function init(){
 
 			},
 
+			previewFiles(e){
+				this.preview = true;
+				this.arraycaratulas = e.target.files;
+			},
+
 			editLibro:function(id){
 				$('#modal_custom').modal('show');
 				this.$http.get(urlLibros + '/' + id).then(function(response){
@@ -178,9 +189,33 @@ function init(){
 			},
 
 			updateLibro:function(id){
-				var libro={isbn:this.isbn,folio:this.isbn,titulo:this.titulo,id_editorial:this.id_editorial,id_autor:this.id_autor,
-					id_carrera:this.id_carrera,edicion:this.edicion,anio_pub:this.anio_pub,id_pais:this.id_pais,
-					fecha_alta:this.fecha_alta,paginas:this.paginas,ejemplares:this.ejemplares,clasificacion:this.clasificacion,cutter:this.cutter
+				// var upbook = new FormData();
+				// upbook.append('isbn',this.isbn);
+				// upbook.append('folio',this.isbn);
+				// upbook.append('titulo',this.titulo);
+				// upbook.append('id_editorial',this.id_editorial);
+				// upbook.append('id_autor',this.id_autor);
+				// upbook.append('id_carrera',this.id_carrera);
+				// upbook.append('edicion',this.edicion);
+				// upbook.append('anio_pub',this.anio_pub);
+				// upbook.append('id_pais',this.id_pais);
+				// upbook.append('fecha_alta',this.fecha_alta);
+				// upbook.append('paginas',this.paginas);
+				// upbook.append('ejemplares',this.ejemplares);
+				// upbook.append('clasificacion',this.clasificacion);
+				// upbook.append('cutter',this.cutter);
+				for (var i = 0; i < this.arraycaratulas.length; i++) {
+					let file = this.arraycaratulas[i];
+					var detacara = ("caratulafile["+ i + "]", file);
+				}
+
+
+				var libro={isbn:this.isbn,folio:this.isbn,titulo:this.titulo,id_editorial:this.id_editorial,
+					id_autor:this.id_autor,id_carrera:this.id_carrera,edicion:this.edicion,
+					anio_pub:this.anio_pub,id_pais:this.id_pais,fecha_alta:this.fecha_alta,
+					paginas:this.paginas,ejemplares:this.ejemplares,clasificacion:this.clasificacion,
+					cutter:this.cutter, detacara:detacara,
+
 				};
 
 				this.$http.put(urlLibros + '/' + this.isbn,libro).then(function(response){

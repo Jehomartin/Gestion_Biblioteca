@@ -39,7 +39,7 @@ function init(){
 		    cutter:'',
 
 		    // imagen
-		    preview:'',
+		    preview:false,
 		    arraycaratulas:[],
 		    caratulafile:'',
 		    // 
@@ -139,13 +139,14 @@ function init(){
 				$('#Pais').modal('show');
 			},
 
-			alSeleccionar(event){
-				this.caratula = event.target.files[0];
-				this.preview= URL.createObjectURL(this.caratula);
-				// this.arrayimages.push(preview);
-			},
+			// alSeleccionar(event){
+			// 	this.caratula = event.target.files[0];
+			// 	this.preview= URL.createObjectURL(this.caratula);
+			// 	// this.arrayimages.push(preview);
+			// },
 
 			previewFiles(e){
+				this.preview = true;
 				this.arraycaratulas = e.target.files;
 			},
 

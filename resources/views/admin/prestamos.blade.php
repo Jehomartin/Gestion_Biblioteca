@@ -140,7 +140,7 @@
           </span>
         </div>
       </div>
-      <label>usted a elegido un total de :</label> @{{permisos}}
+      <!-- <label>usted a elegido un total de :</label> @{{permisos}} -->
     </div>
 
     <hr style="border-color: #000;">

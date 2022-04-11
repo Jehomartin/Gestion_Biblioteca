@@ -24,7 +24,8 @@
 	<div class="container">
 		<!-- Inicio div datos1 -->
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
 				<!--Configurar multa-->
         <div class="card direct-chat direct-chat-warning">
         	<!-- card header -->
@@ -70,16 +71,17 @@
       	</div>
       	<!--/configurar multa-->
 			</div>
-			<div class="col-md-6">
-				<!-- config -->
+			<div class="col-md-2"></div>
+			<!-- <div class="col-md-6">
+				
                 <div class="card direct-chat direct-chat-warning">
-                  <!-- card header -->
+                  
                   <div class="card-header" style="background-color: #28a745;">
                   	<h5 class="card-title text text-center" style="color: black;">CONFIGURAR</h5>
                   </div>
-                  <!-- /card header -->
+                  
 
-                  <!--card body-->
+                  
                   <div class="card-body">
                   	<table class="table table-sm table-striped table-bordered table-hover tamanio-font">
                   		<thead class="thead-dark">
@@ -98,9 +100,9 @@
                   		</tbody>
                   	</table>
                   </div>
-                  <!--/card body-->
+                  
               </div>
-			</div>
+			</div> -->
 		</div>
 		<!-- /div datos1 -->
 	</div>

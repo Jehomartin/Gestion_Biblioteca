@@ -10,6 +10,7 @@ use Illuminate\Routing\RouteCollection;
 use App\Libros;
 use DB;
 use App\Ejemplares;
+use App\Caratulas;
 
 class ApiLibrosController extends Controller
 {
@@ -86,6 +87,24 @@ class ApiLibrosController extends Controller
         $libro->ejemplares = $request->get('ejemplares');
         $libro->clasificacion = $request->get('clasificacion');
         $libro->cutter =$request->get('cutter');
+
+        // <--función para guardar y mandar la imagen-->
+        // $portadas=[];
+        // $detacara = $request->get('detacara');
+        $llave = $request->get('isbn');
+
+        if ($request->hasFile('caratulafile')) {
+            $caratulas = $request->file('caratulafile');
+            foreach ($caratulas as $caratula){
+                $namefile = storage::disk('public')->put('caratulas',$caratula);
+                $portada[]=[
+                    'caratula'=>$namefile,
+                    'isbn'=>$llave
+                ];
+            }
+            Caratulas::insert($portada);
+        }
+        // <--fin guardar imagen-->
 
         $libro->update();
     }

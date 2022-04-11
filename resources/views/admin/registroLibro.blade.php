@@ -19,8 +19,8 @@
                             <input type="file" name="caratulafile[]" id="caratulafile[]" multiple @change="previewFiles" accept=".png, .jpg, .jpeg">
                         </div>
                         <div class="form-group col-md-8">
-                            <!-- <img v-bind:src="previewFiles" class="img img-rounded" width="400px" height="200px" v-if="preview"> -->
-                           <!--  <img v-bind:src="preview" class="img img-rounded" width="400px" height="200px" v-if="preview"> -->
+                            <!-- <img v-bind:src="previewFiles" class="img img-rounded" width="400px" height="200px" v-if="preview" name="caratulafile[]"> -->
+                            <!-- <img v-bind:src="preview" class="img img-rounded" width="400px" height="200px" v-if="preview"> -->
                         </div>
                     </div>
                     <div class="form-row">

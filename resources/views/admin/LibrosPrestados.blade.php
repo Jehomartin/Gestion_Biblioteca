@@ -46,11 +46,11 @@
                   <th class="header" scope="col" width="12%">FOLIO</th>
                   <th class="header" scope="col" width="10%">ISBN</th>
                   <th class="header" scope="col">TÍTULO</th>
-                  <th class="header" scope="col" width="15%">ID_PRESTADOR</th>
+                  <th class="header" scope="col" width="10%">PRESTADOR</th>
                   <!-- <th class="header" scope="col" width="">ALUMNO</th> -->
-                  <th class="header" scope="col" width="">CORREO</th>
-                  <th class="header" scope="col">FECHA_DEVOLUCIÓN</th>
-                  <th width="10%" class="header" scope="col">OPCIONES</th>
+                  <th class="header" scope="col" width="15%">CORREO</th>
+                  <th class="header" scope="col" width="10%">FECHA_DEV</th>
+                  <th class="header" scope="col">OPCIONES</th>
                 </thead>
                 <tbody>
                   <tr v-for="(detalle,index) in filtroDetalles" v-if="$('#fechaActual').val() <= detalle.prestamo.fechadevolucion" style="background: #5cb85c;">
@@ -64,10 +64,11 @@
                     <td>
                       <!-- <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-reply-all"></i></span> -->
                       <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
-                      <span class="btn btn-dark" @click=""><i class="nav-icon fas fa-envelope"></i></span>
+                      <span class="btn btn-dark" @click="sendMail(detalle.foliodetalle)"><i class="nav-icon fas fa-envelope"></i></span>
+                      <span class="btn btn-success" @click="imprimir(detalle.foliodetalle)"><i class="fas fa-print"></i></span>
                     </td>
                   </tr>
-                  <tr v-else style="background: #d9534f;">
+                  <tr v-else style="background: #d95;">
                     <td> @{{detalle.folioprestamo}} </td>
                     <td> @{{detalle.isbn}} </td>
                     <td> @{{detalle.titulo}} </td>
@@ -78,7 +79,8 @@
                     <td>
                       <!-- <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-reply-all"></i></span> -->
                       <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
-                      <span class="btn btn-dark" @click=""><i class="nav-icon fas fa-envelope"></i></span>
+                      <span class="btn btn-dark" @click="sendMail(detalle.foliodetalle)"><i class="nav-icon fas fa-envelope"></i></span>
+                      <span class="btn btn-success" @click="imprimir(detalle.foliodetalle)"><i class="fas fa-print"></i></span>
                     </td>
                   </tr>
                 </tbody>

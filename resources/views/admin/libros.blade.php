@@ -127,6 +127,12 @@
           <!-- inicio cuerpo modal -->
           <div class="modal-body div5">
             <div class="row">
+              <div class="form-group col-md-6">
+                <font face="Sylfaen" size="4"><label for="caratula">Imagen del libro:</label></font>
+                <input type="file" name="caratulafile[]" id="caratulafile[]" multiple @change="previewFiles" accept=".png, .jpg, .jpeg">
+              </div>
+            </div>
+            <div class="row">
               <div class="col-md-5">
                 <div class="form-group">
                   <label for="isbn">

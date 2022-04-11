@@ -46,7 +46,7 @@
 			      <button class="btn btn-success fas fa-plus-square" @click="getDetalles()"></button>
 			    </span>
 				</div>
-        ingreso : @{{nomber}}
+        <!-- ingreso : @{{nomber}} -->
 			</div>
 		</div>
 		<!-- /ingreso folio -->
