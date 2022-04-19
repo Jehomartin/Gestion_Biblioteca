@@ -6,11 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\RouteServiceProvider;
 use Illuminate\Routing\RouteCollection;
 
-use Carbon;
-use DateTime;
-use DatePeriod;
-use DateInterval;
-
 // uso de modelos
 use App\Prestamos;
 use App\DetallePrestamos;
@@ -157,53 +152,4 @@ class ApiPrestamosController extends Controller
      return $alumnos;
     }
 
-    public function fechavuelta(){
-
-        $finde = Carbon\Carbon::now()->addDay(2)->isWeekend();
-
-        if ($finde == true) {
-            return 'fecha invalida';
-            
-        } else{
-            $fec = Carbon\Carbon::now()->addDay(2)->format('Y-m-d');
-            $regreso = $fec;
-            return $regreso;
-        }
-    }
-
-    public function fechaDoc(){
-
-        
-        $weekend = Carbon\Carbon::now()->addDay(4);
-
-        if ($weekend = true) {
-            return 'error';
-        } else{
-            $vuelta = Carbon\Carbon::now()->addDay(4)->format('Y-m-d');
-            return $vuelta;
-        }
-    }
-
-    public function daysWeek(){
-        
-        $start = new DateTime(Carbon\Carbon::now());
-        $end = new DateTime(Carbon\Carbon::now()->addDay(4));
-
-        // $end->modify('+1 day');
-
-        $interval = $end->diff($start);
-
-        $days = $interval->days;
-
-        $period = new DatePeriod($start, new DateInterval('P1D'), $end);
-
-        foreach ($period as $dt) {
-            $curr = $dt->format('Y-m-d');
-
-            if ($curr == 'Sat' || $curr == 'Sun') {
-                $days++;
-            }
-            return $days;
-        }
-    }
 }

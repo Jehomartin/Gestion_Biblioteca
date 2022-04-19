@@ -32,6 +32,7 @@ class ApiAdeudosController extends Controller
     public function store(Request $request)
     {
         //
+        $deuda = new Adeudos;
     }
 
     /**

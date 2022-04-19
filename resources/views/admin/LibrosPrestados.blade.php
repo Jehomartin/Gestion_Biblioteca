@@ -63,9 +63,12 @@
                     <td> @{{detalle.prestamo.fechadevolucion}} </td>
                     <td>
                       <!-- <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-reply-all"></i></span> -->
-                      <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
-                      <span class="btn btn-dark" @click="sendMail(detalle.foliodetalle)"><i class="nav-icon fas fa-envelope"></i></span>
-                      <span class="btn btn-success" @click="imprimir(detalle.foliodetalle)"><i class="fas fa-print"></i></span>
+                      <span class="btn btn-danger" title="Iniciar adeudo" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-dollar-sign"></i></span>
+                      <span class="btn btn-dark" title="Enviar correo" @click="sendMail(detalle.foliodetalle)"><i class="nav-icon fas fa-envelope"></i></span>
+                      <a :href="'ticket/'+detalle.foliodetalle">
+                        <span class="btn btn-success" title="Obtener Ticket"><i class="fas fa-print"></i></span>
+                      </a>
+                      
                     </td>
                   </tr>
                   <tr v-else style="background: #d95;">
@@ -78,9 +81,11 @@
                     <td> @{{detalle.prestamo.fechadevolucion}} </td>
                     <td>
                       <!-- <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-reply-all"></i></span> -->
-                      <span class="btn btn-primary" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-info"></i></span>
-                      <span class="btn btn-dark" @click="sendMail(detalle.foliodetalle)"><i class="nav-icon fas fa-envelope"></i></span>
-                      <span class="btn btn-success" @click="imprimir(detalle.foliodetalle)"><i class="fas fa-print"></i></span>
+                      <span class="btn btn-danger" title="Iniciar adeudo" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-dollar-sign"></i></span>
+                      <span class="btn btn-dark" title="Enviar correo" @click="sendMail(detalle.foliodetalle)"><i class="nav-icon fas fa-envelope"></i></span>
+                      <a :href="'ticket/'+detalle.foliodetalle">
+                        <span class="btn btn-success" title="Obtener Ticket"><i class="fas fa-print"></i></span>
+                      </a>
                     </td>
                   </tr>
                 </tbody>
@@ -118,7 +123,7 @@
                 <div class="row">
                   <div class="col-md-5">
                     <div class="form-group">
-                      <label >CLAVE DEL DETALLE</label>
+                      <label class="text text-center">CLAVE DEL DETALLE</label>
                       <div class="input-group">
                         <span class="form-control" style="border-color:#000"> @{{foliodetalle}} </span>
                         <!-- <input type="text" class="form-control" style="border-color: #000" v-model="foliodetalle" v-if="editando"> -->
@@ -127,7 +132,7 @@
                   </div>
                   <div class="col-md-7 ml-auto">
                     <div class="form-group">
-                      <label>FOLIO DEL PRÉSTAMO</label>
+                      <label class="text text-center">FOLIO DEL PRÉSTAMO</label>
                       <div class="input-group">
                         <span class="form-control" style="border-color:#000"> @{{folioprestamo}} </span>
                         <!-- <input type="text" class="form-control" style="border-color: #000" v-model="folioprestamo" v-if="editando"> -->
@@ -136,31 +141,53 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>FOLIO DEL LIBRO</label>
+                  <label class="text text-center">FOLIO DEL LIBRO</label>
                   <div class="input-group">
                     <span class="form-control" style="border-color:#000"> @{{isbn}} </span>
                     <!-- <input type="text" class="form-control" style="border-color: #000" v-model="isbn" v-if="editando"> -->
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>TÍTULO DEL LIBRO</label>
+                  <label class="text text-center">TÍTULO DEL LIBRO</label>
                   <div class="input-group">
                     <span class="form-control" style="border-color:#000"> @{{titulo}} </span>
                     <!-- <input type="text" class="form-control" style="border-color: #000" v-model="titulo" v-if="editando"> -->
                   </div>
                 </div>
-               <!--  <div class="form-group">
-                  <label>FECHA DE DEVOLUCIÓN</label>
-                  <div class="input-group">
-                    <span v-if="editando" class="form-control" style="border-color:#000">
-                      @{{prestamos.fechadevolucion}} 
-                    </span>
+                <div class="row">
+                  <div class="col-md-5">
+                   <div class="form-group">
+                      <label class="text text-center">CANTIDAD PRESTADA</label>
+                      <div class="input-group">
+                        <span class="form-control" style="border-color:#000"> @{{cantidad}} </span>
+                      </div>
+                    </div>
                   </div>
-                </div> -->
-                <div class="form-group">
-                  <label>CANTIDAD PRESTADA</label>
-                  <div class="input-group">
-                    <span class="form-control" style="border-color:#000"> @{{cantidad}} </span>
+                  <div class="col-md-7">
+                    <div class="form-group">
+                      <label class="text text-center">DÍAS ATRASO</label>
+                      <div class="input-group">
+                        <span class="form-control" style="border-color: #000;"> @{{dias_atraso}} </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-5">
+                   <div class="form-group">
+                      <label class="text text-center">CANTIDAD MULTA</label>
+                      <div class="input-group">
+                        <span class="form-control" style="border-color:#000"> @{{precio}} </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="form-group">
+                      <label class="text text-center">TOTAL DEUDA</label>
+                      <div class="input-group">
+                        <span class="form-control" style="border-color: #000;"> @{{total}} </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </font>
@@ -177,6 +204,10 @@
                 <button style="margin-left: 10px" type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="Devolver(auxDev)" v-if="editando">
                 <span class="fas fa-check"></span>
                 DEVOLVER</button>
+                <button style="margin-left: 10px" type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="" v-if="!editando">
+                  <span class="fas fa-check"></span>
+                  INICIAR DEUDA
+                </button>
               </div>
             </div><!-- fin footer modal -->
           </div> <!--fin modal content-->

@@ -3,8 +3,8 @@ var urlPresta = route + '/apiPrestamos';
 var urlLibro = route + '/apiBusqueda';
 var urlAlumnos = route + '/apiAlumnos';
 var urlDocentes = route + '/apiDocente';
-var urlFechaA = route + '/fechi';
-var UrlFechaD = route + '/fechDc';
+var urlFechaA = route + '/dateAl';
+var UrlFechaD = route + '/dateMtr';
 // var urlEjemplar = ruta + '/apiEjemplares';
 
 function init()
@@ -55,15 +55,6 @@ function init()
 
 		// inicio methods
 		methods:{
-
-			// fechandoregreso:function(){
-			// 	this.$http.get(urlRegreso).then(function(response){
-			// 		var arrfech = response.data;
-			// 		console.log(arrfech);
-			// 		this.fechadevolucion = response.data;
-			// 	});
-				
-			// },
 
 			getLib:function(){
 				this.$http.get(urlLibro).then(function(response){
@@ -162,6 +153,7 @@ function init()
 			},
 			// fin getAlumno
 
+			// getDocentes
 			getDocentes:function(){
 				this.$http.get(urlDocentes + '/' + this.claves).then(function(teach) {
 					if (teach.data === "") {
@@ -188,11 +180,11 @@ function init()
 					};
 				});
 			},
+			// fin getDocentes
 
 			student:function(){
 				this.$http.get(urlFechaA).then(function(response){
 					var arrfech = response.data;
-					console.log(arrfech);
 					this.fechadevolucion = response.data;
 				});
 				this.estudiante=true;
@@ -204,7 +196,6 @@ function init()
 			teacher:function(){
 				this.$http.get(UrlFechaD).then(function(response){
 					var arrfech = response.data;
-					console.log(arrfech);
 					this.fechadevolucion = response.data;
 				});
 				this.docente=true;
@@ -224,7 +215,6 @@ function init()
 
 			// inicio prestar
 			prestar:function(){
-				// this.estudiante=true;
 				var detalles2=[];
 				var newdetalle3=[];
 
@@ -234,8 +224,6 @@ function init()
 						titulo:this.arrayprestamos[i].titulo,
 						devuelto:0,
 						cantidad:1,
-						// matricula:this.arrayprestamos[i].matricula,
-						// correo:this.arrayprestamos[i].correo,
 					})
 
 					var set = new Set(detalles2.map(JSON.stringify))
@@ -277,7 +265,6 @@ function init()
 										icon: "success",
 									});
 									this.foliarprestamo();
-									// this.fechadevolucion='';
 									this.matricula='';
 									this.arrayprestamos=[];
 									this.arrayalumnos=[];
@@ -327,7 +314,6 @@ function init()
 							this.foliarprestamo();
 							this.arrayprestamos=[];
 							this.arrayalumnos=[];
-							// this.fechadevolucion='';
 							this.matricula='';
 						}).catch(function(response){
 							console.log(unPrestamo);
@@ -374,7 +360,6 @@ function init()
 										icon: "success",
 									});
 									this.foliarprestamo();
-									// this.fechadevolucion='';
 									this.claves='';
 									this.arrayprestamos=[];
 									this.arraydocentes=[];
@@ -424,7 +409,6 @@ function init()
 							this.foliarprestamo();
 							this.arrayprestamos=[];
 							this.arraydocentes=[];
-							// this.fechadevolucion='';
 							this.claves='';
 						}).catch(function(response){
 							console.log(unPrestamo);
@@ -437,48 +421,9 @@ function init()
 							});
 						});
 					};
-				}
-
-				
-			},
-			// fin prestar estudiante
-
-			// prestar docente
-			// prestarD:function(){
-			// 	this.docente=true;
-
-			// 	var detalles2=[];
-			// 	var newdetalle3=[];
-
-			// 	for (var i = 0; i < this.arrayprestamos.length; i++) {
-			// 		detalles2.push({
-			// 			isbn:this.arrayprestamos[i].isbn,
-			// 			titulo:this.arrayprestamos[i].titulo,
-			// 			devuelto:0,
-			// 			cantidad:1,
-			// 			// matricula:this.arrayprestamos[i].matricula,
-			// 			// correo:this.arrayprestamos[i].correo,
-			// 		})
-
-			// 		var set = new Set(detalles2.map(JSON.stringify))
-			// 		var newdetalle3 = Array.from(set).map(JSON.parse);
-			// 	}
-
-			// 	var unPresto={
-			// 		folioprestamo:this.folioprestamo,
-			// 		fechaprestamo:this.fechaprestamo,
-			// 		fechadevolucion:this.fechadevolucion,
-			// 		claves:this.claves
-			// 		email:this.email,
-			// 		liberado:0,
-			// 		prestamista:'docente',
-			// 		// permisos:this.permisos,
-			// 		newdetalle3:newdetalle3
-			// 	};
-
-			// 	
-			// }
-			// fin prestar docente
+				}				
+			},	
+			// fin prestar
 		},
 		// fin methods
 	});

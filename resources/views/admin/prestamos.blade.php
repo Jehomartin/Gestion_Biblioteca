@@ -129,10 +129,9 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group">
-          <!-- <input type="text" class="form-control" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" placeholder="Ingrese el título del libro" style="border-color: black"> -->
           <select class="form-control selectlib" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" @change="getLib" name="selectli[]" id="selectlib">
-            <option disabled value="">Ingrese el titulo</option>
-            <option v-for="l in arraylibros" v-bind:value="l.titulo"> @{{l.titulo}} </option>
+            <option disabled value="">Ingrese el titulo o el código del libro</option>
+            <option v-for="l in arraylibros" v-bind:value="l.titulo"> @{{l.isbn}} , @{{l.titulo}} </option>
           </select>
         
           <span class="input-group-btn">

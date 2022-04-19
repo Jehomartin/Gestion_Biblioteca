@@ -3,7 +3,7 @@ var urlDetalles = route + '/apiDetalles';
 var urlPrestamos = route + '/apiPrestamos';
 var urlAlumnos = route + '/apiAlumnos';
 var urlMail = route + '/maili';
-var urlPrint = route + '/ticket';
+var urlDeuda = route + '/apiAdeudo';
 
 function init()
 {
@@ -26,7 +26,6 @@ function init()
 		data:{
 			saludo:'holamundo',
 			mail:[],
-			arrayprint:[],
 			detalleprestamos:[],
 			prestamos:[],
 			alumnos:[],
@@ -46,7 +45,16 @@ function init()
 
 			auxFecha:moment().format('YYYY-MM-DD'),
 
-			// cantidades:[1,1,1,1,1,1,1,1,1,1],
+			// datos para el adeudo
+			arraydeudas:[],
+			id_adeudos:'',
+			matricula:'',
+			clave_carrera:'',
+			dias_atraso:'',
+			id_multas:'',
+			precio:'',
+			total:'',
+
 		},
 
 		methods:{
@@ -123,7 +131,6 @@ function init()
 					this.mail = valObj[0];
 				};
 				this.$http.post(urlMail, this.mail).then(function(json){
-					// console.log(json);
 					swal({
 						title:"CORREO ENVIADO",
 						text: "El envío del mensaje se realizo correctamente",
@@ -133,49 +140,6 @@ function init()
 					});
 				});
 			},
-
-			imprimir(id){
-				swal({
-	                title: 'AVISO',
-	                text: "¿Está seguro de imprimir este registro?",
-	                type: 'warning',
-	                buttons: {
-	                    confirm: {
-	                        text: 'Imprimir!',
-	                        className: 'btn btn-success'
-	                    },
-	                    cancel: {
-	                        visible: true,
-	                        className: 'btn btn-danger'
-	                    },
-	                },
-	            }).then((result) => {
-	                if (result) {
-	                	id = id;
-						print = this.detalleprestamos;
-
-						var impobj = print.filter(function(obj){
-							if (obj.foliodetalle == id) return obj;
-						});
-
-						if (impobj.length > 0) {
-							this.arrayprint = impobj[0];
-						}
-	                    this.$http.post(urlPrint, this.arrayprint).then(function(print){
-                            swal({
-                                title: '¡Imprimido!',
-                                text: 'Usted a obtenido su ticket de préstamo',
-                                icon: 'success',
-                                buttons: false,
-                                timer: 1500
-                            });
-	                    });
-	                } else {
-	                    swal.close();
-	                }
-	            });
-			},
-			
 
 			Datoscargar:function(id){
 				var fecha = this.prestamos.fechadevolucion;
@@ -207,13 +171,11 @@ function init()
 				};
 
 				this.$http.put(urlDetalles + '/' + this.foliodetalle,devuelto).then(function(response){
-					// this.getDetalles().splice(id,1);
 					this.getDetalles();
 					this.foliodetalle='';
 					this.folioprestamo='';
 					this.isbn='';
 					this.titulo='';
-					// this.fechadevolucion='';
 					this.devuelto='';
 					this.cantidad='';
 					this.matricula='';
@@ -255,6 +217,10 @@ function init()
 					return detalles.folioprestamo.match(this.buscar.trim()) ||
 					detalles.titulo.toLowerCase().match(this.buscar.trim().toLowerCase());
 				});
+			},
+
+			deuda:function(){
+
 			},
 		},
 	});

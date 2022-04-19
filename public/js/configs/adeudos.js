@@ -89,6 +89,7 @@ function init()
 				});
 			}, 
 			// fin
+
 			// inicio modal
 			showModal:function(){
 				$("#modal_adeudo").find(".modal-header").css("background","#f39c12");
@@ -97,6 +98,7 @@ function init()
 				$('#modal_adeudo').modal('show');
 			},
 			// fin
+			
 			// inicio infoAdeudo
 			infoAdeudo:function(id){
 				var name = this.arrayalumno2['nombre'];
