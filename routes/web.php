@@ -86,3 +86,9 @@ Route::view('vista','components.correo.newmensaje');
 // ruta imprimir
 Route::apiResource('ticket','ApiImprimirController');
 // fin
+
+// ruta traer detalles con folioprestamo
+Route::apiResource('apiDetails','ApiDetailPrestamoController');
+
+// ruta irSaldar
+Route::get('saldar','ApiPrestamosController@IrSaldar');

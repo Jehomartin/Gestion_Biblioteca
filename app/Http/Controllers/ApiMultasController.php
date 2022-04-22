@@ -18,7 +18,7 @@ class ApiMultasController extends Controller
     public function index()
     {
         //
-        $multa = Multas::all();
+        $multa = Multas::where('vigente',true)->get(['id_multas','precio','vigente']);
         return $multa;
     }
 

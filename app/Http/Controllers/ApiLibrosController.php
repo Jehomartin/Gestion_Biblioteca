@@ -19,10 +19,11 @@ class ApiLibrosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $libro = Libros::orderBy('titulo','ASC')->paginate(20);
+        $search = $request->get('buscarpor');
+        $libro = Libros::where('titulo','like',"%$search%")->paginate(20);
 
         return [
             'pagination' => [

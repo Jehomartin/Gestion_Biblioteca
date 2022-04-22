@@ -43,7 +43,7 @@ function init()
 			help:function(){
 				swal({
 					title:"AVISO",
-					text:"En este apartado el alumno podrá escribir el título del libro que desee, \n" + 
+					text:"En este apartado el alumno podrá selecionar el título del libro que desee, \n" + 
 						"para así poder verificar si este cuenta con ejemplares disponibles \n" +
 						"y así mostrarle la información referente a ese libro",
 					icon:"info",

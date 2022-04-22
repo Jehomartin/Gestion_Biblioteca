@@ -1,8 +1,8 @@
 var rute = document.querySelector("#route").getAttribute("value");
 var urlAdeudo = rute + '/apiAdeudo';
 var urlAlumno = rute + '/apiAlumnos';
-var urlCareer = rute + '/apiCareer';
-var urlMulta = rute + '/apiMultas';
+// var urlCareer = rute + '/apiCareer';
+// var urlMulta = rute + '/apiMultas';
 
 function init()
 {
@@ -18,29 +18,29 @@ function init()
 
 		created:function(){
 			this.getAdeudo();
-			this.getMulta();
-			this.getCareer();
+			// this.getMulta();
+			// this.getCareer();
 			this.getAlumno();
 		},
 
 		data:{
 			saludo:'holaaaaaaaaaa',
 			arrayadeudos:[],
-			arraymultas:[],
+			// arraymultas:[],
 			arrayalumno2:[],
-			arraycareer:[],
+			// arraycareer:[],
 			id_adeudos:'',
 	        matricula:'',
-	        clave_carrera:'',
+	        // clave_carrera:'',
 	        dias_atraso:'',
-	        id_multas:'',
+	        precio_multa:'',
 	        total:'',
 
 	        buscar:'',
 	        editando:'',
 
 	        // career
-	        nombre_carrera:'',
+	        // nombre_carrera:'',
 
 	        // alumno
 	        nombre:'',
@@ -61,23 +61,23 @@ function init()
 			// fin getadeudo
 
 			// inicio getMulta
-			getMulta:function(){
-				this.$http.get(urlMulta).then(function(mta){
-					this.arraymultas = mta.data;
-				}).catch(function(mta){
-					toastr.error("No se estan cargando los datos");
-				});
-			},
+			// getMulta:function(){
+			// 	this.$http.get(urlMulta).then(function(mta){
+			// 		this.arraymultas = mta.data;
+			// 	}).catch(function(mta){
+			// 		toastr.error("No se estan cargando los datos");
+			// 	});
+			// },
 			// fin
 
 			// inicio getCareer
-			getCareer:function(){
-				this.$http.get(urlCareer).then(function(json){
-					this.arraycareer = json.data;
-				}).catch(function(json){
-					toastr.error("No se estan cargando los datos");
-				});
-			},
+			// getCareer:function(){
+			// 	this.$http.get(urlCareer).then(function(json){
+			// 		this.arraycareer = json.data;
+			// 	}).catch(function(json){
+			// 		toastr.error("No se estan cargando los datos");
+			// 	});
+			// },
 			// fin
 
 			// inicio getAlumno
@@ -101,20 +101,14 @@ function init()
 			
 			// inicio infoAdeudo
 			infoAdeudo:function(id){
-				var name = this.arrayalumno2['nombre'];
-				var ape = this.arrayalumno2['apellidos'];
-
 				$('#modal_adeudo').modal('show');
 				this.editando=true;
 
 				this.$http.get(urlAdeudo + '/' + id).then(function(response){
 					this.id_adeudos = response.data.id_adeudos;
 					this.matricula = response.data.matricula;
-					this.nombre = this.name;
-					this.apellidos = this.ape;
-					this.clave_carrera = response.data.clave_carrera;
 					this.dias_atraso = response.data.dias_atraso;
-					this.id_multas = response.data.id_multas;
+					this.precio_multa = response.data.precio_multa;
 					this.total = response.data.total;
 				});
 			},
@@ -140,8 +134,8 @@ function init()
 		computed:{
 			filtroDeudas:function(){
 				return this.arrayadeudos.filter((adeudos)=>{
-					return adeudos.matricula.match(this.buscar.trim()) ||
-					adeudos.nombres.toLowerCase().match(this.buscar.trim().toLowerCase());
+					return adeudos.matricula.match(this.buscar.trim()); 
+					// adeudos.nombres.toLowerCase().match(this.buscar.trim().toLowerCase());
 				});
 			},
 		},

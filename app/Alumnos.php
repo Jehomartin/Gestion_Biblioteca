@@ -26,7 +26,7 @@ class Alumnos extends Model
         'clave_carrera',
     	'bloqueado',
         'correo',
-        'permisos'
+        'permiso'
     ];
 
     public function carrera2(){

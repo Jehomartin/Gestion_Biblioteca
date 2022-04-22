@@ -1,6 +1,7 @@
 var route = document.querySelector("#route").getAttribute("value");
 var urlPresta = route + '/apiPrestamos';
-var urlLibro = route + '/apiBusqueda';
+// var urlLibro = route + '/apiBusqueda';
+var urlLibro = route + '/apiLibros';
 var urlAlumnos = route + '/apiAlumnos';
 var urlDocentes = route + '/apiDocente';
 var urlFechaA = route + '/dateAl';
@@ -45,12 +46,14 @@ function init()
 
 			fechaprestamo:moment().format('YYYY-MM-DD'),
 
-			permisos:0,
+			// permisos:0,
 			prestamista:'',
 			prst:'',
 
 			estudiante:false,
 			docente:false,
+			saldar:false,
+			devolver:false,
 		},
 
 		// inicio methods
@@ -87,33 +90,18 @@ function init()
 						})
 						this.codigo='';
 					} else {
-						this.permisos = this.permisos + 1;
-						if (this.permisos > 3) {
-							swal({
-								title: "PERMISOS ALCANZADOS",
-								text: "El alumno ha alcanzado el limite de 3 permisos para prestar un libro",
-								icon: "warning",
-								buttons: false,
-								timer: 4000,
-							});
-							this.permisos = this.permisos - 1;
-							response.data="";
-							this.codigo='';
-						}else{
-							var unprestado={
-								'isbn':response.data.isbn,
-								'titulo':response.data.titulo,
-								'devuelto':0,
-								'cantidad':1,
-							}
-
-							if (unprestado.titulo) {
-								this.arrayprestamos.push(unprestado);
-								this.codigo='';
-								this.$refs.buscar.focus();
-							}
+						var unprestado={
+							'isbn':response.data.isbn,
+							'titulo':response.data.titulo,
+							'devuelto':0,
+							'cantidad':1,
 						}
-						
+
+						if (unprestado.titulo) {
+							this.arrayprestamos.push(unprestado);
+							this.codigo='';
+							this.$refs.buscar.focus();
+						}						
 					}
 					
 				});
@@ -131,14 +119,41 @@ function init()
 							buttons:false,
 							timer:3000,
 						});
-					} else {
+					} else if (json.data.permiso == false && json.data.deudor == true) {
+						swal({
+							title:'ADVERTENCIA',
+							text:'El alumno tiene procesos pendientes',
+							icon:'warning',
+							buttons:false,
+							timer:3000,
+						});
+						this.devolver=true;
+					} else if (json.data.deudor == true) {
+						swal({
+							title:'ADVERTENCIA',
+							text:'verifique si este alumno aún tiene trámites pendientes',
+							icon:'warning',
+							buttons:false,
+							timer:3000,
+						});
+					} 
+					else if (json.data.permiso == false) {
+						swal({
+							title:'ADVERTENCIA',
+							text:'verifique si este alumno aún tiene trámites pendientes',
+							icon:'warning',
+							buttons:false,
+							timer:3000,
+						});
+					}
+					else {
 						var alumno={
 							'matricula':json.data.matricula,
 							'nombre':json.data.nombre,
 							'apellidos':json.data.apellidos,
 							'correo':json.data.correo,
 						};
-
+						this.devolver=false;
 						if (alumno.matricula) {
 							this.arrayalumnos.push(alumno);
 							this.$refs.buscar.focus();
@@ -189,6 +204,7 @@ function init()
 				});
 				this.estudiante=true;
 				this.docente=false;
+				this.saldar=false;
 				this.arraydocentes=[];
 				this.claves='';
 			},
@@ -200,13 +216,14 @@ function init()
 				});
 				this.docente=true;
 				this.estudiante=false;
+				this.saldar=false;
 				this.arrayalumnos=[];
 				this.matricula='';
 			},
 
 			cancelarPrestamo:function(id){
 				this.arrayprestamos.splice(id,1);
-				this.permisos = this.permisos - 1;
+				// this.permisos = this.permisos - 1;
 			},
 
 			foliarprestamo:function(){
@@ -239,7 +256,7 @@ function init()
 						correo:this.correo,
 						prestamista:'alumno',
 						prst:1,
-						permisos:this.permisos,
+						permiso:false,
 						newdetalle3:newdetalle3
 					};
 

@@ -438,6 +438,14 @@ function init(){
 
 			},
 
+			// items() {
+	  //           return this.libros.filter((libros) => {
+	  //               return libros.titulo
+	  //                   .toLowerCase()
+	  //                   .includes(this.buscar.toLowerCase());
+	  //           });
+	  //       },
+
 			filtroLibros:function(){
 				return this.libros.filter((libros)=>{
 					return libros.isbn.match(this.buscar.trim()) ||

@@ -40,11 +40,10 @@
             		<div class="table-responsive-md">
               			<table class="table table-sm table-striped table-bordered table-hover tamanio-font">
               				<thead class="thead-dark text text-center">
-              					<th width="10%">Clave</th>
+              					<th width="10%">NÚMERO</th>
               					<th width="10%">Matricula</th>
               					<th width="20%">Nombre(s)</th>
               					<th width="20%">Apellidos</th>
-              					<th width="20%">Carrera</th>
               					<th width="10%">Deuda</th>
               					<th>Opciones</th>
               				</thead>
@@ -54,7 +53,6 @@
               						<td> @{{adeudo.matricula}} </td>
               						<td> @{{adeudo.alumno.nombre}} </td>
               						<td> @{{adeudo.alumno.apellidos}} </td>
-              						<td> @{{adeudo.career.nombre_carrera}} </td>
               						<td> @{{adeudo.total}} </td>
 	              					<td>
 	              						<span class="btn btn-danger" @click="infoAdeudo(adeudo.id_adeudos)">
@@ -114,27 +112,9 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label>NOMBRES</label>
+							<label>PRECIO DE MULTA</label>
 							<div class="input-group">
-								<span class="form-control" style="border-color: #000;"> @{{nombre}} </span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label>APELLIDOS</label>
-							<div class="input-group">
-								<span class="form-control" style="border-color: #000;"> @{{apellidos}} </span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label>CLAVE CARRERA</label>
-							<div class="input-group">
-								<span class="form-control" style="border-color: #000;"> @{{clave_carrera}} </span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label>NOMBRE CARRERA</label>
-							<div class="input-group">
-								<span class="form-control" style="border-color: #000;"> @{{nombre_carrera}} </span>
+								<span class="form-control" style="border-color: #000;"> @{{precio_multa}} </span>
 							</div>
 						</div>
 						<div class="row">

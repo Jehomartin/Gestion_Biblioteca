@@ -4,28 +4,27 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DetallePrestamos extends Model
+class DetailPrestamo extends Model
 {
     //
     protected $table = "detalle_prestamo";
 
-    protected $primaryKey = "foliodetalle";
+    protected $primaryKey = "folioprestamo";
 
     protected $with = ['libros', 'prestamo', 'alumno','docente'];
 
     public $timestamps = false;
 
     protected $Fillable = [
-    	'foliodetalle',
-    	'folioprestamo',
-    	'isbn',
-    	'titulo',
-    	'devuelto',
-    	'cantidad',
+        'foliodetalle',
+        'folioprestamo',
+        'isbn',
+        'titulo',
+        'devuelto',
+        'cantidad',
         'id_prestador',
         'correo',
         'prst',
-        'fechadevolucion',
     ];
 
     public function libros(){
@@ -43,9 +42,4 @@ class DetallePrestamos extends Model
     public function docente(){
         return $this->belongsTo(Docentes::class,'id_prestador','claves');
     }
-
-    // public function prestador(){
-        // return $this->belongsTo((Alumnos::class,'id_prestador','matricula'),(Docentes::class,'id_prestador','claves'));
-        // return $this->belongsTo(Docentes::class,'id_prestador','claves');
-    // }
 }

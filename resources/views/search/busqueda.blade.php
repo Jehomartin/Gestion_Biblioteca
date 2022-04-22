@@ -7,17 +7,17 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
-				<span class="btn btn-primary form-control" @click="verificacion()">
+				<span class="btn btn-primary form-control" @click="verificacion()" title="Validar matricula">
 					VALIDAR MATRICULA <i class="fas fa-file-signature"></i>
 				</span>
 			</div>
 			<div class="col-md-4" v-if="validado">
-				<span class="btn btn-success form-control" @click="consultar()">
+				<span class="btn btn-success form-control" @click="consultar()" title="Consultar libro">
 					CONSULTAR LIBROS <i class="fas fa-search"></i>
 				</span>
 			</div>
 			<div class="col-md-4" v-if="validado">
-				<span class="btn btn-danger form-control" @click="cancelarP()">
+				<span class="btn btn-danger form-control" @click="cancelarP()" title="Cancelar todo">
 					FINALIZAR PROCESOS <i class="fas fa-window-close"></i>
 				</span>
 			</div>
@@ -123,7 +123,7 @@
 					</font>
 				</div>
 				<div class="col-lg-2">
-					<font size="6"><span class="btn btn-primary fas fa-question-circle" @click="help()"></span></font>
+					<font size="6"><span class="btn btn-primary fas fa-question-circle" @click="help()" title="Información"></span></font>
 				</div>
 			</div>
 			<!-- fin titulo -->

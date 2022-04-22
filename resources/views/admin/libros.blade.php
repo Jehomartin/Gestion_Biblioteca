@@ -27,11 +27,11 @@
         <div class="col-md-8">
             <!-- search form (Optional) -->
             <div class="input-group">
-              <input type="text" name="searchText" class="form-control" placeholder="Buscar..." style="border-color: #000" v-model="buscar">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat" style="background-color: orange" @click="filtroLibros()"><i class="fa fa-search"></i>
-                </button>
-              </span>
+                <input type="text" name="buscarpor" class="form-control" placeholder="Buscar..." style="border-color: #000" v-model="buscar">
+                <span class="input-group-btn">
+                  <button title="Buscar" type="submit" name="search" id="search-btn" class="btn btn-flat" style="background-color: orange"><i class="fa fa-search"></i>
+                  </button>
+                </span>
             </div>
             <!-- /.search form -->
         </div>
@@ -72,7 +72,7 @@
               <th width="15%" class="header" scope="col">OPCIONES</th>
             </thead>
             <tbody>
-              <tr v-for="(libro,index) in filtroLibros">
+              <tr v-for="(libro,index) in libros">
                 <td>@{{libro.isbn}}</td>
                 <td>@{{libro.titulo}}</td>
                 <td>@{{libro.autor.nombre}}</td>
@@ -83,15 +83,15 @@
                   <center>
 
                     <span class="btn btn-primary fas fa-edit" 
-                    v-on:click="editLibro(libro.isbn)"></span>
+                    v-on:click="editLibro(libro.isbn)" title="Editar libro"></span>
                    
                     <span class="btn btn-danger fas fa-trash-alt" 
-                    v-on:click="eliminarLibro(libro.isbn)"></span>
+                    v-on:click="eliminarLibro(libro.isbn)" title="Eliminar libro"></span>
 
-                    <span class="btn btn-success" v-on:click="loadExample(libro.isbn)"><i class="far fa-copy"></i></span>
+                    <span class="btn btn-success" v-on:click="loadExample(libro.isbn)" title="Agregar Ejemplar"><i class="far fa-copy"></i></span>
 
                     <a :href="'libros/detallelibro/'+libro.isbn">
-                      <button type="button" title="Ver Detalles" class="btn btn-link btn-outline-dark btn-sm">
+                      <button type="button" title="Ver Detalles" class="btn btn-link btn-outline-dark btn-sm" title="Ver detalles">
                         <i class="fas fa-eye"></i>
                       </button>
                     </a>

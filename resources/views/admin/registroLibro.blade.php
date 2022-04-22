@@ -44,7 +44,7 @@
                                     <option v-for="e in editoriales" v-bind:value="e.id_editorial">@{{e.editorial}}</option>
                                 </select>
                                 <span class="input-group-btn">
-                                    <button id="agregarEditorial" class="btn btn-success" type="button" v-on:click="showModalEditorial"> 
+                                    <button id="agregarEditorial" class="btn btn-success" type="button" v-on:click="showModalEditorial" title="Agregar Editorial"> 
                                     <span class="fas fa-plus-circle"></span>
                                     </button>
                                 </span>
@@ -58,7 +58,7 @@
                                 <option v-for="a in autores" v-bind:value="a.id_autor">@{{a.nombre}}</option>
                                 </select>
                                 <span class="input-group-btn">
-                                    <button id="agregarAutor" class="btn btn-success" type="button" v-on:click="showModalAutor"> 
+                                    <button id="agregarAutor" class="btn btn-success" type="button" v-on:click="showModalAutor" title="Agregar Autor"> 
                                     <span class="fas fa-plus-circle"></span>
                                     </button>
                                 </span>
@@ -74,7 +74,7 @@
                             <option v-for="c in carreras" v-bind:value="c.id_carrera">@{{c.carrera}}</option>
                             </select>
                             <span class="input-group-btn">
-                            <button id="agregarCarrera" class="btn btn-success" type="button" v-on:click="showModalCarrera"> 
+                            <button id="agregarCarrera" class="btn btn-success" type="button" v-on:click="showModalCarrera" title="Agregar Carrera"> 
                             <span class="fas fa-plus-circle"></span>
                             </button>
                             </span>
@@ -90,7 +90,7 @@
                                 <option v-for="p in paises" v-bind:value="p.id_pais">@{{p.pais}}</option>
                                 </select>
                                 <span class="input-group-btn">
-                                <button id="agregarPais" class="btn btn-success" type="button" v-on:click="showModalPais"> 
+                                <button id="agregarPais" class="btn btn-success" type="button" v-on:click="showModalPais" title="Agregar País"> 
                                 <span class="fas fa-plus-circle"></span>
                                 </button>
                                 </span>
@@ -123,7 +123,7 @@
                     </div>
 
                     <div class="pull-right">
-                        <button style="margin-left: 10px" type="submit" class="btn btn-primary" v-on:click="agregarLibro()">
+                        <button style="margin-left: 10px" type="submit" class="btn btn-primary" v-on:click="agregarLibro()" title="Guardar Libro">
                         <span class="fas fa-save"></span>
                         Guardar</button>
                     </div>  

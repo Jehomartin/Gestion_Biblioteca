@@ -24,10 +24,10 @@
         <!-- elejir alumno o docente -->
         <div class="form-group">
           <div class="input-group">
-              <button class="btn btn-warning form-control" @click="student()">
+              <button class="btn btn-warning form-control" @click="student()" title="Indicar Alumno">
                 ALUMNO <i class="fas fa-book"></i><i class="fas fa-pencil-alt"></i>
               </button>
-              <button class="btn btn-success form-control" @click="teacher()">
+              <button class="btn btn-success form-control" @click="teacher()" title="Indicar Docente">
                 DOCENTE <i class="fas fa-briefcase"></i>
               </button>
           </div>
@@ -53,6 +53,14 @@
                 <label >MATRICULA</label>
                 <div class="input-group">
                  <input type="text" placeholder="Matrícula" class="form-control" v-model="matricula" style="border-color: #000" id="matricula" maxlength="8" v-on:keyup.enter="getAlumnos()">
+                 <span class="input-group-btn">
+                  <a href=" {{url('historial')}} ">
+                   <button class="btn btn-danger btn-md" v-if="devolver">Verificar</button>
+                  </a>
+                  <!-- <a href=" {{url('adeudos')}} ">
+                   <button class="btn btn-danger btn-md" v-if="saldar">Saldar</button>
+                  </a> -->
+                 </span>
                 </div>
               </div>
             </div>
@@ -129,13 +137,14 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="input-group">
-          <select class="form-control selectlib" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" @change="getLib" name="selectli[]" id="selectlib">
+          <input type="text" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" class="form-control" placeholder="Ingrese el código del libro">
+          <!-- <select class="form-control selectlib" v-model="codigo" ref="buscar" v-on:keyup.enter="getLibros()" @change="getLib" name="selectli[]" id="selectlib">
             <option disabled value="">Ingrese el titulo o el código del libro</option>
             <option v-for="l in arraylibros" v-bind:value="l.titulo"> @{{l.isbn}} , @{{l.titulo}} </option>
-          </select>
+          </select> -->
         
           <span class="input-group-btn">
-            <button class="btn btn-success fas fa-plus-square" @click="getLibros()"></button>
+            <button class="btn btn-success fas fa-plus-square" @click="getLibros()" title="Agregar libro"></button>
           </span>
         </div>
       </div>
@@ -163,7 +172,7 @@
         </table>
       </div>
       <!-- <button class="btn btn-secondary ml-auto">Button</button> -->
-      <button class="btn btn-primary ml-auto float-right fa fa-save" @click="prestar()" >
+      <button class="btn btn-primary ml-auto float-right fa fa-save" @click="prestar()" title="Guardar préstamo">
         <font face="Sylfaen"> GUARDAR</font>
       </button>
       <!-- <button class="btn btn-primary ml-auto float-right fa fa-save" @click="prestar()" >

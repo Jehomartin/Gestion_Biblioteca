@@ -74,11 +74,11 @@ class ApiDevolucionesController extends Controller
         }
         // fin array detalle
 
-        $cont = $request->get('nomber');
+        $cont = $request->get('permiso');
 
         // se verifica si el prestamista es alumno
         if ($people == 1) {
-            DB::update("UPDATE alumnos SET permisos = permisos + $cont WHERE matricula = '$mat'");
+            DB::update("UPDATE alumnos SET permiso = $cont WHERE matricula = '$mat'");
         }
         // fin verificación
 

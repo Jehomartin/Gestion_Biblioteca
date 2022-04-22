@@ -4,6 +4,7 @@ var urlPrestamos = route + '/apiPrestamos';
 var urlAlumnos = route + '/apiAlumnos';
 var urlMail = route + '/maili';
 var urlDeuda = route + '/apiAdeudo';
+var urlMulta = route + '/apiMultas';
 
 function init()
 {
@@ -21,6 +22,7 @@ function init()
 			this.getDetalles();
 			this.getBuscar();
 			this.getPrestamos();
+			this.getMultas();
 		},
 
 		data:{
@@ -43,7 +45,14 @@ function init()
 			auxDev:'',
 			buscar:'',
 
-			auxFecha:moment().format('YYYY-MM-DD'),
+			//Obtener los días atraso
+			datenow:moment().format('YYYY-MM-DD'),
+			datelast:'',
+			//
+
+			// obtener la multa
+			arraymultas:[],
+			precio:'',
 
 			// datos para el adeudo
 			arraydeudas:[],
@@ -51,8 +60,7 @@ function init()
 			matricula:'',
 			clave_carrera:'',
 			dias_atraso:'',
-			id_multas:'',
-			precio:'',
+			precio_multa:'',
 			total:'',
 
 		},
@@ -88,9 +96,19 @@ function init()
 			{
 				this.$http.get(urlPrestamos).then(function(json){
 					this.prestamos = json.data;
+
 				}).catch(function(json){
 					toastr.error("no se cargaron los datos");
 				});
+			},
+
+			getMultas:function(){
+	    		this.$http.get(urlMulta).then(function(response){
+					this.arraymultas = response.data;
+				}).catch(function(response){
+					toastr.error("no se encontraron datos");
+				});
+
 			},
 
 			showModal:function(){
@@ -101,12 +119,35 @@ function init()
 				
 			},
 
-			infoPrestamo:function(id){
-				
+			StartDeuda:function(id){
 				$('#modal_custom').modal('show');
 				//peticion al servidor
 				this.$http.get(urlDetalles + '/' + id).then
 				(function(response){
+					// calcular los días de atraso
+					let day1 = new Date(this.datenow);
+					let day2 = new Date(response.data.fechadevolucion);
+
+					let milisD = 24 * 60 * 60 * 1000;
+					let miliT = Math.abs(day1.getTime() - day2.getTime());
+					let diasT = Math.round(miliT / milisD);
+					this.datelast = diasT;
+					// 
+
+					// calcular el precio de la multa
+					for (var i = 0; i < this.arraymultas.length; i++) {
+						var price ={
+							precio:this.arraymultas[i].precio,
+						}
+						this.precio = price['precio'];
+						console.log(this.precio);
+					}
+					// 
+
+					// 
+
+					// 
+
 					this.foliodetalle = response.data.foliodetalle;
 					this.folioprestamo = response.data.folioprestamo;
 					this.isbn = response.data.isbn;
@@ -115,8 +156,40 @@ function init()
 					this.cantidad = response.data.cantidad;
 					this.id_prestador = response.data.id_prestador;
 					this.correo = response.data.correo;
+					this.dias_atraso = this.datelast;
+					this.precio_multa = this.precio;
+					this.total = (this.precio * this.datelast);
 				});
 
+			},
+
+			SaveDeuda:function(){
+				var unadeuda = {
+					matricula:this.id_prestador, dias_atraso:this.dias_atraso,
+					precio_multa:this.precio_multa, total:this.total, 
+					deudor:true, id_prestador:this.id_prestador,
+				};
+
+				this.$http.post(urlDeuda,unadeuda).then(function(response){
+					swal({
+						title:'DEUDA INICIADA',
+						text:'La deuda del prestador se ha iniciado',
+						icon:'success',
+						buttons:false,
+						timer:3000,
+					});
+
+					$('#modal_custom').modal('hide');
+
+				}).catch(function(response){
+					swal({
+						title:'ERROR',
+						text:'La deuda no se inicio, ocurrio un error',
+						icon:'error',
+						buttons:false,
+						timer:3000,
+					});
+				})
 			},
 
 			sendMail(id){
@@ -219,7 +292,20 @@ function init()
 				});
 			},
 
-			deuda:function(){
+			// days:function(){
+			// 	let day1 = new Date(this.datenow);
+			// 	let day2 = new Date('04/30/2022');
+
+			// 	let milisD = 24 * 60 * 60 * 1000;
+
+			// 	let miliT = Math.abs(day1.getTime() - day2.getTime());
+
+			// 	let diasT = Math.round(miliT / milisD);
+				
+			// 	return diasT;
+			// },
+
+			total:function(){
 
 			},
 		},

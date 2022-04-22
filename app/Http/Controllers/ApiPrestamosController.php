@@ -14,6 +14,7 @@ use App\Alumnos;
 
 // uso de base datos
 use DB;
+use Redirect;
 
 class ApiPrestamosController extends Controller
 {
@@ -61,6 +62,7 @@ class ApiPrestamosController extends Controller
                     'id_prestador'=>$request->get('matricula'),
                     'correo'=>$request->get('correo'),
                     'prst'=>$request->get('prst'),
+                    'fechadevolucion'=>$request->get('fechadevolucion'),
                 ];
 
                 //se hace la actualización de la cantidad de ejemplares disponibles
@@ -69,8 +71,8 @@ class ApiPrestamosController extends Controller
             }
 
             $mat = $request->get('matricula');
-            $cont = $request->get('permisos');
-            DB::update("UPDATE alumnos SET permisos = permisos - $cont WHERE matricula = '$mat'");
+            $cont = $request->get('permiso');
+            DB::update("UPDATE alumnos SET permiso = $cont WHERE matricula = '$mat'");
             // DB::update("UPDATE libros SET ejemplares = ejemplares - $exem WHERE isbn = '$codigo'");
 
         } elseif ($prestmis == "docente") {
@@ -84,6 +86,7 @@ class ApiPrestamosController extends Controller
                     'id_prestador'=>$request->get('claves'),
                     'correo'=>$request->get('email'),
                     'prst'=>$request->get('prst'),
+                    'fechadevolucion'=>$request->get('fechadevolucion'),
                 ];
 
                 //se hace la actualización de la cantidad de ejemplares disponibles
@@ -152,4 +155,7 @@ class ApiPrestamosController extends Controller
      return $alumnos;
     }
 
+    public function IrSaldar(){
+        return Redirect::to('adeudos'); 
+    }
 }

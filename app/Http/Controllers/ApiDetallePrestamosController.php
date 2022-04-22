@@ -14,6 +14,12 @@ use App\Libros;
 // uso de Base datos
 use DB;
 
+// Archivos para fecha
+use Carbon\Carbon;
+use DateTime;
+use DatePeriod;
+use DateInterval;
+
 class ApiDetallePrestamosController extends Controller
 {
     /**
@@ -25,7 +31,7 @@ class ApiDetallePrestamosController extends Controller
     {
         //
 
-        return DetallePrestamos::where('devuelto',0)->get(['foliodetalle','folioprestamo','isbn','titulo','id_prestador','correo']);
+        return DetallePrestamos::where('devuelto',0)->get(['foliodetalle','folioprestamo','isbn','titulo','id_prestador','correo','fechadevolucion']);
     }
 
     /**

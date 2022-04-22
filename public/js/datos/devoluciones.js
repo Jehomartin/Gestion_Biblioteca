@@ -37,7 +37,7 @@ function init(){
 
 			estudiante:false,
 			docente:false,
-			nomber:0,
+			// nomber:0,
 		},
 		// fin data
 
@@ -65,7 +65,7 @@ function init(){
 						});
 						this.folio='';
 					} else {
-						this.nomber = this.nomber + 1;
+						// this.nomber = this.nomber + 1;
 						var undetalle = {
 							'folioprestamo':response.data.folioprestamo,
 							'isbn':response.data.isbn,
@@ -92,22 +92,8 @@ function init(){
 
 			cancelarDevolucion:function(id){
 				this.arraydevolucion.splice(id,1);
-				this.nomber = this.nomber - 1;
+				// this.nomber = this.nomber - 1;
 			},
-
-			// student:function(){
-			// 	this.estudiante=true;
-			// 	this.docente=false;
-			// 	this.arraydocentes=[];
-			// 	this.claves='';
-			// },
-
-			// teacher:function(){
-			// 	this.docente=true;
-			// 	this.estudiante=false;
-			// 	this.arrayalumnos=[];
-			// 	this.matricula='';
-			// },
 
 			devolver:function(){
 				var devolucion2=[];
@@ -130,7 +116,7 @@ function init(){
 				var unadevolucion = {
 					foliodevolucion:this.foliodevolucion,
 					datedevolucion:this.datedevolucion,
-					nomber:this.nomber,
+					permiso:true,
 					devolucion3:devolucion3,
 				}
 
@@ -153,7 +139,7 @@ function init(){
 						});
 						this.foliardevolucion();
 						this.arraydevolucion=[];
-						this.nomber='';
+						// this.nomber='';
 					})
 				}
 			},

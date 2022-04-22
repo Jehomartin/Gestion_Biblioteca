@@ -10,11 +10,11 @@
 <div class="main-panel" id="historial">
   <div class="container">
     <!-- inicio titulo -->
+    <!-- <button class="btn btn-primary" @click="getMultas()">Ver</button> -->
     <font color="black" face="Sylfaen">
       <h2 class="text text-center">PRÉSTAMOS REALIZADOS</h2>
     </font>
     <!-- /titulo -->
-
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
@@ -53,18 +53,20 @@
                   <th class="header" scope="col">OPCIONES</th>
                 </thead>
                 <tbody>
-                  <tr v-for="(detalle,index) in filtroDetalles" v-if="$('#fechaActual').val() <= detalle.prestamo.fechadevolucion" style="background: #5cb85c;">
+                  <tr v-for="(detalle,index) in filtroDetalles" v-if="$('#fechaActual').val() <= detalle.prestamo.fechadevolucion" style="background: #8bd79c;">
                     <td> @{{detalle.folioprestamo}} </td>
                     <td> @{{detalle.isbn}} </td>
                     <td> @{{detalle.titulo}} </td>
                     <td> @{{detalle.id_prestador}} </td>
                     <!-- <td> @{{detalle.prestamo.alumno.nombre}}, @{{detalle.prestamo.alumno.apellidos}} </td> -->
                     <td> @{{detalle.correo}} </td>
-                    <td> @{{detalle.prestamo.fechadevolucion}} </td>
+                    <td> @{{detalle.fechadevolucion}} </td>
                     <td>
                       <!-- <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-reply-all"></i></span> -->
-                      <span class="btn btn-danger" title="Iniciar adeudo" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-dollar-sign"></i></span>
-                      <span class="btn btn-dark" title="Enviar correo" @click="sendMail(detalle.foliodetalle)"><i class="nav-icon fas fa-envelope"></i></span>
+                      <!-- <span class="btn btn-danger" title="Iniciar adeudo" v-on:click="StartDeuda(detalle.foliodetalle)"><i class="nav-icon fas fa-dollar-sign"></i></span> -->
+
+                      <!-- <span class="btn btn-dark" title="Enviar correo" @click="sendMail(detalle.foliodetalle)"><i class="nav-icon fas fa-envelope"></i></span> -->
+
                       <a :href="'ticket/'+detalle.foliodetalle">
                         <span class="btn btn-success" title="Obtener Ticket"><i class="fas fa-print"></i></span>
                       </a>
@@ -78,14 +80,17 @@
                     <td> @{{detalle.id_prestador}} </td>
                     <!-- <td> @{{detalle.prestamo.alumno.nombre}}, @{{detalle.prestamo.alumno.apellidos}} </td> -->
                     <td> @{{detalle.correo}} </td>
-                    <td> @{{detalle.prestamo.fechadevolucion}} </td>
+                    <td> @{{detalle.fechadevolucion}} </td>
                     <td>
                       <!-- <span class="btn btn-success" v-on:click="Datoscargar(detalle.foliodetalle)"><i class="nav-icon fas fa-reply-all"></i></span> -->
-                      <span class="btn btn-danger" title="Iniciar adeudo" v-on:click="infoPrestamo(detalle.foliodetalle)"><i class="nav-icon fas fa-dollar-sign"></i></span>
+                      <span class="btn btn-danger" title="Iniciar adeudo" v-on:click="StartDeuda(detalle.foliodetalle)"><i class="nav-icon fas fa-dollar-sign"></i></span>
+
                       <span class="btn btn-dark" title="Enviar correo" @click="sendMail(detalle.foliodetalle)"><i class="nav-icon fas fa-envelope"></i></span>
+
                       <a :href="'ticket/'+detalle.foliodetalle">
                         <span class="btn btn-success" title="Obtener Ticket"><i class="fas fa-print"></i></span>
                       </a>
+
                     </td>
                   </tr>
                 </tbody>
@@ -177,7 +182,7 @@
                    <div class="form-group">
                       <label class="text text-center">CANTIDAD MULTA</label>
                       <div class="input-group">
-                        <span class="form-control" style="border-color:#000"> @{{precio}} </span>
+                        <span class="form-control" style="border-color:#000"> @{{precio_multa}} </span>
                       </div>
                     </div>
                   </div>
@@ -197,14 +202,14 @@
             <!-- footer modal -->
             <div class="modal-footer div1">
               <div class="pull-right">
-                <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()" v-if="!editando">ACEPTAR</button>
+                <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()" v-if="!editando">CANCELAR</button>
                 <button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelarEdit()" v-if="editando">CERRAR</button>
               </div>
               <div class="pull-right">
                 <button style="margin-left: 10px" type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="Devolver(auxDev)" v-if="editando">
                 <span class="fas fa-check"></span>
                 DEVOLVER</button>
-                <button style="margin-left: 10px" type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="" v-if="!editando">
+                <button style="margin-left: 10px" type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="SaveDeuda()" v-if="!editando">
                   <span class="fas fa-check"></span>
                   INICIAR DEUDA
                 </button>

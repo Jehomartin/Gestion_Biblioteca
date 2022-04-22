@@ -7,8 +7,10 @@ use Illuminate\Routing\RouteServiceProvider;
 use Illuminate\Routing\RouteCollection;
 
 use App\Adeudos;
-// use App\Alumnos;
-// use App\Multas;
+use App\Alumnos;
+use App\Multas;
+
+use DB;
 
 class ApiAdeudosController extends Controller
 {
@@ -33,6 +35,18 @@ class ApiAdeudosController extends Controller
     {
         //
         $deuda = new Adeudos;
+
+        $deuda->matricula = $request->get('matricula');
+        $deuda->dias_atraso = $request->get('dias_atraso');
+        $deuda->precio_multa = $request->get('precio_multa');
+        $deuda->total = $request->get('total');
+
+        // actualizando en alumnos
+        $cod = $request->get('deudor');
+        $mat = $request->get('id_prestador');
+        DB::update("UPDATE alumnos SET deudor = $cod WHERE matricula = '$mat'");
+
+        $deuda->save();
     }
 
     /**

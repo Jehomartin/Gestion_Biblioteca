@@ -6,12 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\RouteServiceProvider;
 use Illuminate\Routing\RouteCollection;
 
-// llamdo y uso de los modelos y DB
-use App\Busqueda;
-use App\Caratulas;
-use DB;
+// uso de los modelos
+use App\DetailPrestamo;
 
-class ApiBusquedaController extends Controller
+class ApiDetailPrestamoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +19,7 @@ class ApiBusquedaController extends Controller
     public function index()
     {
         //
-        $buscar = Busqueda::pluck('titulo','isbn')->prepend('selecciona');
-        return $buscar;
+        return DetailPrestamo::all();
     }
 
     /**
@@ -45,7 +42,8 @@ class ApiBusquedaController extends Controller
     public function show($id)
     {
         //
-        return Busqueda::find($id);
+        $detail = DetailPrestamo::find($id);
+        return $detail;
     }
 
     /**
@@ -69,28 +67,5 @@ class ApiBusquedaController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-     /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function search(Request $request){
-        
-        $term = trim($request->L);
-
-        if (empty($term)) {
-            return \Response::json([]);
-        }
-
-        $libs = Busqueda::search($term)->limit(3)->get();
-
-        $formatted_libs = [];
-
-        foreach ($libs as $lib) {
-            $formatted_libs[] = ['id' => $lib->isbn, 'text' => $lib->titulo];
-        }
-
-        return \Response::json($formatted_libs);
     }
 }

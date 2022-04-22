@@ -15,21 +15,7 @@
           <h6>FOLIO : @{{foliodevolucion}}</h6>
           <h6>FECHA DEVOLUCIÓN : @{{datedevolucion}}</h6>
         </font>
-        <!-- <div class="form-group">
-          <div class="input-group">
-              <button class="btn btn-warning form-control" @click="student()">
-                ALUMNO <i class="fas fa-book"></i><i class="fas fa-pencil-alt"></i>
-              </button>
-              <button class="btn btn-success form-control" @click="teacher()">
-                DOCENTE <i class="fas fa-briefcase"></i>
-              </button>
-          </div>
-        </div> -->
 			</div>
-			<!-- inicio de los if -->
-      <!-- <div class="col-lg-8">
-      </div> -->
-      <!-- /fin los if -->
 		</div>
 		<!-- /datos principales -->
 		<hr style="border-color: #000">
@@ -43,7 +29,7 @@
           </select>
 					<!-- <input type="text" class="form-control" v-model="folio" ref="buscar" v-on:keyup.enter="getDetalles()" placeholder="Ingrese el folio de prestamo" style="border-color: black"> -->
 					<span class="input-group-btn">
-			      <button class="btn btn-success fas fa-plus-square" @click="getDetalles()"></button>
+			      <button class="btn btn-success fas fa-plus-square" @click="getDetalles()" title="Agregar préstamo"></button>
 			    </span>
 				</div>
         <!-- ingreso : @{{nomber}} -->
@@ -79,7 +65,7 @@
 		        </table>
       		</div>
       		<!-- <button class="btn btn-secondary ml-auto">Button</button> -->
-	      	<button class="btn btn-primary ml-auto float-right" @click="devolver()" >
+	      	<button class="btn btn-primary ml-auto float-right" @click="devolver()" title="Guardar devolución">
 	        	<i class="fas fa-file-import"></i><font face="Sylfaen"> DEVOLVER</font>
 	      	</button>
     	</div>
