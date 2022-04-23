@@ -55,8 +55,11 @@
               						<td> @{{adeudo.alumno.apellidos}} </td>
               						<td> @{{adeudo.total}} </td>
 	              					<td>
-	              						<span class="btn btn-danger" @click="infoAdeudo(adeudo.id_adeudos)">
+	              						<span class="btn btn-outline-primary btn-sm" @click="infoAdeudo(adeudo.id_adeudos)">
 	              							<i class="fas fa-eye"></i>
+	              						</span>
+	              						<span class="btn btn-sm btn-outline-danger" @click="Cargardeuda(adeudo.id_adeudos)">
+	              							<i class="fas fa-donate"></i>
 	              						</span>
 	              					</td>
               					
@@ -78,10 +81,10 @@
 			<div class="modal-content">
 				<!-- modal header -->
 				<div class="modal-header" style="background-color: #f39c12">
-					<h5 class="modal-title" id="exampleModalLiveLabel" v-if="editando">
+					<h5 class="modal-title" id="exampleModalLiveLabel" v-if="!editando">
 	                	<font style="vertical-align: inherit;" face="Sylfaen" color="black">INFORMACIÓN DE LA DEUDA</font>
 	              	</h5>
-	              	<h5 class="modal-title" id="exampleModalLiveLabel" v-if="!editando">
+	              	<h5 class="modal-title" id="exampleModalLiveLabel" v-if="editando">
 	                	<font style="vertical-align: inherit;" face="Sylfaen" color="black">PAGANDO DEUDA</font>
 	              	</h5>
 	              	<button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="cancelar()">
@@ -140,11 +143,11 @@
 				<!-- modal footer -->
 				<div class="modal-footer" style="background-color: #f39c12;">
 					<div class="pull-right">
-						<button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelar()" v-if="editando">ACEPTAR</button>
-						<button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelar()" v-if="!editando">CERRAR</button>
+						<button style="margin-left: 10px" type="button" class="btn btn-success" data-dismiss="modal" v-on:click="cancelar()" v-if="!editando">ACEPTAR</button>
+						<button style="margin-left: 10px" type="button" class="btn btn-danger" data-dismiss="modal" v-on:click="cancelar()" v-if="editando">CANCELAR</button>
 					</div>
 		            <div class="pull-right">
-		                <button style="margin-left: 10px" type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="Devolver(auxDev)" v-if="!editando">
+		                <button style="margin-left: 10px" type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="Pagando(auxDeuda)" v-if="editando">
 		                	PAGAR<span class="fas fa-check"></span>
 		                </button>
 		            </div>

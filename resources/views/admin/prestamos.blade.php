@@ -55,7 +55,7 @@
                  <input type="text" placeholder="Matrícula" class="form-control" v-model="matricula" style="border-color: #000" id="matricula" maxlength="8" v-on:keyup.enter="getAlumnos()">
                  <span class="input-group-btn">
                   <a href=" {{url('historial')}} ">
-                   <button class="btn btn-danger btn-md" v-if="devolver">Verificar</button>
+                   <button class="btn btn-danger btn-sm" v-if="devolver">Verificar</button>
                   </a>
                   <!-- <a href=" {{url('adeudos')}} ">
                    <button class="btn btn-danger btn-md" v-if="saldar">Saldar</button>

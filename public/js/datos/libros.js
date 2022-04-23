@@ -189,7 +189,7 @@ function init(){
 			},
 
 			updateLibro:function(id){
-				// var upbook = new FormData();
+				let upbook = new FormData();
 				// upbook.append('isbn',this.isbn);
 				// upbook.append('folio',this.isbn);
 				// upbook.append('titulo',this.titulo);
@@ -204,9 +204,10 @@ function init(){
 				// upbook.append('ejemplares',this.ejemplares);
 				// upbook.append('clasificacion',this.clasificacion);
 				// upbook.append('cutter',this.cutter);
+
 				for (var i = 0; i < this.arraycaratulas.length; i++) {
 					let file = this.arraycaratulas[i];
-					var detacara = ("caratulafile["+ i + "]", file);
+					upbook.append("caratulafile["+ i + "]", file);
 				}
 
 
@@ -214,7 +215,7 @@ function init(){
 					id_autor:this.id_autor,id_carrera:this.id_carrera,edicion:this.edicion,
 					anio_pub:this.anio_pub,id_pais:this.id_pais,fecha_alta:this.fecha_alta,
 					paginas:this.paginas,ejemplares:this.ejemplares,clasificacion:this.clasificacion,
-					cutter:this.cutter, detacara:detacara,
+					cutter:this.cutter, detacara:this.upbook,
 
 				};
 

@@ -82,16 +82,23 @@
                 <td>
                   <center>
 
-                    <span class="btn btn-primary fas fa-edit" 
-                    v-on:click="editLibro(libro.isbn)" title="Editar libro"></span>
+                    <span class="btn btn-primary btn-sm" 
+                    v-on:click="editLibro(libro.isbn)" title="Editar libro">
+                      <i class="fas fa-edit"></i>
+                    </span>
                    
-                    <span class="btn btn-danger fas fa-trash-alt" 
-                    v-on:click="eliminarLibro(libro.isbn)" title="Eliminar libro"></span>
+                    <span class="btn btn-danger btn-sm" 
+                    v-on:click="eliminarLibro(libro.isbn)" title="Eliminar libro">
+                      <i class="fas fa-trash-alt"></i>
+                    </span>
 
-                    <span class="btn btn-success" v-on:click="loadExample(libro.isbn)" title="Agregar Ejemplar"><i class="far fa-copy"></i></span>
+                    <span class="btn btn-success btn-sm" 
+                    v-on:click="loadExample(libro.isbn)" title="Agregar Ejemplar">
+                      <i class="far fa-copy"></i>
+                    </span>
 
                     <a :href="'libros/detallelibro/'+libro.isbn">
-                      <button type="button" title="Ver Detalles" class="btn btn-link btn-outline-dark btn-sm" title="Ver detalles">
+                      <button type="button" title="Ver Detalles" class="btn btn-outline-dark btn-sm" title="Ver detalles">
                         <i class="fas fa-eye"></i>
                       </button>
                     </a>

@@ -22,7 +22,7 @@ class ApiAdeudosController extends Controller
     public function index()
     {
         //
-        return Adeudos::all();
+        return Adeudos::where('activo',true)->get(['id_adeudos','matricula','dias_atraso','precio_multa','total','activo']);
     }
 
     /**
@@ -72,6 +72,21 @@ class ApiAdeudosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $deuda = Adeudos::find($id);
+
+        $deuda->id_adeudos = $request->get('id_adeudos');
+        $deuda->matricula = $request->get('matricula');
+        $deuda->dias_atraso = $request->get('dias_atraso');
+        $deuda->precio_multa = $request->get('precio_multa');
+        $deuda->total = $request->get('total');
+        $deuda->activo = $request->get('activo');
+
+        $mat = $request->get('matricula');
+        $act = $request->get('activo');
+
+        $deuda->update();
+
+        DB::update("UPDATE alumnos SET deudor = '$act' WHERE matricula = '$mat'");
     }
 
     /**

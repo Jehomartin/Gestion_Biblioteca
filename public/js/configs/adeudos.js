@@ -26,25 +26,16 @@ function init()
 		data:{
 			saludo:'holaaaaaaaaaa',
 			arrayadeudos:[],
-			// arraymultas:[],
 			arrayalumno2:[],
-			// arraycareer:[],
 			id_adeudos:'',
 	        matricula:'',
-	        // clave_carrera:'',
 	        dias_atraso:'',
 	        precio_multa:'',
 	        total:'',
 
 	        buscar:'',
-	        editando:'',
-
-	        // career
-	        // nombre_carrera:'',
-
-	        // alumno
-	        nombre:'',
-	        apellidos:'',
+	        editando:false,
+	        auxDeuda:'',
 		},
 
 		// inicio methods
@@ -59,26 +50,6 @@ function init()
 				});
 			},
 			// fin getadeudo
-
-			// inicio getMulta
-			// getMulta:function(){
-			// 	this.$http.get(urlMulta).then(function(mta){
-			// 		this.arraymultas = mta.data;
-			// 	}).catch(function(mta){
-			// 		toastr.error("No se estan cargando los datos");
-			// 	});
-			// },
-			// fin
-
-			// inicio getCareer
-			// getCareer:function(){
-			// 	this.$http.get(urlCareer).then(function(json){
-			// 		this.arraycareer = json.data;
-			// 	}).catch(function(json){
-			// 		toastr.error("No se estan cargando los datos");
-			// 	});
-			// },
-			// fin
 
 			// inicio getAlumno
 			getAlumno:function(){
@@ -102,7 +73,6 @@ function init()
 			// inicio infoAdeudo
 			infoAdeudo:function(id){
 				$('#modal_adeudo').modal('show');
-				this.editando=true;
 
 				this.$http.get(urlAdeudo + '/' + id).then(function(response){
 					this.id_adeudos = response.data.id_adeudos;
@@ -113,6 +83,58 @@ function init()
 				});
 			},
 			// fin info
+
+			// cargar deuda
+			Cargardeuda:function(id){
+				this.editando=true;
+				$('#modal_adeudo').modal('show');
+				this.$http.get(urlAdeudo + '/' + id).then(function(response){
+					this.id_adeudos = response.data.id_adeudos;
+					this.matricula = response.data.matricula;
+					this.dias_atraso = response.data.dias_atraso;
+					this.precio_multa = response.data.precio_multa;
+					this.total = response.data.total;
+					this.activo = response.data.activo;
+					this.auxDeuda = response.data.id_adeudos;
+				});
+			},
+			// fin cargar
+
+			// Pagando deuda
+			Pagando:function(id){
+				var unpago = {
+					id_adeudos:this.id_adeudos, matricula:this.matricula,
+					dias_atraso:this.dias_atraso, precio_multa:this.precio_multa,
+					total:this.total, activo:false,
+				};
+
+				this.$http.put(urlAdeudo + '/' + this.id_adeudos,unpago).then(function(response){
+					this.getAdeudo();
+					this.id_adeudos = '';
+					this.matricula = '';
+					this.dias_atraso = '';
+					this.precio_multa = '';
+					this.total = '';
+
+					$('#modal_adeudo').modal('hide');
+
+					swal({
+						title:'PAGO EXITOSO',
+						text:'El pago de la deuda se realizó correctamente',
+						icon:'success',
+						buttons:true,
+					});
+				}).catch(function(response){
+					swal({
+						title:'PAGO FALLIDO',
+						text:'El pago no se realizó',
+						icon:'error',
+						buttons:false,
+						timer:3000,
+					});
+				});
+
+			},
 
 			// inicio cancelar
 			cancelar:function(){
