@@ -28,7 +28,7 @@ function init(){
 		},
 
 		data:{
-			libros:[],
+			arraylibros:[],
 			editoriales:[],
 			autores:[],
 			carreras:[],
@@ -88,13 +88,20 @@ function init(){
 				var url = urlLibros + "?page=" + page;
 				this.$http.get(url).then(function(response){
 
-					this.libros = response.data.tasks.data;
+					this.arraylibros = response.data.tasks.data;
 					this.pagination = response.data.pagination;
 
 				}).catch(function(response){
 					toastr.info("No se estan llamando los datos");
 				});
 			},
+			// getLibros:function(){
+			// 	this.$http.get(urlLibros).then(function(response){
+			// 		this.arraylibros = response.data;
+			// 	}).catch(function(response){
+			// 		toastr.info("No se estan llamando los datos");
+			// 	});
+			// },
 
 			getEditorial:function(){
 				this.$http.get(urlEditorial).then(function(response){
@@ -138,7 +145,7 @@ function init(){
 
 			getBuscar:function(){
 				this.$http.get(urlLibros).then(function(json){
-					this.libros=json.data;
+					this.arraylibros=json.data;
 				}).catch(function(json){
 					toastr.info("No se estan llamando los datos");
 				});
@@ -448,7 +455,7 @@ function init(){
 	  //       },
 
 			filtroLibros:function(){
-				return this.libros.filter((libros)=>{
+				return this.arraylibros.filter((libros)=>{
 					return libros.isbn.match(this.buscar.trim()) ||
 					libros.titulo.toLowerCase()
 					.match(this.buscar.trim().toLowerCase());

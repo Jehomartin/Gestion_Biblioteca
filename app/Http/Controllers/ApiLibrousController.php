@@ -65,6 +65,7 @@ class ApiLibrousController extends Controller
                     'isbn'=>$llave
                 ];
             }
+            Caratulas::insert($portada);
         }
         // <--fin guardar imagen-->
 
@@ -82,12 +83,10 @@ class ApiLibrousController extends Controller
                 'folio'=>$foli,
                 'esbase'=>1,
                 'prestado'=>0,
-                'fecha_alta'=>$fechi,
+                'fechalta'=>$fechi,
             ];
         }
         // <--fin ejemplar-->
-
-        Caratulas::insert($portada);
         Ejemplares::insert($ejemplar);
         $librou->save();
     }

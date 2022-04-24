@@ -21,7 +21,7 @@ class ApiBusquedaController extends Controller
     public function index()
     {
         //
-        $buscar = Busqueda::pluck('titulo','isbn')->prepend('selecciona');
+        $buscar = Busqueda::all();
         return $buscar;
     }
 

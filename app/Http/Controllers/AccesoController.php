@@ -27,8 +27,13 @@ class AccesoController extends Controller
     		Session::put('usuario',$usuario);
     		Session::put('puesto',$res[0]->nivel);
 
-    		if ($res[0]->nivel == "Administrador") {
+    		if ($res[0]->nivel == "Administrador" && $res[0]->bloqueado == false) {
                 return Redirect::to('inicio');    
+            }
+            else{
+                throw ValidationException::withMessages([
+                    'bloqueado' => __('auth.dead'),
+                ]);
             }
         }else{
             throw ValidationException::withMessages([

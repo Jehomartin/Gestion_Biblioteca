@@ -22,8 +22,7 @@ class ApiLibrosController extends Controller
     public function index(Request $request)
     {
         //
-        $search = $request->get('buscarpor');
-        $libro = Libros::where('titulo','like',"%$search%")->paginate(20);
+        $libro = Libros::orderBy('titulo','ASC')->paginate(25);
 
         return [
             'pagination' => [

@@ -139,12 +139,6 @@ function init(){
 				$('#Pais').modal('show');
 			},
 
-			// alSeleccionar(event){
-			// 	this.caratula = event.target.files[0];
-			// 	this.preview= URL.createObjectURL(this.caratula);
-			// 	// this.arrayimages.push(preview);
-			// },
-
 			previewFiles(e){
 				this.preview = true;
 				this.arraycaratulas = e.target.files;
@@ -172,7 +166,7 @@ function init(){
 					let file = this.arraycaratulas[i];
 					newbook.append("caratulafile["+ i + "]", file);
 				}
-
+				console.log(this.arraycaratulas);
 				// var portada = {
 				// 	header:{'Content-Type':'image/jpg'}
 				// }
@@ -201,7 +195,7 @@ function init(){
 					this.id_pais='';
 
 				}).catch(function(response){
-					console.log(newbook);
+					console.log(response);
 					swal({
 						title: "REGISTRO FALLIDO",
 						text: "Verifique si lleno todos los campos importantes",

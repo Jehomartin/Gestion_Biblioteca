@@ -1,8 +1,10 @@
 @extends('layouts.layout')
 @section('titulo','Libros')
 @section('contenido')
+<!-- links para los css -->
+<!-- <link rel="stylesheet" href="css/personalizados/stylo3.css"> -->
+<!--  -->
 
-<link rel="stylesheet" href="css/personalizados/stylo3.css">
 <!-- El id es del identificador del js INICIO-->
 <div id="libro">
 
@@ -20,98 +22,96 @@
     </div>
     <!-- FIN DIV TITULO -->
 
-<div id="table-wrapper" class="page-inner mt--5">
-  <div class="container">
+    <div class="container">
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <!-- search form (Optional) -->
-            <div class="input-group">
-                <input type="text" name="buscarpor" class="form-control" placeholder="Buscar..." style="border-color: #000" v-model="buscar">
-                <span class="input-group-btn">
-                  <button title="Buscar" type="submit" name="search" id="search-btn" class="btn btn-flat" style="background-color: orange"><i class="fa fa-search"></i>
-                  </button>
-                </span>
-            </div>
-            <!-- /.search form -->
+          <!-- search form (Optional) -->
+          <div class="input-group">
+            <input type="text" name="buscarpor" class="form-control" placeholder="Buscar..." style="border-color: #000" v-model="buscar">
+            <span class="input-group-btn">
+              <button title="Buscar" type="submit" name="search" id="search-btn" class="btn btn-flat" style="background-color: orange"><i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+          <!-- /.search form -->
         </div>
         <div class="col-md-2"></div>
       </div>
     </div>
-    <nav>
-      <ul class="pagination pull-right">
-        <li class="page-item" v-if="pagination.current_page > 1">
-          <a class="page-link" href="#" @click.prevent="NextPage(pagination.current_page - 1)">
-            <span>Atrás</span>
-          </a>
-        </li>
-        <li v-for="page in PagesNo" v-bind:class="[page == Activates ? 'page-item active' : 'page-item']">
-          <a class="page-link" href="#" @click.prevent="NextPage(page)">
-            @{{ page }}
-          </a>
-        </li>
-        <li class="page-item" v-if="pagination.current_page < pagination.last_page">
-          <a class="page-link" href="#" @click.prevent="NextPage(pagination.current_page + 1)">
-            <span>Siguiente</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  <div id="table-scroll">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="table-responsive-md">
-          <table style="font-size:14px" class="table table-sm table-striped table-bordered table-hover tamanio-font">  
-            <thead class="thead-dark">
-              <th width="7%" class="header" scope="col">ISBN</th>
-              <th class="header" scope="col">TÍTULO</th>
-              <th class="header" scope="col">AUTOR</th>
-              <th class="header" scope="col">EDITORIAL</th>
-              <th class="header" scope="col">CARRERA</th>
-              <th width="8%" class="header" scope="col">EJEMPLARES</th>
-              <th width="15%" class="header" scope="col">OPCIONES</th>
-            </thead>
-            <tbody>
-              <tr v-for="(libro,index) in libros">
-                <td>@{{libro.isbn}}</td>
-                <td>@{{libro.titulo}}</td>
-                <td>@{{libro.autor.nombre}}</td>
-                <td>@{{libro.editorial.editorial}}</td>
-                <td>@{{libro.carrera.carrera}}</td>
-                <td>@{{libro.ejemplares}}</td>
-                <td>
-                  <center>
+    <br>
 
-                    <span class="btn btn-primary btn-sm" 
-                    v-on:click="editLibro(libro.isbn)" title="Editar libro">
-                      <i class="fas fa-edit"></i>
-                    </span>
-                   
-                    <span class="btn btn-danger btn-sm" 
-                    v-on:click="eliminarLibro(libro.isbn)" title="Eliminar libro">
-                      <i class="fas fa-trash-alt"></i>
-                    </span>
+    <div>
+      <div>
+        <nav>
+          <ul class="pagination pull-right">
+            <li class="page-item" v-if="pagination.current_page > 1">
+              <a class="page-link" href="#" @click.prevent="NextPage(pagination.current_page - 1)">
+                <span>Atrás</span>
+              </a>
+            </li>
+            <li v-for="page in PagesNo" v-bind:class="[page == Activates ? 'page-item active' : 'page-item']">
+              <a class="page-link" href="#" @click.prevent="NextPage(page)">
+                @{{ PagesNo}}
+              </a>
+            </li>
+            <li class="page-item" v-if="pagination.current_page < pagination.last_page">
+              <a class="page-link" href="#" @click.prevent="NextPage(pagination.current_page + 1)">
+                <span>Siguiente</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div id="table-scroll">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive-md">
+                <table style="font-size:14px" class="table table-sm table-striped table-bordered table-hover tamanio-font" id="tabLibros">
+                  <thead class="thead-dark">
+                    <th width="7%" class="header" scope="col">ISBN</th>
+                    <th class="header" scope="col">TÍTULO</th>
+                    <th class="header" scope="col">AUTOR</th>
+                    <th class="header" scope="col">EDITORIAL</th>
+                    <th class="header" scope="col">CARRERA</th>
+                    <th width="8%" class="header" scope="col">EJEMPLARES</th>
+                    <th width="15%" class="header" scope="col">OPCIONES</th>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(libro,index) in filtroLibros">
+                      <td>@{{libro.isbn}}</td>
+                      <td>@{{libro.titulo}}</td>
+                      <td>@{{libro.autor.nombre}}</td>
+                      <td>@{{libro.editorial.editorial}}</td>
+                      <td>@{{libro.carrera.carrera}}</td>
+                      <td>@{{libro.ejemplares}}</td>
+                      <td>
+                        <center>
 
-                    <span class="btn btn-success btn-sm" 
-                    v-on:click="loadExample(libro.isbn)" title="Agregar Ejemplar">
-                      <i class="far fa-copy"></i>
-                    </span>
+                          <span class="btn btn-primary btn-sm" 
+                          v-on:click="editLibro(libro.isbn)" title="Editar libro"><i class="fas fa-edit"></i></span>
+                         
+                          <span class="btn btn-danger btn-sm" 
+                          v-on:click="eliminarLibro(libro.isbn)" title="Eliminar libro"><i class="fas fa-trash-alt"></i></span>
 
-                    <a :href="'libros/detallelibro/'+libro.isbn">
-                      <button type="button" title="Ver Detalles" class="btn btn-outline-dark btn-sm" title="Ver detalles">
-                        <i class="fas fa-eye"></i>
-                      </button>
-                    </a>
-                    
-                  </center>
-                </td> 
-              </tr>
-            </tbody>
-          </table>
+                          <span class="btn btn-success btn-sm" v-on:click="loadExample(libro.isbn)" title="Agregar Ejemplar"><i class="far fa-copy"></i></span>
+
+                          <a :href="'libros/detallelibro/'+libro.isbn">
+                            <span type="button" title="Ver Detalles" class="btn btn-fb btn-outline-dark btn-sm" title="Ver detalles">
+                              <i class="fas fa-eye"></i>
+                            </span>
+                          </a>
+                          
+                        </center>
+                      </td> 
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-  </div>
-</div>
+    </div>
 
     <!-- INICIO MODAL lIBROS -->
     <!-- inicio ventana modal -->

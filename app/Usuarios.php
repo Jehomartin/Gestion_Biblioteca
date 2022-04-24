@@ -10,7 +10,7 @@ class Usuarios extends Model
     protected $table="users";
 
     //llamado de la llave primaria
-    protected $primaryKey="id_usuario";
+    protected $primaryKey="login";
 
     //especificado de autoincrementable o de tiempo
     public $incrementing = false;
@@ -18,13 +18,14 @@ class Usuarios extends Model
 
     //llamado del resto de datos
     protected $Fillable = [
-    	'id_usuario',
+    	'login',
         'pass',
     	'nombre',
     	'apellidos',
         'sexo',
         'edad',
         'telefono',
-    	'nivel'
+    	'nivel',
+        'bloqueado',
     ];
 }

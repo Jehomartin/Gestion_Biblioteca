@@ -26,7 +26,7 @@ class ApiUsuariosController extends Controller
     public function index()
     {
         //
-        return Usuarios::all();
+        return Usuarios::where('bloqueado',false)->get(['login','pass','nombre','apellidos','sexo','edad','telefono','nivel','bloqueado']);
     }
 
     /**
@@ -48,30 +48,9 @@ class ApiUsuariosController extends Controller
         $userN->edad = $request->get('edad');
         $userN->telefono = $request->get('telefono');
         $userN->nivel = $request->get('nivel');
+        $userN->bloqueado = $request->get('bloqueado');
 
         $userN->save();
-
-        // if ($request->get($userN)) {
-        //     $usuario=$request->usuario;
-        //     $password=$request->pass;
-
-        //     $res = Usuarios::where('login','=',$usuario)
-        //     ->where('pass','=',$password)->get();
-        //     if (count($res)>0) {
-                
-        //         $usuario = $res[0]->nombre.' '.$res[0]->apellidos;
-        //         Session::put('usuario',$usuario);
-        //         Session::put('puesto',$res[0]->nivel);
-
-        //         if ($res[0]->nivel == "Administrador") {
-        //             return Redirect::to('inicio');    
-        //         }
-        //     } else {
-        //         return 'fallaste';
-        //     }
-        // } else {
-        //     return 'error';
-        // }
 
     }
 
@@ -84,7 +63,7 @@ class ApiUsuariosController extends Controller
     public function show($id)
     {
         //
-        // return Usuarios::find($id);
+        return Usuarios::find($id);
     }
 
     /**
@@ -97,15 +76,19 @@ class ApiUsuariosController extends Controller
     public function update(Request $request, $id)
     {
         //
-        // $usuario = Usuarios::find($id);
+        $usuario = Usuarios::find($id);
 
-        // $usuario->id_usuario = $request->get('id_usuario');
-        // $usuario->pass = $request->get('pass');
-        // $usuario->nombre = $request->get('nombre');
-        // $usuario->apellidos = $request->get('apellidos');
-        // $usuario->nivel = $request->get('nivel');
+        $usuario->login = $request->get('login');
+        $usuario->pass = $request->get('pass');
+        $usuario->nombre = $request->get('nombre');
+        $usuario->apellidos = $request->get('apellidos');
+        $usuario->sexo = $request->get('sexo');
+        $usuario->edad = $request->get('edad');
+        $usuario->telefono = $request->get('telefono');
+        $usuario->nivel = $request->get('nivel');
+        $usuario->bloqueado = $request->get('bloqueado');
 
-        // $usuario->update();
+        $usuario->update();
     }
 
     /**

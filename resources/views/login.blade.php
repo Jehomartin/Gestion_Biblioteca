@@ -51,13 +51,13 @@
         </div>
         <br>
       </form>
-      <div class="col-md-8">
+<!--       <div class="col-md-8">
         <a href="{{url('ingreso')}}">
           <button class="btn btn-primary form-control">
             <font size="3"> REGISTRARSE <i class="glyphicon glyphicon-edit"></i> </font>
           </button>
         </a>
-      </div>
+      </div> -->
     </article>
   </div>
 </div>
