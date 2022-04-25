@@ -40,6 +40,7 @@ class ApiAdeudosController extends Controller
         $deuda->dias_atraso = $request->get('dias_atraso');
         $deuda->precio_multa = $request->get('precio_multa');
         $deuda->total = $request->get('total');
+        $deuda->activo = $request->get('deudor');
 
         // actualizando en alumnos
         $cod = $request->get('deudor');

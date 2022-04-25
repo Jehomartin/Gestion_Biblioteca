@@ -62,6 +62,7 @@ function init()
 			dias_atraso:'',
 			precio_multa:'',
 			total:'',
+			activo:'',
 
 		},
 

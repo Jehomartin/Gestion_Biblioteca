@@ -72,7 +72,7 @@ class ApiPrestamosController extends Controller
 
             $mat = $request->get('matricula');
             $cont = $request->get('permiso');
-            DB::update("UPDATE alumnos SET permiso = $cont WHERE matricula = '$mat'");
+            DB::update("UPDATE alumnos SET permiso = '$cont' WHERE matricula = '$mat'");
             // DB::update("UPDATE libros SET ejemplares = ejemplares - $exem WHERE isbn = '$codigo'");
 
         } elseif ($prestmis == "docente") {
